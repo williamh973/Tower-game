@@ -5,7 +5,5 @@ const createStartWaveIcon = (imageSrc) => {
 };
 
 export const theStartWaveIcon = createStartWaveIcon(
-"./assets/image/start-wave.png"
+  "./assets/images/start-wave.png"
 );
-
-

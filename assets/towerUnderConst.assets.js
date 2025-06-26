@@ -1,9 +1,9 @@
-const imgTowerUnderBuild = imageSrc => {
-    const image = new Image();
-    image.src = imageSrc;
-    return image;
+const imgTowerUnderBuild = (imageSrc) => {
+  const image = new Image();
+  image.src = imageSrc;
+  return image;
 };
 
 export const theImgTowerUnderBuild = imgTowerUnderBuild(
-    "./assets/image/towerUnderConstruction.png"
+  "./assets/images/towerUnderConstruction.png"
 );

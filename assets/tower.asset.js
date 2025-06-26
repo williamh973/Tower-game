@@ -4,8 +4,9 @@ const imgArcherTower = (imageSrc) => {
   return image;
 };
 
-export const theImgArcherTower = imgArcherTower("./assets/image/Archer-tower.png");
-
+export const theImgArcherTower = imgArcherTower(
+  "./assets/images/Archer-tower.png"
+);
 
 const imgWizardTower = (imageSrc) => {
   const image = new Image();
@@ -13,8 +14,9 @@ const imgWizardTower = (imageSrc) => {
   return image;
 };
 
-export const theImgWizardTower = imgWizardTower("./assets/image/wizard-tower.png");
-
+export const theImgWizardTower = imgWizardTower(
+  "./assets/images/wizard-tower.png"
+);
 
 const imgFireTower = (imageSrc) => {
   const image = new Image();
@@ -22,8 +24,7 @@ const imgFireTower = (imageSrc) => {
   return image;
 };
 
-export const theImgFireTower = imgWizardTower("./assets/image/fire-tower.png");
-
+export const theImgFireTower = imgFireTower("./assets/images/fire-tower.png");
 
 const imgCannonTower = (imageSrc) => {
   const image = new Image();
@@ -31,4 +32,6 @@ const imgCannonTower = (imageSrc) => {
   return image;
 };
 
-export const theImgCannonTower = imgCannonTower("./assets/image/cannon-tower.png");
+export const theImgCannonTower = imgCannonTower(
+  "./assets/images/cannon-tower.png"
+);

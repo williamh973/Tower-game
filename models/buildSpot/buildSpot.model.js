@@ -1,4 +1,4 @@
-import {context} from '../../animate.js';
+import { context } from "../../animate.js";
 
 export class BuildSpot {
   constructor(position) {
@@ -15,13 +15,13 @@ export class BuildSpot {
   }
 
   isClicked(mouseX, mouseY) {
-  return (
-    mouseX >= this.position.x &&
-    mouseX <= this.position.x + this.width &&
-    mouseY >= this.position.y &&
-    mouseY <= this.position.y + this.height
-  );
-}
+    return (
+      mouseX >= this.position.x &&
+      mouseX <= this.position.x + this.width &&
+      mouseY >= this.position.y &&
+      mouseY <= this.position.y + this.height
+    );
+  }
 
   build(tower) {
     if (!this.isOccupied) {
@@ -29,18 +29,13 @@ export class BuildSpot {
       this.isOccupied = true;
     }
   }
-  
+
   drawDebugCollisionSquare() {
     context.beginPath();
     context.strokeStyle = "red";
     context.lineWidth = 1;
 
-    context.rect(
-      this.position.x,
-      this.position.y,
-      this.width,
-      this.height,
-    );
+    context.rect(this.position.x, this.position.y, this.width, this.height);
 
     context.stroke();
     context.closePath();

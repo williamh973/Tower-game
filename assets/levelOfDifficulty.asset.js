@@ -6,4 +6,6 @@ const imgLevelOfDifficulty = (imageSrc) => {
   return image;
 };
 
-export const theImgLevelOfDifficulty = imgLevelOfDifficulty("./assets/image/levelOfDifficulty.png");
+export const theImgLevelOfDifficulty = imgLevelOfDifficulty(
+  "./assets/images/levelOfDifficulty.png"
+);

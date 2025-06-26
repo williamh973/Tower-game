@@ -1,9 +1,8 @@
-import {canvas, context} from './animate.js';
+import { gameVariable } from "./gameVariable.js";
 
-export const gameOver = (gameVariable, isCanMove) => {
+export const gameOver = () => {
   if (gameVariable.playerStats.life <= 0) {
     gameVariable.ui.isGameOver = true;
-    alert('Game over');
+    alert("Game over");
   }
 };
-

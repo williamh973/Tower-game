@@ -6,4 +6,4 @@ const imgBackground = (imageSrc) => {
   return image;
 };
 
-export const mapStepOne = imgBackground("./assets/image/td.png");
+export const mapStepOne = imgBackground("./assets/images/td.png");

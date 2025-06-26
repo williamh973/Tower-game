@@ -4,4 +4,6 @@ const imgBuildSpotMenu = (imageSrc) => {
   return image;
 };
 
-export const theImgBuildSpotMenu = imgBuildSpotMenu("./assets/image/buildSpotMenu.png");
+export const theImgBuildSpotMenu = imgBuildSpotMenu(
+  "./assets/images/buildSpotMenu.png"
+);
