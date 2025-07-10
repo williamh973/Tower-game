@@ -26,7 +26,7 @@ canvas.addEventListener("click", (event) => {
   handleClick(x, y);
 });
 
-function handleClick(x, y) {
+const handleClick = async (x, y) => {
   for (const icon of gameVariable.ui.iconList) {
     if (icon.isClicked(x, y)) {
       switch (icon.name) {
@@ -41,7 +41,7 @@ function handleClick(x, y) {
           break;
 
         case "startWaveIcon":
-          initWave(icon);
+          await initWave(icon);
           break;
         case "pauseIcon":
           togglePause(icon);
@@ -69,4 +69,4 @@ function handleClick(x, y) {
     }
   }
   //  console.log(gameVariable.game.difficulty);
-}
+};

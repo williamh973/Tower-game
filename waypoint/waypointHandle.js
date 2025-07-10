@@ -3,13 +3,13 @@ import { gameVariable } from "../gameVariable.js";
 export let wpCoordinates = [];
 export let wpVelocitys = [];
 
-export const fetchWaypoints = () => {
+export const fetchWaypoints = async () => {
   switch (gameVariable.campaign.campaignCurrentStep) {
     case 1:
-      fetchWaypointsStepOne();
+      await fetchWaypointsStepOne();
       break;
     case 2:
-      fetchWaypointsStepTwo();
+      await fetchWaypointsStepTwo();
       break;
     default:
     // code

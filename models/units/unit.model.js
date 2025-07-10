@@ -33,7 +33,8 @@ export class Unit {
     this.isDead = false;
     this.speed = 2;
 
-    this.velocity = { ...(this.velocitiList[this.currentWaypointIndex] * 2) };
+    this.velocity = { ...this.velocitiList[this.currentWaypointIndex] };
+
     this.stats = stats;
   }
 
@@ -68,9 +69,8 @@ export class Unit {
   move() {
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
-
     const target = this.waypointList[this.currentWaypointIndex + 1];
-
+    console.log(target);
     if (
       target &&
       Math.abs(this.position.x - target.x) < 1 &&

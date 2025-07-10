@@ -45,24 +45,4 @@ export const possibleDemonList = {
       "light",
       "zorfang"
     ),
-  mormon: () =>
-    new Demon(
-      { ...wpCoordinates[0] },
-      17,
-      17,
-      "",
-      wpCoordinates.slice(),
-      wpVelocitys.slice(),
-      "demon",
-      {
-        attack: 2,
-        defense: 3,
-        speed: 2,
-        health: 50,
-        maxHealth: 50,
-      },
-      6,
-      "light",
-      "mormon"
-    ),
 };

@@ -19,10 +19,10 @@ export class Wave {
   }
 
   async init() {
-    fetchWaypoints();
+    await fetchWaypoints();
   }
 
-  async start(startWaveIcon) {
+  start(startWaveIcon) {
     this.isWaveStarted = true;
     this.isWaveEnded = false;
 
@@ -34,6 +34,7 @@ export class Wave {
         return;
       }
       this.demonList.push(this.randomDemon());
+      console.log(this.demonList);
       this.currentUnit++;
 
       const delay = this.getRandomInterval();
