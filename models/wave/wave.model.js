@@ -29,7 +29,7 @@ export class Wave {
     gameVariable.wave.currentWaveList.push(wave);
 
     const spawnDemon = async () => {
-      if (this.currentUnit > this.unitMax) {
+      if (this.currentUnit >= this.unitMax) {
         this.end(startWaveIcon);
         return;
       }
@@ -44,7 +44,6 @@ export class Wave {
   }
 
   end(startWaveIcon) {
-    console.log(startWaveIcon);
     this.isWaveStarted = false;
     this.isWaveEnded = true;
     clearTimeout(this.intervalId);
