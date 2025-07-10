@@ -33,7 +33,7 @@ export class Unit {
     this.isDead = false;
     this.speed = 2;
 
-    this.velocity = { ...this.velocitiList[this.currentWaypointIndex] };
+    this.velocity = { ...(this.velocitiList[this.currentWaypointIndex] * 2) };
     this.stats = stats;
   }
 

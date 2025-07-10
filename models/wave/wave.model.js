@@ -43,10 +43,11 @@ export class Wave {
     spawnDemon();
   }
 
-  end(intervalId, startWaveIcon) {
+  end(startWaveIcon) {
+    console.log(startWaveIcon);
     this.isWaveStarted = false;
     this.isWaveEnded = true;
-    clearTimeout(intervalId);
+    clearTimeout(this.intervalId);
     startWaveIcon.show();
     return;
   }

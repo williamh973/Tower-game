@@ -1,8 +1,9 @@
 import { gameVariable } from "./gameVariable.js";
 
-export const isCkeckIfPlayerVictory = (demonList) => {
-  if (demonList.length <= 0 && gameVariable.playerStats.life >= 0) {
+export const isCkeckIfPlayerVictory = (waveDemonDeadList, unitMax) => {
+  if (gameVariable.playerStats.life >= 0 && waveDemonDeadList >= unitMax) {
     gameVariable.ui.isVictory = true;
+    console.log(waveDemonDeadList, unitMax);
     alert("Victory !");
   }
 };

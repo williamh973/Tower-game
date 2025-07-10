@@ -33,12 +33,13 @@ export const addPlayerGold = (gold) => {
 };
 
 export const handleDeadDemons = () => {
-  const deadDemons = wave.demonList.filter((demon) => demon.isDead);
-
-  for (const demon of deadDemons) {
-    addPlayerGold(demon.goldReward);
-  }
-
-  wave.demonList = wave.demonList.filter((demon) => !demon.isDead);
-  isCkeckIfPlayerVictory(wave.demonList);
+  wave.demonList.filter((demon) => {
+    demon.isDead;
+    if (demon.isDead) {
+      wave.demonDeadList.push(demon);
+      addPlayerGold(demon.goldReward);
+      wave.demonList = wave.demonList.filter((demon) => !demon.isDead);
+      isCkeckIfPlayerVictory(wave.demonDeadList, wave.unitMax);
+    }
+  });
 };
