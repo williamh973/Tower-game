@@ -3,6 +3,14 @@ import {
   wpCoordinates,
   wpVelocitys,
 } from "../../../waypoint/waypointHandle.js";
+import {
+  armorType,
+  goldReward,
+  unitName,
+  unitClass,
+  damageType,
+  unitType,
+} from "../unitCharacteristics.js";
 
 export const possibleDemonList = {
   gorax: () =>
@@ -13,7 +21,9 @@ export const possibleDemonList = {
       "",
       wpCoordinates.slice(),
       wpVelocitys.slice(),
-      "demon",
+      unitType.demon,
+      unitClass.warrior,
+      damageType.physical,
       {
         attack: 2,
         defense: 2,
@@ -21,9 +31,9 @@ export const possibleDemonList = {
         health: 10,
         maxHealth: 10,
       },
-      4,
-      "none",
-      "gorax"
+      goldReward.gorax,
+      armorType.noArmor,
+      unitName.gorax
     ),
   zorfang: () =>
     new Demon(
@@ -33,7 +43,9 @@ export const possibleDemonList = {
       "",
       wpCoordinates.slice(),
       wpVelocitys.slice(),
-      "demon",
+      unitType.demon,
+      unitClass.archer,
+      damageType.physical,
       {
         attack: 2,
         defense: 3,
@@ -41,8 +53,118 @@ export const possibleDemonList = {
         health: 10,
         maxHealth: 10,
       },
-      6,
-      "light",
-      "zorfang"
+      goldReward.zorfang,
+      armorType.lightArmor,
+      unitName.zorfang
+    ),
+  vargmorne: () =>
+    new Demon(
+      { ...wpCoordinates[0] },
+      12,
+      12,
+      "",
+      wpCoordinates.slice(),
+      wpVelocitys.slice(),
+      unitType.demon,
+      unitClass.mage,
+      damageType.magic,
+      {
+        attack: 2,
+        defense: 2,
+        speed: 3,
+        health: 20,
+        maxHealth: 20,
+      },
+      goldReward.vargmorne,
+      armorType.mediumArmor,
+      unitName.vargmorne
+    ),
+  murkith: () =>
+    new Demon(
+      { ...wpCoordinates[0] },
+      12,
+      12,
+      "",
+      wpCoordinates.slice(),
+      wpVelocitys.slice(),
+      unitType.demon,
+      unitClass.tank,
+      damageType.physical,
+      {
+        attack: 2,
+        defense: 2,
+        speed: 3,
+        health: 20,
+        maxHealth: 20,
+      },
+      goldReward.murkith,
+      armorType.highArmor,
+      unitName.murkith
+    ),
+  thraxxor: () =>
+    new Demon(
+      { ...wpCoordinates[0] },
+      12,
+      12,
+      "",
+      wpCoordinates.slice(),
+      wpVelocitys.slice(),
+      unitType.demon,
+      unitClass.assassin,
+      damageType.poison,
+      {
+        attack: 2,
+        defense: 2,
+        speed: 3,
+        health: 20,
+        maxHealth: 20,
+      },
+      goldReward.thraxxor,
+      armorType.noArmor,
+      unitName.thraxxor
+    ),
+  drakzul: () =>
+    new Demon(
+      { ...wpCoordinates[0] },
+      12,
+      12,
+      "",
+      wpCoordinates.slice(),
+      wpVelocitys.slice(),
+      unitType.demon,
+      unitClass.berserker,
+      damageType.physical,
+      {
+        attack: 2,
+        defense: 2,
+        speed: 3,
+        health: 20,
+        maxHealth: 20,
+      },
+      goldReward.drakzul,
+      armorType.noArmor,
+      unitName.drakzul
+    ),
+  nekhraal: () =>
+    new Demon(
+      { ...wpCoordinates[0] },
+      12,
+      12,
+      "",
+      wpCoordinates.slice(),
+      wpVelocitys.slice(),
+      unitType.demon,
+      unitClass.summoner,
+      damageType.magic,
+      {
+        attack: 2,
+        defense: 2,
+        speed: 3,
+        health: 20,
+        maxHealth: 20,
+      },
+      goldReward.nekhraal,
+      armorType.noArmor,
+      unitName.nekhraal
     ),
 };

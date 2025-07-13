@@ -16,7 +16,7 @@ import {
 } from "./models/icon/icon.instance.js";
 import { levelDifficultyScreen } from "./models/selectionScreen/selectionScreen.instance.js";
 
-export const wave = new Wave(1);
+export const wave = new Wave(10);
 
 export function initHUDText() {
   lifeDisplay.text = "❤️ " + gameVariable.playerStats.life;

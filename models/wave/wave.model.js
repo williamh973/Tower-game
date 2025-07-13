@@ -28,20 +28,19 @@ export class Wave {
 
     gameVariable.wave.currentWaveList.push(wave);
 
-    const spawnDemon = async () => {
-      if (this.currentUnit >= this.unitMax) {
-        this.end(startWaveIcon);
-        return;
-      }
-      this.demonList.push(this.randomDemon());
-      console.log(this.demonList);
-      this.currentUnit++;
+    this.spawnDemon(startWaveIcon);
+  }
 
-      const delay = this.getRandomInterval();
-      this.intervalId = setTimeout(spawnDemon, delay);
-    };
-
-    spawnDemon();
+  spawnDemon(startWaveIcon) {
+    if (this.currentUnit >= this.unitMax) {
+      this.end(startWaveIcon);
+      return;
+    }
+    this.demonList.push(this.randomDemon());
+    console.log(this.demonList);
+    this.currentUnit++;
+    const delay = this.getRandomInterval();
+    this.intervalId = setTimeout(() => this.spawnDemon(startWaveIcon), delay);
   }
 
   end(startWaveIcon) {
@@ -52,12 +51,17 @@ export class Wave {
     return;
   }
 
-  randomDemon = () => {
-    let randomNumber = Math.random();
-    if (randomNumber > 0.5) {
-      return possibleDemonList.zorfang();
-    } else {
-      return possibleDemonList.gorax();
-    }
-  };
+  randomDemon() {
+    let availableDemonList = [
+      possibleDemonList.gorax(),
+      possibleDemonList.drakzul(),
+      possibleDemonList.murkith(),
+      possibleDemonList.nekhraal(),
+      possibleDemonList.thraxxor(),
+      possibleDemonList.vargmorne(),
+      possibleDemonList.zorfang(),
+    ];
+    let randomNumber = Math.floor(Math.random() * 6) + 1;
+    return availableDemonList[randomNumber];
+  }
 }

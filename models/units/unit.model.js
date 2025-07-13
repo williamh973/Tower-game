@@ -1,6 +1,7 @@
 import { context } from "../../animate.js";
 import { gameVariable } from "../../gameVariable.js";
 import { checkIfUnitLeavesMap } from "../../playerActions.js";
+import { unitRectangleColor } from "./unitRectangleColor.js";
 
 export class Unit {
   constructor(
@@ -10,7 +11,9 @@ export class Unit {
     image,
     waypointList,
     velocitiList,
-    type,
+    unitType,
+    unitClass,
+    damageType,
     stats,
     goldReward,
     armor,
@@ -22,7 +25,9 @@ export class Unit {
     this.image = image;
     this.waypointList = waypointList;
     this.velocitiList = velocitiList;
-    this.type = type;
+    this.unitType = unitType;
+    this.unitClass = unitClass;
+    this.damageType = damageType;
     this.goldReward = goldReward;
     this.armor = armor;
     this.name = name;
@@ -31,20 +36,15 @@ export class Unit {
     this.scale = 2;
     this.isCanMove = true;
     this.isDead = false;
-    this.speed = 2;
-
-    this.velocity = { ...this.velocitiList[this.currentWaypointIndex] };
-
     this.stats = stats;
+    this.velocity = { ...this.velocitiList[this.currentWaypointIndex] };
   }
 
   draw() {
     if (this.isDead) return;
-    if (this.name === "gorax") {
-      context.fillStyle = "brown";
-    } else {
-      context.fillStyle = "black";
-    }
+
+    unitRectangleColor(this.name);
+
     context.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
 
@@ -69,8 +69,9 @@ export class Unit {
   move() {
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
+
     const target = this.waypointList[this.currentWaypointIndex + 1];
-    console.log(target);
+
     if (
       target &&
       Math.abs(this.position.x - target.x) < 1 &&
@@ -82,8 +83,9 @@ export class Unit {
       this.currentWaypointIndex++;
 
       if (this.currentWaypointIndex < this.velocitiList.length) {
+        const baseVelocity = this.velocitiList[this.currentWaypointIndex];
         this.velocity = {
-          ...this.velocitiList[this.currentWaypointIndex],
+          ...baseVelocity,
         };
 
         checkIfUnitLeavesMap(
