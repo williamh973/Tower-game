@@ -3,13 +3,13 @@ import { context } from "../../animate.js";
 export const unitRectangleColor = (name) => {
   switch (name) {
     case "gorax":
-      context.fillStyle = "brown";
+      context.fillStyle = "red";
       break;
     case "zorfang":
       context.fillStyle = "black";
       break;
     case "vargmorne":
-      context.fillStyle = "gray";
+      context.fillStyle = "green";
       break;
     case "murkith":
       context.fillStyle = "orange";
@@ -18,7 +18,10 @@ export const unitRectangleColor = (name) => {
       context.fillStyle = "purple";
       break;
     case "nekhraal":
-      context.fillStyle = "pink";
+      context.fillStyle = "blue";
+      break;
+    case "thraxxor":
+      context.fillStyle = "cyan";
       break;
     default:
       break;

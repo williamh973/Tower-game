@@ -1,7 +1,7 @@
 import { fetchWaypoints } from "../../waypoint/waypointHandle.js";
 import { gameVariable } from "../../gameVariable.js";
 import { wave } from "../../init.js";
-import { possibleDemonList } from "../units/demon/possibleDemonList.js";
+import { possibleDemonList } from "../../generators/demonGenerator.js";
 
 export class Wave {
   constructor(unitMax) {
@@ -37,7 +37,6 @@ export class Wave {
       return;
     }
     this.demonList.push(this.randomDemon());
-    console.log(this.demonList);
     this.currentUnit++;
     const delay = this.getRandomInterval();
     this.intervalId = setTimeout(() => this.spawnDemon(startWaveIcon), delay);
@@ -54,14 +53,14 @@ export class Wave {
   randomDemon() {
     let availableDemonList = [
       possibleDemonList.gorax(),
-      possibleDemonList.drakzul(),
-      possibleDemonList.murkith(),
-      possibleDemonList.nekhraal(),
-      possibleDemonList.thraxxor(),
-      possibleDemonList.vargmorne(),
-      possibleDemonList.zorfang(),
+      // possibleDemonList.drakzul(),
+      // possibleDemonList.murkith(),
+      // possibleDemonList.nekhraal(),
+      // possibleDemonList.thraxxor(),
+      // possibleDemonList.vargmorne(),
+      // possibleDemonList.zorfang(),
     ];
-    let randomNumber = Math.floor(Math.random() * 6) + 1;
+    let randomNumber = Math.floor(Math.random() * 1);
     return availableDemonList[randomNumber];
   }
 }

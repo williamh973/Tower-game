@@ -4,7 +4,7 @@ import { gameVariable } from "./gameVariable.js";
 import { wave } from "./init.js";
 import { isCkeckIfPlayerVictory } from "./victory.js";
 
-export const checkIfUnitLeavesMap = (
+export const checkIfUnitReachedEnd = (
   currentWaypointIndex,
   waypointsLength,
   gameVariable,

@@ -13,8 +13,8 @@ export const possibleDemonList = {
   gorax: () =>
     new Demon(
       { ...wpCoordinates[0] },
-      15,
-      15,
+      30,
+      30,
       "",
       wpCoordinates.slice(),
       wpVelocitys.slice(),

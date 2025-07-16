@@ -12,7 +12,6 @@ export const fetchWaypoints = async () => {
       await fetchWaypointsStepTwo();
       break;
     default:
-    // code
   }
 };
 

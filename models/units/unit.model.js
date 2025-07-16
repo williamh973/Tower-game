@@ -1,6 +1,6 @@
 import { context } from "../../animate.js";
 import { gameVariable } from "../../gameVariable.js";
-import { checkIfUnitLeavesMap } from "../../playerActions.js";
+import { checkIfUnitReachedEnd } from "../../playerActions.js";
 import { unitRectangleColor } from "./unitRectangleColor.js";
 
 export class Unit {
@@ -10,7 +10,7 @@ export class Unit {
     height,
     image,
     waypointList,
-    velocitiList,
+    velocityList,
     unitType,
     unitClass,
     damageType,
@@ -24,7 +24,7 @@ export class Unit {
     this.height = height;
     this.image = image;
     this.waypointList = waypointList;
-    this.velocitiList = velocitiList;
+    this.velocityList = velocityList;
     this.unitType = unitType;
     this.unitClass = unitClass;
     this.damageType = damageType;
@@ -37,7 +37,7 @@ export class Unit {
     this.isCanMove = true;
     this.isDead = false;
     this.stats = stats;
-    this.velocity = { ...this.velocitiList[this.currentWaypointIndex] };
+    this.setVelocity();
   }
 
   draw() {
@@ -72,33 +72,40 @@ export class Unit {
 
     const target = this.waypointList[this.currentWaypointIndex + 1];
 
-    if (
-      target &&
-      Math.abs(this.position.x - target.x) < 1 &&
-      Math.abs(this.position.y - target.y) < 1
-    ) {
-      this.position.x = target.x;
-      this.position.y = target.y;
+    if (target) {
+      const distanceX = this.position.x - target.x;
+      const distanceY = this.position.y - target.y;
+      const distance = Math.hypot(distanceX, distanceY);
 
-      this.currentWaypointIndex++;
+      if (distance < this.stats.speed) {
+        this.position.x = target.x;
+        this.position.y = target.y;
 
-      if (this.currentWaypointIndex < this.velocitiList.length) {
-        const baseVelocity = this.velocitiList[this.currentWaypointIndex];
-        this.velocity = {
-          ...baseVelocity,
-        };
+        this.currentWaypointIndex++;
 
-        checkIfUnitLeavesMap(
-          this.currentWaypointIndex,
-          this.waypointList.length,
-          gameVariable,
-          this.isCanMove
-        );
-      } else {
-        this.isCanMove = false;
-        this.isDead = true;
+        if (this.currentWaypointIndex < this.velocityList.length) {
+          this.setVelocity();
+
+          checkIfUnitReachedEnd(
+            this.currentWaypointIndex,
+            this.waypointList.length,
+            gameVariable,
+            this.isCanMove
+          );
+        } else {
+          this.isCanMove = false;
+          this.isDead = true;
+        }
       }
     }
+  }
+
+  setVelocity() {
+    const baseVelocity = this.velocityList[this.currentWaypointIndex];
+    this.velocity = {
+      x: baseVelocity.x * this.stats.speed,
+      y: baseVelocity.y * this.stats.speed,
+    };
   }
 
   update() {

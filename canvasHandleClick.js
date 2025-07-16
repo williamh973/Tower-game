@@ -68,5 +68,4 @@ const handleClick = async (x, y) => {
       playerBuildTower(buildSpotTowerIcon);
     }
   }
-  //  console.log(gameVariable.game.difficulty);
 };
