@@ -53,14 +53,14 @@ export class Wave {
   randomDemon() {
     let availableDemonList = [
       possibleDemonList.gorax(),
-      // possibleDemonList.drakzul(),
-      // possibleDemonList.murkith(),
-      // possibleDemonList.nekhraal(),
-      // possibleDemonList.thraxxor(),
-      // possibleDemonList.vargmorne(),
-      // possibleDemonList.zorfang(),
+      possibleDemonList.drakzul(),
+      possibleDemonList.murkith(),
+      possibleDemonList.nekhraal(),
+      possibleDemonList.thraxxor(),
+      possibleDemonList.vargmorne(),
+      possibleDemonList.zorfang(),
     ];
-    let randomNumber = Math.floor(Math.random() * 1);
-    return availableDemonList[randomNumber];
+    let randomNumber = Math.floor(Math.random() * 7);
+    return availableDemonList[0];
   }
 }

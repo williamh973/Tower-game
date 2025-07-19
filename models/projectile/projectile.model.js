@@ -25,20 +25,17 @@ export class Projectile {
   }
 
   calculateDistance() {
-    const dx =
+    const distanceX =
       this.missileTarget.position.x +
       this.missileTarget.width / 2 -
       this.position.x;
-    const dy =
+    const distanceY =
       this.missileTarget.position.y +
       this.missileTarget.height / 2 -
       this.position.y;
-    const length = Math.sqrt(dx * dx + dy * dy);
+    const distance = Math.hypot(distanceX, distanceY);
 
-    this.velocity = {
-      x: (dx / length) * this.speed,
-      y: (dy / length) * this.speed,
-    };
+    // console.log("distance", distance, "this.velocity", this.velocity);
   }
 
   projectileProps() {
@@ -87,14 +84,35 @@ export class Projectile {
     }
   }
 
-  update() {
-    if (this.hasHit) return;
+  setDistance() {
+    const distanceX =
+      this.missileTarget.position.x +
+      this.missileTarget.width / 2 -
+      this.position.x;
+    const distanceY =
+      this.missileTarget.position.y +
+      this.missileTarget.height / 2 -
+      this.position.y;
 
+    const distance = Math.hypot(distanceX, distanceY);
+
+    this.velocity = {
+      x: (distanceX / distance) * this.speed,
+      y: (distanceY / distance) * this.speed,
+    };
+  }
+
+  update() {
     this.draw();
     this.collide(this.missileTarget);
+    this.setDistance();
 
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
+  }
+
+  remove() {
+    gameVariable.battle.projectileList.splice(this);
   }
 
   collide(missileTarget) {
@@ -105,6 +123,7 @@ export class Projectile {
       this.position.x <= missileTarget.position.x + missileTarget.width
     ) {
       this.hasHit = true;
+      this.remove();
       let damage = this.getBaseDamages();
       damage = this.applyDamageReduction(damage);
 

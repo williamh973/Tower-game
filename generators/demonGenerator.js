@@ -13,8 +13,8 @@ export const possibleDemonList = {
   gorax: () =>
     new Demon(
       { ...wpCoordinates[0] },
-      30,
-      30,
+      12,
+      12,
       "",
       wpCoordinates.slice(),
       wpVelocitys.slice(),
@@ -24,7 +24,7 @@ export const possibleDemonList = {
       {
         attack: 2,
         defense: 2,
-        speed: 4,
+        speed: 1,
         health: 10,
         maxHealth: 10,
       },
@@ -46,7 +46,7 @@ export const possibleDemonList = {
       {
         attack: 2,
         defense: 3,
-        speed: 2,
+        speed: 0.5,
         health: 10,
         maxHealth: 10,
       },
@@ -68,7 +68,7 @@ export const possibleDemonList = {
       {
         attack: 2,
         defense: 2,
-        speed: 3,
+        speed: 0.3,
         health: 20,
         maxHealth: 20,
       },
@@ -90,9 +90,9 @@ export const possibleDemonList = {
       {
         attack: 2,
         defense: 2,
-        speed: 3,
-        health: 20,
-        maxHealth: 20,
+        speed: 0.2,
+        health: 100,
+        maxHealth: 100,
       },
       goldReward.murkith,
       armorType.highArmor,
@@ -112,7 +112,7 @@ export const possibleDemonList = {
       {
         attack: 2,
         defense: 2,
-        speed: 3,
+        speed: 0.7,
         health: 20,
         maxHealth: 20,
       },
@@ -134,7 +134,7 @@ export const possibleDemonList = {
       {
         attack: 2,
         defense: 2,
-        speed: 3,
+        speed: 0.6,
         health: 20,
         maxHealth: 20,
       },
@@ -156,7 +156,7 @@ export const possibleDemonList = {
       {
         attack: 2,
         defense: 2,
-        speed: 3,
+        speed: 0.5,
         health: 20,
         maxHealth: 20,
       },

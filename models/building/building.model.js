@@ -91,12 +91,16 @@ export class Building {
     }
   }
 
+  setDistance(element) {
+    const distanceX = element.position.x - this.position.x;
+    const distanceY = element.position.y - this.position.y;
+    const distance = Math.hypot(distanceX, distanceY);
+    return distance;
+  }
+
   selectedTarget() {
     for (const demon of wave.demonList) {
-      const dx = demon.position.x - this.position.x;
-      const dy = demon.position.y - this.position.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
+      const distance = this.setDistance(demon);
       if (distance <= this.range) {
         this.target = demon;
         return;
@@ -138,8 +142,15 @@ export class Building {
   }
 
   loadingBar() {
+    const barWidth = 51;
+    const barHeight = 7;
     context.fillStyle = "black";
-    context.fillRect(this.position.x, this.position.y - 10, 51, 7);
+    context.fillRect(
+      this.position.x,
+      this.position.y - 10,
+      barWidth,
+      barHeight
+    );
 
     context.fillStyle = "orange";
     context.fillRect(this.position.x + 1, this.position.y - 9, this.loading, 5);
