@@ -1,7 +1,7 @@
 import { fetchWaypoints } from "../../waypoint/waypointHandle.js";
 import { gameVariable } from "../../gameVariable.js";
 import { wave } from "../../init.js";
-import { possibleDemonList } from "../../generators/demonGenerator.js";
+import { possibleDemonList } from "../../generators/possibleDemonList.js";
 
 export class Wave {
   constructor(unitMax) {
@@ -51,16 +51,8 @@ export class Wave {
   }
 
   randomDemon() {
-    let availableDemonList = [
-      possibleDemonList.gorax(),
-      possibleDemonList.drakzul(),
-      possibleDemonList.murkith(),
-      possibleDemonList.nekhraal(),
-      possibleDemonList.thraxxor(),
-      possibleDemonList.vargmorne(),
-      possibleDemonList.zorfang(),
-    ];
+    const availableDemonList = possibleDemonList();
     let randomNumber = Math.floor(Math.random() * 7);
-    return availableDemonList[0];
+    return availableDemonList[randomNumber];
   }
 }

@@ -10,15 +10,19 @@ export const openBuildSpotMenu = (spot) => {
     const menuWidth = 200;
     const menuHeight = 200;
     const menuPosition = {
-      x: spot.position.x - menuWidth / 2,
-      y: spot.position.y - menuHeight / 2,
+      x: spot.position.x - menuWidth / 2.4,
+      y: spot.position.y - menuHeight / 2.4,
     };
+    const name = "buildSpotMenu";
+    let menuScale = 0.5;
 
     const buildSpotMenu = new SelectionScreen(
       menuPosition,
       theImgBuildSpotMenu,
       menuWidth,
-      menuHeight
+      menuHeight,
+      menuScale,
+      name
     );
 
     gameVariable.ui.selectionScreenList.push(buildSpotMenu);

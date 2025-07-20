@@ -7,6 +7,7 @@ export const draw = () => {
 
   gameVariable.tower.buildSpotList.forEach((spot) => {
     spot.draw();
+    // spot.drawDebugCollisionSquare();
   });
 
   gameVariable.ui.selectionScreenList.forEach((screen) => {

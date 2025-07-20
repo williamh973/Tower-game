@@ -9,7 +9,7 @@ import {
 } from "../models/units/unitCharacteristics.js";
 import { wpCoordinates, wpVelocitys } from "../waypoint/waypointHandle.js";
 
-export const possibleDemonList = {
+export const demonList = {
   gorax: () =>
     new Demon(
       { ...wpCoordinates[0] },

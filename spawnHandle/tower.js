@@ -14,8 +14,12 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
     case "buildSpotArcherIcon":
       let archerTower = new Building(
         {
-          x: buildSpotTowerIcon.associatedBuildSpot.position.x,
-          y: buildSpotTowerIcon.associatedBuildSpot.position.y,
+          x:
+            buildSpotTowerIcon.associatedBuildSpot.position.x -
+            buildSpotTowerIcon.associatedBuildSpot.width / 2,
+          y:
+            buildSpotTowerIcon.associatedBuildSpot.position.y -
+            buildSpotTowerIcon.associatedBuildSpot.height / 1.3,
         },
         60,
         60,
@@ -106,7 +110,7 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
         120,
         100,
         Math.random() * 3 + 1,
-        250,
+        5000,
         true
       );
 

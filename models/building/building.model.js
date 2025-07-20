@@ -32,10 +32,9 @@ export class Building {
     this.isClickable = true;
     this.isUnderBuild = false;
     this.isBuild = false;
-    this.scale = 1;
+    this.scale = 1.3;
     this.loading = 0;
     this.rateOfFire = rateOfFire;
-    this.accuracy = 100;
     this.numberOfTarget = 1;
     this.lastShotTime = 0;
     this.target = {};
@@ -122,7 +121,6 @@ export class Building {
       name: this.name,
       attack: this.attack,
       type: this.type,
-      accuracy: this.accuracy,
     };
 
     const projectile = new Projectile(

@@ -37,7 +37,7 @@ export function initHUDIcons() {
     "pauseIcon"
   );
   startWaveIcon = new Icon(
-    165,
+    159,
     5,
     theStartWaveIcon,
     "transparent",

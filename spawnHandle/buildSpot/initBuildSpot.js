@@ -6,15 +6,15 @@ export const initBuildSpot = () => {
     case 1:
       spawnBuildSpot([
         {
-          x: 129,
-          y: 151,
+          x: 110,
+          y: 165,
         },
         {
-          x: 137,
-          y: 343,
+          x: 119,
+          y: 345,
         },
         {
-          x: 208,
+          x: 190,
           y: 535,
         },
       ]);
