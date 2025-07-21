@@ -2,7 +2,7 @@ import { update } from "./update.js";
 import { draw } from "./draw.js";
 import { handleDeadDemons } from "./playerActions.js";
 import { Canvas } from "./models/canvas/canvas.model.js";
-import { updateWaveDisplay } from "./spawnHandle/campaign/step/wave/wave.js";
+import { updatewaveHudMask } from "./spawnHandle/campaign/step/wave/wave.js";
 import { gameOver } from "./gameOver.js";
 
 export const canvas = document.getElementById("canvas");
@@ -16,6 +16,6 @@ export const animate = (timestamp) => {
   gameOver();
   handleDeadDemons();
   update(timestamp);
-  updateWaveDisplay();
+  updatewaveHudMask();
   draw();
 };

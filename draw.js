@@ -16,5 +16,6 @@ export const draw = () => {
 
   gameVariable.ui.buildSpotIconList.forEach((buildSpotIcon) => {
     buildSpotIcon.draw();
+    // buildSpotIcon.drawDebugCollisionSquare();
   });
 };

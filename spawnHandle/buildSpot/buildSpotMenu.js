@@ -6,38 +6,38 @@ import { spawnBuildSpotTowerIcon } from "../buildSpotTowerIcon/spawnBuildSpotTow
 export const openBuildSpotMenu = (spot) => {
   gameVariable.ui.isBuildSpotMenuOpen = !gameVariable.ui.isBuildSpotMenuOpen;
 
+  const menuWidth = 200;
+  const menuHeight = 200;
+  const name = "buildSpotMenu";
+  const menuScale = 0.5;
+  const menuPosition = {
+    x: spot.position.x - menuWidth / 2.4,
+    y: spot.position.y - menuHeight / 2.5,
+  };
+
+  const buildSpotMenu = new SelectionScreen(
+    menuPosition,
+    theImgBuildSpotMenu,
+    menuWidth,
+    menuHeight,
+    menuScale,
+    name
+  );
+
   if (gameVariable.ui.isBuildSpotMenuOpen) {
-    const menuWidth = 200;
-    const menuHeight = 200;
-    const menuPosition = {
-      x: spot.position.x - menuWidth / 2.4,
-      y: spot.position.y - menuHeight / 2.4,
-    };
-    const name = "buildSpotMenu";
-    let menuScale = 0.5;
-
-    const buildSpotMenu = new SelectionScreen(
-      menuPosition,
-      theImgBuildSpotMenu,
-      menuWidth,
-      menuHeight,
-      menuScale,
-      name
-    );
-
     gameVariable.ui.selectionScreenList.push(buildSpotMenu);
 
     spawnBuildSpotTowerIcon(spot, menuWidth, menuHeight);
   } else {
-    closeBuildSpotMenu();
+    closeBuildSpotMenu(buildSpotMenu);
   }
 };
 
-export const closeBuildSpotMenu = () => {
-  gameVariable.ui.selectionScreenList =
-    gameVariable.ui.selectionScreenList.filter(
-      (screen) => screen.image !== theImgBuildSpotMenu
-    );
-
+export const closeBuildSpotMenu = async (buildSpotMenu) => {
+  await buildSpotMenu.updateAnimation();
   gameVariable.ui.buildSpotIconList = [];
+
+  setTimeout(async () => {
+    await buildSpotMenu.close(theImgBuildSpotMenu);
+  }, 100);
 };

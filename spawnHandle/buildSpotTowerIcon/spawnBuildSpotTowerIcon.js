@@ -2,12 +2,12 @@ import { gameVariable } from "../../gameVariable.js";
 import { Icon } from "../../models/icon/icon.model.js";
 
 export const spawnBuildSpotTowerIcon = (spot, menuWidth, menuHeight) => {
-  const iconWidth = 50;
-  const iconHeight = 50;
+  const iconWidth = 40;
+  const iconHeight = 40;
 
   let buildSpotArcherIcon = new Icon(
-    spot.position.x - menuWidth / 2.9,
-    spot.position.y - menuHeight / 2.8,
+    spot.position.x - 4,
+    spot.position.y - menuHeight / 3.3,
     null,
     "transparent",
     iconWidth,
@@ -18,8 +18,8 @@ export const spawnBuildSpotTowerIcon = (spot, menuWidth, menuHeight) => {
   );
 
   let buildSpotWizardIcon = new Icon(
-    spot.position.x - menuWidth / 2.9,
-    spot.position.y + menuHeight - 180,
+    spot.position.x - menuWidth / 3.3,
+    spot.position.y + menuHeight - 200,
     null,
     "transparent",
     iconWidth,
@@ -30,8 +30,8 @@ export const spawnBuildSpotTowerIcon = (spot, menuWidth, menuHeight) => {
   );
 
   let buildSpotCannonIcon = new Icon(
-    spot.position.x + 20,
-    spot.position.y - menuHeight / 2.8,
+    spot.position.x + menuWidth / 3.6,
+    spot.position.y + menuHeight - 200,
     null,
     "transparent",
     iconWidth,
@@ -42,8 +42,8 @@ export const spawnBuildSpotTowerIcon = (spot, menuWidth, menuHeight) => {
   );
 
   let buildSpotFireIcon = new Icon(
-    spot.position.x + 20,
-    spot.position.y + menuHeight - 180,
+    spot.position.x - 4,
+    spot.position.y + menuHeight / 3.3,
     null,
     "transparent",
     iconWidth,

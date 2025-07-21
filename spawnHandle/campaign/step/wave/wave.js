@@ -1,5 +1,5 @@
 import { gameVariable } from "../../../../gameVariable.js";
-import { waveDisplay } from "../../../../models/icon/icon.instance.js";
+import { waveHudMask } from "../../../../models/icon/icon.instance.js";
 import { wave } from "../../../../init.js";
 
 export const initWave = async (startWaveIcon) => {
@@ -8,8 +8,8 @@ export const initWave = async (startWaveIcon) => {
   wave.start(startWaveIcon);
 };
 
-export const updateWaveDisplay = () => {
-  waveDisplay.text =
+export const updatewaveHudMask = () => {
+  waveHudMask.text =
     "🧟 VAGUES " +
     gameVariable.wave.currentWaveList.length +
     "/" +

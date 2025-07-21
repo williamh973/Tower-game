@@ -43,12 +43,15 @@ export class Building {
 
   draw() {
     if (this.isUnderBuild) {
+      const underBuildImageWidth = this.width - 20;
+      const underBuildImageHeight = this.height - 20;
+
       context.drawImage(
         this.underBuildImage,
-        this.position.x,
-        this.position.y,
-        this.width * this.scale,
-        this.height * this.scale
+        this.position.x + 15,
+        this.position.y + 20,
+        underBuildImageWidth * this.scale,
+        underBuildImageHeight * this.scale
       );
       this.loadingBar();
     } else {
@@ -128,7 +131,7 @@ export class Building {
       this.target,
       this.type,
       associatedTower,
-      null
+      undefined
     );
 
     gameVariable.battle.projectileList.push(projectile);
@@ -142,16 +145,12 @@ export class Building {
   loadingBar() {
     const barWidth = 51;
     const barHeight = 7;
+    const positionX = this.position.x + this.width / 4;
     context.fillStyle = "black";
-    context.fillRect(
-      this.position.x,
-      this.position.y - 10,
-      barWidth,
-      barHeight
-    );
+    context.fillRect(positionX, this.position.y - 10, barWidth, barHeight);
 
     context.fillStyle = "orange";
-    context.fillRect(this.position.x + 1, this.position.y - 9, this.loading, 5);
+    context.fillRect(positionX + 1, this.position.y - 9, this.loading, 5);
   }
 
   isLoading() {
@@ -166,5 +165,21 @@ export class Building {
         this.isBuild = true;
       }
     }, intervalTime);
+  }
+
+  drawDebugCollisionSquare() {
+    context.beginPath();
+    context.strokeStyle = "red";
+    context.lineWidth = 1;
+
+    context.rect(
+      this.position.x,
+      this.position.y,
+      this.width * this.scale,
+      this.height * this.scale
+    );
+
+    context.stroke();
+    context.closePath();
   }
 }

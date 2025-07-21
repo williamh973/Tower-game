@@ -5,23 +5,24 @@ import { Map } from "./models/map/map.model.js";
 import { Wave } from "./models/wave/wave.model.js";
 import {
   initHUDIcons,
-  lifeDisplay,
-  goldDisplay,
-  waveDisplay,
   pauseDisplay,
   startWaveIcon,
   easyDifficultyIcon,
   mediumDifficultyIcon,
   hardDifficultyIcon,
+  goldCoinIcon,
+  waveHudMask,
+  goldHudMask,
+  lifeHudMask,
 } from "./models/icon/icon.instance.js";
 import { levelDifficultyScreen } from "./models/selectionScreen/selectionScreen.instance.js";
 
 export const wave = new Wave(50);
 
 export function initHUDText() {
-  lifeDisplay.text = "❤️ " + gameVariable.playerStats.life;
-  goldDisplay.text = "🪙 " + gameVariable.playerStats.goldCoin;
-  waveDisplay.text =
+  lifeHudMask.text = "❤️ " + gameVariable.playerStats.life;
+  goldHudMask.text = "🪙 " + gameVariable.playerStats.goldCoin;
+  waveHudMask.text =
     "🧟 VAGUES " +
     gameVariable.wave.currentWaveList.length +
     "/" +
@@ -46,10 +47,11 @@ export const init = () => {
 
   gameVariable.ui.iconList.push(
     startWaveIcon,
-    lifeDisplay,
-    goldDisplay,
-    waveDisplay,
-    pauseDisplay
+    lifeHudMask,
+    goldHudMask,
+    waveHudMask,
+    pauseDisplay,
+    goldCoinIcon
   );
 
   const map = new Map();

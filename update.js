@@ -8,6 +8,7 @@ export const update = (timestamp) => {
 
   gameVariable.tower.towerList.forEach((tower) => {
     tower.update(timestamp);
+    // tower.drawDebugCollisionSquare();
   });
 
   wave.demonList.forEach((demon) => {
@@ -20,7 +21,6 @@ export const update = (timestamp) => {
 
   gameVariable.ui.iconList.forEach((icon) => {
     icon.updateAnimation();
-    // icon.drawDebugCollisionSquare();
   });
 
   gameVariable.ui.floatingIconList.forEach((icon) => {

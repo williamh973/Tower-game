@@ -1,20 +1,21 @@
-import { theStartWaveIcon } from "../../assets/icon.asset.js";
+import { theGoldCoinIcon, theStartWaveIcon } from "../../assets/icon.asset.js";
 import { Icon } from "./icon.model.js";
 
-export let lifeDisplay;
-export let goldDisplay;
-export let waveDisplay;
+export let lifeHudMask;
+export let goldHudMask;
+export let waveHudMask;
 export let pauseDisplay;
 export let startWaveIcon;
+export let goldCoinIcon;
 export let hardDifficultyIcon;
 export let mediumDifficultyIcon;
 export let easyDifficultyIcon;
 
 export function initHUDIcons() {
   const blackMask = "rgba(0, 0, 0, 0.75)";
-  lifeDisplay = new Icon(5, 5, null, blackMask, 52, 25, false, "", "lifeIcon");
-  goldDisplay = new Icon(65, 5, null, blackMask, 80, 25, false, "", "goldIcon");
-  waveDisplay = new Icon(
+  lifeHudMask = new Icon(5, 5, null, blackMask, 52, 25, false, "", "lifeIcon");
+  goldHudMask = new Icon(65, 5, null, blackMask, 80, 25, false, "", "goldIcon");
+  waveHudMask = new Icon(
     5,
     35,
     null,
@@ -46,6 +47,17 @@ export function initHUDIcons() {
     true,
     "",
     "startWaveIcon"
+  );
+  goldCoinIcon = new Icon(
+    70,
+    6,
+    theGoldCoinIcon,
+    "transparent",
+    25,
+    22,
+    true,
+    "",
+    "goldCoinIcon"
   );
   hardDifficultyIcon = new Icon(
     250,

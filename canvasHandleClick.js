@@ -55,11 +55,8 @@ const handleClick = async (x, y) => {
   }
 
   for (const spot of gameVariable.tower.buildSpotList) {
-    if (spot.isClicked(x, y)) {
-      if (!spot.isOccupied && player.isCanBuildTower) {
-        openBuildSpotMenu(spot);
-      } else {
-      }
+    if (spot.isClicked(x, y) && !spot.isOccupied && player.isCanBuildTower) {
+      openBuildSpotMenu(spot);
     }
   }
 

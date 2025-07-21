@@ -7,3 +7,13 @@ const createStartWaveIcon = (imageSrc) => {
 export const theStartWaveIcon = createStartWaveIcon(
   "./assets/images/start-wave.png"
 );
+
+const createGoldCoinIcon = (imageSrc) => {
+  const icon = new Image();
+  icon.src = imageSrc;
+  return icon;
+};
+
+export const theGoldCoinIcon = createGoldCoinIcon(
+  "./assets/images/gold-coin.png"
+);

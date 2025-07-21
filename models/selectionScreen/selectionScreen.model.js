@@ -1,4 +1,5 @@
 import { context } from "../../animate.js";
+import { gameVariable } from "../../gameVariable.js";
 
 export class SelectionScreen {
   constructor(position, image, width, height, scale, name) {
@@ -37,16 +38,37 @@ export class SelectionScreen {
   }
 
   updateAnimation() {
-    const speed = 0.08;
-    const maxScale = 1.0;
-    switch (this.name) {
-      case "buildSpotMenu":
-        this.scale += this.scaleDirection * speed;
+    if (gameVariable.ui.isBuildSpotMenuOpen) {
+      switch (this.name) {
+        case "buildSpotMenu":
+          const speed = 0.08;
+          const maxScale = 1.0;
+          this.scale += this.scaleDirection * speed;
 
-        if (this.scale >= maxScale) {
-          this.scale = maxScale;
-        }
-        break;
+          if (this.scale >= maxScale) {
+            this.scale = maxScale;
+          }
+          break;
+      }
+    } else {
+      switch (this.name) {
+        case "buildSpotMenu":
+          const speed = 0.08;
+          const minScale = 0.5;
+          this.scale -= this.scaleDirection * speed;
+
+          if (this.scale <= minScale) {
+            this.scale = minScale;
+          }
+          break;
+      }
     }
+  }
+
+  close(element) {
+    gameVariable.ui.selectionScreenList =
+      gameVariable.ui.selectionScreenList.filter(
+        (screen) => screen.image !== element
+      );
   }
 }
