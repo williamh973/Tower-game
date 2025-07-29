@@ -28,14 +28,6 @@ export class SelectionScreen {
     );
     context.restore();
   }
-  isClicked(mouseX, mouseY) {
-    return (
-      mouseX >= this.position.x &&
-      mouseX <= this.position.x + this.width &&
-      mouseY >= this.position.y &&
-      mouseY <= this.position.y + this.height
-    );
-  }
 
   updateAnimation() {
     if (gameVariable.ui.isBuildSpotMenuOpen) {

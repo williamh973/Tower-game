@@ -1,6 +1,6 @@
 import { gameVariable } from "../../../../gameVariable.js";
 import { waveHudMask } from "../../../../models/icon/icon.instance.js";
-import { wave } from "../../../../init.js";
+import { wave } from "../checkCampaignStep.js";
 
 export const initWave = async (startWaveIcon) => {
   await wave.init();

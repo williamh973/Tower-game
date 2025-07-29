@@ -1,15 +1,14 @@
-import { mapStepOne } from "../../assets/backImg.asset.js";
 import { canvasManager } from "../../animate.js";
 
 export class Map {
-  constructor() {
+  constructor(image) {
     this.position = {
       x: 0,
       y: 0,
     };
     this.width = canvasManager.width;
     this.height = canvasManager.height;
-    this.image = mapStepOne;
+    this.image = image;
   }
   draw() {
     canvasManager.context.drawImage(

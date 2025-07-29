@@ -1,4 +1,4 @@
-import { theImgLevelOfDifficulty } from "../../assets/levelOfDifficulty.asset.js";
+import { theImgLevelOfDifficulty } from "../../assets/menus.asset.js";
 import { theImgCampaign } from "../../assets/campaign.asset.js";
 import { canvasManager } from "../../animate.js";
 import { SelectionScreen } from "./selectionScreen.model.js";
@@ -10,7 +10,9 @@ export const levelDifficultyScreen = new SelectionScreen(
   },
   theImgLevelOfDifficulty,
   canvasManager.width,
-  canvasManager.height
+  canvasManager.height,
+  1,
+  "levelDifficultyScreen"
 );
 
 export const campaignDashboard = new SelectionScreen(
@@ -20,5 +22,7 @@ export const campaignDashboard = new SelectionScreen(
   },
   theImgCampaign,
   canvasManager.width,
-  canvasManager.height
+  canvasManager.height,
+  1,
+  "campaignDashboard"
 );

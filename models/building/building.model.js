@@ -1,8 +1,9 @@
 import { context } from "../../animate.js";
 import { Projectile } from "../projectile/projectile.model.js";
 import { gameVariable } from "../../gameVariable.js";
-import { wave } from "../../init.js";
 import { theImgTowerUnderBuild } from "../../assets/towerUnderConst.assets.js";
+import { setDistance } from "../../shared/methodsUtils.js";
+import { wave } from "../../spawnHandle/campaign/step/checkCampaignStep.js";
 
 export class Building {
   constructor(
@@ -93,16 +94,9 @@ export class Building {
     }
   }
 
-  setDistance(element) {
-    const distanceX = element.position.x - this.position.x;
-    const distanceY = element.position.y - this.position.y;
-    const distance = Math.hypot(distanceX, distanceY);
-    return distance;
-  }
-
   selectedTarget() {
     for (const demon of wave.demonList) {
-      const distance = this.setDistance(demon);
+      const distance = setDistance(demon, this);
       if (distance <= this.range) {
         this.target = demon;
         return;
@@ -130,8 +124,7 @@ export class Building {
       missileInitPosition,
       this.target,
       this.type,
-      associatedTower,
-      undefined
+      associatedTower
     );
 
     gameVariable.battle.projectileList.push(projectile);

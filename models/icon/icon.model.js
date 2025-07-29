@@ -34,47 +34,10 @@ export class Icon {
   }
 
   draw() {
-    const radius = 5;
     context.save();
 
     if (this.backgroundColor && this.backgroundColor !== "transparent") {
-      context.beginPath();
-      context.moveTo(this.position.x + radius, this.position.y);
-      context.lineTo(this.position.x + this.width - radius, this.position.y);
-      context.quadraticCurveTo(
-        this.position.x + this.width,
-        this.position.y,
-        this.position.x + this.width,
-        this.position.y + radius
-      );
-      context.lineTo(
-        this.position.x + this.width,
-        this.position.y + this.height - radius
-      );
-      context.quadraticCurveTo(
-        this.position.x + this.width,
-        this.position.y + this.height,
-        this.position.x + this.width - radius,
-        this.position.y + this.height
-      );
-      context.lineTo(this.position.x + radius, this.position.y + this.height);
-      context.quadraticCurveTo(
-        this.position.x,
-        this.position.y + this.height,
-        this.position.x,
-        this.position.y + this.height - radius
-      );
-      context.lineTo(this.position.x, this.position.y + radius);
-      context.quadraticCurveTo(
-        this.position.x,
-        this.position.y,
-        this.position.x + radius,
-        this.position.y
-      );
-      context.closePath();
-
-      context.fillStyle = this.backgroundColor;
-      context.fill();
+      this.drawBlackMask();
     }
 
     if (this.text) {
@@ -102,13 +65,45 @@ export class Icon {
     }
   }
 
-  isClicked(mouseX, mouseY) {
-    return (
-      mouseX >= this.position.x &&
-      mouseX <= this.position.x + this.width &&
-      mouseY >= this.position.y &&
-      mouseY <= this.position.y + this.height
+  drawBlackMask() {
+    const radius = 5;
+    context.beginPath();
+    context.moveTo(this.position.x + radius, this.position.y);
+    context.lineTo(this.position.x + this.width - radius, this.position.y);
+    context.quadraticCurveTo(
+      this.position.x + this.width,
+      this.position.y,
+      this.position.x + this.width,
+      this.position.y + radius
     );
+    context.lineTo(
+      this.position.x + this.width,
+      this.position.y + this.height - radius
+    );
+    context.quadraticCurveTo(
+      this.position.x + this.width,
+      this.position.y + this.height,
+      this.position.x + this.width - radius,
+      this.position.y + this.height
+    );
+    context.lineTo(this.position.x + radius, this.position.y + this.height);
+    context.quadraticCurveTo(
+      this.position.x,
+      this.position.y + this.height,
+      this.position.x,
+      this.position.y + this.height - radius
+    );
+    context.lineTo(this.position.x, this.position.y + radius);
+    context.quadraticCurveTo(
+      this.position.x,
+      this.position.y,
+      this.position.x + radius,
+      this.position.y
+    );
+    context.closePath();
+
+    context.fillStyle = this.backgroundColor;
+    context.fill();
   }
 
   setAssociatedBuildSpot(buildSpot) {

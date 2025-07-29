@@ -39,8 +39,8 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
         false
       );
 
-      if (gameVariable.playerStats.goldCoin >= archerTower.price) {
-        gameVariable.tower.towerList.push(archerTower);
+      if (gameVariable.player.goldCoin >= archerTower.price) {
+        gameVariable.tower.placedTowerList.push(archerTower);
         archerTower.isUnderConstruction();
 
         buildSpotTowerIcon.associatedBuildSpot.build(archerTower);
@@ -63,8 +63,8 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
         2700,
         false
       );
-      if (gameVariable.playerStats.goldCoin >= wizardTower.price) {
-        gameVariable.tower.towerList.push(wizardTower);
+      if (gameVariable.player.goldCoin >= wizardTower.price) {
+        gameVariable.tower.placedTowerList.push(wizardTower);
         wizardTower.isUnderConstruction();
 
         buildSpotTowerIcon.associatedBuildSpot.build(wizardTower);
@@ -86,8 +86,8 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
         3000,
         true
       );
-      if (gameVariable.playerStats.goldCoin >= cannonTower.price) {
-        gameVariable.tower.towerList.push(cannonTower);
+      if (gameVariable.player.goldCoin >= cannonTower.price) {
+        gameVariable.tower.placedTowerList.push(cannonTower);
         cannonTower.isUnderConstruction();
 
         buildSpotTowerIcon.associatedBuildSpot.build(cannonTower);
@@ -111,8 +111,8 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
         true
       );
 
-      if (gameVariable.playerStats.goldCoin >= fireTower.price) {
-        gameVariable.tower.towerList.push(fireTower);
+      if (gameVariable.player.goldCoin >= fireTower.price) {
+        gameVariable.tower.placedTowerList.push(fireTower);
         fireTower.isUnderConstruction();
 
         buildSpotTowerIcon.associatedBuildSpot.build(fireTower);

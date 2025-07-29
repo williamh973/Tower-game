@@ -14,15 +14,6 @@ export class BuildSpot {
     context.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
 
-  isClicked(mouseX, mouseY) {
-    return (
-      mouseX >= this.position.x &&
-      mouseX <= this.position.x + this.width &&
-      mouseY >= this.position.y &&
-      mouseY <= this.position.y + this.height
-    );
-  }
-
   build(tower) {
     if (!this.isOccupied) {
       this.tower = tower;

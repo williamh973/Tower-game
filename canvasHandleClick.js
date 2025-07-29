@@ -5,6 +5,8 @@ import { togglePause } from "./gamePauseHandle.js";
 import { openBuildSpotMenu } from "./spawnHandle/buildSpot/buildSpotMenu.js";
 import { playerBuildTower } from "./spawnHandle/tower.js";
 import { player } from "./models/player.model.js";
+import { hasClicked } from "./shared/methodsUtils.js";
+import { openAvailableTowerMenu } from "./availableTowerMenu.js";
 
 canvas.addEventListener(
   "touchstart",
@@ -28,7 +30,16 @@ canvas.addEventListener("click", (event) => {
 
 const handleClick = async (x, y) => {
   for (const icon of gameVariable.ui.iconList) {
-    if (icon.isClicked(x, y)) {
+    if (
+      hasClicked(
+        x,
+        y,
+        icon.position.x,
+        icon.position.y,
+        icon.width,
+        icon.height
+      )
+    ) {
       switch (icon.name) {
         case "easyDifficultyIcon":
           gameVariable.game.setGameDifficulty("easy");
@@ -39,7 +50,9 @@ const handleClick = async (x, y) => {
         case "hardDifficultyIcon":
           gameVariable.game.setGameDifficulty("hard");
           break;
-
+        case "availableTowerMenuIcon":
+          openAvailableTowerMenu(icon);
+          break;
         case "startWaveIcon":
           await initWave(icon);
           break;
@@ -55,13 +68,33 @@ const handleClick = async (x, y) => {
   }
 
   for (const spot of gameVariable.tower.buildSpotList) {
-    if (spot.isClicked(x, y) && !spot.isOccupied && player.isCanBuildTower) {
+    if (
+      hasClicked(
+        x,
+        y,
+        spot.position.x,
+        spot.position.y,
+        spot.width,
+        spot.height
+      ) &&
+      !spot.isOccupied &&
+      player.isCanBuildTower
+    ) {
       openBuildSpotMenu(spot);
     }
   }
 
-  for (const buildSpotTowerIcon of gameVariable.ui.buildSpotIconList) {
-    if (buildSpotTowerIcon.isClicked(x, y)) {
+  for (const buildSpotTowerIcon of gameVariable.tower.buildSpotIconList) {
+    if (
+      hasClicked(
+        x,
+        y,
+        buildSpotTowerIcon.position.x,
+        buildSpotTowerIcon.position.y,
+        buildSpotTowerIcon.width,
+        buildSpotTowerIcon.height
+      )
+    ) {
       playerBuildTower(buildSpotTowerIcon);
     }
   }

@@ -1,7 +1,7 @@
 import { fetchWaypoints } from "../../waypoint/waypointHandle.js";
 import { gameVariable } from "../../gameVariable.js";
-import { wave } from "../../init.js";
 import { possibleDemonList } from "../../generators/possibleDemonList.js";
+import { wave } from "../../spawnHandle/campaign/step/checkCampaignStep.js";
 
 export class Wave {
   constructor(unitMax) {

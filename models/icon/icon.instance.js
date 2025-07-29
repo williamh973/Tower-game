@@ -1,17 +1,27 @@
-import { theGoldCoinIcon, theStartWaveIcon } from "../../assets/icon.asset.js";
+import {
+  theAvailableTowerMenuIcon,
+  theGoldCoinIcon,
+  theStartWaveIcon,
+} from "../../assets/icon.asset.js";
 import { Icon } from "./icon.model.js";
 
 export let lifeHudMask;
 export let goldHudMask;
 export let waveHudMask;
+export let availableTowerMenu;
 export let pauseDisplay;
 export let startWaveIcon;
 export let goldCoinIcon;
 export let hardDifficultyIcon;
 export let mediumDifficultyIcon;
 export let easyDifficultyIcon;
+const difficultyModIcon = {
+  positionY: 200,
+  width: 150,
+  height: 150,
+};
 
-export function initHUDIcons() {
+export const initIcons = async () => {
   const blackMask = "rgba(0, 0, 0, 0.75)";
   lifeHudMask = new Icon(5, 5, null, blackMask, 52, 25, false, "", "lifeIcon");
   goldHudMask = new Icon(65, 5, null, blackMask, 80, 25, false, "", "goldIcon");
@@ -25,6 +35,17 @@ export function initHUDIcons() {
     false,
     "",
     "waveIcon"
+  );
+  availableTowerMenu = new Icon(
+    615,
+    90,
+    theAvailableTowerMenuIcon,
+    "transparent",
+    60,
+    60,
+    true,
+    "",
+    "availableTowerMenuIcon"
   );
   pauseDisplay = new Icon(
     330,
@@ -60,37 +81,37 @@ export function initHUDIcons() {
     "goldCoinIcon"
   );
   hardDifficultyIcon = new Icon(
-    250,
-    315,
+    480,
+    difficultyModIcon.positionY,
     null,
     null,
-    80,
-    80,
+    difficultyModIcon.width,
+    difficultyModIcon.height,
     true,
     null,
     "hardDifficultyIcon"
   );
 
   mediumDifficultyIcon = new Icon(
-    150,
-    315,
+    250,
+    difficultyModIcon.positionY,
     null,
     null,
-    80,
-    80,
+    difficultyModIcon.width,
+    difficultyModIcon.height,
     true,
     null,
     "mediumDifficultyIcon"
   );
   easyDifficultyIcon = new Icon(
     50,
-    315,
+    difficultyModIcon.positionY,
     null,
     null,
-    80,
-    80,
+    difficultyModIcon.width,
+    difficultyModIcon.height,
     true,
     null,
     "easyDifficultyIcon"
   );
-}
+};

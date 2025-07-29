@@ -7,32 +7,41 @@ export const gameVariable = {
     campaignCurrentStep: 1,
     campaignMaxStep: 10,
     mapList: [],
+    isCampaignDashboardOpen: false,
+    isStepLoaded: false,
   },
   wave: {
     waveList: [],
     currentWaveList: [],
     maxWaveList: [],
   },
-  playerStats: {
+  player: {
     life: player.life,
     goldCoin: player.gold,
     hasClickedBuildSpot: false,
     isPlacingTower: false,
   },
+  preparation: {
+    hasChosenTowers: false,
+    isAvailableTowersMenuOpen: false,
+    availableTowerList: [],
+  },
   tower: {
-    towerList: [],
+    placedTowerList: [],
     buildSpotList: [],
+    buildSpotIconList: [],
   },
   ui: {
     selectionScreenList: [],
     iconList: [],
     floatingIconList: [],
-    buildSpotIconList: [],
 
     isGamePaused: false,
     isGameOver: false,
     isVictory: false,
     isBuildSpotMenuOpen: false,
+    isBuildSpotMenuOpen: false,
+    isDifficultyMenuOpen: false,
   },
   battle: {
     projectileList: [],

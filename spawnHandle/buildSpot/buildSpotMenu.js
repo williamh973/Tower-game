@@ -35,7 +35,7 @@ export const openBuildSpotMenu = (spot) => {
 
 export const closeBuildSpotMenu = async (buildSpotMenu) => {
   await buildSpotMenu.updateAnimation();
-  gameVariable.ui.buildSpotIconList = [];
+  gameVariable.tower.buildSpotIconList = [];
 
   setTimeout(async () => {
     await buildSpotMenu.close(theImgBuildSpotMenu);

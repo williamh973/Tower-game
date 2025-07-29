@@ -53,14 +53,14 @@ export const spawnBuildSpotTowerIcon = (spot, menuWidth, menuHeight) => {
     "buildSpotFireIcon"
   );
 
-  gameVariable.ui.buildSpotIconList.push(
+  gameVariable.tower.buildSpotIconList.push(
     buildSpotArcherIcon,
     buildSpotWizardIcon,
     buildSpotCannonIcon,
     buildSpotFireIcon
   );
 
-  gameVariable.ui.buildSpotIconList.forEach((buildSpotTowerIcon) => {
+  gameVariable.tower.buildSpotIconList.forEach((buildSpotTowerIcon) => {
     buildSpotTowerIcon.setAssociatedBuildSpot(spot);
   });
 };

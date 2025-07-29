@@ -6,8 +6,8 @@ export class Canvas {
       x: 0,
       y: 0,
     };
-    this.width = 360;
-    this.height = 683;
+    this.width = 720;
+    this.height = 480;
     this.canvas.width = this.width;
     this.canvas.height = this.height;
     this.context.imageSmoothingEnabled = true;

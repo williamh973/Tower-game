@@ -1,8 +1,8 @@
 import { lifeHudMask, goldHudMask } from "./models/icon/icon.instance.js";
 import { gameOver } from "./gameOver.js";
 import { gameVariable } from "./gameVariable.js";
-import { wave } from "./init.js";
 import { isCkeckIfPlayerVictory } from "./victory.js";
+import { wave } from "./spawnHandle/campaign/step/checkCampaignStep.js";
 
 export const checkIfUnitReachedEnd = (
   currentWaypointIndex,
@@ -11,8 +11,8 @@ export const checkIfUnitReachedEnd = (
   isCanMove
 ) => {
   if (currentWaypointIndex >= waypointsLength - 1) {
-    gameVariable.playerStats.life -= 1;
-    lifeHudMask.text = "❤️ " + gameVariable.playerStats.life;
+    gameVariable.player.life -= 1;
+    lifeHudMask.text = "❤️ " + gameVariable.player.life;
     isCanMove = false;
 
     if (navigator.vibrate) {
@@ -23,13 +23,13 @@ export const checkIfUnitReachedEnd = (
 };
 
 export const substractPlayerGold = (towerPrice) => {
-  gameVariable.playerStats.goldCoin -= towerPrice;
-  goldHudMask.text = "🪙 " + gameVariable.playerStats.goldCoin;
+  gameVariable.player.goldCoin -= towerPrice;
+  goldHudMask.text = "🪙 " + gameVariable.player.goldCoin;
 };
 
 export const addPlayerGold = (gold) => {
-  gameVariable.playerStats.goldCoin += gold;
-  goldHudMask.text = "🪙 " + gameVariable.playerStats.goldCoin;
+  gameVariable.player.goldCoin += gold;
+  goldHudMask.text = "🪙 " + gameVariable.player.goldCoin;
 };
 
 export const handleDeadDemons = () => {

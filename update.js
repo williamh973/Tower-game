@@ -1,12 +1,12 @@
 import { gameVariable } from "./gameVariable.js";
-import { wave } from "./init.js";
+import { wave } from "./spawnHandle/campaign/step/checkCampaignStep.js";
 
 export const update = (timestamp) => {
   gameVariable.campaign.mapList.forEach((map) => {
     map.update();
   });
 
-  gameVariable.tower.towerList.forEach((tower) => {
+  gameVariable.tower.placedTowerList.forEach((tower) => {
     tower.update(timestamp);
     // tower.drawDebugCollisionSquare();
   });

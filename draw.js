@@ -1,20 +1,20 @@
 import { gameVariable } from "./gameVariable.js";
 
 export const draw = () => {
-  gameVariable.ui.iconList.forEach((icon) => {
-    icon.draw();
-  });
-
-  gameVariable.tower.buildSpotList.forEach((spot) => {
-    spot.draw();
-    // spot.drawDebugCollisionSquare();
-  });
-
   gameVariable.ui.selectionScreenList.forEach((screen) => {
     screen.draw();
   });
 
-  gameVariable.ui.buildSpotIconList.forEach((buildSpotIcon) => {
+  gameVariable.ui.iconList.forEach((icon) => {
+    icon.draw();
+    // icon.drawDebugCollisionSquare();
+  });
+
+  gameVariable.tower.buildSpotList.forEach((spot) => {
+    spot.draw();
+  });
+
+  gameVariable.tower.buildSpotIconList.forEach((buildSpotIcon) => {
     buildSpotIcon.draw();
     // buildSpotIcon.drawDebugCollisionSquare();
   });
