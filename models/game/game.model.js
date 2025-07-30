@@ -1,15 +1,7 @@
 import { gameVariable } from "../../gameVariable.js";
+import { initAvailableTowers } from "../building/building.instance.js";
+import { openAvailableTowerMenuIcon } from "../icon/availableTowersMenu/availableTowersMenuIcons.instance.js";
 import {
-  archerTower,
-  barrackTower,
-  cannonTower,
-  crackTower,
-  fireTower,
-  initAvailableTowers,
-  wizardTower,
-} from "../building/building.instance.js";
-import {
-  availableTowerMenu,
   easyDifficultyIcon,
   hardDifficultyIcon,
   initIcons,
@@ -17,6 +9,7 @@ import {
 } from "../icon/icon.instance.js";
 import {
   campaignDashboard,
+  initSelectionScreens,
   levelDifficultyScreen,
 } from "../selectionScreen/selectionScreen.instance.js";
 
@@ -28,7 +21,8 @@ export class Game {
 
   async init() {
     await initIcons();
-    initAvailableTowers();
+    await initAvailableTowers();
+    await initSelectionScreens();
     this.initDifficultyScreen();
   }
 
@@ -62,15 +56,7 @@ export class Game {
     gameVariable.campaign.isCampaignDashboardOpen = true;
 
     if (gameVariable.campaign.isCampaignDashboardOpen) {
-      gameVariable.preparation.availableTowerList.push(
-        archerTower,
-        wizardTower,
-        cannonTower,
-        fireTower,
-        barrackTower,
-        crackTower
-      );
-      gameVariable.ui.iconList.push(availableTowerMenu);
+      gameVariable.ui.iconList.push(openAvailableTowerMenuIcon);
     }
   }
 }

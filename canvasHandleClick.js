@@ -6,7 +6,14 @@ import { openBuildSpotMenu } from "./spawnHandle/buildSpot/buildSpotMenu.js";
 import { playerBuildTower } from "./spawnHandle/tower.js";
 import { player } from "./models/player.model.js";
 import { hasClicked } from "./shared/methodsUtils.js";
-import { openAvailableTowerMenu } from "./availableTowerMenu.js";
+import {
+  closeAvailableTowerMenu,
+  openAvailableTowerMenu,
+} from "./menus/availableTowerMenu/availableTowerMenu.js";
+import {
+  availableTowerMenuNextStep,
+  availableTowerMenuPrevStep,
+} from "./menus/availableTowerMenu/handleCarouselSteps.js";
 
 canvas.addEventListener(
   "touchstart",
@@ -50,8 +57,17 @@ const handleClick = async (x, y) => {
         case "hardDifficultyIcon":
           gameVariable.game.setGameDifficulty("hard");
           break;
-        case "availableTowerMenuIcon":
+        case "openAvailableTowerMenu":
           openAvailableTowerMenu(icon);
+          break;
+        case "closeArrow":
+          closeAvailableTowerMenu();
+          break;
+        case "rightArrow":
+          availableTowerMenuNextStep();
+          break;
+        case "leftArrow":
+          availableTowerMenuPrevStep();
           break;
         case "startWaveIcon":
           await initWave(icon);

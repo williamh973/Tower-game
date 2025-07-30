@@ -1,7 +1,7 @@
 import { gameVariable } from "../../gameVariable.js";
-import { SelectionScreen } from "../../models/selectionScreen/selectionScreen.model.js";
 import { theImgBuildSpotMenu } from "../../assets/buildSpotMenu.asset.js";
 import { spawnBuildSpotTowerIcon } from "../buildSpotTowerIcon/spawnBuildSpotTowerIcon.js";
+import { buildSpotMenu } from "../../models/selectionScreen/selectionScreen.instance.js";
 
 export const openBuildSpotMenu = (spot) => {
   gameVariable.ui.isBuildSpotMenuOpen = !gameVariable.ui.isBuildSpotMenuOpen;
@@ -15,16 +15,17 @@ export const openBuildSpotMenu = (spot) => {
     y: spot.position.y - menuHeight / 2.5,
   };
 
-  const buildSpotMenu = new SelectionScreen(
-    menuPosition,
-    theImgBuildSpotMenu,
-    menuWidth,
-    menuHeight,
-    menuScale,
-    name
-  );
+  buildSpotMenu.position = menuPosition;
+  buildSpotMenu.scale = menuScale;
+  buildSpotMenu.name = name;
+  buildSpotMenu.height = menuHeight;
+  buildSpotMenu.width = menuWidth;
 
   if (gameVariable.ui.isBuildSpotMenuOpen) {
+    console.log(
+      "vérifier les nouvelles valeurs du buildSpotMenu",
+      buildSpotMenu
+    );
     gameVariable.ui.selectionScreenList.push(buildSpotMenu);
 
     spawnBuildSpotTowerIcon(spot, menuWidth, menuHeight);

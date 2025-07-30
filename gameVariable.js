@@ -25,6 +25,7 @@ export const gameVariable = {
     hasChosenTowers: false,
     isAvailableTowersMenuOpen: false,
     availableTowerList: [],
+    currentTowerIndex: 0,
   },
   tower: {
     placedTowerList: [],

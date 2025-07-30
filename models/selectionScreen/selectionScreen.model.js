@@ -30,6 +30,12 @@ export class SelectionScreen {
   }
 
   updateAnimation() {
+    if (!gameVariable.preparation.isAvailableTowersMenuOpen) {
+      this.buildSpotMenu();
+    }
+  }
+
+  buildSpotMenu = () => {
     if (gameVariable.ui.isBuildSpotMenuOpen) {
       switch (this.name) {
         case "buildSpotMenu":
@@ -55,7 +61,7 @@ export class SelectionScreen {
           break;
       }
     }
-  }
+  };
 
   close(element) {
     gameVariable.ui.selectionScreenList =

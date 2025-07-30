@@ -8,7 +8,7 @@ export let fireTower;
 export let barrackTower;
 export let crackTower;
 
-export const initAvailableTowers = () => {
+export const initAvailableTowers = async () => {
   archerTower = new Building(
     0,
     0,

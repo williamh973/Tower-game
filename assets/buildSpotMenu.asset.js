@@ -5,5 +5,5 @@ const imgBuildSpotMenu = (imageSrc) => {
 };
 
 export const theImgBuildSpotMenu = imgBuildSpotMenu(
-  "./assets/images/buildSpotMenu.png"
+  "./assets/images/virginBuildSpotMenu.png"
 );

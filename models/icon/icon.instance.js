@@ -1,14 +1,10 @@
-import {
-  theAvailableTowerMenuIcon,
-  theGoldCoinIcon,
-  theStartWaveIcon,
-} from "../../assets/icon.asset.js";
+import { theGoldCoinIcon, theStartWaveIcon } from "../../assets/icon.asset.js";
+import { initAvailableTowerMenuIcons } from "./availableTowersMenu/availableTowersMenuIcons.instance.js";
 import { Icon } from "./icon.model.js";
 
 export let lifeHudMask;
 export let goldHudMask;
 export let waveHudMask;
-export let availableTowerMenu;
 export let pauseDisplay;
 export let startWaveIcon;
 export let goldCoinIcon;
@@ -23,6 +19,7 @@ const difficultyModIcon = {
 
 export const initIcons = async () => {
   const blackMask = "rgba(0, 0, 0, 0.75)";
+  initAvailableTowerMenuIcons();
   lifeHudMask = new Icon(5, 5, null, blackMask, 52, 25, false, "", "lifeIcon");
   goldHudMask = new Icon(65, 5, null, blackMask, 80, 25, false, "", "goldIcon");
   waveHudMask = new Icon(
@@ -35,17 +32,6 @@ export const initIcons = async () => {
     false,
     "",
     "waveIcon"
-  );
-  availableTowerMenu = new Icon(
-    615,
-    90,
-    theAvailableTowerMenuIcon,
-    "transparent",
-    60,
-    60,
-    true,
-    "",
-    "availableTowerMenuIcon"
   );
   pauseDisplay = new Icon(
     330,

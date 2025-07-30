@@ -7,8 +7,15 @@ export const draw = () => {
 
   gameVariable.ui.iconList.forEach((icon) => {
     icon.draw();
-    // icon.drawDebugCollisionSquare();
   });
+
+  if (gameVariable.preparation.isAvailableTowersMenuOpen) {
+    const index = gameVariable.preparation.currentTowerIndex;
+    const currentIcon = gameVariable.preparation.availableTowerList[index];
+    gameVariable.preparation.availableTowerList.forEach(() => {
+      currentIcon.draw();
+    });
+  }
 
   gameVariable.tower.buildSpotList.forEach((spot) => {
     spot.draw();
