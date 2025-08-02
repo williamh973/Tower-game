@@ -1,11 +1,5 @@
-export const imgProjectile = (imageSrc) => {
-  const image = new Image();
-  image.src = imageSrc;
-  return image;
-};
+import { createImg } from "../shared/methodsUtils.js";
 
-export const theImgArrow = imgProjectile("./assets/images/arrow.png");
-export const theImgThunderBolt = imgProjectile(
-  "./assets/images/thunder-bolt.png"
-);
-export const theImgCannon = imgProjectile("./assets/images/cannon.png");
+export const theImgArrow = createImg("./assets/images/arrow.png");
+export const theImgThunderBolt = createImg("./assets/images/thunder-bolt.png");
+export const theImgCannon = createImg("./assets/images/cannon.png");

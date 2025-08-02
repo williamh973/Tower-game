@@ -6,7 +6,7 @@ export class BuildSpot {
     this.width = 40;
     this.height = 40;
     this.isOccupied = false;
-    this.tower = null;
+    this.placedTower = null;
   }
 
   draw() {
@@ -16,7 +16,7 @@ export class BuildSpot {
 
   build(tower) {
     if (!this.isOccupied) {
-      this.tower = tower;
+      this.placedTower = tower;
       this.isOccupied = true;
     }
   }

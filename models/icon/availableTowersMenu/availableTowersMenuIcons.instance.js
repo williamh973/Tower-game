@@ -8,15 +8,15 @@ import {
 } from "../../../assets/icon.asset.js";
 import { Icon } from "../icon.model.js";
 
-export let archerTowerAvailable;
+export let archerTowerAvailableIcon;
 export let openAvailableTowerMenuIcon;
-export let wizardTowerAvailable;
+export let wizardTowerAvailableIcon;
 export let leftArrow;
 export let rightArrow;
 export let closeArrow;
 
-export const initAvailableTowerMenuIcons = () => {
-  archerTowerAvailable = new Icon(
+export const initAvailableTowerMenuIcons = async () => {
+  archerTowerAvailableIcon = new Icon(
     140,
     140,
     theArcherTowerAvailable,
@@ -25,9 +25,9 @@ export const initAvailableTowerMenuIcons = () => {
     80,
     true,
     "",
-    "archerTowerAvailable"
+    "archerTowerAvailableIcon"
   );
-  wizardTowerAvailable = new Icon(
+  wizardTowerAvailableIcon = new Icon(
     140,
     140,
     theWizardTowerAvailable,
@@ -36,7 +36,7 @@ export const initAvailableTowerMenuIcons = () => {
     80,
     true,
     "",
-    "wizardTowerAvailable"
+    "wizardTowerAvailableIcon"
   );
   openAvailableTowerMenuIcon = new Icon(
     615,

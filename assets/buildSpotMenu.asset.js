@@ -1,9 +1,5 @@
-const imgBuildSpotMenu = (imageSrc) => {
-  const image = new Image();
-  image.src = imageSrc;
-  return image;
-};
+import { createImg } from "../shared/methodsUtils.js";
 
-export const theImgBuildSpotMenu = imgBuildSpotMenu(
+export const theImgBuildSpotMenu = createImg(
   "./assets/images/virginBuildSpotMenu.png"
 );

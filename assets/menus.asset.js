@@ -7,3 +7,5 @@ export const theImgLevelOfDifficulty = createImg(
 export const theImgAvailableTowerMenu = createImg(
   "./assets/images/availableTowersMenu.png"
 );
+
+export const theImgCampaign = createImg("./assets/images/campaign.png");

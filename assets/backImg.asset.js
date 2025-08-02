@@ -1,9 +1,3 @@
-const imgBackground = (imageSrc) => {
-  const image = new Image();
-  image.src = imageSrc;
-  image.width = 768;
-  image.height = 1150;
-  return image;
-};
+import { createImg } from "../shared/methodsUtils.js";
 
-export const theMapStepOne = imgBackground("./assets/images/td.png");
+export const theMapStepOne = createImg("./assets/images/td.png");

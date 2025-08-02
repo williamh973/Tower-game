@@ -8,6 +8,14 @@ import {
   theImgCannonTower,
 } from "..//assets/tower.asset.js";
 import { substractPlayerGold } from "../playerActions.js";
+import {
+  archerTower,
+  barrackTower,
+  cannonTower,
+  crackTower,
+  fireTower,
+  wizardTower,
+} from "../models/building/building.instance.js";
 
 export const playerBuildTower = (buildSpotTowerIcon) => {
   const tower = {
@@ -25,20 +33,6 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
 
   switch (buildSpotTowerIcon.name) {
     case "buildSpotArcherIcon":
-      let archerTower = new Building(
-        tower.position,
-        tower.width,
-        tower.height,
-        theImgArcherTower,
-        "normal",
-        "archer",
-        120,
-        70,
-        Math.random() * (6 - 4 + 1) + 4,
-        1500,
-        false
-      );
-
       if (gameVariable.player.goldCoin >= archerTower.price) {
         gameVariable.tower.placedTowerList.push(archerTower);
         archerTower.isUnderConstruction();
@@ -50,19 +44,6 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
       break;
 
     case "buildSpotWizardIcon":
-      let wizardTower = new Building(
-        tower.position,
-        tower.width,
-        tower.height,
-        theImgWizardTower,
-        "magic",
-        "wizard",
-        100,
-        90,
-        Math.random() * (17 - 9 + 1) + 9,
-        2700,
-        false
-      );
       if (gameVariable.player.goldCoin >= wizardTower.price) {
         gameVariable.tower.placedTowerList.push(wizardTower);
         wizardTower.isUnderConstruction();
@@ -73,19 +54,6 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
       break;
 
     case "buildSpotCannonIcon":
-      let cannonTower = new Building(
-        tower.position,
-        tower.width,
-        tower.height,
-        theImgCannonTower,
-        "artillery",
-        "cannon",
-        120,
-        120,
-        Math.random() * (17 - 9 + 1) + 9,
-        3000,
-        true
-      );
       if (gameVariable.player.goldCoin >= cannonTower.price) {
         gameVariable.tower.placedTowerList.push(cannonTower);
         cannonTower.isUnderConstruction();
@@ -97,20 +65,6 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
       break;
 
     case "buildSpotFireIcon":
-      let fireTower = new Building(
-        tower.position,
-        tower.width,
-        tower.height,
-        theImgFireTower,
-        "fire",
-        "fire",
-        90,
-        100,
-        Math.random() * 3 + 1,
-        50,
-        true
-      );
-
       if (gameVariable.player.goldCoin >= fireTower.price) {
         gameVariable.tower.placedTowerList.push(fireTower);
         fireTower.isUnderConstruction();
@@ -118,6 +72,28 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
         buildSpotTowerIcon.associatedBuildSpot.build(fireTower);
 
         substractPlayerGold(fireTower.price);
+      }
+      break;
+
+    case "buildSpotBarrackIcon":
+      if (gameVariable.player.goldCoin >= barrackTower.price) {
+        gameVariable.tower.placedTowerList.push(barrackTower);
+        barrackTower.isUnderConstruction();
+
+        buildSpotTowerIcon.associatedBuildSpot.build(barrackTower);
+
+        substractPlayerGold(barrackTower.price);
+      }
+      break;
+
+    case "buildSpotCrackIcon":
+      if (gameVariable.player.goldCoin >= crackTower.price) {
+        gameVariable.tower.placedTowerList.push(crackTower);
+        crackTower.isUnderConstruction();
+
+        buildSpotTowerIcon.associatedBuildSpot.build(crackTower);
+
+        substractPlayerGold(crackTower.price);
       }
       break;
   }

@@ -1,5 +1,9 @@
 import { context } from "../../animate.js";
 import { gameVariable } from "../../gameVariable.js";
+import {
+  archerTowerAvailableIcon,
+  wizardTowerAvailableIcon,
+} from "./availableTowersMenu/availableTowersMenuIcons.instance.js";
 
 export class Icon {
   constructor(
@@ -36,17 +40,22 @@ export class Icon {
   draw() {
     context.save();
 
+    if (
+      this.name === archerTowerAvailableIcon.name ||
+      this.name === wizardTowerAvailableIcon.name
+    ) {
+      this.height = 100;
+    }
+
     if (this.backgroundColor && this.backgroundColor !== "transparent") {
       this.drawBlackMask();
     }
 
     if (this.text) {
-      context.fillStyle = "whitesmoke";
-      context.font = "bold 16px 'Palatino Linotype', 'Book Antiqua' ";
-      context.fillText(this.text, this.position.x + 5, this.position.y + 18);
+      this.drawText();
     }
 
-    if (this.image && this.isVisible && !this.isActivated) {
+    if (this.image && this.isVisible) {
       const centerX = this.position.x + this.width / 2;
       const centerY = this.position.y + this.height / 2;
       const scaledWidth = this.width * this.scale;
@@ -106,22 +115,57 @@ export class Icon {
     context.fill();
   }
 
+  drawText() {
+    context.fillStyle = "whitesmoke";
+    context.font = "bold 16px 'Palatino Linotype', 'Book Antiqua' ";
+    context.fillText(this.text, this.position.x + 5, this.position.y + 18);
+  }
+
   setAssociatedBuildSpot(buildSpot) {
     this.associatedBuildSpot = buildSpot;
   }
 
   updateAnimation() {
-    const speed = 0.005;
-    const minScale = 0.95;
-    const maxScale = 1.05;
     switch (this.name) {
       case "startWaveIcon":
+        const speed = 0.005;
+        const minScale = 0.95;
+        const maxScale = 1.05;
         this.scale += this.scaleDirection * speed;
 
         if (this.scale >= maxScale || this.scale <= minScale) {
           this.scaleDirection *= -1;
         }
         break;
+
+      case "rightArrow":
+        if (this.isActivated) {
+          this.clickAnimate();
+        }
+        break;
+      case "leftArrow":
+        if (this.isActivated) {
+          this.clickAnimate();
+        }
+        break;
+    }
+  }
+
+  clickAnimate() {
+    const speed = 0.03;
+    const minScale = 0.8;
+    const maxScale = 1.0;
+
+    this.scale -= this.scaleDirection * speed;
+
+    if (this.scale <= minScale) {
+      this.scaleDirection *= -1;
+    }
+    if (this.scale >= maxScale) {
+      this.scale = maxScale;
+      this.scaleDirection = 1;
+      this.isActivated = false;
+      return;
     }
   }
 

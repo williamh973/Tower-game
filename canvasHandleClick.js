@@ -14,6 +14,8 @@ import {
   availableTowerMenuNextStep,
   availableTowerMenuPrevStep,
 } from "./menus/availableTowerMenu/handleCarouselSteps.js";
+import { buildSpotMenu } from "./models/selectionScreen/selectionScreen.instance.js";
+import { archerTower } from "./models/building/building.instance.js";
 
 canvas.addEventListener(
   "touchstart",
@@ -64,10 +66,10 @@ const handleClick = async (x, y) => {
           closeAvailableTowerMenu();
           break;
         case "rightArrow":
-          availableTowerMenuNextStep();
+          availableTowerMenuNextStep(icon);
           break;
         case "leftArrow":
-          availableTowerMenuPrevStep();
+          availableTowerMenuPrevStep(icon);
           break;
         case "startWaveIcon":
           await initWave(icon);
@@ -75,11 +77,36 @@ const handleClick = async (x, y) => {
         case "pauseIcon":
           togglePause(icon);
           break;
-
         default:
           break;
       }
       break;
+    }
+  }
+
+  for (const availableTowerIcon of gameVariable.preparation
+    .availableTowerList) {
+    if (
+      hasClicked(
+        x,
+        y,
+        availableTowerIcon.position.x,
+        availableTowerIcon.position.y,
+        availableTowerIcon.width,
+        availableTowerIcon.height
+      )
+    ) {
+      switch (availableTowerIcon.name) {
+        case "archerTowerAvailableIcon":
+          buildSpotMenu.associateTower(archerTower);
+          // isAddedToBuildMenu
+          console.log(buildSpotMenu);
+          break;
+        case "wizardTowerAvailableIcon":
+          break;
+        default:
+          break;
+      }
     }
   }
 

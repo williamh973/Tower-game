@@ -1,11 +1,11 @@
 import { gameVariable } from "../../gameVariable.js";
 import {
-  archerTowerAvailable,
+  archerTowerAvailableIcon,
   closeArrow,
   leftArrow,
   openAvailableTowerMenuIcon,
   rightArrow,
-  wizardTowerAvailable,
+  wizardTowerAvailableIcon,
 } from "../../models/icon/availableTowersMenu/availableTowersMenuIcons.instance.js";
 import {
   availableTowerMenu,
@@ -20,8 +20,8 @@ export const openAvailableTowerMenu = (openMenuIcon) => {
     gameVariable.ui.selectionScreenList.push(availableTowerMenu, buildSpotMenu);
     gameVariable.ui.iconList.push(leftArrow, rightArrow, closeArrow);
     gameVariable.preparation.availableTowerList.push(
-      archerTowerAvailable,
-      wizardTowerAvailable
+      archerTowerAvailableIcon,
+      wizardTowerAvailableIcon
     );
     hideOpenMenuIcon(openMenuIcon);
   } else {

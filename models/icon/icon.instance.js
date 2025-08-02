@@ -19,7 +19,6 @@ const difficultyModIcon = {
 
 export const initIcons = async () => {
   const blackMask = "rgba(0, 0, 0, 0.75)";
-  initAvailableTowerMenuIcons();
   lifeHudMask = new Icon(5, 5, null, blackMask, 52, 25, false, "", "lifeIcon");
   goldHudMask = new Icon(65, 5, null, blackMask, 80, 25, false, "", "goldIcon");
   waveHudMask = new Icon(
@@ -100,4 +99,5 @@ export const initIcons = async () => {
     null,
     "easyDifficultyIcon"
   );
+  await initAvailableTowerMenuIcons();
 };

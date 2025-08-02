@@ -1,9 +1,5 @@
-const imgTowerUnderBuild = (imageSrc) => {
-  const image = new Image();
-  image.src = imageSrc;
-  return image;
-};
+import { createImg } from "../shared/methodsUtils.js";
 
-export const theImgTowerUnderBuild = imgTowerUnderBuild(
+export const theImgTowerUnderBuild = createImg(
   "./assets/images/towerUnderConstruction.png"
 );

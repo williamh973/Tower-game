@@ -10,6 +10,8 @@ export class SelectionScreen {
     this.scale = scale;
     this.name = name;
     this.scaleDirection = 1;
+    this.buildMenuSlots = [];
+    this.remainingBuildMenuSlots = 4;
   }
   draw() {
     const centerX = this.position.x + this.width / 2;
@@ -68,5 +70,9 @@ export class SelectionScreen {
       gameVariable.ui.selectionScreenList.filter(
         (screen) => screen.image !== element
       );
+  }
+
+  associateTower(tower) {
+    this.buildMenuSlots.push(tower);
   }
 }

@@ -1,8 +1,8 @@
 import {
   theImgAvailableTowerMenu,
   theImgLevelOfDifficulty,
+  theImgCampaign,
 } from "../../assets/menus.asset.js";
-import { theImgCampaign } from "../../assets/campaign.asset.js";
 import { canvas, canvasManager } from "../../animate.js";
 import { SelectionScreen } from "./selectionScreen.model.js";
 import { theImgBuildSpotMenu } from "../../assets/buildSpotMenu.asset.js";

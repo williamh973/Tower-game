@@ -1,4 +1,9 @@
-import { gameVariable } from "../../gameVariable.js";
+import {
+  theImgArcherTower,
+  theImgCannonTower,
+  theImgFireTower,
+  theImgWizardTower,
+} from "../../assets/tower.asset.js";
 import { Building } from "./building.model.js";
 
 export let archerTower;
@@ -13,7 +18,7 @@ export const initAvailableTowers = async () => {
     0,
     0,
     0,
-    undefined,
+    theImgArcherTower,
     "normal",
     "archer",
     120,
@@ -27,7 +32,7 @@ export const initAvailableTowers = async () => {
     0,
     0,
     0,
-    undefined,
+    theImgWizardTower,
     "magic",
     "wizard",
     100,
@@ -41,7 +46,7 @@ export const initAvailableTowers = async () => {
     0,
     0,
     0,
-    undefined,
+    theImgCannonTower,
     "artillery",
     "cannon",
     120,
@@ -55,7 +60,7 @@ export const initAvailableTowers = async () => {
     0,
     0,
     0,
-    undefined,
+    theImgFireTower,
     "fire",
     "fire",
     90,
