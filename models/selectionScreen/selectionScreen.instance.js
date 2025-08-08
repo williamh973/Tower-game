@@ -14,7 +14,7 @@ export let availableTowerMenu;
 
 export const initSelectionScreens = async () => {
   const menuWidth = 200;
-  const menuHeight = 150;
+  const menuHeight = 200;
   const name = "buildSpotMenu";
   const menuScale = 1;
   const menuPosition = {

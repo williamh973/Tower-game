@@ -1,4 +1,4 @@
-import { context } from "../../animate.js";
+import { canvas, context } from "../../animate.js";
 import { gameVariable } from "../../gameVariable.js";
 import {
   archerTowerAvailableIcon,
@@ -29,7 +29,8 @@ export class Icon {
     this.name = name;
     this.isActivated = false;
     this.isVisible = true;
-    this.clickable = isClickable;
+    this.isGhostedMod = false;
+    this.isClickable = isClickable;
     this.associatedBuildSpot = {};
     this.scale = 1;
     this.scaleDirection = 1;
@@ -71,6 +72,10 @@ export class Icon {
         scaledHeight
       );
       context.restore();
+    }
+
+    if (this.isGhostedMod) {
+      this.opacity = 0.5;
     }
   }
 
@@ -123,6 +128,18 @@ export class Icon {
 
   setAssociatedBuildSpot(buildSpot) {
     this.associatedBuildSpot = buildSpot;
+  }
+
+  update(ghostTowerIcon) {
+    this.draw();
+    const rect = canvas.getBoundingClientRect();
+    if (ghostTowerIcon) {
+      // window.onmousemove = function (e) {
+      //   ghostTowerIcon.position.x = e.clientX;
+      //   ghostTowerIcon.position.y = e.clientY;
+      //   console.log("x", e.clientX, "y", e.clientY);
+      // };
+    }
   }
 
   updateAnimation() {

@@ -8,7 +8,7 @@ export const initWave = async (startWaveIcon) => {
   wave.start(startWaveIcon);
 };
 
-export const updatewaveHudMask = () => {
+export const updateWaveHudMask = () => {
   waveHudMask.text =
     "🧟 VAGUES " +
     gameVariable.wave.currentWaveList.length +

@@ -32,6 +32,10 @@ export const update = (timestamp) => {
     selectionScreen.updateAnimation();
   });
 
+  selectionScreen.ghostTowerIcons.forEach((ghostTowerIcon) => {
+    ghostTowerIcon.update(ghostTowerIcon);
+  });
+
   for (let i = gameVariable.ui.floatingIconList.length - 1; i >= 0; i--) {
     const icon = gameVariable.ui.floatingIconList[i];
     icon.update();

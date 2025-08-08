@@ -22,10 +22,10 @@ export const openBuildSpotMenu = (spot) => {
   buildSpotMenu.width = menuWidth;
 
   if (gameVariable.ui.isBuildSpotMenuOpen) {
-    console.log(
-      "vérifier les nouvelles valeurs du buildSpotMenu",
-      buildSpotMenu
-    );
+    // console.log(
+    //   "vérifier les nouvelles valeurs du buildSpotMenu",
+    //   buildSpotMenu
+    // );
     gameVariable.ui.selectionScreenList.push(buildSpotMenu);
 
     spawnBuildSpotTowerIcon(spot, menuWidth, menuHeight);

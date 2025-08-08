@@ -17,7 +17,9 @@ export class Building {
     price,
     attack,
     rateOfFire,
-    isDamageZone
+    isDamageZone,
+    towerIcon,
+    buildSpotMenuTowerIcon
   ) {
     this.position = position;
     this.width = width;
@@ -39,6 +41,8 @@ export class Building {
     this.numberOfTarget = 1;
     this.lastShotTime = 0;
     this.target = {};
+    this.towerIcon = towerIcon;
+    this.buildSpotMenuTowerIcon = buildSpotMenuTowerIcon;
     this.attack = attack;
   }
 

@@ -1,5 +1,6 @@
+import { animate } from "../../animate.js";
 import { gameVariable } from "../../gameVariable.js";
-import { initAvailableTowers } from "../building/building.instance.js";
+import { initTowers } from "../building/building.instance.js";
 import { openAvailableTowerMenuIcon } from "../icon/availableTowersMenu/availableTowersMenuIcons.instance.js";
 import {
   easyDifficultyIcon,
@@ -21,8 +22,10 @@ export class Game {
 
   async init() {
     await initIcons();
-    await initAvailableTowers();
+    await initTowers();
     await initSelectionScreens();
+    animate(0);
+
     this.initDifficultyScreen();
   }
 

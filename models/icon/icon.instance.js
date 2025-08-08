@@ -1,5 +1,6 @@
 import { theGoldCoinIcon, theStartWaveIcon } from "../../assets/icon.asset.js";
 import { initAvailableTowerMenuIcons } from "./availableTowersMenu/availableTowersMenuIcons.instance.js";
+import { initBuildspotMenuTowerIcon } from "./buildSpotMenuIcon/buildSpotMenuIcon.instance.js";
 import { Icon } from "./icon.model.js";
 
 export let lifeHudMask;
@@ -100,4 +101,5 @@ export const initIcons = async () => {
     "easyDifficultyIcon"
   );
   await initAvailableTowerMenuIcons();
+  await initBuildspotMenuTowerIcon();
 };

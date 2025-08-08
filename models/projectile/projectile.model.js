@@ -162,7 +162,7 @@ export class Projectile {
     if (this.hasReachedApex) {
       if (this.collide(target)) {
         this.hasHit = true;
-        console.log("touché");
+        // console.log("touché");
         this.remove();
         let damage = this.getBaseDamages();
         damage = this.applyDamageReduction(damage);

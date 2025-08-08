@@ -38,6 +38,28 @@ canvas.addEventListener("click", (event) => {
 });
 
 const handleClick = async (x, y) => {
+  for (const icon of gameVariable.campaign.stepIconList) {
+    if (
+      hasClicked(
+        x,
+        y,
+        icon.position.x,
+        icon.position.y,
+        icon.width,
+        icon.height
+      )
+    ) {
+      switch (icon.name) {
+        case "stepOneIcon":
+          loadCampaignStep();
+          break;
+
+        default:
+          break;
+      }
+    }
+  }
+
   for (const icon of gameVariable.ui.iconList) {
     if (
       hasClicked(
@@ -98,9 +120,11 @@ const handleClick = async (x, y) => {
     ) {
       switch (availableTowerIcon.name) {
         case "archerTowerAvailableIcon":
-          buildSpotMenu.associateTower(archerTower);
-          // isAddedToBuildMenu
-          console.log(buildSpotMenu);
+          buildSpotMenu.setTowerToBuildSpotMenu(
+            archerTower,
+            availableTowerIcon
+          );
+          // console.log(buildSpotMenu);
           break;
         case "wizardTowerAvailableIcon":
           break;

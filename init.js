@@ -1,5 +1,4 @@
 import { gameVariable } from "./gameVariable.js";
-import { animate } from "./animate.js";
 import {
   pauseDisplay,
   waveHudMask,
@@ -18,9 +17,3 @@ export const initHUDText = () => {
 
   pauseDisplay.text = gameVariable.ui.isGamePaused ? "▶" : "❚❚";
 };
-
-export const init = () => {
-  // loadCampaignStep();
-  animate();
-};
-init();

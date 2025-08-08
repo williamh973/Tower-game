@@ -11,7 +11,9 @@ export class SelectionScreen {
     this.name = name;
     this.scaleDirection = 1;
     this.buildMenuSlots = [];
-    this.remainingBuildMenuSlots = 4;
+    this.ghostTowerIcons = [];
+    this.remainingBuildMenuSlots = 6;
+    this.isGhostTowerPlaced = false;
   }
   draw() {
     const centerX = this.position.x + this.width / 2;
@@ -29,6 +31,18 @@ export class SelectionScreen {
       scaledHeight
     );
     context.restore();
+
+    if (this.buildMenuSlots.length > 0) {
+      this.buildMenuSlots.forEach((buildMenuSlot) => {
+        buildMenuSlot.draw();
+      });
+    }
+
+    if (this.ghostTowerIcons.length > 0) {
+      this.ghostTowerIcons.forEach((ghostTowerIcon) => {
+        ghostTowerIcon.draw();
+      });
+    }
   }
 
   updateAnimation() {
@@ -72,7 +86,42 @@ export class SelectionScreen {
       );
   }
 
-  associateTower(tower) {
-    this.buildMenuSlots.push(tower);
+  setTowerToBuildSpotMenu(archerTower, availableTowerIcon) {
+    if (!this.remainingBuildMenuSlots > 0)
+      return console.log("inventaire plein");
+
+    const ghostIcon = archerTower.buildSpotMenuTowerIcon;
+    ghostIcon.position.x = availableTowerIcon.position.x;
+    ghostIcon.position.y = availableTowerIcon.position.y;
+
+    this.ghostTowerIcons.push(ghostIcon);
+
+    window.onmousemove = function (e) {
+      ghostIcon.position.x = e.clientX;
+      ghostIcon.position.y = e.clientY;
+      console.log("x", e.clientX, "y", e.clientY);
+    };
+
+    if (this.remainingBuildMenuSlots > 0) {
+      this.remainingBuildMenuSlots--;
+    }
+
+    switch (this.remainingBuildMenuSlots) {
+      case 1:
+        break;
+      case 2:
+        break;
+      case 3:
+        break;
+      case 4:
+        break;
+      case 5:
+        this.buildMenuSlots.push(ghostIcon);
+        // console.log(icon);
+        break;
+
+      default:
+        break;
+    }
   }
 }

@@ -7,6 +7,7 @@ export const gameVariable = {
     campaignCurrentStep: 1,
     campaignMaxStep: 10,
     mapList: [],
+    stepIconList: [],
     isCampaignDashboardOpen: false,
     isStepLoaded: false,
   },

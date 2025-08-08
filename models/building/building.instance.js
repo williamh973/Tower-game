@@ -4,6 +4,11 @@ import {
   theImgFireTower,
   theImgWizardTower,
 } from "../../assets/tower.asset.js";
+import {
+  archerTowerAvailableIcon,
+  wizardTowerAvailableIcon,
+} from "../icon/availableTowersMenu/availableTowersMenuIcons.instance.js";
+import { buildSpotMenuArcherTowerIcon } from "../icon/buildSpotMenuIcon/buildSpotMenuIcon.instance.js";
 import { Building } from "./building.model.js";
 
 export let archerTower;
@@ -13,7 +18,7 @@ export let fireTower;
 export let barrackTower;
 export let crackTower;
 
-export const initAvailableTowers = async () => {
+export const initTowers = async () => {
   archerTower = new Building(
     0,
     0,
@@ -25,7 +30,9 @@ export const initAvailableTowers = async () => {
     70,
     Math.random() * (6 - 4 + 1) + 4,
     1500,
-    false
+    false,
+    archerTowerAvailableIcon,
+    buildSpotMenuArcherTowerIcon
   );
 
   wizardTower = new Building(
@@ -39,7 +46,8 @@ export const initAvailableTowers = async () => {
     90,
     Math.random() * (17 - 9 + 1) + 9,
     2700,
-    false
+    false,
+    wizardTowerAvailableIcon
   );
 
   cannonTower = new Building(
