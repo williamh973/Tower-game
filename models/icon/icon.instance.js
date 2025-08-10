@@ -79,7 +79,7 @@ export const initIcons = async () => {
   );
 
   mediumDifficultyIcon = new Icon(
-    250,
+    280,
     difficultyModIcon.positionY,
     null,
     null,
@@ -90,7 +90,7 @@ export const initIcons = async () => {
     "mediumDifficultyIcon"
   );
   easyDifficultyIcon = new Icon(
-    50,
+    95,
     difficultyModIcon.positionY,
     null,
     null,

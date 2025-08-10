@@ -20,15 +20,4 @@ export class BuildSpot {
       this.isOccupied = true;
     }
   }
-
-  drawDebugCollisionSquare() {
-    context.beginPath();
-    context.strokeStyle = "red";
-    context.lineWidth = 1;
-
-    context.rect(this.position.x, this.position.y, this.width, this.height);
-
-    context.stroke();
-    context.closePath();
-  }
 }

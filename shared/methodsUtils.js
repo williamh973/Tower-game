@@ -28,3 +28,27 @@ export const hasClicked = (
     mouseY <= elementPositionY + elementHeight
   );
 };
+
+export const updateGhostIconPosition = (ghostIcon) => {
+  window.onmousemove = function (e) {
+    ghostIcon.position.x = e.offsetX - ghostIcon.width / 2;
+    ghostIcon.position.y = e.offsetY - ghostIcon.height / 2;
+  };
+};
+
+export const drawDebugCollisionSquare = (element, context) => {
+  if (element && context) {
+    context.beginPath();
+    context.strokeStyle = "red";
+    context.lineWidth = 1;
+
+    context.rect(
+      element.position.x,
+      element.position.y,
+      element.width * element.scale,
+      element.height * element.scale
+    );
+
+    context.stroke();
+  }
+};

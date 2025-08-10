@@ -151,7 +151,7 @@ const handleClick = async (x, y) => {
     }
   }
 
-  for (const buildSpotTowerIcon of gameVariable.tower.buildSpotIconList) {
+  for (const buildSpotTowerIcon of gameVariable.tower.buildSpotMenuIconList) {
     if (
       hasClicked(
         x,

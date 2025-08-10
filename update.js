@@ -24,16 +24,13 @@ export const update = (timestamp) => {
   });
 
   gameVariable.ui.floatingIconList.forEach((icon) => {
-    icon.update();
     icon.updateAnimation();
   });
 
   gameVariable.ui.selectionScreenList.forEach((selectionScreen) => {
-    selectionScreen.updateAnimation();
-  });
-
-  selectionScreen.ghostTowerIcons.forEach((ghostTowerIcon) => {
-    ghostTowerIcon.update(ghostTowerIcon);
+    if (gameVariable.ui.isBuildSpotMenuOpen) {
+      selectionScreen.updateAnimation();
+    }
   });
 
   for (let i = gameVariable.ui.floatingIconList.length - 1; i >= 0; i--) {

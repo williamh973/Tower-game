@@ -31,7 +31,7 @@ export const gameVariable = {
   tower: {
     placedTowerList: [],
     buildSpotList: [],
-    buildSpotIconList: [],
+    buildSpotMenuIconList: [],
   },
   ui: {
     selectionScreenList: [],

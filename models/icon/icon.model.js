@@ -27,10 +27,11 @@ export class Icon {
     this.backgroundColor = backgroundColor;
     this.text = text;
     this.name = name;
+    this.isClickable = isClickable;
+    this.ghostTowerIcon = null;
+    this.isGhostedMod = false;
     this.isActivated = false;
     this.isVisible = true;
-    this.isGhostedMod = false;
-    this.isClickable = isClickable;
     this.associatedBuildSpot = {};
     this.scale = 1;
     this.scaleDirection = 1;
@@ -74,8 +75,13 @@ export class Icon {
       context.restore();
     }
 
-    if (this.isGhostedMod) {
-      this.opacity = 0.5;
+    if (this.ghostTowerIcon !== null) {
+      // context.save(); // Sauvegarde l'état actuel
+      // context.globalAlpha = 0.5; // 50% d'opacité
+      // context.fillStyle = "black";
+      // context.fillRect(0, 0, canvas.width, canvas.height); // Recouvre le canvas
+      // context.restore(); // Restaure l'état initial
+      this.ghostTowerIcon.draw();
     }
   }
 
@@ -128,18 +134,6 @@ export class Icon {
 
   setAssociatedBuildSpot(buildSpot) {
     this.associatedBuildSpot = buildSpot;
-  }
-
-  update(ghostTowerIcon) {
-    this.draw();
-    const rect = canvas.getBoundingClientRect();
-    if (ghostTowerIcon) {
-      // window.onmousemove = function (e) {
-      //   ghostTowerIcon.position.x = e.clientX;
-      //   ghostTowerIcon.position.y = e.clientY;
-      //   console.log("x", e.clientX, "y", e.clientY);
-      // };
-    }
   }
 
   updateAnimation() {
@@ -202,14 +196,8 @@ export class Icon {
     }
   }
 
-  drawDebugCollisionSquare() {
-    context.beginPath();
-    context.strokeStyle = "red";
-    context.lineWidth = 1;
-
-    context.rect(this.position.x, this.position.y, this.width, this.height);
-
-    context.stroke();
-    context.closePath();
+  ghostIconInitialPosition(ghostIcon, availableTowerIcon) {
+    ghostIcon.position.x = availableTowerIcon.position.x;
+    ghostIcon.position.y = availableTowerIcon.position.y;
   }
 }

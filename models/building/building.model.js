@@ -163,20 +163,4 @@ export class Building {
       }
     }, intervalTime);
   }
-
-  drawDebugCollisionSquare() {
-    context.beginPath();
-    context.strokeStyle = "red";
-    context.lineWidth = 1;
-
-    context.rect(
-      this.position.x,
-      this.position.y,
-      this.width * this.scale,
-      this.height * this.scale
-    );
-
-    context.stroke();
-    context.closePath();
-  }
 }
