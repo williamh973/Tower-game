@@ -23,6 +23,7 @@ export const openAvailableTowerMenu = (openMenuIcon) => {
       archerTowerAvailableIcon,
       wizardTowerAvailableIcon
     );
+
     hideOpenMenuIcon(openMenuIcon);
   } else {
     closeAvailableTowerMenu();

@@ -1,4 +1,4 @@
-import { canvas, context } from "../../animate.js";
+import { context } from "../../animate.js";
 import { gameVariable } from "../../gameVariable.js";
 import {
   archerTowerAvailableIcon,
@@ -29,7 +29,6 @@ export class Icon {
     this.name = name;
     this.isClickable = isClickable;
     this.ghostTowerIcon = null;
-    this.isGhostedMod = false;
     this.isActivated = false;
     this.isVisible = true;
     this.associatedBuildSpot = {};

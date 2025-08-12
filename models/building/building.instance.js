@@ -8,7 +8,10 @@ import {
   archerTowerAvailableIcon,
   wizardTowerAvailableIcon,
 } from "../icon/availableTowersMenu/availableTowersMenuIcons.instance.js";
-import { buildSpotMenuArcherTowerIcon } from "../icon/buildSpotMenuIcon/buildSpotMenuIcon.instance.js";
+import {
+  buildSpotMenuArcherTowerIcon,
+  buildSpotMenuWizardTowerIcon,
+} from "../icon/buildSpotMenuIcon/buildSpotMenuIcon.instance.js";
 import { Building } from "./building.model.js";
 
 export let archerTower;
@@ -47,7 +50,8 @@ export const initTowers = async () => {
     Math.random() * (17 - 9 + 1) + 9,
     2700,
     false,
-    wizardTowerAvailableIcon
+    wizardTowerAvailableIcon,
+    buildSpotMenuWizardTowerIcon
   );
 
   cannonTower = new Building(

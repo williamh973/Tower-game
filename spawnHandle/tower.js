@@ -1,12 +1,5 @@
-import { Building } from "../models/building/building.model.js";
 import { gameVariable } from "../gameVariable.js";
 import { closeBuildSpotMenu } from "../spawnHandle/buildSpot/buildSpotMenu.js";
-import {
-  theImgArcherTower,
-  theImgWizardTower,
-  theImgFireTower,
-  theImgCannonTower,
-} from "..//assets/tower.asset.js";
 import { substractPlayerGold } from "../playerActions.js";
 import {
   archerTower,

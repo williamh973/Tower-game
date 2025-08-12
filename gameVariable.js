@@ -25,13 +25,14 @@ export const gameVariable = {
   preparation: {
     hasChosenTowers: false,
     isAvailableTowersMenuOpen: false,
+    isGhostedMod: false,
     availableTowerList: [],
     currentTowerIndex: 0,
   },
   tower: {
     placedTowerList: [],
     buildSpotList: [],
-    buildSpotMenuIconList: [],
+    buildSpotMenuSlotList: [],
   },
   ui: {
     selectionScreenList: [],

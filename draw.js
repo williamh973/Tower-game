@@ -5,12 +5,17 @@ import { drawDebugCollisionSquare } from "./shared/methodsUtils.js";
 export const draw = () => {
   gameVariable.ui.selectionScreenList.forEach((screen) => {
     screen.draw();
+
+    if (screen.name === "buildSpotMenu") {
+      screen.buildMenuSlots.forEach((slot) => {
+        slot.draw();
+        drawDebugCollisionSquare(slot, context);
+      });
+    }
   });
 
   gameVariable.ui.iconList.forEach((icon) => {
     icon.draw();
-
-    // drawDebugCollisionSquare(icon, context);
   });
 
   if (gameVariable.preparation.isAvailableTowersMenuOpen) {
@@ -25,7 +30,7 @@ export const draw = () => {
     spot.draw();
   });
 
-  gameVariable.tower.buildSpotMenuIconList.forEach((buildSpotIcon) => {
+  gameVariable.tower.buildSpotMenuSlotList.forEach((buildSpotIcon) => {
     buildSpotIcon.draw();
     drawDebugCollisionSquare(buildSpotIcon, context);
   });

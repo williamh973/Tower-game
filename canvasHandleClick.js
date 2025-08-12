@@ -15,7 +15,10 @@ import {
   availableTowerMenuPrevStep,
 } from "./menus/availableTowerMenu/handleCarouselSteps.js";
 import { buildSpotMenu } from "./models/selectionScreen/selectionScreen.instance.js";
-import { archerTower } from "./models/building/building.instance.js";
+import {
+  archerTower,
+  wizardTower,
+} from "./models/building/building.instance.js";
 
 canvas.addEventListener(
   "touchstart",
@@ -106,31 +109,30 @@ const handleClick = async (x, y) => {
     }
   }
 
-  for (const availableTowerIcon of gameVariable.preparation
-    .availableTowerList) {
-    if (
-      hasClicked(
-        x,
-        y,
-        availableTowerIcon.position.x,
-        availableTowerIcon.position.y,
-        availableTowerIcon.width,
-        availableTowerIcon.height
-      )
-    ) {
-      switch (availableTowerIcon.name) {
-        case "archerTowerAvailableIcon":
-          buildSpotMenu.setTowerToBuildSpotMenu(
-            archerTower,
-            availableTowerIcon
-          );
-          // console.log(buildSpotMenu);
-          break;
-        case "wizardTowerAvailableIcon":
-          break;
-        default:
-          break;
-      }
+  let selectedIcon =
+    gameVariable.preparation.availableTowerList[
+      gameVariable.preparation.currentTowerIndex
+    ];
+  if (
+    gameVariable.preparation.isAvailableTowersMenuOpen &&
+    hasClicked(
+      x,
+      y,
+      selectedIcon.position.x,
+      selectedIcon.position.y,
+      selectedIcon.width,
+      selectedIcon.height
+    )
+  ) {
+    switch (gameVariable.preparation.currentTowerIndex) {
+      case 0:
+        buildSpotMenu.setTowerToBuildSpotMenu(archerTower, selectedIcon);
+        break;
+      case 1:
+        buildSpotMenu.setTowerToBuildSpotMenu(wizardTower, selectedIcon);
+        break;
+      default:
+        break;
     }
   }
 
@@ -151,7 +153,29 @@ const handleClick = async (x, y) => {
     }
   }
 
-  for (const buildSpotTowerIcon of gameVariable.tower.buildSpotMenuIconList) {
+  if (gameVariable.preparation.isAvailableTowersMenuOpen) {
+    for (let slot of buildSpotMenu.buildMenuSlots) {
+      if (
+        hasClicked(
+          x,
+          y,
+          slot.position.x,
+          slot.position.y,
+          slot.width,
+          slot.height
+        )
+      ) {
+        for (const availableTowerIcon of gameVariable.preparation
+          .availableTowerList) {
+          if (availableTowerIcon.ghostTowerIcon) {
+            slot = availableTowerIcon.ghostTowerIcon;
+          }
+        }
+      }
+    }
+  }
+
+  for (const buildSpotTowerIcon of gameVariable.tower.buildSpotMenuSlotList) {
     if (
       hasClicked(
         x,

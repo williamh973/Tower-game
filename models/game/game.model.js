@@ -8,6 +8,7 @@ import {
   initIcons,
   mediumDifficultyIcon,
 } from "../icon/icon.instance.js";
+import { initEmptySlots } from "../selectionScreen/buildSpotMenu/slot/slot.instance.js";
 import {
   campaignDashboard,
   initSelectionScreens,
