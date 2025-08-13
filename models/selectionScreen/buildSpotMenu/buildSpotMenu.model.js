@@ -2,7 +2,6 @@ import { gameVariable } from "../../../gameVariable.js";
 import { updateGhostIconPosition } from "../../../shared/methodsUtils.js";
 import { SelectionScreen } from "../selectionScreen.model.js";
 import {
-  fifth,
   first,
   fourth,
   initEmptySlots,
@@ -14,7 +13,7 @@ export class BuildSpotMenu extends SelectionScreen {
   constructor(position, image, width, height, scale, name) {
     super(position, image, width, height, scale, name);
     this.scaleDirection = 1;
-    this.remainingBuildMenuSlots = 5;
+    this.remainingBuildMenuSlots = 4;
     this.isGhostTowerPlaced = false;
     this.buildMenuSlots = [];
     this.init();
@@ -22,30 +21,25 @@ export class BuildSpotMenu extends SelectionScreen {
 
   async init() {
     await initEmptySlots(this);
-    this.buildMenuSlots.push(first, second, third, fourth, fifth);
+    this.buildMenuSlots.push(first, second, third, fourth);
   }
 
-  setTowerToBuildSpotMenu(tower, availableTowerIcon) {
+  activateGhostMod(tower, availableTowerIcon) {
     gameVariable.preparation.isGhostedMod = true;
 
-    if (gameVariable.preparation.isGhostedMod) {
-      const state = this.isInventoryFull();
+    const isFull = this.isInventoryFull();
 
-      if (state) {
-        gameVariable.preparation.isGhostedMod = false;
-        return console.log("inventaire plein");
-      }
+    if (isFull) {
+      gameVariable.preparation.isGhostedMod = false;
+      return console.log("inventaire plein");
+    }
 
-      const ghostIcon = tower.buildSpotMenuTowerIcon;
+    const ghostIcon = tower.buildSpotMenuTowerIcon;
 
-      availableTowerIcon.ghostTowerIcon = ghostIcon;
-      availableTowerIcon.ghostIconInitialPosition(
-        ghostIcon,
-        availableTowerIcon
-      );
+    availableTowerIcon.ghostTowerIcon = ghostIcon;
+    availableTowerIcon.ghostIconInitialPosition(ghostIcon, availableTowerIcon);
 
-      updateGhostIconPosition(ghostIcon);
-    } else return;
+    updateGhostIconPosition(ghostIcon);
   }
 
   isInventoryFull() {

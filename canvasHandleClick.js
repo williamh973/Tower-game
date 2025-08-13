@@ -113,6 +113,7 @@ const handleClick = async (x, y) => {
     gameVariable.preparation.availableTowerList[
       gameVariable.preparation.currentTowerIndex
     ];
+
   if (
     gameVariable.preparation.isAvailableTowersMenuOpen &&
     hasClicked(
@@ -126,10 +127,10 @@ const handleClick = async (x, y) => {
   ) {
     switch (gameVariable.preparation.currentTowerIndex) {
       case 0:
-        buildSpotMenu.setTowerToBuildSpotMenu(archerTower, selectedIcon);
+        buildSpotMenu.activateGhostMod(archerTower, selectedIcon);
         break;
       case 1:
-        buildSpotMenu.setTowerToBuildSpotMenu(wizardTower, selectedIcon);
+        buildSpotMenu.activateGhostMod(wizardTower, selectedIcon);
         break;
       default:
         break;
@@ -153,8 +154,8 @@ const handleClick = async (x, y) => {
     }
   }
 
-  if (gameVariable.preparation.isAvailableTowersMenuOpen) {
-    for (let slot of buildSpotMenu.buildMenuSlots) {
+  if (gameVariable.preparation.isGhostedMod) {
+    for (const slot of buildSpotMenu.buildMenuSlots) {
       if (
         hasClicked(
           x,
@@ -165,12 +166,11 @@ const handleClick = async (x, y) => {
           slot.height
         )
       ) {
-        for (const availableTowerIcon of gameVariable.preparation
-          .availableTowerList) {
-          if (availableTowerIcon.ghostTowerIcon) {
-            slot = availableTowerIcon.ghostTowerIcon;
-          }
-        }
+        slot.addTowerIconToSlot(
+          slot,
+          selectedIcon,
+          buildSpotMenu.remainingBuildMenuSlots
+        );
       }
     }
   }

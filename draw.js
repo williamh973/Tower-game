@@ -10,6 +10,10 @@ export const draw = () => {
       screen.buildMenuSlots.forEach((slot) => {
         slot.draw();
         drawDebugCollisionSquare(slot, context);
+
+        if (slot.isGhostTowerPlaced) {
+          slot.towerIcon.draw();
+        }
       });
     }
   });

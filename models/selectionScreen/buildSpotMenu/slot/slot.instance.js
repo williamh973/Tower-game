@@ -1,65 +1,29 @@
-import { Icon } from "../../../icon/icon.model.js";
+import { Slot } from "./slot.model.js";
 
 export let first;
 export let second;
 export let third;
 export let fourth;
-export let fifth;
 
 export const initEmptySlots = async (buildSpotMenu) => {
-  first = new Icon(
+  first = new Slot(
     buildSpotMenu.position.x + buildSpotMenu.width / 2 - 25,
     buildSpotMenu.position.y + 25 / 2,
-    null,
-    null,
-    50,
-    50,
-    true,
-    null,
     "firstSlot"
   );
-  second = new Icon(
-    buildSpotMenu.position.x,
-    buildSpotMenu.position.y,
-    null,
-    null,
-    50,
-    50,
-    true,
-    null,
+  second = new Slot(
+    buildSpotMenu.position.x + buildSpotMenu.width / 1.5,
+    buildSpotMenu.position.y + buildSpotMenu.height / 2.6,
     "secondSlot"
   );
-  third = new Icon(
-    buildSpotMenu.position.x,
-    buildSpotMenu.position.y,
-    null,
-    null,
-    50,
-    50,
-    true,
-    null,
+  third = new Slot(
+    buildSpotMenu.position.x + buildSpotMenu.width / 2 - 25,
+    buildSpotMenu.position.y + buildSpotMenu.height / 1.49,
     "thirdSlot"
   );
-  fourth = new Icon(
-    buildSpotMenu.position.x,
-    buildSpotMenu.position.y,
-    null,
-    null,
-    50,
-    50,
-    true,
-    null,
+  fourth = new Slot(
+    buildSpotMenu.position.x + 25 / 1.5,
+    buildSpotMenu.position.y + buildSpotMenu.height / 2.6,
     "fourthSlot"
-  );
-  fifth = new Icon(
-    buildSpotMenu.position.x,
-    buildSpotMenu.position.y,
-    null,
-    null,
-    50,
-    50,
-    true,
-    null,
-    "fifthSlot"
   );
 };
