@@ -7,3 +7,18 @@ export const theImgbuildSpotMenuArcherIcon = createImg(
 export const theImgbuildSpotMenuWizardIcon = createImg(
   "./assets/images/wizardTowerIcon.png"
 );
+
+export const theImgbuildSpotMenuCannonIcon = createImg(
+  "./assets/images/cannonTowerIcon.png"
+);
+export const theImgbuildSpotMenuGroundIcon = createImg(
+  "./assets/images/groundTowerIcon.png"
+);
+
+export const theImgbuildSpotMenuBarrackIcon = createImg(
+  "./assets/images/barrackTowerIcon.png"
+);
+
+export const theImgbuildSpotMenuFireIcon = createImg(
+  "./assets/images/fireTowerIcon.png"
+);

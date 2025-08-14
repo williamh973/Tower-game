@@ -2,6 +2,10 @@ import { context } from "../../animate.js";
 import { gameVariable } from "../../gameVariable.js";
 import {
   archerTowerAvailableIcon,
+  barrackTowerAvailableIcon,
+  cannonTowerAvailableIcon,
+  fireTowerAvailableIcon,
+  groundTowerAvailableIcon,
   wizardTowerAvailableIcon,
 } from "./availableTowersMenu/availableTowersMenuIcons.instance.js";
 
@@ -39,12 +43,18 @@ export class Icon {
   }
 
   draw() {
+    const avalaibleIconNames = [
+      archerTowerAvailableIcon.name,
+      wizardTowerAvailableIcon.name,
+      cannonTowerAvailableIcon.name,
+      groundTowerAvailableIcon.name,
+      barrackTowerAvailableIcon.name,
+      fireTowerAvailableIcon.name,
+    ];
+
     context.save();
 
-    if (
-      this.name === archerTowerAvailableIcon.name ||
-      this.name === wizardTowerAvailableIcon.name
-    ) {
+    if (avalaibleIconNames.includes(this.name)) {
       this.height = 100;
     }
 
@@ -75,11 +85,6 @@ export class Icon {
     }
 
     if (this.ghostTowerIcon !== null) {
-      // context.save(); // Sauvegarde l'état actuel
-      // context.globalAlpha = 0.5; // 50% d'opacité
-      // context.fillStyle = "black";
-      // context.fillRect(0, 0, canvas.width, canvas.height); // Recouvre le canvas
-      // context.restore(); // Restaure l'état initial
       this.ghostTowerIcon.draw();
     }
   }

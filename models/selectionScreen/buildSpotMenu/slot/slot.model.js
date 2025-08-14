@@ -36,12 +36,11 @@ export class Slot {
   }
 
   addTowerIconToSlot(slot, selectedIcon, remainingBuildMenuSlots) {
-    if (!slot.isOccupied) {
-      slot.towerIcon = selectedIcon.ghostTowerIcon;
-      remainingBuildMenuSlots--;
-      slot.isOccupied = true;
-      gameVariable.preparation.isGhostedMod = false;
-      selectedIcon.ghostTowerIcon = null;
-    }
+    slot.towerIcon = selectedIcon.ghostTowerIcon;
+    remainingBuildMenuSlots--;
+    slot.isOccupied = true;
+    selectedIcon.isClickable = false;
+    gameVariable.preparation.isGhostedMod = false;
+    selectedIcon.ghostTowerIcon = null;
   }
 }

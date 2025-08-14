@@ -17,6 +17,10 @@ import {
 import { buildSpotMenu } from "./models/selectionScreen/selectionScreen.instance.js";
 import {
   archerTower,
+  barrackTower,
+  cannonTower,
+  fireTower,
+  groundTower,
   wizardTower,
 } from "./models/building/building.instance.js";
 
@@ -123,7 +127,8 @@ const handleClick = async (x, y) => {
       selectedIcon.position.y,
       selectedIcon.width,
       selectedIcon.height
-    )
+    ) &&
+    selectedIcon.isClickable
   ) {
     switch (gameVariable.preparation.currentTowerIndex) {
       case 0:
@@ -131,6 +136,18 @@ const handleClick = async (x, y) => {
         break;
       case 1:
         buildSpotMenu.activateGhostMod(wizardTower, selectedIcon);
+        break;
+      case 2:
+        buildSpotMenu.activateGhostMod(cannonTower, selectedIcon);
+        break;
+      case 3:
+        buildSpotMenu.activateGhostMod(groundTower, selectedIcon);
+        break;
+      case 4:
+        buildSpotMenu.activateGhostMod(barrackTower, selectedIcon);
+        break;
+      case 5:
+        buildSpotMenu.activateGhostMod(fireTower, selectedIcon);
         break;
       default:
         break;

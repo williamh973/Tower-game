@@ -1,7 +1,11 @@
 import { gameVariable } from "../../gameVariable.js";
 import {
   archerTowerAvailableIcon,
+  barrackTowerAvailableIcon,
+  cannonTowerAvailableIcon,
   closeArrow,
+  fireTowerAvailableIcon,
+  groundTowerAvailableIcon,
   leftArrow,
   openAvailableTowerMenuIcon,
   rightArrow,
@@ -21,7 +25,11 @@ export const openAvailableTowerMenu = (openMenuIcon) => {
     gameVariable.ui.iconList.push(leftArrow, rightArrow, closeArrow);
     gameVariable.preparation.availableTowerList.push(
       archerTowerAvailableIcon,
-      wizardTowerAvailableIcon
+      wizardTowerAvailableIcon,
+      cannonTowerAvailableIcon,
+      groundTowerAvailableIcon,
+      barrackTowerAvailableIcon,
+      fireTowerAvailableIcon
     );
 
     hideOpenMenuIcon(openMenuIcon);

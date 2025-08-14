@@ -9,7 +9,6 @@ export const draw = () => {
     if (screen.name === "buildSpotMenu") {
       screen.buildMenuSlots.forEach((slot) => {
         slot.draw();
-        drawDebugCollisionSquare(slot, context);
 
         if (slot.isGhostTowerPlaced) {
           slot.towerIcon.draw();

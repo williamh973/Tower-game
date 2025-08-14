@@ -1,11 +1,19 @@
 import {
   theImgbuildSpotMenuArcherIcon,
+  theImgbuildSpotMenuBarrackIcon,
+  theImgbuildSpotMenuCannonIcon,
+  theImgbuildSpotMenuFireIcon,
+  theImgbuildSpotMenuGroundIcon,
   theImgbuildSpotMenuWizardIcon,
 } from "../../../assets/buildSpotMenuTowerIcon.asset.js";
 import { Icon } from "../icon.model.js";
 
 export let buildSpotMenuArcherTowerIcon;
 export let buildSpotMenuWizardTowerIcon;
+export let buildSpotMenuCannonTowerIcon;
+export let buildSpotMenuGroundTowerIcon;
+export let buildSpotMenuBarrackTowerIcon;
+export let buildSpotMenuFireTowerIcon;
 
 export const initBuildspotMenuTowerIcon = async () => {
   buildSpotMenuArcherTowerIcon = new Icon(
@@ -29,5 +37,49 @@ export const initBuildspotMenuTowerIcon = async () => {
     true,
     "",
     "buildSpotMenuWizardTowerIcon"
+  );
+  buildSpotMenuCannonTowerIcon = new Icon(
+    0,
+    0,
+    theImgbuildSpotMenuCannonIcon,
+    "",
+    50,
+    50,
+    true,
+    "",
+    "buildSpotMenuCannonTowerIcon"
+  );
+  buildSpotMenuGroundTowerIcon = new Icon(
+    0,
+    0,
+    theImgbuildSpotMenuGroundIcon,
+    "",
+    50,
+    50,
+    true,
+    "",
+    "buildSpotMenuGroundTowerIcon"
+  );
+  buildSpotMenuBarrackTowerIcon = new Icon(
+    0,
+    0,
+    theImgbuildSpotMenuBarrackIcon,
+    "",
+    50,
+    50,
+    true,
+    "",
+    "buildSpotMenuBarrackTowerIcon"
+  );
+  buildSpotMenuFireTowerIcon = new Icon(
+    0,
+    0,
+    theImgbuildSpotMenuFireIcon,
+    "",
+    50,
+    50,
+    true,
+    "",
+    "buildSpotMenuFireTowerIcon"
   );
 };

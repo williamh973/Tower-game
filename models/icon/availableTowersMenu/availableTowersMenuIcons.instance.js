@@ -1,5 +1,9 @@
 import {
   theArcherTowerAvailable,
+  theBarrackTowerAvailable,
+  theCannonTowerAvailable,
+  theFireTowerAvailable,
+  theGroundTowerAvailable,
   theLeftArrow,
   theOpenAvailableTowerMenuIcon,
   theReturn,
@@ -11,6 +15,11 @@ import { Icon } from "../icon.model.js";
 export let archerTowerAvailableIcon;
 export let openAvailableTowerMenuIcon;
 export let wizardTowerAvailableIcon;
+export let cannonTowerAvailableIcon;
+export let groundTowerAvailableIcon;
+export let barrackTowerAvailableIcon;
+export let fireTowerAvailableIcon;
+
 export let leftArrow;
 export let rightArrow;
 export let closeArrow;
@@ -38,6 +47,51 @@ export const initAvailableTowerMenuIcons = async () => {
     "",
     "wizardTowerAvailableIcon"
   );
+  cannonTowerAvailableIcon = new Icon(
+    140,
+    140,
+    theCannonTowerAvailable,
+    "transparent",
+    80,
+    80,
+    true,
+    "",
+    "cannonTowerAvailableIcon"
+  );
+  groundTowerAvailableIcon = new Icon(
+    140,
+    140,
+    theGroundTowerAvailable,
+    "transparent",
+    80,
+    80,
+    true,
+    "",
+    "groundTowerAvailableIcon"
+  );
+  barrackTowerAvailableIcon = new Icon(
+    140,
+    140,
+    theBarrackTowerAvailable,
+    "transparent",
+    80,
+    80,
+    true,
+    "",
+    "barrackTowerAvailableIcon"
+  );
+  fireTowerAvailableIcon = new Icon(
+    140,
+    140,
+    theFireTowerAvailable,
+    "transparent",
+    80,
+    80,
+    true,
+    "",
+    "fireTowerAvailableIcon"
+  );
+
   openAvailableTowerMenuIcon = new Icon(
     615,
     90,

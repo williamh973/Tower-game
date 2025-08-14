@@ -2,14 +2,23 @@ import {
   theImgArcherTower,
   theImgCannonTower,
   theImgFireTower,
+  theImgGroundTower,
   theImgWizardTower,
 } from "../../assets/tower.asset.js";
 import {
   archerTowerAvailableIcon,
+  barrackTowerAvailableIcon,
+  cannonTowerAvailableIcon,
+  fireTowerAvailableIcon,
+  groundTowerAvailableIcon,
   wizardTowerAvailableIcon,
 } from "../icon/availableTowersMenu/availableTowersMenuIcons.instance.js";
 import {
   buildSpotMenuArcherTowerIcon,
+  buildSpotMenuBarrackTowerIcon,
+  buildSpotMenuCannonTowerIcon,
+  buildSpotMenuFireTowerIcon,
+  buildSpotMenuGroundTowerIcon,
   buildSpotMenuWizardTowerIcon,
 } from "../icon/buildSpotMenuIcon/buildSpotMenuIcon.instance.js";
 import { Building } from "./building.model.js";
@@ -17,6 +26,7 @@ import { Building } from "./building.model.js";
 export let archerTower;
 export let wizardTower;
 export let cannonTower;
+export let groundTower;
 export let fireTower;
 export let barrackTower;
 export let crackTower;
@@ -65,21 +75,25 @@ export const initTowers = async () => {
     120,
     Math.random() * (17 - 9 + 1) + 9,
     3000,
-    true
+    true,
+    cannonTowerAvailableIcon,
+    buildSpotMenuCannonTowerIcon
   );
 
-  fireTower = new Building(
+  groundTower = new Building(
     0,
     0,
     0,
-    theImgFireTower,
-    "fire",
-    "fire",
+    theImgGroundTower,
+    "ground",
+    "ground",
     90,
     100,
     Math.random() * 3 + 1,
     50,
-    true
+    true,
+    groundTowerAvailableIcon,
+    buildSpotMenuGroundTowerIcon
   );
 
   barrackTower = new Building(
@@ -93,7 +107,25 @@ export const initTowers = async () => {
     70,
     0,
     0,
-    true
+    true,
+    barrackTowerAvailableIcon,
+    buildSpotMenuBarrackTowerIcon
+  );
+
+  fireTower = new Building(
+    0,
+    0,
+    0,
+    theImgFireTower,
+    "fire",
+    "fire",
+    90,
+    100,
+    Math.random() * 3 + 1,
+    50,
+    true,
+    fireTowerAvailableIcon,
+    buildSpotMenuFireTowerIcon
   );
 
   crackTower = new Building(

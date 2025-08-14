@@ -11,6 +11,21 @@ export const theArcherTowerAvailable = createImg(
 export const theWizardTowerAvailable = createImg(
   "./assets/images/av-menu-wizard-icon.png"
 );
+export const theCannonTowerAvailable = createImg(
+  "./assets/images/av-menu-cannon-icon.png"
+);
+export const theGroundTowerAvailable = createImg(
+  "./assets/images/av-menu-ground-icon.png"
+);
+
+export const theBarrackTowerAvailable = createImg(
+  "./assets/images/av-menu-barracks-icon.png"
+);
+
+export const theFireTowerAvailable = createImg(
+  "./assets/images/av-menu-fire-icon.png"
+);
+
 export const theLeftArrow = createImg("./assets/images/arrow-left.png");
 export const theRightArrow = createImg("./assets/images/arrow-right.png");
 export const theReturn = createImg("./assets/images/return.png");
