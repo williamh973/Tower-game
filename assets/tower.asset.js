@@ -1,4 +1,4 @@
-import { createImg } from "../shared/methodsUtils.js";
+import { createImg } from "../shared/utils.js";
 
 export const theImgArcherTower = createImg("./assets/images/Archer-tower.png");
 export const theImgWizardTower = createImg("./assets/images/wizard-tower.png");

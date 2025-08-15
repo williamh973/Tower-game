@@ -1,4 +1,4 @@
-import { createImg } from "../shared/methodsUtils.js";
+import { createImg } from "../shared/utils.js";
 
 export const theImgLevelOfDifficulty = createImg(
   "./assets/images/levelOfDifficulty.png"

@@ -41,6 +41,6 @@ export class Slot {
     slot.isOccupied = true;
     selectedIcon.isClickable = false;
     gameVariable.preparation.isGhostedMod = false;
-    selectedIcon.ghostTowerIcon = null;
+    selectedIcon.ghostTowerIcon.isVisible = false;
   }
 }

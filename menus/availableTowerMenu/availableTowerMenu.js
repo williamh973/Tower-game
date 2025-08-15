@@ -17,25 +17,31 @@ import {
 } from "../../models/selectionScreen/selectionScreen.instance.js";
 
 export const openAvailableTowerMenu = (openMenuIcon) => {
-  gameVariable.preparation.isAvailableTowersMenuOpen =
-    !gameVariable.preparation.isAvailableTowersMenuOpen;
+  openMenuIcon.isActivated = true;
+  setTimeout(() => {
+    gameVariable.preparation.isAvailableTowersMenuOpen =
+      !gameVariable.preparation.isAvailableTowersMenuOpen;
 
-  if (gameVariable.preparation.isAvailableTowersMenuOpen) {
-    gameVariable.ui.selectionScreenList.push(availableTowerMenu, buildSpotMenu);
-    gameVariable.ui.iconList.push(leftArrow, rightArrow, closeArrow);
-    gameVariable.preparation.availableTowerList.push(
-      archerTowerAvailableIcon,
-      wizardTowerAvailableIcon,
-      cannonTowerAvailableIcon,
-      groundTowerAvailableIcon,
-      barrackTowerAvailableIcon,
-      fireTowerAvailableIcon
-    );
+    if (gameVariable.preparation.isAvailableTowersMenuOpen) {
+      gameVariable.ui.selectionScreenList.push(
+        availableTowerMenu,
+        buildSpotMenu
+      );
+      gameVariable.ui.iconList.push(leftArrow, rightArrow, closeArrow);
+      gameVariable.preparation.availableTowerList.push(
+        archerTowerAvailableIcon,
+        wizardTowerAvailableIcon,
+        cannonTowerAvailableIcon,
+        groundTowerAvailableIcon,
+        barrackTowerAvailableIcon,
+        fireTowerAvailableIcon
+      );
 
-    hideOpenMenuIcon(openMenuIcon);
-  } else {
-    closeAvailableTowerMenu();
-  }
+      hideOpenMenuIcon(openMenuIcon);
+    } else {
+      closeAvailableTowerMenu();
+    }
+  }, 300);
 };
 
 const hideOpenMenuIcon = (openMenuIcon) => {
@@ -44,21 +50,24 @@ const hideOpenMenuIcon = (openMenuIcon) => {
   );
 };
 
-export const closeAvailableTowerMenu = () => {
-  gameVariable.preparation.isAvailableTowersMenuOpen =
-    !gameVariable.preparation.isAvailableTowersMenuOpen;
+export const closeAvailableTowerMenu = (icon) => {
+  icon.isActivated = true;
+  setTimeout(() => {
+    gameVariable.preparation.isAvailableTowersMenuOpen =
+      !gameVariable.preparation.isAvailableTowersMenuOpen;
 
-  if (!gameVariable.preparation.isAvailableTowersMenuOpen) {
-    gameVariable.ui.selectionScreenList =
-      gameVariable.ui.selectionScreenList.filter(
-        (screen) => screen.name === "campaignDashboard"
+    if (!gameVariable.preparation.isAvailableTowersMenuOpen) {
+      gameVariable.ui.selectionScreenList =
+        gameVariable.ui.selectionScreenList.filter(
+          (screen) => screen.name === "campaignDashboard"
+        );
+
+      gameVariable.ui.iconList.push(openAvailableTowerMenuIcon);
+      gameVariable.ui.iconList = gameVariable.ui.iconList.filter(
+        (icon) => icon.name === "openAvailableTowerMenu"
       );
 
-    gameVariable.ui.iconList.push(openAvailableTowerMenuIcon);
-    gameVariable.ui.iconList = gameVariable.ui.iconList.filter(
-      (icon) => icon.name === "openAvailableTowerMenu"
-    );
-
-    gameVariable.preparation.availableTowerList = [];
-  }
+      gameVariable.preparation.availableTowerList = [];
+    }
+  }, 350);
 };

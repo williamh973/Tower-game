@@ -23,6 +23,10 @@ export const update = (timestamp) => {
     icon.updateAnimation();
   });
 
+  gameVariable.preparation.availableTowerList.forEach((icon) => {
+    icon.updateAnimation();
+  });
+
   gameVariable.ui.floatingIconList.forEach((icon) => {
     icon.updateAnimation();
   });

@@ -1,16 +1,12 @@
 import { canvasManager, context } from "../../animate.js";
-import { FloatingIcon } from "../icon/floatingIcon/floatingIcon.class.js";
+import { FloatingIcon } from "../icon/floatingIcon/floatingIcon.model.js";
 import { gameVariable } from "../../gameVariable.js";
 import {
   theImgArrow,
   theImgThunderBolt,
   theImgCannon,
 } from "../../assets/projectile.asset.js";
-import {
-  distanceX,
-  distanceY,
-  setDistance,
-} from "../../shared/methodsUtils.js";
+import { distanceX, distanceY, setDistance } from "../../shared/utils.js";
 
 export class Projectile {
   constructor(missilePosition, target, type, associatedTower) {

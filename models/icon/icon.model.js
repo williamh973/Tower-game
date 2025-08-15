@@ -1,4 +1,4 @@
-import { context } from "../../animate.js";
+import { canvas, context } from "../../animate.js";
 import { gameVariable } from "../../gameVariable.js";
 import {
   archerTowerAvailableIcon,
@@ -38,8 +38,6 @@ export class Icon {
     this.associatedBuildSpot = {};
     this.scale = 1;
     this.scaleDirection = 1;
-    this.opacity = 1;
-    this.fadeSpeed = 0.01;
   }
 
   draw() {
@@ -141,6 +139,19 @@ export class Icon {
   }
 
   updateAnimation() {
+    const buttons = [
+      "rightArrow",
+      "leftArrow",
+      "closeArrow",
+      "openAvailableTowerMenu",
+      "archerTowerAvailableIcon",
+      "wizardTowerAvailableIcon",
+      "cannonTowerAvailableIcon",
+      "groundTowerAvailableIcon",
+      "barrackTowerAvailableIcon",
+      "fireTowerAvailableIcon",
+    ];
+
     switch (this.name) {
       case "startWaveIcon":
         const speed = 0.005;
@@ -152,17 +163,10 @@ export class Icon {
           this.scaleDirection *= -1;
         }
         break;
+    }
 
-      case "rightArrow":
-        if (this.isActivated) {
-          this.clickAnimate();
-        }
-        break;
-      case "leftArrow":
-        if (this.isActivated) {
-          this.clickAnimate();
-        }
-        break;
+    if (buttons.includes(this.name) && this.isClickable && this.isActivated) {
+      this.clickAnimate();
     }
   }
 
@@ -199,6 +203,8 @@ export class Icon {
       return (this.isVisible = true);
     }
   }
+
+  hover() {}
 
   ghostIconInitialPosition(ghostIcon, availableTowerIcon) {
     ghostIcon.position.x = availableTowerIcon.position.x;

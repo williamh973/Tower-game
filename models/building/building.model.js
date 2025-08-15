@@ -2,7 +2,7 @@ import { context } from "../../animate.js";
 import { Projectile } from "../projectile/projectile.model.js";
 import { gameVariable } from "../../gameVariable.js";
 import { theImgTowerUnderBuild } from "../../assets/towerUnderConst.assets.js";
-import { setDistance } from "../../shared/methodsUtils.js";
+import { setDistance } from "../../shared/utils.js";
 import { wave } from "../../spawnHandle/campaign/step/checkCampaignStep.js";
 
 export class Building {

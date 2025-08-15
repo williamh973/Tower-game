@@ -1,4 +1,4 @@
-import { createImg } from "../shared/methodsUtils.js";
+import { createImg } from "../shared/utils.js";
 
 export const theStartWaveIcon = createImg("./assets/images/start-wave.png");
 export const theGoldCoinIcon = createImg("./assets/images/gold-coin.png");

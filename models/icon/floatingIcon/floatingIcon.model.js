@@ -1,16 +1,19 @@
 import { context } from "../../../animate.js";
+import { Icon } from "../icon.model.js";
 
-export class FloatingIcon {
+export class FloatingIcon extends Icon {
   constructor(x, y, image, name, text) {
-    this.position = {
-      x: x,
-      y: y,
-    };
-    this.width = 30;
-    this.height = 30;
-    this.image = image;
-    this.name = name;
-    this.text = text;
+    super(
+      x,
+      y,
+      image,
+      backgroundColor,
+      width,
+      height,
+      isClickable,
+      (text = ""),
+      (name = "")
+    );
     this.opacity = 1;
     this.riseSpeed = 0.2;
     this.fadeSpeed = 0.01;

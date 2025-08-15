@@ -1,20 +1,20 @@
-import { canvas } from "./animate.js";
-import { initWave } from "./spawnHandle/campaign/step/wave/wave.js";
-import { gameVariable } from "./gameVariable.js";
-import { togglePause } from "./gamePauseHandle.js";
-import { openBuildSpotMenu } from "./spawnHandle/buildSpot/buildSpotMenu.js";
-import { playerBuildTower } from "./spawnHandle/tower.js";
-import { player } from "./models/player.model.js";
-import { hasClicked } from "./shared/methodsUtils.js";
+import { canvas } from "../../../../animate.js";
+import { initWave } from "../../../../spawnHandle/campaign/step/wave/wave.js";
+import { gameVariable } from "../../../../gameVariable.js";
+import { togglePause } from "../../../../gamePauseHandle.js";
+import { openBuildSpotMenu } from "../../../../spawnHandle/buildSpot/buildSpotMenu.js";
+import { playerBuildTower } from "../../../../spawnHandle/tower.js";
+import { player } from "../../../../models/player.model.js";
+import { isHovering, mouseDetect, x, y } from "../../../../shared/utils.js";
 import {
   closeAvailableTowerMenu,
   openAvailableTowerMenu,
-} from "./menus/availableTowerMenu/availableTowerMenu.js";
+} from "../../../../menus/availableTowerMenu/availableTowerMenu.js";
 import {
   availableTowerMenuNextStep,
   availableTowerMenuPrevStep,
-} from "./menus/availableTowerMenu/handleCarouselSteps.js";
-import { buildSpotMenu } from "./models/selectionScreen/selectionScreen.instance.js";
+} from "../../../../menus/availableTowerMenu/handleCarouselSteps.js";
+import { buildSpotMenu } from "../../../../models/selectionScreen/selectionScreen.instance.js";
 import {
   archerTower,
   barrackTower,
@@ -22,32 +22,46 @@ import {
   fireTower,
   groundTower,
   wizardTower,
-} from "./models/building/building.instance.js";
-
-canvas.addEventListener(
-  "touchstart",
-  (event) => {
-    event.preventDefault();
-    const rect = canvas.getBoundingClientRect();
-    const touch = event.touches[0];
-    const x = touch.clientX - rect.left;
-    const y = touch.clientY - rect.top;
-    handleClick(x, y);
-  },
-  { passive: false }
-);
+} from "../../../../models/building/building.instance.js";
 
 canvas.addEventListener("click", (event) => {
-  const rect = canvas.getBoundingClientRect();
-  const x = event.clientX - rect.left;
-  const y = event.clientY - rect.top;
-  handleClick(x, y);
+  mouseDetect(event);
+  handleClick();
 });
 
-const handleClick = async (x, y) => {
+canvas.addEventListener("mousemove", (event) => {
+  mouseDetect(event);
+  handleHover();
+});
+
+const handleHover = async () => {
+  let isHover = false;
+  for (const icon of gameVariable.ui.iconList) {
+    if (
+      isHovering(
+        x,
+        y,
+        icon.position.x,
+        icon.position.y,
+        icon.width,
+        icon.height
+      )
+    ) {
+      isHover = true;
+      break;
+    } else {
+      isHover = false;
+    }
+  }
+  isHover
+    ? (canvas.style.cursor = "pointer")
+    : (canvas.style.cursor = "default");
+};
+
+const handleClick = async () => {
   for (const icon of gameVariable.campaign.stepIconList) {
     if (
-      hasClicked(
+      isHovering(
         x,
         y,
         icon.position.x,
@@ -69,7 +83,7 @@ const handleClick = async (x, y) => {
 
   for (const icon of gameVariable.ui.iconList) {
     if (
-      hasClicked(
+      isHovering(
         x,
         y,
         icon.position.x,
@@ -92,7 +106,7 @@ const handleClick = async (x, y) => {
           openAvailableTowerMenu(icon);
           break;
         case "closeArrow":
-          closeAvailableTowerMenu();
+          closeAvailableTowerMenu(icon);
           break;
         case "rightArrow":
           availableTowerMenuNextStep(icon);
@@ -120,7 +134,7 @@ const handleClick = async (x, y) => {
 
   if (
     gameVariable.preparation.isAvailableTowersMenuOpen &&
-    hasClicked(
+    isHovering(
       x,
       y,
       selectedIcon.position.x,
@@ -130,6 +144,8 @@ const handleClick = async (x, y) => {
     ) &&
     selectedIcon.isClickable
   ) {
+    selectedIcon.isActivated = true;
+
     switch (gameVariable.preparation.currentTowerIndex) {
       case 0:
         buildSpotMenu.activateGhostMod(archerTower, selectedIcon);
@@ -156,7 +172,7 @@ const handleClick = async (x, y) => {
 
   for (const spot of gameVariable.tower.buildSpotList) {
     if (
-      hasClicked(
+      isHovering(
         x,
         y,
         spot.position.x,
@@ -171,10 +187,27 @@ const handleClick = async (x, y) => {
     }
   }
 
+  const isCheckAvalaibleTowerIconClickable = () => {
+    // buildSpotMenu.buildMenuSlots.find((slot) => {
+    //   gameVariable.preparation.availableTowerList.find((avalaibleIcon) => {
+    //     if (slot.towerIcon && avalaibleIcon.ghostTowerIcon) {
+    //       if (slot.towerIcon.name === avalaibleIcon.ghostTowerIcon.name) {
+    //         gameVariable.preparation.availableTowerList.every((avalaibleTower) => {
+    //         })
+    //       }
+    //     }
+    //   });
+    // });
+  };
+  // const NotClickableIconFounded = !icon.isClickable;
+  // if (NotClickableIconFounded) {
+  //   console.log(slot.towerIcon);
+  // }
+
   if (gameVariable.preparation.isGhostedMod) {
     for (const slot of buildSpotMenu.buildMenuSlots) {
       if (
-        hasClicked(
+        isHovering(
           x,
           y,
           slot.position.x,
@@ -188,13 +221,14 @@ const handleClick = async (x, y) => {
           selectedIcon,
           buildSpotMenu.remainingBuildMenuSlots
         );
+        isCheckAvalaibleTowerIconClickable();
       }
     }
   }
 
   for (const buildSpotTowerIcon of gameVariable.tower.buildSpotMenuSlotList) {
     if (
-      hasClicked(
+      isHovering(
         x,
         y,
         buildSpotTowerIcon.position.x,

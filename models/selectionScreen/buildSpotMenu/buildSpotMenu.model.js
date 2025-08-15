@@ -1,5 +1,5 @@
 import { gameVariable } from "../../../gameVariable.js";
-import { updateGhostIconPosition } from "../../../shared/methodsUtils.js";
+import { updateGhostIconPosition } from "../../../shared/utils.js";
 import { SelectionScreen } from "../selectionScreen.model.js";
 import {
   first,
@@ -27,23 +27,12 @@ export class BuildSpotMenu extends SelectionScreen {
   activateGhostMod(tower, availableTowerIcon) {
     gameVariable.preparation.isGhostedMod = true;
 
-    const isFull = this.isInventoryFull();
-
-    if (isFull) {
-      gameVariable.preparation.isGhostedMod = false;
-      return console.log("inventaire plein");
-    }
-
     const ghostIcon = tower.buildSpotMenuTowerIcon;
 
     availableTowerIcon.ghostTowerIcon = ghostIcon;
     availableTowerIcon.ghostIconInitialPosition(ghostIcon, availableTowerIcon);
 
     updateGhostIconPosition(ghostIcon);
-  }
-
-  isInventoryFull() {
-    return this.remainingBuildMenuSlots < 1;
   }
 
   close(element) {
