@@ -1,4 +1,4 @@
-import { canvas, context } from "../../animate.js";
+import { context } from "../../animate.js";
 import { gameVariable } from "../../gameVariable.js";
 import {
   archerTowerAvailableIcon,
@@ -32,8 +32,9 @@ export class Icon {
     this.text = text;
     this.name = name;
     this.isClickable = isClickable;
-    this.ghostTowerIcon = null;
     this.isActivated = false;
+    this.isHovering = false;
+    this.ghostTowerIcon = null;
     this.isVisible = true;
     this.associatedBuildSpot = {};
     this.scale = 1;

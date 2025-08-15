@@ -35,7 +35,7 @@ export class Game {
     gameVariable.ui.isDifficultyMenuOpen = true;
 
     if (gameVariable.ui.isDifficultyMenuOpen) {
-      gameVariable.ui.iconList.push(
+      gameVariable.ui.levelIconList.push(
         easyDifficultyIcon,
         mediumDifficultyIcon,
         hardDifficultyIcon
@@ -49,7 +49,7 @@ export class Game {
       this.difficulty = level;
       gameVariable.ui.isDifficultyMenuOpen = false;
       gameVariable.ui.selectionScreenList = [];
-      gameVariable.ui.iconList = [];
+      gameVariable.ui.levelIconList = [];
       this.openCampaignDashboard();
     }
   }
@@ -60,7 +60,7 @@ export class Game {
     gameVariable.campaign.isCampaignDashboardOpen = true;
 
     if (gameVariable.campaign.isCampaignDashboardOpen) {
-      gameVariable.ui.iconList.push(openAvailableTowerMenuIcon);
+      gameVariable.campaign.dashboardIconList.push(openAvailableTowerMenuIcon);
     }
   }
 }

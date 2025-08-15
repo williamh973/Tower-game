@@ -19,7 +19,11 @@ export const update = (timestamp) => {
     projectile.update();
   });
 
-  gameVariable.ui.iconList.forEach((icon) => {
+  gameVariable.campaign.dashboardIconList.forEach((icon) => {
+    icon.updateAnimation();
+  });
+
+  gameVariable.ui.arrowIconList.forEach((icon) => {
     icon.updateAnimation();
   });
 

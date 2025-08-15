@@ -27,7 +27,7 @@ export const openAvailableTowerMenu = (openMenuIcon) => {
         availableTowerMenu,
         buildSpotMenu
       );
-      gameVariable.ui.iconList.push(leftArrow, rightArrow, closeArrow);
+      gameVariable.ui.arrowIconList.push(leftArrow, rightArrow, closeArrow);
       gameVariable.preparation.availableTowerList.push(
         archerTowerAvailableIcon,
         wizardTowerAvailableIcon,
@@ -37,17 +37,15 @@ export const openAvailableTowerMenu = (openMenuIcon) => {
         fireTowerAvailableIcon
       );
 
-      hideOpenMenuIcon(openMenuIcon);
+      hideOpenMenuIcon();
     } else {
       closeAvailableTowerMenu();
     }
   }, 300);
 };
 
-const hideOpenMenuIcon = (openMenuIcon) => {
-  gameVariable.ui.iconList = gameVariable.ui.iconList.filter(
-    (icon) => icon.name !== openMenuIcon.name
-  );
+const hideOpenMenuIcon = () => {
+  gameVariable.campaign.dashboardIconList = [];
 };
 
 export const closeAvailableTowerMenu = (icon) => {
@@ -62,11 +60,8 @@ export const closeAvailableTowerMenu = (icon) => {
           (screen) => screen.name === "campaignDashboard"
         );
 
-      gameVariable.ui.iconList.push(openAvailableTowerMenuIcon);
-      gameVariable.ui.iconList = gameVariable.ui.iconList.filter(
-        (icon) => icon.name === "openAvailableTowerMenu"
-      );
-
+      gameVariable.ui.arrowIconList = [];
+      gameVariable.campaign.dashboardIconList.push(openAvailableTowerMenuIcon);
       gameVariable.preparation.availableTowerList = [];
     }
   }, 350);

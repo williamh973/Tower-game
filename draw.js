@@ -16,8 +16,19 @@ export const draw = () => {
       });
     }
   });
+  gameVariable.campaign.dashboardIconList.forEach((icon) => {
+    icon.draw();
+  });
 
-  gameVariable.ui.iconList.forEach((icon) => {
+  gameVariable.ui.levelIconList.forEach((icon) => {
+    icon.draw();
+  });
+
+  gameVariable.ui.arrowIconList.forEach((icon) => {
+    icon.draw();
+  });
+
+  gameVariable.battle.battleIconList.forEach((icon) => {
     icon.draw();
   });
 
@@ -29,7 +40,7 @@ export const draw = () => {
     });
   }
 
-  gameVariable.tower.buildSpotList.forEach((spot) => {
+  gameVariable.battle.buildSpotList.forEach((spot) => {
     spot.draw();
   });
 

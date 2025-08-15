@@ -8,6 +8,7 @@ export const gameVariable = {
     campaignMaxStep: 10,
     mapList: [],
     stepIconList: [],
+    dashboardIconList: [],
     isCampaignDashboardOpen: false,
     isStepLoaded: false,
   },
@@ -31,14 +32,14 @@ export const gameVariable = {
   },
   tower: {
     placedTowerList: [],
-    buildSpotList: [],
     buildSpotMenuSlotList: [],
   },
   ui: {
     selectionScreenList: [],
-    iconList: [],
+    levelIconList: [],
+    arrowIconList: [],
     floatingIconList: [],
-
+    isHovering: false,
     isGamePaused: false,
     isGameOver: false,
     isVictory: false,
@@ -48,5 +49,7 @@ export const gameVariable = {
   },
   battle: {
     projectileList: [],
+    battleIconList: [],
+    buildSpotList: [],
   },
 };

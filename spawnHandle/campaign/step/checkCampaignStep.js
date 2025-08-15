@@ -23,7 +23,8 @@ export const loadCampaignStep = () => {
       gameVariable.wave.waveList.push(wave);
 
       gameVariable.campaign.mapList.push(map);
-      gameVariable.ui.iconList.push(
+
+      gameVariable.battle.battleIconList.push(
         startWaveIcon,
         lifeHudMask,
         goldHudMask,
