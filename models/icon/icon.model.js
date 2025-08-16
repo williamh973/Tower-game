@@ -1,11 +1,16 @@
 import { context } from "../../animate.js";
 import { gameVariable } from "../../gameVariable.js";
+import { pulse, reversePulse } from "./aniamtions/icon.animation.js";
 import {
   archerTowerAvailableIcon,
   barrackTowerAvailableIcon,
   cannonTowerAvailableIcon,
+  closeArrow,
   fireTowerAvailableIcon,
   groundTowerAvailableIcon,
+  leftArrow,
+  openAvailableTowerMenuIcon,
+  rightArrow,
   wizardTowerAvailableIcon,
 } from "./availableTowersMenu/availableTowersMenuIcons.instance.js";
 
@@ -42,20 +47,7 @@ export class Icon {
   }
 
   draw() {
-    const avalaibleIconNames = [
-      archerTowerAvailableIcon.name,
-      wizardTowerAvailableIcon.name,
-      cannonTowerAvailableIcon.name,
-      groundTowerAvailableIcon.name,
-      barrackTowerAvailableIcon.name,
-      fireTowerAvailableIcon.name,
-    ];
-
     context.save();
-
-    if (avalaibleIconNames.includes(this.name)) {
-      this.height = 100;
-    }
 
     if (this.backgroundColor && this.backgroundColor !== "transparent") {
       this.drawBlackMask();
@@ -81,10 +73,6 @@ export class Icon {
         scaledHeight
       );
       context.restore();
-    }
-
-    if (this.ghostTowerIcon !== null) {
-      this.ghostTowerIcon.draw();
     }
   }
 
@@ -140,52 +128,32 @@ export class Icon {
   }
 
   updateAnimation() {
-    const buttons = [
-      "rightArrow",
-      "leftArrow",
-      "closeArrow",
-      "openAvailableTowerMenu",
-      "archerTowerAvailableIcon",
-      "wizardTowerAvailableIcon",
-      "cannonTowerAvailableIcon",
-      "groundTowerAvailableIcon",
-      "barrackTowerAvailableIcon",
-      "fireTowerAvailableIcon",
+    const avalaibleIconNames = [
+      archerTowerAvailableIcon.name,
+      wizardTowerAvailableIcon.name,
+      cannonTowerAvailableIcon.name,
+      groundTowerAvailableIcon.name,
+      barrackTowerAvailableIcon.name,
+      fireTowerAvailableIcon.name,
     ];
+
+    const arrowIcons = [rightArrow.name, leftArrow.name, closeArrow.name];
+    const dashboardIcons = [openAvailableTowerMenuIcon.name];
 
     switch (this.name) {
       case "startWaveIcon":
-        const speed = 0.005;
-        const minScale = 0.95;
-        const maxScale = 1.05;
-        this.scale += this.scaleDirection * speed;
-
-        if (this.scale >= maxScale || this.scale <= minScale) {
-          this.scaleDirection *= -1;
-        }
+        pulse(this);
         break;
     }
 
-    if (buttons.includes(this.name) && this.isClickable && this.isActivated) {
-      this.clickAnimate();
-    }
-  }
-
-  clickAnimate() {
-    const speed = 0.03;
-    const minScale = 0.8;
-    const maxScale = 1.0;
-
-    this.scale -= this.scaleDirection * speed;
-
-    if (this.scale <= minScale) {
-      this.scaleDirection *= -1;
-    }
-    if (this.scale >= maxScale) {
-      this.scale = maxScale;
-      this.scaleDirection = 1;
-      this.isActivated = false;
-      return;
+    if (this.isClickable && this.isActivated) {
+      if (
+        avalaibleIconNames.includes(this.name) ||
+        arrowIcons.includes(this.name) ||
+        dashboardIcons.includes(this.name)
+      ) {
+        reversePulse(this);
+      }
     }
   }
 
@@ -204,8 +172,6 @@ export class Icon {
       return (this.isVisible = true);
     }
   }
-
-  hover() {}
 
   ghostIconInitialPosition(ghostIcon, availableTowerIcon) {
     ghostIcon.position.x = availableTowerIcon.position.x;

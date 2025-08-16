@@ -37,6 +37,10 @@ export const draw = () => {
     const currentIcon = gameVariable.preparation.availableTowerList[index];
     gameVariable.preparation.availableTowerList.forEach(() => {
       currentIcon.draw();
+
+      if (currentIcon.ghostTowerIcon) {
+        currentIcon.ghostTowerIcon.draw();
+      }
     });
   }
 

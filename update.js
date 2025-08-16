@@ -29,6 +29,7 @@ export const update = (timestamp) => {
 
   gameVariable.preparation.availableTowerList.forEach((icon) => {
     icon.updateAnimation();
+    icon.height = 100;
   });
 
   gameVariable.ui.floatingIconList.forEach((icon) => {
