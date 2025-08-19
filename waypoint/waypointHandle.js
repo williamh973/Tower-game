@@ -1,10 +1,10 @@
-import { gameVariable } from "../gameVariable.js";
+import { dashboard } from "../models/selectionScreen/selectionScreen.instance.js";
 
 export let wpCoordinates = [];
 export let wpVelocitys = [];
 
 export const fetchWaypoints = async () => {
-  switch (gameVariable.campaign.campaignCurrentStep) {
+  switch (dashboard.campaignCurrentStep) {
     case 1:
       await fetchWaypointsStepOne();
       break;

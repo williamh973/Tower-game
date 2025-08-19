@@ -1,10 +1,11 @@
 import { gameVariable } from "./gameVariable.js";
+import { dashboard } from "./models/selectionScreen/selectionScreen.instance.js";
 import { wave } from "./spawnHandle/campaign/step/checkCampaignStep.js";
 
 export const update = (timestamp) => {
-  gameVariable.campaign.mapList.forEach((map) => {
-    map.update();
-  });
+  if (dashboard.map) {
+    dashboard.map.update();
+  }
 
   gameVariable.tower.placedTowerList.forEach((tower) => {
     tower.update(timestamp);
@@ -19,7 +20,7 @@ export const update = (timestamp) => {
     projectile.update();
   });
 
-  gameVariable.campaign.dashboardIconList.forEach((icon) => {
+  dashboard.icons.forEach((icon) => {
     icon.updateAnimation();
   });
 

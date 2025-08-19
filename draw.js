@@ -1,5 +1,6 @@
 import { context } from "./animate.js";
 import { gameVariable } from "./gameVariable.js";
+import { dashboard } from "./models/selectionScreen/selectionScreen.instance.js";
 import { drawDebugCollisionSquare } from "./shared/utils.js";
 
 export const draw = () => {
@@ -16,7 +17,8 @@ export const draw = () => {
       });
     }
   });
-  gameVariable.campaign.dashboardIconList.forEach((icon) => {
+
+  dashboard.icons.forEach((icon) => {
     icon.draw();
   });
 

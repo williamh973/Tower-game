@@ -1,10 +1,10 @@
-import { gameVariable } from "../../../gameVariable.js";
 import { openAvailableTowerMenu } from "../../../menus/availableTowerMenu/availableTowerMenu.js";
+import { dashboard } from "../../../models/selectionScreen/selectionScreen.instance.js";
 import { isHovering, x, y } from "../../../shared/utils.js";
 import { loadCampaignStep } from "../../../spawnHandle/campaign/step/checkCampaignStep.js";
 
 export const dashboardIconList = () => {
-  for (const icon of gameVariable.campaign.dashboardIconList) {
+  for (const icon of dashboard.icons) {
     if (
       isHovering(
         x,

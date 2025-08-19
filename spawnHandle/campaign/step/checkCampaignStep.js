@@ -10,6 +10,7 @@ import {
   waveHudMask,
 } from "../../../models/icon/icon.instance.js";
 import { Map } from "../../../models/map/map.model.js";
+import { dashboard } from "../../../models/selectionScreen/selectionScreen.instance.js";
 import { Wave } from "../../../models/wave/wave.model.js";
 import { initBuildSpot } from "../../buildSpot/initBuildSpot.js";
 
@@ -22,12 +23,12 @@ export const loadCampaignStep = (iconName) => {
 
   const initLevel = () => {
     gameVariable.ui.selectionScreenList = [];
-    gameVariable.campaign.dashboardIconList = [];
+    dashboard.icons = [];
   };
 
   switch (iconName) {
     case "stepOneIcon":
-      gameVariable.campaign.mapList.push(new Map(theMapStepOne, 1));
+      dashboard.map = new Map(theMapStepOne, 10);
       initLevel();
       break;
 
@@ -45,5 +46,5 @@ export const loadCampaignStep = (iconName) => {
   // );
   // initHUDText();
   // initBuildSpot();
-  gameVariable.campaign.isStepLoaded = true;
+  dashboard.isStepLoaded = true;
 };

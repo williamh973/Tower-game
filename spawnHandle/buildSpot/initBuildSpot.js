@@ -1,8 +1,8 @@
+import { dashboard } from "../../models/selectionScreen/selectionScreen.instance.js";
 import { spawnBuildSpot } from "../buildSpot/spawnBuildStop.js";
-import { gameVariable } from "../../gameVariable.js";
 
 export const initBuildSpot = () => {
-  switch (gameVariable.campaign.campaignCurrentStep) {
+  switch (dashboard.campaignCurrentStep) {
     case 1:
       spawnBuildSpot([
         {

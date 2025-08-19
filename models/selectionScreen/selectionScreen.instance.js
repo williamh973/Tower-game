@@ -7,9 +7,10 @@ import { canvas, canvasManager } from "../../animate.js";
 import { SelectionScreen } from "./selectionScreen.model.js";
 import { theImgBuildSpotMenu } from "../../assets/buildSpotMenu.asset.js";
 import { BuildSpotMenu } from "./buildSpotMenu/buildSpotMenu.model.js";
+import { Dashboard } from "./dashboard/dashboard.model.js";
 
 export let levelDifficultyScreen;
-export let campaignDashboard;
+export let dashboard;
 export let buildSpotMenu;
 export let availableTowerMenu;
 
@@ -35,7 +36,7 @@ export const initSelectionScreens = async () => {
     "levelDifficultyScreen"
   );
 
-  campaignDashboard = new SelectionScreen(
+  dashboard = new Dashboard(
     {
       x: 0,
       y: 0,
@@ -44,7 +45,7 @@ export const initSelectionScreens = async () => {
     canvasManager.width,
     canvasManager.height,
     1,
-    "campaignDashboard"
+    "dashboard"
   );
 
   buildSpotMenu = new BuildSpotMenu(

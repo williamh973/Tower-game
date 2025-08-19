@@ -3,14 +3,6 @@ import { Game } from "./models/game/game.model.js";
 
 export const gameVariable = {
   game: new Game(),
-  campaign: {
-    campaignCurrentStep: 1,
-    campaignMaxStep: 10,
-    mapList: [],
-    dashboardIconList: [],
-    isCampaignDashboardOpen: false,
-    isStepLoaded: false,
-  },
   wave: {
     waveList: [],
     currentWaveList: [],

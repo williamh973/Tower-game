@@ -1,5 +1,6 @@
 import { canvas } from "../../../../animate.js";
 import { gameVariable } from "../../gameVariable.js";
+import { dashboard } from "../../models/selectionScreen/selectionScreen.instance.js";
 import { mouseDetect } from "../../shared/utils.js";
 import { iconHover } from "./moveHandlers/handleIconHover.js";
 
@@ -12,5 +13,5 @@ canvas.addEventListener("mousemove", (event) => {
   iconHover(gameVariable.ui.levelIconList);
   iconHover(gameVariable.battle.battleIconList);
   iconHover(gameVariable.preparation.availableTowerList);
-  iconHover(gameVariable.campaign.dashboardIconList);
+  iconHover(dashboard.icons);
 });

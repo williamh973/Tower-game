@@ -9,9 +9,8 @@ import {
   initIcons,
   mediumDifficultyIcon,
 } from "../icon/icon.instance.js";
-import { initEmptySlots } from "../selectionScreen/buildSpotMenu/slot/slot.instance.js";
 import {
-  campaignDashboard,
+  dashboard,
   initSelectionScreens,
   levelDifficultyScreen,
 } from "../selectionScreen/selectionScreen.instance.js";
@@ -51,20 +50,17 @@ export class Game {
       gameVariable.ui.isDifficultyMenuOpen = false;
       gameVariable.ui.selectionScreenList = [];
       gameVariable.ui.levelIconList = [];
-      this.openCampaignDashboard();
+      this.openDashboard();
     }
   }
 
-  openCampaignDashboard() {
-    gameVariable.ui.selectionScreenList.push(campaignDashboard);
-    gameVariable.campaign.campaignCurrentStep = 1;
-    gameVariable.campaign.isCampaignDashboardOpen = true;
+  openDashboard() {
+    gameVariable.ui.selectionScreenList.push(dashboard);
+    dashboard.campaignCurrentStep = 1;
+    dashboard.isDashboardOpen = true;
 
-    if (gameVariable.campaign.isCampaignDashboardOpen) {
-      gameVariable.campaign.dashboardIconList.push(
-        openAvailableTowerMenuIcon,
-        stepOneIcon
-      );
+    if (dashboard.isDashboardOpen) {
+      dashboard.icons.push(openAvailableTowerMenuIcon, stepOneIcon);
     }
   }
 }

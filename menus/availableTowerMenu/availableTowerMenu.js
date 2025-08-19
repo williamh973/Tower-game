@@ -15,6 +15,7 @@ import { stepOneIcon } from "../../models/icon/campaignStep/campaignStepIcon.ins
 import {
   availableTowerMenu,
   buildSpotMenu,
+  dashboard,
 } from "../../models/selectionScreen/selectionScreen.instance.js";
 
 export const openAvailableTowerMenu = (openMenuIcon) => {
@@ -46,7 +47,7 @@ export const openAvailableTowerMenu = (openMenuIcon) => {
 };
 
 const hideOpenMenuIcon = () => {
-  gameVariable.campaign.dashboardIconList = [];
+  dashboard.icons = [];
 };
 
 export const closeAvailableTowerMenu = (icon) => {
@@ -58,14 +59,11 @@ export const closeAvailableTowerMenu = (icon) => {
     if (!gameVariable.preparation.isAvailableTowersMenuOpen) {
       gameVariable.ui.selectionScreenList =
         gameVariable.ui.selectionScreenList.filter(
-          (screen) => screen.name === "campaignDashboard"
+          (screen) => screen.name === "dashboard"
         );
 
       gameVariable.ui.arrowIconList = [];
-      gameVariable.campaign.dashboardIconList.push(
-        openAvailableTowerMenuIcon,
-        stepOneIcon
-      );
+      dashboard.icons.push(openAvailableTowerMenuIcon, stepOneIcon);
       gameVariable.preparation.availableTowerList = [];
     }
   }, 350);
