@@ -19,11 +19,12 @@ export const dashboardIconList = () => {
         case "openAvailableTowerMenu":
           openAvailableTowerMenu(icon);
           break;
-        case "stepOneIcon":
-          loadCampaignStep();
-          break;
         default:
           break;
+      }
+
+      if (icon.name) {
+        loadCampaignStep(icon.name);
       }
     }
   }

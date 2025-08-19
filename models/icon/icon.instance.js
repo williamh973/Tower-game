@@ -1,6 +1,7 @@
 import { theGoldCoinIcon, theStartWaveIcon } from "../../assets/icon.asset.js";
 import { initAvailableTowerMenuIcons } from "./availableTowersMenu/availableTowersMenuIcons.instance.js";
 import { initBuildspotMenuTowerIcon } from "./buildSpotMenuIcon/buildSpotMenuIcon.instance.js";
+import { initCampaignStepIcons } from "./campaignStep/campaignStepIcon.instance.js";
 import { Icon } from "./icon.model.js";
 
 export let lifeHudMask;
@@ -102,4 +103,5 @@ export const initIcons = async () => {
   );
   await initAvailableTowerMenuIcons();
   await initBuildspotMenuTowerIcon();
+  await initCampaignStepIcons();
 };

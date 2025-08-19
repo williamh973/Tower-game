@@ -16,28 +16,34 @@ import { initBuildSpot } from "../../buildSpot/initBuildSpot.js";
 let maxUnit = 50;
 export let wave = new Wave(maxUnit);
 
-export const loadCampaignStep = () => {
-  switch (gameVariable.campaign.campaignCurrentStep) {
-    case 1:
-      const map = new Map(theMapStepOne);
-      gameVariable.wave.waveList.push(wave);
+export const loadCampaignStep = (iconName) => {
+  const stepIcons = ["stepOneIcon"];
+  if (!stepIcons.includes(iconName)) return console.log("ca passe paas");
 
-      gameVariable.campaign.mapList.push(map);
+  const initLevel = () => {
+    gameVariable.ui.selectionScreenList = [];
+    gameVariable.campaign.dashboardIconList = [];
+  };
 
-      gameVariable.battle.battleIconList.push(
-        startWaveIcon,
-        lifeHudMask,
-        goldHudMask,
-        waveHudMask,
-        pauseDisplay,
-        goldCoinIcon
-      );
-      initHUDText();
-      initBuildSpot();
-      gameVariable.campaign.isStepLoaded = true;
+  switch (iconName) {
+    case "stepOneIcon":
+      gameVariable.campaign.mapList.push(new Map(theMapStepOne, 1));
+      initLevel();
       break;
 
     default:
-    // code
+      break;
   }
+
+  // gameVariable.battle.battleIconList.push(
+  //   startWaveIcon,
+  //   lifeHudMask,
+  //   goldHudMask,
+  //   waveHudMask,
+  //   pauseDisplay,
+  //   goldCoinIcon
+  // );
+  // initHUDText();
+  // initBuildSpot();
+  gameVariable.campaign.isStepLoaded = true;
 };

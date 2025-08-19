@@ -11,6 +11,7 @@ import {
   rightArrow,
   wizardTowerAvailableIcon,
 } from "../../models/icon/availableTowersMenu/availableTowersMenuIcons.instance.js";
+import { stepOneIcon } from "../../models/icon/campaignStep/campaignStepIcon.instance.js";
 import {
   availableTowerMenu,
   buildSpotMenu,
@@ -61,7 +62,10 @@ export const closeAvailableTowerMenu = (icon) => {
         );
 
       gameVariable.ui.arrowIconList = [];
-      gameVariable.campaign.dashboardIconList.push(openAvailableTowerMenuIcon);
+      gameVariable.campaign.dashboardIconList.push(
+        openAvailableTowerMenuIcon,
+        stepOneIcon
+      );
       gameVariable.preparation.availableTowerList = [];
     }
   }, 350);

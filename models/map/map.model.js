@@ -1,7 +1,8 @@
 import { canvasManager } from "../../animate.js";
+import { wave } from "../../spawnHandle/campaign/step/checkCampaignStep.js";
 
 export class Map {
-  constructor(image) {
+  constructor(image, numberOfWave) {
     this.position = {
       x: 0,
       y: 0,
@@ -9,6 +10,9 @@ export class Map {
     this.width = canvasManager.width;
     this.height = canvasManager.height;
     this.image = image;
+    this.waveList = [];
+
+    this.initWave(numberOfWave);
   }
   draw() {
     canvasManager.context.drawImage(
@@ -22,5 +26,11 @@ export class Map {
 
   update() {
     this.draw();
+  }
+
+  initWave(numberOfWave) {
+    for (let i = 0; i < numberOfWave; i++) {
+      this.waveList.push(wave);
+    }
   }
 }

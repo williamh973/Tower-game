@@ -2,6 +2,7 @@ import { animate } from "../../animate.js";
 import { gameVariable } from "../../gameVariable.js";
 import { initTowers } from "../building/building.instance.js";
 import { openAvailableTowerMenuIcon } from "../icon/availableTowersMenu/availableTowersMenuIcons.instance.js";
+import { stepOneIcon } from "../icon/campaignStep/campaignStepIcon.instance.js";
 import {
   easyDifficultyIcon,
   hardDifficultyIcon,
@@ -60,7 +61,10 @@ export class Game {
     gameVariable.campaign.isCampaignDashboardOpen = true;
 
     if (gameVariable.campaign.isCampaignDashboardOpen) {
-      gameVariable.campaign.dashboardIconList.push(openAvailableTowerMenuIcon);
+      gameVariable.campaign.dashboardIconList.push(
+        openAvailableTowerMenuIcon,
+        stepOneIcon
+      );
     }
   }
 }

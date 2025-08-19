@@ -29,3 +29,5 @@ export const theFireTowerAvailable = createImg(
 export const theLeftArrow = createImg("./assets/images/arrow-left.png");
 export const theRightArrow = createImg("./assets/images/arrow-right.png");
 export const theReturn = createImg("./assets/images/return.png");
+
+export const theStepOneIcon = createImg("./assets/images/step-1-icon.png");

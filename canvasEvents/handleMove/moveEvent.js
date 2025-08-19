@@ -12,6 +12,5 @@ canvas.addEventListener("mousemove", (event) => {
   iconHover(gameVariable.ui.levelIconList);
   iconHover(gameVariable.battle.battleIconList);
   iconHover(gameVariable.preparation.availableTowerList);
-  iconHover(gameVariable.campaign.stepIconList);
   iconHover(gameVariable.campaign.dashboardIconList);
 });
