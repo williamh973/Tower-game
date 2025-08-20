@@ -42,26 +42,28 @@ export const towerSetupMenuIcons = () => {
 };
 
 export const battleIconList = async () => {
-  for (const icon of dashboard.map.icons) {
-    if (
-      isHovering(
-        x,
-        y,
-        icon.position.x,
-        icon.position.y,
-        icon.width,
-        icon.height
-      )
-    ) {
-      switch (icon.name) {
-        case "startWaveIcon":
-          await initWave(icon);
-          break;
-        case "pauseIcon":
-          togglePause(icon);
-          break;
-        default:
-          break;
+  if (dashboard.map) {
+    for (const icon of dashboard.map.icons) {
+      if (
+        isHovering(
+          x,
+          y,
+          icon.position.x,
+          icon.position.y,
+          icon.width,
+          icon.height
+        )
+      ) {
+        switch (icon.name) {
+          case "startWaveIcon":
+            await initWave(icon);
+            break;
+          case "pauseIcon":
+            togglePause(icon);
+            break;
+          default:
+            break;
+        }
       }
     }
   }

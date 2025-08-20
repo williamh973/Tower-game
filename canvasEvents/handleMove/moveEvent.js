@@ -15,7 +15,10 @@ canvas.addEventListener("mousemove", (event) => {
 
   iconHover(towerSetupMenu.arrowIcons);
   iconHover(levelDifficultyMenu.icons);
-  iconHover(dashboard.map.icons);
+
+  if (dashboard.map) {
+    iconHover(dashboard.map.icons);
+  }
   iconHover(towerSetupMenu.availableTowerIcons);
   iconHover(dashboard.icons);
 });
