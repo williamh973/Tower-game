@@ -38,6 +38,7 @@ export class Slot {
 
   addTowerIconToSlot(slot, selectedIcon, remainingBuildMenuSlots) {
     slot.content = selectedIcon.ghostTowerIcon;
+    slot.tower = selectedIcon.tower;
     remainingBuildMenuSlots--;
     slot.isOccupied = true;
     selectedIcon.isClickable = false;

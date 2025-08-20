@@ -39,8 +39,9 @@ export class Icon {
     this.isClickable = isClickable;
     this.isActivated = false;
     this.isHovering = false;
-    this.ghostTowerIcon = null;
     this.isVisible = true;
+    this.ghostTowerIcon = null;
+    this.tower = null;
     this.associatedBuildSpot = {};
     this.scale = 1;
     this.scaleDirection = 1;

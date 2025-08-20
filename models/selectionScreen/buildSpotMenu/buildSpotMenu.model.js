@@ -32,6 +32,7 @@ export class BuildSpotMenu extends SelectionScreen {
 
     const ghostIcon = tower.buildSpotMenuTowerIcon;
 
+    availableTowerIcon.tower = tower;
     availableTowerIcon.ghostTowerIcon = ghostIcon;
     availableTowerIcon.ghostIconInitialPosition(ghostIcon, availableTowerIcon);
 
