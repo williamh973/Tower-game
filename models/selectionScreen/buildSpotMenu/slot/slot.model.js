@@ -11,7 +11,7 @@ export class Slot {
     this.width = 50;
     this.height = 50;
     this.image = new Image();
-    this.towerIcon = null;
+    this.content = null;
     this.tower = null;
     this.isOccupied = false;
   }
@@ -19,7 +19,7 @@ export class Slot {
   draw() {
     if (this.isOccupied) {
       context.drawImage(
-        this.towerIcon.image,
+        this.content.image,
         this.position.x,
         this.position.y,
         this.width,
@@ -37,7 +37,7 @@ export class Slot {
   }
 
   addTowerIconToSlot(slot, selectedIcon, remainingBuildMenuSlots) {
-    slot.towerIcon = selectedIcon.ghostTowerIcon;
+    slot.content = selectedIcon.ghostTowerIcon;
     remainingBuildMenuSlots--;
     slot.isOccupied = true;
     selectedIcon.isClickable = false;

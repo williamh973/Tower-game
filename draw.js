@@ -14,7 +14,7 @@ export const draw = () => {
         slot.draw();
 
         if (slot.isGhostTowerPlaced) {
-          slot.towerIcon.draw();
+          slot.content.draw();
         }
       });
     }

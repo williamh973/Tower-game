@@ -13,7 +13,6 @@ export const reversePulse = (icon) => {
   const speed = 0.03;
   const minScale = 0.8;
   const maxScale = 1.0;
-  // console.log("ca passe", icon);
   icon.scale -= icon.scaleDirection * speed;
   if (icon.scale <= minScale) {
     icon.scaleDirection *= -1;

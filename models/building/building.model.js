@@ -18,7 +18,7 @@ export class Building {
     attack,
     rateOfFire,
     isDamageZone,
-    towerIcon,
+    towerAvailableIcon,
     buildSpotMenuTowerIcon,
     canThrowProjectiles
   ) {
@@ -32,7 +32,7 @@ export class Building {
     this.price = price;
     this.isDamageZone = isDamageZone;
     this.rateOfFire = rateOfFire;
-    this.towerIcon = towerIcon;
+    this.towerAvailableIcon = towerAvailableIcon;
     this.buildSpotMenuTowerIcon = buildSpotMenuTowerIcon;
     this.canThrowProjectiles = canThrowProjectiles;
     this.attack = attack;
