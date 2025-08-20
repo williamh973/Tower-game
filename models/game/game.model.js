@@ -1,7 +1,7 @@
 import { animate } from "../../animate.js";
 import { gameVariable } from "../../gameVariable.js";
 import { initTowers } from "../building/building.instance.js";
-import { openAvailableTowerMenuIcon } from "../icon/availableTowersMenu/availableTowersMenuIcons.instance.js";
+import { openAvailableTowerMenuIcon } from "../icon/towerSetupMenu/towerSetupMenuIcons.instance.js";
 import { stepOneIcon } from "../icon/campaignStep/campaignStepIcon.instance.js";
 import {
   easyDifficultyIcon,
@@ -12,12 +12,15 @@ import {
 import {
   dashboard,
   initSelectionScreens,
-  levelDifficultyScreen,
+  levelDifficultyMenu,
 } from "../selectionScreen/selectionScreen.instance.js";
+import { Player } from "../player.model.js";
 
 export class Game {
   constructor() {
-    this.difficulty = "easy";
+    this.player = new Player();
+    this.difficulty = null;
+    this.selectionScreenList = [];
     this.init();
   }
 
@@ -31,11 +34,11 @@ export class Game {
   }
 
   initDifficultyScreen() {
-    gameVariable.ui.selectionScreenList.push(levelDifficultyScreen);
-    gameVariable.ui.isDifficultyMenuOpen = true;
+    gameVariable.game.selectionScreenList.push(levelDifficultyMenu);
+    levelDifficultyMenu.isLevelDifficultyMenuOpen = true;
 
-    if (gameVariable.ui.isDifficultyMenuOpen) {
-      gameVariable.ui.levelIconList.push(
+    if (levelDifficultyMenu.isLevelDifficultyMenuOpen) {
+      levelDifficultyMenu.icons.push(
         easyDifficultyIcon,
         mediumDifficultyIcon,
         hardDifficultyIcon
@@ -47,15 +50,15 @@ export class Game {
     const allowed = ["easy", "medium", "hard"];
     if (allowed.includes(level)) {
       this.difficulty = level;
-      gameVariable.ui.isDifficultyMenuOpen = false;
-      gameVariable.ui.selectionScreenList = [];
-      gameVariable.ui.levelIconList = [];
+      levelDifficultyMenu.isLevelDifficultyMenuOpen = false;
+      gameVariable.game.selectionScreenList = [];
+      levelDifficultyMenu.icons = [];
       this.openDashboard();
     }
   }
 
   openDashboard() {
-    gameVariable.ui.selectionScreenList.push(dashboard);
+    gameVariable.game.selectionScreenList.push(dashboard);
     dashboard.campaignCurrentStep = 1;
     dashboard.isDashboardOpen = true;
 

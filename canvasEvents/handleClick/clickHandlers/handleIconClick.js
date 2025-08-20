@@ -1,10 +1,10 @@
 import { isHovering, x, y } from "../../../shared/utils.js";
 import { gameVariable } from "../../../../../../gameVariable.js";
-import { closeAvailableTowerMenu } from "../../../menus/availableTowerMenu/availableTowerMenu.js";
+import { closeTowerSetupMenu } from "../../../menus/towerSetupMenu/towerSetupMenu.js";
 import {
   availableTowerMenuNextStep,
   availableTowerMenuPrevStep,
-} from "../../../../../../menus/availableTowerMenu/handleCarouselSteps.js";
+} from "../../../../../../menus/towerSetupMenu/handleCarouselSteps.js";
 import { initWave } from "../../../spawnHandle/campaign/step/wave/wave.js";
 import { togglePause } from "../../../../../../gamePauseHandle.js";
 
@@ -22,7 +22,7 @@ export const arrowIconList = () => {
     ) {
       switch (icon.name) {
         case "closeArrow":
-          closeAvailableTowerMenu(icon);
+          closeTowerSetupMenu(icon);
           break;
         case "rightArrow":
           availableTowerMenuNextStep(icon);

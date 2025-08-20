@@ -9,6 +9,7 @@ import {
   fireTower,
   wizardTower,
 } from "../models/building/building.instance.js";
+import { towerSetupMenu } from "../models/selectionScreen/selectionScreen.instance.js";
 
 export const playerBuildTower = (buildSpotTowerIcon) => {
   const tower = {
@@ -26,7 +27,7 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
 
   switch (buildSpotTowerIcon.name) {
     case "buildSpotArcherIcon":
-      if (gameVariable.player.goldCoin >= archerTower.price) {
+      if (gameVariable.game.player.gold >= archerTower.price) {
         gameVariable.tower.placedTowerList.push(archerTower);
         archerTower.isUnderConstruction();
 
@@ -37,7 +38,7 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
       break;
 
     case "buildSpotWizardIcon":
-      if (gameVariable.player.goldCoin >= wizardTower.price) {
+      if (gameVariable.game.player.gold >= wizardTower.price) {
         gameVariable.tower.placedTowerList.push(wizardTower);
         wizardTower.isUnderConstruction();
 
@@ -47,7 +48,7 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
       break;
 
     case "buildSpotCannonIcon":
-      if (gameVariable.player.goldCoin >= cannonTower.price) {
+      if (gameVariable.game.player.gold >= cannonTower.price) {
         gameVariable.tower.placedTowerList.push(cannonTower);
         cannonTower.isUnderConstruction();
 
@@ -58,7 +59,7 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
       break;
 
     case "buildSpotFireIcon":
-      if (gameVariable.player.goldCoin >= fireTower.price) {
+      if (gameVariable.game.player.gold >= fireTower.price) {
         gameVariable.tower.placedTowerList.push(fireTower);
         fireTower.isUnderConstruction();
 
@@ -69,7 +70,7 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
       break;
 
     case "buildSpotBarrackIcon":
-      if (gameVariable.player.goldCoin >= barrackTower.price) {
+      if (gameVariable.game.player.gold >= barrackTower.price) {
         gameVariable.tower.placedTowerList.push(barrackTower);
         barrackTower.isUnderConstruction();
 
@@ -80,7 +81,7 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
       break;
 
     case "buildSpotCrackIcon":
-      if (gameVariable.player.goldCoin >= crackTower.price) {
+      if (gameVariable.game.player.gold >= crackTower.price) {
         gameVariable.tower.placedTowerList.push(crackTower);
         crackTower.isUnderConstruction();
 
@@ -91,8 +92,8 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
       break;
   }
 
-  gameVariable.ui.selectionScreenList.find((selectionScreen) => {
-    gameVariable.ui.isBuildSpotMenuOpen = !gameVariable.ui.isBuildSpotMenuOpen;
+  gameVariable.game.selectionScreenList.find((selectionScreen) => {
+    towerSetupMenu.isTowerSetupMenuOpen = !towerSetupMenu.isTowerSetupMenuOpen;
     closeBuildSpotMenu(selectionScreen);
   });
 };

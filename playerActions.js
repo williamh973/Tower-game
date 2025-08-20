@@ -11,8 +11,8 @@ export const checkIfUnitReachedEnd = (
   isCanMove
 ) => {
   if (currentWaypointIndex >= waypointsLength - 1) {
-    gameVariable.player.life -= 1;
-    lifeHudMask.text = "❤️ " + gameVariable.player.life;
+    gameVariable.game.player.life -= 1;
+    lifeHudMask.text = "❤️ " + gameVariable.game.player.life;
     isCanMove = false;
 
     if (navigator.vibrate) {
@@ -23,13 +23,13 @@ export const checkIfUnitReachedEnd = (
 };
 
 export const substractPlayerGold = (towerPrice) => {
-  gameVariable.player.goldCoin -= towerPrice;
-  goldHudMask.text = "🪙 " + gameVariable.player.goldCoin;
+  gameVariable.game.player.gold -= towerPrice;
+  goldHudMask.text = "🪙 " + gameVariable.game.player.gold;
 };
 
 export const addPlayerGold = (gold) => {
-  gameVariable.player.goldCoin += gold;
-  goldHudMask.text = "🪙 " + gameVariable.player.goldCoin;
+  gameVariable.game.player.gold += gold;
+  goldHudMask.text = "🪙 " + gameVariable.game.player.gold;
 };
 
 export const handleDeadDemons = () => {

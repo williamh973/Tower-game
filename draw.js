@@ -1,10 +1,13 @@
-import { context } from "./animate.js";
 import { gameVariable } from "./gameVariable.js";
-import { dashboard } from "./models/selectionScreen/selectionScreen.instance.js";
+import {
+  dashboard,
+  levelDifficultyMenu,
+  towerSetupMenu,
+} from "./models/selectionScreen/selectionScreen.instance.js";
 import { drawDebugCollisionSquare } from "./shared/utils.js";
 
 export const draw = () => {
-  gameVariable.ui.selectionScreenList.forEach((screen) => {
+  gameVariable.game.selectionScreenList.forEach((screen) => {
     screen.draw();
 
     if (screen.name === "buildSpotMenu") {
@@ -22,7 +25,7 @@ export const draw = () => {
     icon.draw();
   });
 
-  gameVariable.ui.levelIconList.forEach((icon) => {
+  levelDifficultyMenu.icons.forEach((icon) => {
     icon.draw();
   });
 
@@ -34,10 +37,10 @@ export const draw = () => {
     icon.draw();
   });
 
-  if (gameVariable.preparation.isAvailableTowersMenuOpen) {
-    const index = gameVariable.preparation.currentTowerIndex;
-    const currentIcon = gameVariable.preparation.availableTowerList[index];
-    gameVariable.preparation.availableTowerList.forEach(() => {
+  if (towerSetupMenu.isTowerSetupMenuOpen) {
+    const index = towerSetupMenu.currentTowerIndex;
+    const currentIcon = towerSetupMenu.availableTowers[index];
+    towerSetupMenu.availableTowers.forEach(() => {
       currentIcon.draw();
 
       if (currentIcon.ghostTowerIcon) {
@@ -48,10 +51,5 @@ export const draw = () => {
 
   gameVariable.battle.buildSpotList.forEach((spot) => {
     spot.draw();
-  });
-
-  gameVariable.tower.buildSpotMenuSlotList.forEach((buildSpotIcon) => {
-    buildSpotIcon.draw();
-    drawDebugCollisionSquare(buildSpotIcon, context);
   });
 };

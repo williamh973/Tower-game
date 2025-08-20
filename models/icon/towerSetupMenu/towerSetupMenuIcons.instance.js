@@ -101,7 +101,7 @@ export const initAvailableTowerMenuIcons = async () => {
     60,
     true,
     "",
-    "openAvailableTowerMenu"
+    "openTowerSetupMenu"
   );
   leftArrow = new Icon(
     50,

@@ -1,5 +1,8 @@
 import { gameVariable } from "./gameVariable.js";
-import { dashboard } from "./models/selectionScreen/selectionScreen.instance.js";
+import {
+  dashboard,
+  towerSetupMenu,
+} from "./models/selectionScreen/selectionScreen.instance.js";
 import { wave } from "./spawnHandle/campaign/step/checkCampaignStep.js";
 
 export const update = (timestamp) => {
@@ -28,7 +31,7 @@ export const update = (timestamp) => {
     icon.updateAnimation();
   });
 
-  gameVariable.preparation.availableTowerList.forEach((icon) => {
+  towerSetupMenu.availableTowers.forEach((icon) => {
     icon.updateAnimation();
     icon.height = 100;
   });
@@ -37,10 +40,10 @@ export const update = (timestamp) => {
     icon.updateAnimation();
   });
 
-  gameVariable.ui.selectionScreenList.forEach((selectionScreen) => {
-    if (gameVariable.ui.isBuildSpotMenuOpen) {
-      selectionScreen.updateAnimation();
-    }
+  gameVariable.game.selectionScreenList.forEach((selectionScreen) => {
+    // if (towerSetupMenu.isTowerSetupMenuOpen) {
+    //   selectionScreen.updateAnimation();
+    // }
   });
 
   for (let i = gameVariable.ui.floatingIconList.length - 1; i >= 0; i--) {

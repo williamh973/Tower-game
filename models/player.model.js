@@ -5,5 +5,3 @@ export class Player {
     this.isCanBuildTower = true;
   }
 }
-
-export const player = new Player();

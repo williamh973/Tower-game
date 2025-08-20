@@ -10,27 +10,23 @@ import {
   openAvailableTowerMenuIcon,
   rightArrow,
   wizardTowerAvailableIcon,
-} from "../../models/icon/availableTowersMenu/availableTowersMenuIcons.instance.js";
+} from "../../models/icon/towerSetupMenu/towerSetupMenuIcons.instance.js";
 import { stepOneIcon } from "../../models/icon/campaignStep/campaignStepIcon.instance.js";
 import {
-  availableTowerMenu,
+  towerSetupMenu,
   buildSpotMenu,
   dashboard,
 } from "../../models/selectionScreen/selectionScreen.instance.js";
 
-export const openAvailableTowerMenu = (openMenuIcon) => {
+export const openTowerSetupMenu = (openMenuIcon) => {
   openMenuIcon.isActivated = true;
   setTimeout(() => {
-    gameVariable.preparation.isAvailableTowersMenuOpen =
-      !gameVariable.preparation.isAvailableTowersMenuOpen;
+    towerSetupMenu.isTowerSetupMenuOpen = !towerSetupMenu.isTowerSetupMenuOpen;
 
-    if (gameVariable.preparation.isAvailableTowersMenuOpen) {
-      gameVariable.ui.selectionScreenList.push(
-        availableTowerMenu,
-        buildSpotMenu
-      );
+    if (towerSetupMenu.isTowerSetupMenuOpen) {
+      gameVariable.game.selectionScreenList.push(towerSetupMenu, buildSpotMenu);
       gameVariable.ui.arrowIconList.push(leftArrow, rightArrow, closeArrow);
-      gameVariable.preparation.availableTowerList.push(
+      towerSetupMenu.availableTowers.push(
         archerTowerAvailableIcon,
         wizardTowerAvailableIcon,
         cannonTowerAvailableIcon,
@@ -41,7 +37,7 @@ export const openAvailableTowerMenu = (openMenuIcon) => {
 
       hideOpenMenuIcon();
     } else {
-      closeAvailableTowerMenu();
+      closeTowerSetupMenu();
     }
   }, 300);
 };
@@ -50,21 +46,20 @@ const hideOpenMenuIcon = () => {
   dashboard.icons = [];
 };
 
-export const closeAvailableTowerMenu = (icon) => {
+export const closeTowerSetupMenu = (icon) => {
   icon.isActivated = true;
   setTimeout(() => {
-    gameVariable.preparation.isAvailableTowersMenuOpen =
-      !gameVariable.preparation.isAvailableTowersMenuOpen;
+    towerSetupMenu.isTowerSetupMenuOpen = !towerSetupMenu.isTowerSetupMenuOpen;
 
-    if (!gameVariable.preparation.isAvailableTowersMenuOpen) {
-      gameVariable.ui.selectionScreenList =
-        gameVariable.ui.selectionScreenList.filter(
+    if (!towerSetupMenu.isTowerSetupMenuOpen) {
+      gameVariable.game.selectionScreenList =
+        gameVariable.game.selectionScreenList.filter(
           (screen) => screen.name === "dashboard"
         );
 
       gameVariable.ui.arrowIconList = [];
       dashboard.icons.push(openAvailableTowerMenuIcon, stepOneIcon);
-      gameVariable.preparation.availableTowerList = [];
+      towerSetupMenu.availableTowers = [];
     }
   }, 350);
 };

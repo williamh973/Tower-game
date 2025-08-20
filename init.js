@@ -5,15 +5,16 @@ import {
   goldHudMask,
   lifeHudMask,
 } from "./models/icon/icon.instance.js";
+import { dashboard } from "./models/selectionScreen/selectionScreen.instance.js";
 
 export const initHUDText = () => {
-  lifeHudMask.text = "❤️ " + gameVariable.player.life;
-  goldHudMask.text = "🪙 " + gameVariable.player.goldCoin;
+  lifeHudMask.text = "❤️ " + gameVariable.game.player.life;
+  goldHudMask.text = "🪙 " + gameVariable.game.player.gold;
   waveHudMask.text =
     "🧟 VAGUES " +
-    gameVariable.wave.currentWaveList.length +
+    dashboard.map.currentWaveList.length +
     "/" +
-    gameVariable.wave.waveList.length;
+    dashboard.map.waveList.length;
 
   pauseDisplay.text = gameVariable.ui.isGamePaused ? "▶" : "❚❚";
 };

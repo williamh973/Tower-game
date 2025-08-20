@@ -1,5 +1,6 @@
 import { context } from "../../animate.js";
 import { gameVariable } from "../../gameVariable.js";
+import { dashboard } from "../selectionScreen/selectionScreen.instance.js";
 import { pulse, reversePulse } from "./aniamtions/icon.animation.js";
 import {
   archerTowerAvailableIcon,
@@ -12,7 +13,7 @@ import {
   openAvailableTowerMenuIcon,
   rightArrow,
   wizardTowerAvailableIcon,
-} from "./availableTowersMenu/availableTowersMenuIcons.instance.js";
+} from "./towerSetupMenu/towerSetupMenuIcons.instance.js";
 
 export class Icon {
   constructor(
@@ -166,8 +167,7 @@ export class Icon {
   show() {
     if (
       this.name === "startWaveIcon" &&
-      gameVariable.wave.currentWaveList.length !==
-        gameVariable.wave.waveList.length
+      dashboard.map.currentWaveList.length !== dashboard.map.waveList.length
     ) {
       return (this.isVisible = true);
     }

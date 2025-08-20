@@ -1,5 +1,6 @@
 import { gameVariable } from "../../../gameVariable.js";
 import { updateGhostIconPosition } from "../../../shared/utils.js";
+import { towerSetupMenu } from "../selectionScreen.instance.js";
 import { SelectionScreen } from "../selectionScreen.model.js";
 import {
   first,
@@ -25,7 +26,7 @@ export class BuildSpotMenu extends SelectionScreen {
   }
 
   activateGhostMod(tower, availableTowerIcon) {
-    gameVariable.preparation.isGhostedMod = true;
+    towerSetupMenu.isGhostedMod = true;
 
     const ghostIcon = tower.buildSpotMenuTowerIcon;
 
@@ -36,14 +37,14 @@ export class BuildSpotMenu extends SelectionScreen {
   }
 
   close(element) {
-    gameVariable.ui.selectionScreenList =
-      gameVariable.ui.selectionScreenList.filter(
+    gameVariable.game.selectionScreenList =
+      gameVariable.game.selectionScreenList.filter(
         (screen) => screen.image !== element
       );
   }
 
-  buildSpotMenu = () => {
-    if (gameVariable.ui.isBuildSpotMenuOpen) {
+  animation = () => {
+    if (towerSetupMenu.isTowerSetupMenuOpen) {
       switch (this.name) {
         case "buildSpotMenu":
           const speed = 0.08;
@@ -71,8 +72,8 @@ export class BuildSpotMenu extends SelectionScreen {
   };
 
   updateAnimation() {
-    if (!gameVariable.preparation.isAvailableTowersMenuOpen) {
-      this.buildSpotMenu();
+    this.animation();
+    if (!towerSetupMenu.isTowerSetupMenuOpen) {
     }
   }
 }

@@ -2,6 +2,7 @@ import { fetchWaypoints } from "../../waypoint/waypointHandle.js";
 import { gameVariable } from "../../gameVariable.js";
 import { possibleDemonList } from "../../generators/possibleDemonList.js";
 import { wave } from "../../spawnHandle/campaign/step/checkCampaignStep.js";
+import { dashboard } from "../selectionScreen/selectionScreen.instance.js";
 
 export class Wave {
   constructor(unitMax) {
@@ -26,7 +27,7 @@ export class Wave {
     this.isWaveStarted = true;
     this.isWaveEnded = false;
 
-    gameVariable.wave.currentWaveList.push(wave);
+    dashboard.map.currentWaveList.push(wave);
 
     this.spawnDemon(startWaveIcon);
   }

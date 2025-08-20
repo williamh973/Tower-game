@@ -8,11 +8,13 @@ import { SelectionScreen } from "./selectionScreen.model.js";
 import { theImgBuildSpotMenu } from "../../assets/buildSpotMenu.asset.js";
 import { BuildSpotMenu } from "./buildSpotMenu/buildSpotMenu.model.js";
 import { Dashboard } from "./dashboard/dashboard.model.js";
+import { TowerSetupMenu } from "./towerSetupMenu/towerSetupMenu.model.js";
+import { LevelDifficultyMenu } from "./levelDifficultyMenu/levelDifficultyMenu.model.js";
 
-export let levelDifficultyScreen;
+export let levelDifficultyMenu;
 export let dashboard;
 export let buildSpotMenu;
-export let availableTowerMenu;
+export let towerSetupMenu;
 
 export const initSelectionScreens = async () => {
   const menuWidth = 200;
@@ -24,7 +26,7 @@ export const initSelectionScreens = async () => {
     y: 150,
   };
 
-  levelDifficultyScreen = new SelectionScreen(
+  levelDifficultyMenu = new LevelDifficultyMenu(
     {
       x: 0,
       y: 0,
@@ -33,7 +35,7 @@ export const initSelectionScreens = async () => {
     canvasManager.width,
     canvasManager.height,
     1,
-    "levelDifficultyScreen"
+    "levelDifficultyMenu"
   );
 
   dashboard = new Dashboard(
@@ -56,7 +58,7 @@ export const initSelectionScreens = async () => {
     menuScale,
     name
   );
-  availableTowerMenu = new SelectionScreen(
+  towerSetupMenu = new TowerSetupMenu(
     {
       x: 0,
       y: 0,
@@ -65,6 +67,6 @@ export const initSelectionScreens = async () => {
     canvas.width,
     canvas.height,
     1,
-    "availableTowerMenu"
+    "towerSetupMenu"
   );
 };

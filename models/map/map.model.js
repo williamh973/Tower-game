@@ -11,6 +11,8 @@ export class Map {
     this.height = canvasManager.height;
     this.image = image;
     this.waveList = [];
+    this.maxWaveList = [];
+    this.currentWaveList = [];
 
     this.initWave(numberOfWave);
   }

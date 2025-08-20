@@ -1,5 +1,6 @@
 import { gameVariable } from "../../../../gameVariable.js";
 import { waveHudMask } from "../../../../models/icon/icon.instance.js";
+import { dashboard } from "../../../../models/selectionScreen/selectionScreen.instance.js";
 import { wave } from "../checkCampaignStep.js";
 
 export const initWave = async (startWaveIcon) => {
@@ -11,7 +12,7 @@ export const initWave = async (startWaveIcon) => {
 export const updateWaveHudMask = () => {
   waveHudMask.text =
     "🧟 VAGUES " +
-    gameVariable.wave.currentWaveList.length +
+    dashboard.map.currentWaveList.length +
     "/" +
-    gameVariable.wave.waveList.length;
+    dashboard.map.waveList.length;
 };

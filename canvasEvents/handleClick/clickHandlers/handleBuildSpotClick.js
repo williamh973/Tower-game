@@ -1,7 +1,6 @@
 import { gameVariable } from "../../../gameVariable.js";
 import { isHovering, x, y } from "../../../shared/utils.js";
 import { openBuildSpotMenu } from "../../../../../spawnHandle/buildSpot/buildSpotMenu.js";
-import { player } from "../../../models/player.model.js";
 
 export const buildSpotList = () => {
   for (const spot of gameVariable.battle.buildSpotList) {
@@ -15,7 +14,7 @@ export const buildSpotList = () => {
         spot.height
       ) &&
       !spot.isOccupied &&
-      player.isCanBuildTower
+      gameVariable.game.player.isCanBuildTower
     ) {
       openBuildSpotMenu(spot);
     }

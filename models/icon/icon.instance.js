@@ -1,5 +1,5 @@
 import { theGoldCoinIcon, theStartWaveIcon } from "../../assets/icon.asset.js";
-import { initAvailableTowerMenuIcons } from "./availableTowersMenu/availableTowersMenuIcons.instance.js";
+import { initAvailableTowerMenuIcons } from "./towerSetupMenu/towerSetupMenuIcons.instance.js";
 import { initBuildspotMenuTowerIcon } from "./buildSpotMenuIcon/buildSpotMenuIcon.instance.js";
 import { initCampaignStepIcons } from "./campaignStep/campaignStepIcon.instance.js";
 import { Icon } from "./icon.model.js";

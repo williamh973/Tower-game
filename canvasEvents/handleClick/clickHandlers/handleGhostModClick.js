@@ -1,4 +1,3 @@
-import { gameVariable } from "../../../gameVariable.js";
 import {
   archerTower,
   barrackTower,
@@ -7,10 +6,13 @@ import {
   groundTower,
   wizardTower,
 } from "../../../models/building/building.instance.js";
-import { buildSpotMenu } from "../../../models/selectionScreen/selectionScreen.instance.js";
+import {
+  buildSpotMenu,
+  towerSetupMenu,
+} from "../../../models/selectionScreen/selectionScreen.instance.js";
 
 export const ghostMod = (selectedIcon) => {
-  switch (gameVariable.preparation.currentTowerIndex) {
+  switch (towerSetupMenu.currentTowerIndex) {
     case 0:
       buildSpotMenu.activateGhostMod(archerTower, selectedIcon);
       break;

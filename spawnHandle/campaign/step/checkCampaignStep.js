@@ -22,7 +22,7 @@ export const loadCampaignStep = (iconName) => {
   if (!stepIcons.includes(iconName)) return console.log("ca passe paas");
 
   const initLevel = () => {
-    gameVariable.ui.selectionScreenList = [];
+    gameVariable.game.selectionScreenList = [];
     dashboard.icons = [];
   };
 

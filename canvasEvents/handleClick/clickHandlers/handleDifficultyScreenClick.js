@@ -1,8 +1,9 @@
 import { gameVariable } from "../../../gameVariable.js";
+import { levelDifficultyMenu } from "../../../models/selectionScreen/selectionScreen.instance.js";
 import { isHovering, x, y } from "../../../shared/utils.js";
 
 export const levelIconList = () => {
-  for (const icon of gameVariable.ui.levelIconList) {
+  for (const icon of levelDifficultyMenu.icons) {
     if (
       isHovering(
         x,

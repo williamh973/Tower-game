@@ -11,6 +11,7 @@ import { ghostMod } from "./clickHandlers/handleGhostModClick.js";
 import { dashboardIconList } from "./clickHandlers/handleDashboaredClick.js";
 import { buildSpotList } from "./clickHandlers/handleBuildSpotClick.js";
 import { levelIconList } from "./clickHandlers/handleDifficultyScreenClick.js";
+import { towerSetupMenu } from "../../models/selectionScreen/selectionScreen.instance.js";
 
 canvas.addEventListener("click", (event) => {
   mouseDetect(event);
@@ -25,12 +26,10 @@ export const handleClick = async () => {
   buildSpotList();
 
   let selectedIcon =
-    gameVariable.preparation.availableTowerList[
-      gameVariable.preparation.currentTowerIndex
-    ];
+    towerSetupMenu.availableTowers[towerSetupMenu.currentTowerIndex];
 
   if (
-    gameVariable.preparation.isAvailableTowersMenuOpen &&
+    towerSetupMenu.isTowerSetupMenuOpen &&
     isHovering(
       x,
       y,
@@ -45,7 +44,7 @@ export const handleClick = async () => {
     ghostMod(selectedIcon);
   }
 
-  if (gameVariable.preparation.isGhostedMod) {
+  if (towerSetupMenu.isGhostedMod) {
     for (const slot of buildSpotMenu.buildMenuSlots) {
       if (
         isHovering(
@@ -63,21 +62,6 @@ export const handleClick = async () => {
           buildSpotMenu.remainingBuildMenuSlots
         );
       }
-    }
-  }
-
-  for (const buildSpotTowerIcon of gameVariable.tower.buildSpotMenuSlotList) {
-    if (
-      isHovering(
-        x,
-        y,
-        buildSpotTowerIcon.position.x,
-        buildSpotTowerIcon.position.y,
-        buildSpotTowerIcon.width,
-        buildSpotTowerIcon.height
-      )
-    ) {
-      playerBuildTower(buildSpotTowerIcon);
     }
   }
 };

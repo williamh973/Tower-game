@@ -1,5 +1,6 @@
 import { context } from "../../../../animate.js";
 import { gameVariable } from "../../../../gameVariable.js";
+import { towerSetupMenu } from "../../selectionScreen.instance.js";
 
 export class Slot {
   constructor(x, y, name) {
@@ -40,7 +41,7 @@ export class Slot {
     remainingBuildMenuSlots--;
     slot.isOccupied = true;
     selectedIcon.isClickable = false;
-    gameVariable.preparation.isGhostedMod = false;
+    towerSetupMenu.isGhostedMod = false;
     selectedIcon.ghostTowerIcon.isVisible = false;
   }
 }
