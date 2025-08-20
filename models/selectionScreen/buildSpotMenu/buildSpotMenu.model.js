@@ -17,6 +17,7 @@ export class BuildSpotMenu extends SelectionScreen {
     this.remainingBuildMenuSlots = 4;
     this.isGhostTowerPlaced = false;
     this.buildMenuSlots = [];
+
     this.init();
   }
 

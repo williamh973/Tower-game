@@ -13,6 +13,7 @@ export class Map {
     this.waveList = [];
     this.maxWaveList = [];
     this.currentWaveList = [];
+    this.icons = [];
 
     this.initWave(numberOfWave);
   }

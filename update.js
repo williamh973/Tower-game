@@ -1,5 +1,6 @@
 import { gameVariable } from "./gameVariable.js";
 import {
+  buildSpotMenu,
   dashboard,
   towerSetupMenu,
 } from "./models/selectionScreen/selectionScreen.instance.js";
@@ -19,8 +20,12 @@ export const update = (timestamp) => {
     demon.update();
   });
 
-  gameVariable.battle.projectileList.forEach((projectile) => {
-    projectile.update();
+  buildSpotMenu.buildMenuSlots.forEach((slot) => {
+    if (slot.tower) {
+      slot.tower.projectiles.forEach((projectile) => {
+        projectile.update();
+      });
+    }
   });
 
   dashboard.icons.forEach((icon) => {

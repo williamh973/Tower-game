@@ -1,13 +1,13 @@
 import { gameVariable } from "./gameVariable.js";
 
 export const togglePause = (icon) => {
-  gameVariable.ui.isGamePaused = !gameVariable.ui.isGamePaused;
-  gameVariable.ui.isGamePaused ? (icon.text = "▶") : (icon.text = "❚❚");
+  gameVariable.game.isPaused = !gameVariable.game.isPaused;
+  gameVariable.game.isPaused ? (icon.text = "▶") : (icon.text = "❚❚");
 
-  if (gameVariable.ui.isGamePaused) {
+  if (gameVariable.game.isPaused) {
     setTimeout(() => {
       alert("Jeu mis en pause. Cliquez pour reprendre");
-      gameVariable.ui.isGamePaused = false;
+      gameVariable.game.isPaused = false;
       icon.text = "❚❚";
     }, 100);
   }

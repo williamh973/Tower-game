@@ -1,5 +1,4 @@
 import { context } from "../../../../animate.js";
-import { gameVariable } from "../../../../gameVariable.js";
 import { towerSetupMenu } from "../../selectionScreen.instance.js";
 
 export class Slot {
@@ -13,6 +12,7 @@ export class Slot {
     this.height = 50;
     this.image = new Image();
     this.towerIcon = null;
+    this.tower = null;
     this.isOccupied = false;
   }
 

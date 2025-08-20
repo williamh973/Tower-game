@@ -21,6 +21,7 @@ export class Game {
     this.player = new Player();
     this.difficulty = null;
     this.selectionScreenList = [];
+    this.isPaused = false;
     this.init();
   }
 

@@ -29,7 +29,6 @@ export let cannonTower;
 export let groundTower;
 export let fireTower;
 export let barrackTower;
-export let crackTower;
 
 export const initTowers = async () => {
   archerTower = new Building(
@@ -45,7 +44,8 @@ export const initTowers = async () => {
     1500,
     false,
     archerTowerAvailableIcon,
-    buildSpotMenuArcherTowerIcon
+    buildSpotMenuArcherTowerIcon,
+    true
   );
 
   wizardTower = new Building(
@@ -61,7 +61,8 @@ export const initTowers = async () => {
     2700,
     false,
     wizardTowerAvailableIcon,
-    buildSpotMenuWizardTowerIcon
+    buildSpotMenuWizardTowerIcon,
+    true
   );
 
   cannonTower = new Building(
@@ -77,7 +78,8 @@ export const initTowers = async () => {
     3000,
     true,
     cannonTowerAvailableIcon,
-    buildSpotMenuCannonTowerIcon
+    buildSpotMenuCannonTowerIcon,
+    true
   );
 
   groundTower = new Building(
@@ -93,7 +95,8 @@ export const initTowers = async () => {
     50,
     true,
     groundTowerAvailableIcon,
-    buildSpotMenuGroundTowerIcon
+    buildSpotMenuGroundTowerIcon,
+    false
   );
 
   barrackTower = new Building(
@@ -109,7 +112,8 @@ export const initTowers = async () => {
     0,
     true,
     barrackTowerAvailableIcon,
-    buildSpotMenuBarrackTowerIcon
+    buildSpotMenuBarrackTowerIcon,
+    false
   );
 
   fireTower = new Building(
@@ -125,20 +129,7 @@ export const initTowers = async () => {
     50,
     true,
     fireTowerAvailableIcon,
-    buildSpotMenuFireTowerIcon
-  );
-
-  crackTower = new Building(
-    0,
-    0,
-    0,
-    undefined,
-    "ground",
-    "crack",
-    100,
-    100,
-    Math.random() * 3 + 1,
-    50,
+    buildSpotMenuFireTowerIcon,
     true
   );
 };

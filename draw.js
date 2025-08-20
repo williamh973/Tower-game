@@ -4,7 +4,6 @@ import {
   levelDifficultyMenu,
   towerSetupMenu,
 } from "./models/selectionScreen/selectionScreen.instance.js";
-import { drawDebugCollisionSquare } from "./shared/utils.js";
 
 export const draw = () => {
   gameVariable.game.selectionScreenList.forEach((screen) => {
@@ -33,9 +32,11 @@ export const draw = () => {
     icon.draw();
   });
 
-  gameVariable.battle.battleIconList.forEach((icon) => {
-    icon.draw();
-  });
+  if (dashboard.map) {
+    dashboard.map.icons.forEach((icon) => {
+      icon.draw();
+    });
+  }
 
   if (towerSetupMenu.isTowerSetupMenuOpen) {
     const index = towerSetupMenu.currentTowerIndex;

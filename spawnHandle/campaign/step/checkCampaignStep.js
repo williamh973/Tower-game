@@ -36,15 +36,15 @@ export const loadCampaignStep = (iconName) => {
       break;
   }
 
-  // gameVariable.battle.battleIconList.push(
-  //   startWaveIcon,
-  //   lifeHudMask,
-  //   goldHudMask,
-  //   waveHudMask,
-  //   pauseDisplay,
-  //   goldCoinIcon
-  // );
-  // initHUDText();
-  // initBuildSpot();
+  dashboard.map.icons.push(
+    startWaveIcon,
+    lifeHudMask,
+    goldHudMask,
+    waveHudMask,
+    pauseDisplay,
+    goldCoinIcon
+  );
+  initHUDText();
+  initBuildSpot();
   dashboard.isStepLoaded = true;
 };

@@ -16,5 +16,5 @@ export const initHUDText = () => {
     "/" +
     dashboard.map.waveList.length;
 
-  pauseDisplay.text = gameVariable.ui.isGamePaused ? "▶" : "❚❚";
+  pauseDisplay.text = gameVariable.game.isPaused ? "▶" : "❚❚";
 };

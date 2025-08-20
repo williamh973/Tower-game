@@ -1,5 +1,4 @@
 import { context } from "../../animate.js";
-import { gameVariable } from "../../gameVariable.js";
 import { dashboard } from "../selectionScreen/selectionScreen.instance.js";
 import { pulse, reversePulse } from "./aniamtions/icon.animation.js";
 import {

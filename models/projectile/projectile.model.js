@@ -148,10 +148,9 @@ export class Projectile {
   }
 
   remove() {
-    gameVariable.battle.projectileList =
-      gameVariable.battle.projectileList.filter(
-        (projectile) => projectile.hasHit === false
-      );
+    this.associatedTower.projectiles = this.associatedTower.projectiles.filter(
+      (projectile) => projectile.hasHit === false
+    );
   }
 
   handleHit(target) {

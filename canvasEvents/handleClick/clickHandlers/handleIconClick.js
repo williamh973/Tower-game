@@ -7,7 +7,10 @@ import {
 } from "../../../../../../menus/towerSetupMenu/handleCarouselSteps.js";
 import { initWave } from "../../../spawnHandle/campaign/step/wave/wave.js";
 import { togglePause } from "../../../../../../gamePauseHandle.js";
-import { towerSetupMenu } from "../../../models/selectionScreen/selectionScreen.instance.js";
+import {
+  dashboard,
+  towerSetupMenu,
+} from "../../../models/selectionScreen/selectionScreen.instance.js";
 
 export const towerSetupMenuIcons = () => {
   for (const icon of towerSetupMenu.arrowIcons) {
@@ -39,7 +42,7 @@ export const towerSetupMenuIcons = () => {
 };
 
 export const battleIconList = async () => {
-  for (const icon of gameVariable.battle.battleIconList) {
+  for (const icon of dashboard.map.icons) {
     if (
       isHovering(
         x,

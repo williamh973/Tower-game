@@ -19,31 +19,34 @@ export class Building {
     rateOfFire,
     isDamageZone,
     towerIcon,
-    buildSpotMenuTowerIcon
+    buildSpotMenuTowerIcon,
+    canThrowProjectiles
   ) {
     this.position = position;
     this.width = width;
     this.height = height;
     this.towerImage = towerImage;
-    this.underBuildImage = theImgTowerUnderBuild;
     this.type = type;
     this.name = name;
     this.range = range;
     this.price = price;
     this.isDamageZone = isDamageZone;
+    this.rateOfFire = rateOfFire;
+    this.towerIcon = towerIcon;
+    this.buildSpotMenuTowerIcon = buildSpotMenuTowerIcon;
+    this.canThrowProjectiles = canThrowProjectiles;
+    this.attack = attack;
+    this.underBuildImage = theImgTowerUnderBuild;
     this.isCanAttack = true;
     this.isClickable = true;
     this.isUnderBuild = false;
     this.isBuild = false;
     this.scale = 1.3;
     this.loading = 0;
-    this.rateOfFire = rateOfFire;
     this.numberOfTarget = 1;
     this.lastShotTime = 0;
     this.target = {};
-    this.towerIcon = towerIcon;
-    this.buildSpotMenuTowerIcon = buildSpotMenuTowerIcon;
-    this.attack = attack;
+    this.projectiles = [];
   }
 
   draw() {
@@ -131,7 +134,7 @@ export class Building {
       associatedTower
     );
 
-    gameVariable.battle.projectileList.push(projectile);
+    this.projectiles.push(projectile);
   }
 
   isUnderConstruction() {

@@ -5,8 +5,8 @@ import {
   archerTower,
   barrackTower,
   cannonTower,
-  crackTower,
   fireTower,
+  groundTower,
   wizardTower,
 } from "../models/building/building.instance.js";
 import { towerSetupMenu } from "../models/selectionScreen/selectionScreen.instance.js";
@@ -81,13 +81,13 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
       break;
 
     case "buildSpotCrackIcon":
-      if (gameVariable.game.player.gold >= crackTower.price) {
-        gameVariable.tower.placedTowerList.push(crackTower);
-        crackTower.isUnderConstruction();
+      if (gameVariable.game.player.gold >= groundTower.price) {
+        gameVariable.tower.placedTowerList.push(groundTower);
+        groundTower.isUnderConstruction();
 
-        buildSpotTowerIcon.associatedBuildSpot.build(crackTower);
+        buildSpotTowerIcon.associatedBuildSpot.build(groundTower);
 
-        substractPlayerGold(crackTower.price);
+        substractPlayerGold(groundTower.price);
       }
       break;
   }

@@ -8,13 +8,8 @@ export const gameVariable = {
   ui: {
     floatingIconList: [],
     isHovering: false,
-    isGamePaused: false,
-    isGameOver: false,
-    isVictory: false,
-    isDifficultyMenuOpen: false,
   },
   battle: {
-    projectileList: [],
     battleIconList: [],
     buildSpotList: [],
   },
