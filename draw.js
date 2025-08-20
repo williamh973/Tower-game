@@ -29,7 +29,7 @@ export const draw = () => {
     icon.draw();
   });
 
-  gameVariable.ui.arrowIconList.forEach((icon) => {
+  towerSetupMenu.arrowIcons.forEach((icon) => {
     icon.draw();
   });
 
@@ -39,8 +39,8 @@ export const draw = () => {
 
   if (towerSetupMenu.isTowerSetupMenuOpen) {
     const index = towerSetupMenu.currentTowerIndex;
-    const currentIcon = towerSetupMenu.availableTowers[index];
-    towerSetupMenu.availableTowers.forEach(() => {
+    const currentIcon = towerSetupMenu.availableTowerIcons[index];
+    towerSetupMenu.availableTowerIcons.forEach(() => {
       currentIcon.draw();
 
       if (currentIcon.ghostTowerIcon) {

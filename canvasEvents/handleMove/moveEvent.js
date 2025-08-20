@@ -13,9 +13,9 @@ canvas.addEventListener("mousemove", (event) => {
 
   gameVariable.ui.isHovering = false;
 
-  iconHover(gameVariable.ui.arrowIconList);
+  iconHover(towerSetupMenu.arrowIcons);
   iconHover(levelDifficultyMenu.icons);
   iconHover(gameVariable.battle.battleIconList);
-  iconHover(towerSetupMenu.availableTowers);
+  iconHover(towerSetupMenu.availableTowerIcons);
   iconHover(dashboard.icons);
 });

@@ -6,7 +6,7 @@ export const availableTowerMenuNextStep = (icon) => {
   const currentIndex = towerSetupMenu.currentTowerIndex;
 
   towerSetupMenu.currentTowerIndex =
-    (currentIndex + 1) % towerSetupMenu.availableTowers.length;
+    (currentIndex + 1) % towerSetupMenu.availableTowerIcons.length;
 };
 
 export const availableTowerMenuPrevStep = (icon) => {
@@ -14,6 +14,6 @@ export const availableTowerMenuPrevStep = (icon) => {
   const currentIndex = towerSetupMenu.currentTowerIndex;
 
   towerSetupMenu.currentTowerIndex =
-    (currentIndex - 1 + towerSetupMenu.availableTowers.length) %
-    towerSetupMenu.availableTowers.length;
+    (currentIndex - 1 + towerSetupMenu.availableTowerIcons.length) %
+    towerSetupMenu.availableTowerIcons.length;
 };

@@ -6,7 +6,6 @@ export const gameVariable = {
     placedTowerList: [],
   },
   ui: {
-    arrowIconList: [],
     floatingIconList: [],
     isHovering: false,
     isGamePaused: false,

@@ -25,8 +25,8 @@ export const openTowerSetupMenu = (openMenuIcon) => {
 
     if (towerSetupMenu.isTowerSetupMenuOpen) {
       gameVariable.game.selectionScreenList.push(towerSetupMenu, buildSpotMenu);
-      gameVariable.ui.arrowIconList.push(leftArrow, rightArrow, closeArrow);
-      towerSetupMenu.availableTowers.push(
+      towerSetupMenu.arrowIcons.push(leftArrow, rightArrow, closeArrow);
+      towerSetupMenu.availableTowerIcons.push(
         archerTowerAvailableIcon,
         wizardTowerAvailableIcon,
         cannonTowerAvailableIcon,
@@ -57,9 +57,9 @@ export const closeTowerSetupMenu = (icon) => {
           (screen) => screen.name === "dashboard"
         );
 
-      gameVariable.ui.arrowIconList = [];
       dashboard.icons.push(openAvailableTowerMenuIcon, stepOneIcon);
-      towerSetupMenu.availableTowers = [];
+      towerSetupMenu.arrowIcons = [];
+      towerSetupMenu.availableTowerIcons = [];
     }
   }, 350);
 };

@@ -1,11 +1,9 @@
 import { canvas } from "../../../../animate.js";
-import { gameVariable } from "../../../../gameVariable.js";
-import { playerBuildTower } from "../../../../spawnHandle/tower.js";
 import { isHovering, mouseDetect, x, y } from "../../../../shared/utils.js";
 import { buildSpotMenu } from "../../../../models/selectionScreen/selectionScreen.instance.js";
 import {
-  arrowIconList,
   battleIconList,
+  towerSetupMenuIcons,
 } from "./clickHandlers/handleIconClick.js";
 import { ghostMod } from "./clickHandlers/handleGhostModClick.js";
 import { dashboardIconList } from "./clickHandlers/handleDashboaredClick.js";
@@ -20,13 +18,13 @@ canvas.addEventListener("click", (event) => {
 
 export const handleClick = async () => {
   levelIconList();
-  arrowIconList();
+  towerSetupMenuIcons();
   dashboardIconList();
   battleIconList();
   buildSpotList();
 
   let selectedIcon =
-    towerSetupMenu.availableTowers[towerSetupMenu.currentTowerIndex];
+    towerSetupMenu.availableTowerIcons[towerSetupMenu.currentTowerIndex];
 
   if (
     towerSetupMenu.isTowerSetupMenuOpen &&

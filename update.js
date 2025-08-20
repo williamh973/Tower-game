@@ -27,11 +27,11 @@ export const update = (timestamp) => {
     icon.updateAnimation();
   });
 
-  gameVariable.ui.arrowIconList.forEach((icon) => {
+  towerSetupMenu.arrowIcons.forEach((icon) => {
     icon.updateAnimation();
   });
 
-  towerSetupMenu.availableTowers.forEach((icon) => {
+  towerSetupMenu.availableTowerIcons.forEach((icon) => {
     icon.updateAnimation();
     icon.height = 100;
   });

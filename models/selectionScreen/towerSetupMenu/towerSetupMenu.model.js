@@ -4,8 +4,8 @@ export class TowerSetupMenu extends SelectionScreen {
   constructor(position, image, width, height, scale, name) {
     super(position, image, width, height, scale, name);
 
-    this.availableTowers = [];
-    this.icons = [];
+    this.availableTowerIcons = [];
+    this.arrowIcons = [];
     this.buildSpotMenu = null;
     this.hasChosenTowers = false;
     this.isTowerSetupMenuOpen = false;
