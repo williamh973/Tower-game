@@ -4,14 +4,11 @@ import {
   theCannonTowerAvailable,
   theFireTowerAvailable,
   theGroundTowerAvailable,
-  theOpenAvailableTowerMenuIcon,
   theWizardTowerAvailable,
 } from "../../../../assets/icon.asset.js";
-import { Icon } from "../../icon.model.js";
 import { AvailableTowerIcon } from "./availableTowerIcon.model.js";
 
 export let archerTowerAvailableIcon;
-export let openAvailableTowerMenuIcon;
 export let wizardTowerAvailableIcon;
 export let cannonTowerAvailableIcon;
 export let groundTowerAvailableIcon;
@@ -84,17 +81,5 @@ export const initAvailableTowerMenuIcons = async () => {
     true,
     "",
     "fireTowerAvailableIcon"
-  );
-
-  openAvailableTowerMenuIcon = new Icon(
-    615,
-    90,
-    theOpenAvailableTowerMenuIcon,
-    "transparent",
-    60,
-    60,
-    true,
-    "",
-    "openTowerSetupMenu"
   );
 };

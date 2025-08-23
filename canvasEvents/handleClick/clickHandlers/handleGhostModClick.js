@@ -16,22 +16,22 @@ export const ghostMod = (selectedIcon) => {
 
   switch (towerSetupMenu.currentTowerIndex) {
     case 0:
-      buildSpotMenu.activateGhostMod(archerTower, selectedIcon);
+      selectedIcon.activateGhostMod(archerTower);
       break;
     case 1:
-      buildSpotMenu.activateGhostMod(wizardTower, selectedIcon);
+      selectedIcon.activateGhostMod(wizardTower);
       break;
     case 2:
-      buildSpotMenu.activateGhostMod(cannonTower, selectedIcon);
+      selectedIcon.activateGhostMod(cannonTower);
       break;
     case 3:
-      buildSpotMenu.activateGhostMod(groundTower, selectedIcon);
+      selectedIcon.activateGhostMod(groundTower);
       break;
     case 4:
-      buildSpotMenu.activateGhostMod(barrackTower, selectedIcon);
+      selectedIcon.activateGhostMod(barrackTower);
       break;
     case 5:
-      buildSpotMenu.activateGhostMod(fireTower, selectedIcon);
+      selectedIcon.activateGhostMod(fireTower);
       break;
     default:
       break;

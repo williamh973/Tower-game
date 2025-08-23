@@ -20,7 +20,7 @@ export const update = (timestamp) => {
     demon.update();
   });
 
-  buildSpotMenu.buildMenuSlots.forEach((slot) => {
+  buildSpotMenu.slots.forEach((slot) => {
     if (slot.tower) {
       slot.tower.projectiles.forEach((projectile) => {
         projectile.update();
@@ -29,7 +29,9 @@ export const update = (timestamp) => {
   });
 
   dashboard.icons.forEach((icon) => {
-    icon.updateAnimation();
+    if (icon.isActivated) {
+      icon.updateAnimation();
+    }
   });
 
   if (towerSetupMenu.isTowerSetupMenuOpen) {

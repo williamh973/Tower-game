@@ -21,7 +21,7 @@ export const initArrowIconNames = () => {
 };
 
 export const initDashboardIconNames = () => {
-  const dashboardIcons = ["openAvailableTowerMenuIcon"];
+  const dashboardIcons = ["openTowerSetupMenuIcon"];
   return dashboardIcons;
 };
 
@@ -57,13 +57,6 @@ export const isHovering = (
     mouseY >= elementPositionY &&
     mouseY <= elementPositionY + elementHeight
   );
-};
-
-export const updateGhostIconPosition = (ghostIcon) => {
-  window.onmousemove = function (e) {
-    ghostIcon.position.x = e.offsetX - ghostIcon.width / 2;
-    ghostIcon.position.y = e.offsetY - ghostIcon.height / 2;
-  };
 };
 
 export const drawDebugCollisionSquare = (element, context) => {

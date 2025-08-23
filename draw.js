@@ -10,7 +10,7 @@ export const draw = () => {
     screen.draw();
 
     if (screen.name === "buildSpotMenu") {
-      screen.buildMenuSlots.forEach((slot) => {
+      screen.slots.forEach((slot) => {
         slot.draw();
 
         if (slot.isGhostTowerPlaced) {

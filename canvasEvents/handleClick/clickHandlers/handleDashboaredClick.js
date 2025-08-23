@@ -16,7 +16,7 @@ export const dashboardIconList = () => {
       )
     ) {
       switch (icon.name) {
-        case "openTowerSetupMenu":
+        case "openTowerSetupMenuIcon":
           openTowerSetupMenu(icon);
           break;
         default:

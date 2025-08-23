@@ -1,4 +1,3 @@
-import { gameVariable } from "../../gameVariable.js";
 import { towerSetupMenu } from "../../models/selectionScreen/selectionScreen.instance.js";
 
 export const availableTowerMenuNextStep = (icon) => {

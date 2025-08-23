@@ -1,8 +1,5 @@
 import { context } from "../../../../animate.js";
-import {
-  buildSpotMenu,
-  towerSetupMenu,
-} from "../../selectionScreen.instance.js";
+import { towerSetupMenu } from "../../selectionScreen.instance.js";
 
 export class Slot {
   constructor(x, y, name) {
@@ -40,11 +37,11 @@ export class Slot {
   }
 
   addTowerIconToSlot(slot, selectedIcon, remainingBuildMenuSlots) {
-    slot.content = selectedIcon.ghostTowerIcon;
+    slot.content = selectedIcon.ghostIcon;
     slot.tower = selectedIcon.tower;
     slot.isOccupied = true;
     towerSetupMenu.isGhostedMod = false;
-    selectedIcon.ghostTowerIcon.isVisible = false;
+    selectedIcon.ghostIcon.isVisible = false;
     remainingBuildMenuSlots--;
   }
 }

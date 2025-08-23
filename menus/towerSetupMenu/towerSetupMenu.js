@@ -5,10 +5,12 @@ import {
   cannonTowerAvailableIcon,
   fireTowerAvailableIcon,
   groundTowerAvailableIcon,
-  openAvailableTowerMenuIcon,
   wizardTowerAvailableIcon,
 } from "../../models/icon/towerSetupMenu/availableTowerIcon/availableTowerIcon.instance.js";
-import { stepOneIcon } from "../../models/icon/campaignStep/campaignStepIcon.instance.js";
+import {
+  openTowerSetupMenuIcon,
+  stepOneIcon,
+} from "../../models/icon/dashboardIcons/dashboardIcons.instance.js";
 import {
   towerSetupMenu,
   buildSpotMenu,
@@ -22,6 +24,7 @@ import {
 
 export const openTowerSetupMenu = (openMenuIcon) => {
   openMenuIcon.isActivated = true;
+
   setTimeout(() => {
     towerSetupMenu.isTowerSetupMenuOpen = !towerSetupMenu.isTowerSetupMenuOpen;
 
@@ -59,7 +62,7 @@ export const closeTowerSetupMenu = (icon) => {
           (screen) => screen.name === "dashboard"
         );
 
-      dashboard.icons.push(openAvailableTowerMenuIcon, stepOneIcon);
+      dashboard.icons.push(openTowerSetupMenuIcon, stepOneIcon);
       towerSetupMenu.arrowIcons = [];
       towerSetupMenu.availableTowerIcons = [];
     }

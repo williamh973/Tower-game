@@ -60,7 +60,7 @@ export const towerSetupMenuIcons = () => {
   }
 
   if (towerSetupMenu.isGhostedMod) {
-    for (const slot of buildSpotMenu.buildMenuSlots) {
+    for (const slot of buildSpotMenu.slots) {
       if (
         isHovering(
           x,

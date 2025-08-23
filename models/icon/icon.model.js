@@ -1,6 +1,6 @@
 import { context } from "../../animate.js";
 import { dashboard } from "../selectionScreen/selectionScreen.instance.js";
-import { pulse, reversePulse } from "./animations/icon.animation.js";
+import { pulse, reversePulse } from "../../animations/icon.animation.js";
 import {
   initArrowIconNames,
   initAvailableIconNames,
@@ -120,18 +120,17 @@ export class Icon {
   }
 
   updateAnimation() {
-    const availableIconNames = initAvailableIconNames();
-    const arrowIcons = initArrowIconNames();
-    const dashboardIcons = initDashboardIconNames();
-
-    switch (this.name) {
-      case "startWaveIcon":
-        pulse(this);
-        break;
-    }
-
     if (this.isClickable && this.isActivated) {
-      console.log(this);
+      const availableIconNames = initAvailableIconNames();
+      const arrowIcons = initArrowIconNames();
+      const dashboardIcons = initDashboardIconNames();
+
+      switch (this.name) {
+        case "startWaveIcon":
+          pulse(this);
+          break;
+      }
+
       if (
         availableIconNames.includes(this.name) ||
         arrowIcons.includes(this.name) ||

@@ -1,8 +1,10 @@
 import { animate } from "../../animate.js";
 import { gameVariable } from "../../gameVariable.js";
 import { initTowers } from "../building/building.instance.js";
-import { openAvailableTowerMenuIcon } from "../icon/towerSetupMenu/availableTowerIcon/availableTowerIcon.instance.js";
-import { stepOneIcon } from "../icon/campaignStep/campaignStepIcon.instance.js";
+import {
+  openTowerSetupMenuIcon,
+  stepOneIcon,
+} from "../icon/dashboardIcons/dashboardIcons.instance.js";
 import { initIcons } from "../icon/icon.instance.js";
 import {
   easyDifficultyIcon,
@@ -64,7 +66,7 @@ export class Game {
     dashboard.isDashboardOpen = true;
 
     if (dashboard.isDashboardOpen) {
-      dashboard.icons.push(openAvailableTowerMenuIcon, stepOneIcon);
+      dashboard.icons.push(openTowerSetupMenuIcon, stepOneIcon);
     }
   }
 }

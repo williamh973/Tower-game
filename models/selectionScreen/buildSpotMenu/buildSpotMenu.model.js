@@ -1,5 +1,4 @@
 import { gameVariable } from "../../../gameVariable.js";
-import { updateGhostIconPosition } from "../../../shared/utils.js";
 import { towerSetupMenu } from "../selectionScreen.instance.js";
 import { SelectionScreen } from "../selectionScreen.model.js";
 import {
@@ -16,7 +15,7 @@ export class BuildSpotMenu extends SelectionScreen {
     this.scaleDirection = 1;
     this.remainingBuildMenuSlots = 4;
     this.isGhostTowerPlaced = false;
-    this.buildMenuSlots = [];
+    this.slots = [];
     this.tower = null;
 
     this.init();
@@ -24,21 +23,7 @@ export class BuildSpotMenu extends SelectionScreen {
 
   async init() {
     await initEmptySlots(this);
-    this.buildMenuSlots.push(first, second, third, fourth);
-  }
-
-  activateGhostMod(tower, availableTowerIcon) {
-    towerSetupMenu.isGhostedMod = true;
-
-    const ghostIcon = tower.buildSpotMenuTowerIcon;
-
-    availableTowerIcon.isClickable = false;
-    availableTowerIcon.tower = tower;
-    availableTowerIcon.ghostIcon = ghostIcon;
-    availableTowerIcon.ghostIcon.isVisible = true;
-    availableTowerIcon.ghostIconInitialPosition(ghostIcon, availableTowerIcon);
-    console.log(availableTowerIcon.ghostIcon);
-    updateGhostIconPosition(ghostIcon);
+    this.slots.push(first, second, third, fourth);
   }
 
   close(element) {
