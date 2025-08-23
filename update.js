@@ -32,14 +32,16 @@ export const update = (timestamp) => {
     icon.updateAnimation();
   });
 
-  towerSetupMenu.arrowIcons.forEach((icon) => {
-    icon.updateAnimation();
-  });
+  if (towerSetupMenu.isTowerSetupMenuOpen) {
+    towerSetupMenu.arrowIcons.forEach((icon) => {
+      icon.updateAnimation();
+    });
 
-  towerSetupMenu.availableTowerIcons.forEach((icon) => {
-    icon.updateAnimation();
-    icon.height = 100;
-  });
+    towerSetupMenu.availableTowerIcons.forEach((icon) => {
+      icon.updateAnimation();
+      icon.height = 100;
+    });
+  }
 
   gameVariable.ui.floatingIconList.forEach((icon) => {
     icon.updateAnimation();

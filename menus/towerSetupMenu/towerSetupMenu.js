@@ -3,20 +3,22 @@ import {
   archerTowerAvailableIcon,
   barrackTowerAvailableIcon,
   cannonTowerAvailableIcon,
-  closeArrow,
   fireTowerAvailableIcon,
   groundTowerAvailableIcon,
-  leftArrow,
   openAvailableTowerMenuIcon,
-  rightArrow,
   wizardTowerAvailableIcon,
-} from "../../models/icon/towerSetupMenu/towerSetupMenuIcons.instance.js";
+} from "../../models/icon/towerSetupMenu/availableTowerIcon/availableTowerIcon.instance.js";
 import { stepOneIcon } from "../../models/icon/campaignStep/campaignStepIcon.instance.js";
 import {
   towerSetupMenu,
   buildSpotMenu,
   dashboard,
 } from "../../models/selectionScreen/selectionScreen.instance.js";
+import {
+  rightArrow,
+  leftArrow,
+  closeArrow,
+} from "../../models/icon/arrowIcon/arrowIcon.instance.js";
 
 export const openTowerSetupMenu = (openMenuIcon) => {
   openMenuIcon.isActivated = true;

@@ -3,6 +3,28 @@ export let distanceY;
 export let x;
 export let y;
 
+export const initAvailableIconNames = () => {
+  const availableIconNames = [
+    "archerTowerAvailableIcon",
+    "wizardTowerAvailableIcon",
+    "cannonTowerAvailableIcon",
+    "groundTowerAvailableIcon",
+    "barrackTowerAvailableIcon",
+    "fireTowerAvailableIcon",
+  ];
+  return availableIconNames;
+};
+
+export const initArrowIconNames = () => {
+  const arrowIconNames = ["rightArrow", "leftArrow", "closeArrow"];
+  return arrowIconNames;
+};
+
+export const initDashboardIconNames = () => {
+  const dashboardIcons = ["openAvailableTowerMenuIcon"];
+  return dashboardIcons;
+};
+
 export const mouseDetect = (event) => {
   const rect = canvas.getBoundingClientRect();
   x = event.clientX - rect.left;

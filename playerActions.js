@@ -1,4 +1,7 @@
-import { lifeHudMask, goldHudMask } from "./models/icon/icon.instance.js";
+import {
+  lifeHudMask,
+  goldHudMask,
+} from "./models/icon/mapIcons/mapIcons.instance.js";
 import { gameOver } from "./gameOver.js";
 import { gameVariable } from "./gameVariable.js";
 import { isCkeckIfPlayerVictory } from "./victory.js";

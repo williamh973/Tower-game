@@ -12,7 +12,7 @@ import {
   fireTowerAvailableIcon,
   groundTowerAvailableIcon,
   wizardTowerAvailableIcon,
-} from "../icon/towerSetupMenu/towerSetupMenuIcons.instance.js";
+} from "../icon/towerSetupMenu/availableTowerIcon/availableTowerIcon.instance.js";
 import {
   buildSpotMenuArcherTowerIcon,
   buildSpotMenuBarrackTowerIcon,

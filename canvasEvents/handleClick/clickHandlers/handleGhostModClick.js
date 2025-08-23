@@ -12,6 +12,8 @@ import {
 } from "../../../models/selectionScreen/selectionScreen.instance.js";
 
 export const ghostMod = (selectedIcon) => {
+  selectedIcon.isClickable = true;
+
   switch (towerSetupMenu.currentTowerIndex) {
     case 0:
       buildSpotMenu.activateGhostMod(archerTower, selectedIcon);

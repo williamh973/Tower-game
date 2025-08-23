@@ -4,7 +4,7 @@ import {
   waveHudMask,
   goldHudMask,
   lifeHudMask,
-} from "./models/icon/icon.instance.js";
+} from "./models/icon/mapIcons/mapIcons.instance.js";
 import { dashboard } from "./models/selectionScreen/selectionScreen.instance.js";
 
 export const initHUDText = () => {

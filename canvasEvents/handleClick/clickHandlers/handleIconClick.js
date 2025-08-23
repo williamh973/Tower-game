@@ -1,5 +1,4 @@
 import { isHovering, x, y } from "../../../shared/utils.js";
-import { gameVariable } from "../../../../../../gameVariable.js";
 import { closeTowerSetupMenu } from "../../../menus/towerSetupMenu/towerSetupMenu.js";
 import {
   availableTowerMenuNextStep,
@@ -8,9 +7,11 @@ import {
 import { initWave } from "../../../spawnHandle/campaign/step/wave/wave.js";
 import { togglePause } from "../../../../../../gamePauseHandle.js";
 import {
+  buildSpotMenu,
   dashboard,
   towerSetupMenu,
 } from "../../../models/selectionScreen/selectionScreen.instance.js";
+import { ghostMod } from "./handleGhostModClick.js";
 
 export const towerSetupMenuIcons = () => {
   for (const icon of towerSetupMenu.arrowIcons) {
@@ -36,6 +37,45 @@ export const towerSetupMenuIcons = () => {
           break;
         default:
           break;
+      }
+    }
+  }
+
+  let selectedIcon =
+    towerSetupMenu.availableTowerIcons[towerSetupMenu.currentTowerIndex];
+
+  if (
+    towerSetupMenu.isTowerSetupMenuOpen &&
+    isHovering(
+      x,
+      y,
+      selectedIcon.position.x,
+      selectedIcon.position.y,
+      selectedIcon.width,
+      selectedIcon.height
+    ) &&
+    selectedIcon.isClickable
+  ) {
+    ghostMod(selectedIcon);
+  }
+
+  if (towerSetupMenu.isGhostedMod) {
+    for (const slot of buildSpotMenu.buildMenuSlots) {
+      if (
+        isHovering(
+          x,
+          y,
+          slot.position.x,
+          slot.position.y,
+          slot.width,
+          slot.height
+        )
+      ) {
+        slot.addTowerIconToSlot(
+          slot,
+          selectedIcon,
+          buildSpotMenu.remainingBuildMenuSlots
+        );
       }
     }
   }

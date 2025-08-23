@@ -44,8 +44,8 @@ export const draw = () => {
     towerSetupMenu.availableTowerIcons.forEach(() => {
       currentIcon.draw();
 
-      if (currentIcon.ghostTowerIcon) {
-        currentIcon.ghostTowerIcon.draw();
+      if (currentIcon.ghostIcon) {
+        currentIcon.ghostIcon.draw();
       }
     });
   }

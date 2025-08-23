@@ -1,18 +1,11 @@
 import { context } from "../../animate.js";
 import { dashboard } from "../selectionScreen/selectionScreen.instance.js";
-import { pulse, reversePulse } from "./aniamtions/icon.animation.js";
+import { pulse, reversePulse } from "./animations/icon.animation.js";
 import {
-  archerTowerAvailableIcon,
-  barrackTowerAvailableIcon,
-  cannonTowerAvailableIcon,
-  closeArrow,
-  fireTowerAvailableIcon,
-  groundTowerAvailableIcon,
-  leftArrow,
-  openAvailableTowerMenuIcon,
-  rightArrow,
-  wizardTowerAvailableIcon,
-} from "./towerSetupMenu/towerSetupMenuIcons.instance.js";
+  initArrowIconNames,
+  initAvailableIconNames,
+  initDashboardIconNames,
+} from "../../shared/utils.js";
 
 export class Icon {
   constructor(
@@ -40,8 +33,6 @@ export class Icon {
     this.isActivated = false;
     this.isHovering = false;
     this.isVisible = true;
-    this.ghostTowerIcon = null;
-    this.tower = null;
     this.associatedBuildSpot = {};
     this.scale = 1;
     this.scaleDirection = 1;
@@ -129,17 +120,9 @@ export class Icon {
   }
 
   updateAnimation() {
-    const avalaibleIconNames = [
-      archerTowerAvailableIcon.name,
-      wizardTowerAvailableIcon.name,
-      cannonTowerAvailableIcon.name,
-      groundTowerAvailableIcon.name,
-      barrackTowerAvailableIcon.name,
-      fireTowerAvailableIcon.name,
-    ];
-
-    const arrowIcons = [rightArrow.name, leftArrow.name, closeArrow.name];
-    const dashboardIcons = [openAvailableTowerMenuIcon.name];
+    const availableIconNames = initAvailableIconNames();
+    const arrowIcons = initArrowIconNames();
+    const dashboardIcons = initDashboardIconNames();
 
     switch (this.name) {
       case "startWaveIcon":
@@ -148,8 +131,9 @@ export class Icon {
     }
 
     if (this.isClickable && this.isActivated) {
+      console.log(this);
       if (
-        avalaibleIconNames.includes(this.name) ||
+        availableIconNames.includes(this.name) ||
         arrowIcons.includes(this.name) ||
         dashboardIcons.includes(this.name)
       ) {
@@ -171,10 +155,5 @@ export class Icon {
     ) {
       return (this.isVisible = true);
     }
-  }
-
-  ghostIconInitialPosition(ghostIcon, availableTowerIcon) {
-    ghostIcon.position.x = availableTowerIcon.position.x;
-    ghostIcon.position.y = availableTowerIcon.position.y;
   }
 }

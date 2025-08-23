@@ -1,14 +1,14 @@
 import { animate } from "../../animate.js";
 import { gameVariable } from "../../gameVariable.js";
 import { initTowers } from "../building/building.instance.js";
-import { openAvailableTowerMenuIcon } from "../icon/towerSetupMenu/towerSetupMenuIcons.instance.js";
+import { openAvailableTowerMenuIcon } from "../icon/towerSetupMenu/availableTowerIcon/availableTowerIcon.instance.js";
 import { stepOneIcon } from "../icon/campaignStep/campaignStepIcon.instance.js";
+import { initIcons } from "../icon/icon.instance.js";
 import {
   easyDifficultyIcon,
   hardDifficultyIcon,
-  initIcons,
   mediumDifficultyIcon,
-} from "../icon/icon.instance.js";
+} from "../icon/levelDifficultyIcons/levelDifficultyIcons.instance.js";
 import {
   dashboard,
   initSelectionScreens,

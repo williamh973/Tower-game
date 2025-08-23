@@ -32,10 +32,12 @@ export class BuildSpotMenu extends SelectionScreen {
 
     const ghostIcon = tower.buildSpotMenuTowerIcon;
 
+    availableTowerIcon.isClickable = false;
     availableTowerIcon.tower = tower;
-    availableTowerIcon.ghostTowerIcon = ghostIcon;
+    availableTowerIcon.ghostIcon = ghostIcon;
+    availableTowerIcon.ghostIcon.isVisible = true;
     availableTowerIcon.ghostIconInitialPosition(ghostIcon, availableTowerIcon);
-
+    console.log(availableTowerIcon.ghostIcon);
     updateGhostIconPosition(ghostIcon);
   }
 

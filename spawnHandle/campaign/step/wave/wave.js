@@ -1,5 +1,4 @@
-import { gameVariable } from "../../../../gameVariable.js";
-import { waveHudMask } from "../../../../models/icon/icon.instance.js";
+import { waveHudMask } from "../../../../models/icon/mapIcons/mapIcons.instance.js";
 import { dashboard } from "../../../../models/selectionScreen/selectionScreen.instance.js";
 import { wave } from "../checkCampaignStep.js";
 

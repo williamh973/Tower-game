@@ -8,7 +8,7 @@ import {
   pauseDisplay,
   startWaveIcon,
   waveHudMask,
-} from "../../../models/icon/icon.instance.js";
+} from "../../../models/icon/mapIcons/mapIcons.instance.js";
 import { Map } from "../../../models/map/map.model.js";
 import { dashboard } from "../../../models/selectionScreen/selectionScreen.instance.js";
 import { Wave } from "../../../models/wave/wave.model.js";
@@ -19,7 +19,7 @@ export let wave = new Wave(maxUnit);
 
 export const loadCampaignStep = (iconName) => {
   const stepIcons = ["stepOneIcon"];
-  if (!stepIcons.includes(iconName)) return console.log("ca passe paas");
+  if (!stepIcons.includes(iconName)) return;
 
   const initLevel = () => {
     gameVariable.game.selectionScreenList = [];
