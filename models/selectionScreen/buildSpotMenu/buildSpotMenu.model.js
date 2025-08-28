@@ -35,35 +35,21 @@ export class BuildSpotMenu extends SelectionScreen {
 
   animation = () => {
     if (towerSetupMenu.isTowerSetupMenuOpen) {
-      switch (this.name) {
-        case "buildSpotMenu":
-          const speed = 0.08;
-          const maxScale = 1.0;
-          this.scale += this.scaleDirection * speed;
+      const speed = 0.08;
+      const maxScale = 1.0;
+      this.scale += this.scaleDirection * speed;
 
-          if (this.scale >= maxScale) {
-            this.scale = maxScale;
-          }
-          break;
+      if (this.scale >= maxScale) {
+        this.scale = maxScale;
       }
     } else {
-      switch (this.name) {
-        case "buildSpotMenu":
-          const speed = 0.08;
-          const minScale = 0.5;
-          this.scale -= this.scaleDirection * speed;
+      const speed = 0.08;
+      const minScale = 0.5;
+      this.scale -= this.scaleDirection * speed;
 
-          if (this.scale <= minScale) {
-            this.scale = minScale;
-          }
-          break;
+      if (this.scale <= minScale) {
+        this.scale = minScale;
       }
     }
   };
-
-  updateAnimation() {
-    this.animation();
-    if (!towerSetupMenu.isTowerSetupMenuOpen) {
-    }
-  }
 }

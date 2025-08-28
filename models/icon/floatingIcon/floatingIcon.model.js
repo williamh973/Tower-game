@@ -2,18 +2,18 @@ import { context } from "../../../animate.js";
 import { Icon } from "../icon.model.js";
 
 export class FloatingIcon extends Icon {
-  constructor(x, y, image, name, text) {
-    super(
-      x,
-      y,
-      image,
-      backgroundColor,
-      width,
-      height,
-      isClickable,
-      (text = ""),
-      (name = "")
-    );
+  constructor(
+    x,
+    y,
+    image,
+    backgroundColor,
+    width,
+    height,
+    isClickable,
+    text,
+    name
+  ) {
+    super(x, y, image, backgroundColor, width, height, isClickable, text, name);
     this.opacity = 1;
     this.riseSpeed = 0.2;
     this.fadeSpeed = 0.01;
@@ -26,16 +26,18 @@ export class FloatingIcon extends Icon {
   }
 
   updateAnimation() {
-    if (this.name === "goldRewardDisplay") {
-      this.position.y -= this.riseSpeed;
+    const icons = ["goldRewardDisplay", "inventoryDuplicataIcon"];
+    if (icons.includes(this.name)) {
+      console.log("ca passe");
+      // this.position.y -= this.riseSpeed;
 
-      if (this.opacity > 0) {
-        this.opacity -= this.fadeSpeed;
-        if (this.opacity <= 0) {
-          this.opacity = 0;
-          this.finished = true;
-        }
-      }
+      // if (this.opacity > 0) {
+      //   this.opacity -= this.fadeSpeed;
+      //   if (this.opacity <= 0) {
+      //     this.opacity = 0;
+      //     this.finished = true;
+      //   }
+      // }
     }
   }
 

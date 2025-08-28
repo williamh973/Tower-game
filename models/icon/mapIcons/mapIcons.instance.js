@@ -2,6 +2,7 @@ import {
   theGoldCoinIcon,
   theStartWaveIcon,
 } from "../../../assets/icon.asset.js";
+import { blackMask } from "../../../shared/utils.js";
 import { Icon } from "../icon.model.js";
 
 export let lifeHudMask;
@@ -11,8 +12,7 @@ export let pauseDisplay;
 export let startWaveIcon;
 export let goldCoinIcon;
 
-export const mapIcons = async () => {
-  const blackMask = "rgba(0, 0, 0, 0.75)";
+export const initMapIcons = async () => {
   lifeHudMask = new Icon(5, 5, null, blackMask, 52, 25, false, "", "lifeIcon");
   goldHudMask = new Icon(65, 5, null, blackMask, 80, 25, false, "", "goldIcon");
   waveHudMask = new Icon(

@@ -20,10 +20,10 @@ export const initSelectionScreens = async () => {
   const menuWidth = 200;
   const menuHeight = 200;
   const name = "buildSpotMenu";
-  const menuScale = 1;
+  const menuScale = 0.3;
   const menuPosition = {
     x: 450,
-    y: 150,
+    y: 200,
   };
 
   levelDifficultyMenu = new LevelDifficultyMenu(

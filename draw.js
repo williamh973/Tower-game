@@ -32,6 +32,10 @@ export const draw = () => {
     icon.draw();
   });
 
+  if (towerSetupMenu.isTowerSetupMenuOpen) {
+    towerSetupMenu.equippedTowersIcon.draw();
+  }
+
   if (dashboard.map) {
     dashboard.map.icons.forEach((icon) => {
       icon.draw();
@@ -40,17 +44,30 @@ export const draw = () => {
 
   if (towerSetupMenu.isTowerSetupMenuOpen) {
     const index = towerSetupMenu.currentTowerIndex;
-    const currentIcon = towerSetupMenu.availableTowerIcons[index];
-    towerSetupMenu.availableTowerIcons.forEach(() => {
-      currentIcon.draw();
+    const currentCharaIcon = towerSetupMenu.towerCharacteristicsIcons[index];
 
-      if (currentIcon.ghostIcon) {
-        currentIcon.ghostIcon.draw();
+    towerSetupMenu.towerCharacteristicsIcons.forEach(() => {
+      currentCharaIcon.draw();
+    });
+
+    const currentAvailableIcon = towerSetupMenu.availableTowerIcons[index];
+
+    towerSetupMenu.availableTowerIcons.forEach(() => {
+      currentAvailableIcon.draw();
+
+      if (currentAvailableIcon.ghostIcon) {
+        currentAvailableIcon.ghostIcon.draw();
       }
     });
   }
 
   gameVariable.battle.buildSpotList.forEach((spot) => {
     spot.draw();
+  });
+
+  towerSetupMenu.towerCharacteristicsIcons.forEach((charaIcon) => {
+    charaIcon.icons.forEach((statIcon) => {
+      statIcon.draw();
+    });
   });
 };

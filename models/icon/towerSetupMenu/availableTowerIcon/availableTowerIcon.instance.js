@@ -6,6 +6,14 @@ import {
   theGroundTowerAvailable,
   theWizardTowerAvailable,
 } from "../../../../assets/icon.asset.js";
+import {
+  archerTower,
+  barrackTower,
+  cannonTower,
+  fireTower,
+  groundTower,
+  wizardTower,
+} from "../../../building/building.instance.js";
 import { AvailableTowerIcon } from "./availableTowerIcon.model.js";
 
 export let archerTowerAvailableIcon;
@@ -15,7 +23,7 @@ export let groundTowerAvailableIcon;
 export let barrackTowerAvailableIcon;
 export let fireTowerAvailableIcon;
 
-export const initAvailableTowerMenuIcons = async () => {
+export const initAvailableTowerIcons = async () => {
   archerTowerAvailableIcon = new AvailableTowerIcon(
     140,
     140,

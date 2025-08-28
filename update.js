@@ -45,15 +45,13 @@ export const update = (timestamp) => {
     });
   }
 
-  gameVariable.ui.floatingIconList.forEach((icon) => {
-    icon.updateAnimation();
-  });
+  const foundBuildSpotMenu = gameVariable.game.selectionScreenList.find(
+    (selectionScreen) => selectionScreen.name === "buildSpotMenu"
+  );
 
-  gameVariable.game.selectionScreenList.forEach((selectionScreen) => {
-    // if (towerSetupMenu.isTowerSetupMenuOpen) {
-    //   selectionScreen.updateAnimation();
-    // }
-  });
+  if (towerSetupMenu.isTowerSetupMenuOpen && foundBuildSpotMenu) {
+    foundBuildSpotMenu.animation();
+  }
 
   for (let i = gameVariable.ui.floatingIconList.length - 1; i >= 0; i--) {
     const icon = gameVariable.ui.floatingIconList[i];

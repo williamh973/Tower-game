@@ -25,19 +25,21 @@ export const towerSetupMenuIcons = () => {
         icon.height
       )
     ) {
+      const currentIndex = towerSetupMenu.currentTowerIndex;
       switch (icon.name) {
         case "closeArrow":
           closeTowerSetupMenu(icon);
           break;
         case "rightArrow":
-          availableTowerMenuNextStep(icon);
+          availableTowerMenuNextStep(icon, currentIndex);
           break;
         case "leftArrow":
-          availableTowerMenuPrevStep(icon);
+          availableTowerMenuPrevStep(icon, currentIndex);
           break;
         default:
           break;
       }
+      towerSetupMenu.startTowerStatsAnimation();
     }
   }
 

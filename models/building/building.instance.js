@@ -21,7 +21,7 @@ import {
   buildSpotMenuGroundTowerIcon,
   buildSpotMenuWizardTowerIcon,
 } from "../icon/buildSpotMenuIcon/buildSpotMenuIcon.instance.js";
-import { Building } from "./building.model.js";
+import { Tower } from "./tower/tower.model.js";
 
 export let archerTower;
 export let wizardTower;
@@ -31,7 +31,7 @@ export let fireTower;
 export let barrackTower;
 
 export const initTowers = async () => {
-  archerTower = new Building(
+  archerTower = new Tower(
     0,
     0,
     0,
@@ -48,7 +48,7 @@ export const initTowers = async () => {
     true
   );
 
-  wizardTower = new Building(
+  wizardTower = new Tower(
     0,
     0,
     0,
@@ -65,7 +65,7 @@ export const initTowers = async () => {
     true
   );
 
-  cannonTower = new Building(
+  cannonTower = new Tower(
     0,
     0,
     0,
@@ -82,7 +82,7 @@ export const initTowers = async () => {
     true
   );
 
-  groundTower = new Building(
+  groundTower = new Tower(
     0,
     0,
     0,
@@ -99,7 +99,7 @@ export const initTowers = async () => {
     false
   );
 
-  barrackTower = new Building(
+  barrackTower = new Tower(
     0,
     0,
     0,
@@ -116,7 +116,7 @@ export const initTowers = async () => {
     false
   );
 
-  fireTower = new Building(
+  fireTower = new Tower(
     0,
     0,
     0,

@@ -1,7 +1,9 @@
+import { gameVariable } from "../../../../gameVariable.js";
 import {
   buildSpotMenu,
   towerSetupMenu,
 } from "../../../selectionScreen/selectionScreen.instance.js";
+import { inventoryDuplicataIcon } from "../../floatingIcon/floatingIcon.instance.js";
 import { Icon } from "../../icon.model.js";
 
 export class AvailableTowerIcon extends Icon {
@@ -22,26 +24,36 @@ export class AvailableTowerIcon extends Icon {
     this.tower = null;
   }
 
+  errorMessage() {
+    inventoryDuplicataIcon.text = "Déjà dans l'inventaire";
+    inventoryDuplicataIcon.name = "inventoryDuplicataIcon";
+    inventoryDuplicataIcon.position.x = 300;
+    inventoryDuplicataIcon.position.y = 300;
+    gameVariable.ui.floatingIconList.push(inventoryDuplicataIcon);
+    return gameVariable.ui.floatingIconList;
+  }
+
   checkInventoryForDuplicate() {
     return buildSpotMenu.slots.some((slot) => {
       return this.ghostIcon?.name === slot.content?.name;
     });
   }
 
-  async activateGhostMod(tower) {
+  activateGhostMod(tower) {
     this.ghostIcon = tower.buildSpotMenuTowerIcon;
-    const duplicate = await this.checkInventoryForDuplicate();
+    const duplicate = this.checkInventoryForDuplicate();
 
     if (duplicate) {
       this.ghostIcon = null;
       this.tower = null;
-      return console.log("Déja dans l'inventaire");
+      const errorMessage = this.errorMessage();
+      return;
     }
 
     this.isActivated = true;
     towerSetupMenu.isGhostedMod = true;
-
     this.tower = tower;
+
     this.ghostIcon.isVisible = true;
     this.ghostIconInitialPosition();
     this.updateGhostIconPosition();

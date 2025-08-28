@@ -2,6 +2,7 @@ export let distanceX;
 export let distanceY;
 export let x;
 export let y;
+export const blackMask = "rgba(0, 0, 0, 0.75)";
 
 export const initAvailableIconNames = () => {
   const availableIconNames = [

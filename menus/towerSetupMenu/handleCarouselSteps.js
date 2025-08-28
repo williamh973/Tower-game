@@ -1,17 +1,13 @@
 import { towerSetupMenu } from "../../models/selectionScreen/selectionScreen.instance.js";
 
-export const availableTowerMenuNextStep = (icon) => {
+export const availableTowerMenuNextStep = (icon, currentIndex) => {
   icon.isActivated = true;
-  const currentIndex = towerSetupMenu.currentTowerIndex;
-
   towerSetupMenu.currentTowerIndex =
     (currentIndex + 1) % towerSetupMenu.availableTowerIcons.length;
 };
 
-export const availableTowerMenuPrevStep = (icon) => {
+export const availableTowerMenuPrevStep = (icon, currentIndex) => {
   icon.isActivated = true;
-  const currentIndex = towerSetupMenu.currentTowerIndex;
-
   towerSetupMenu.currentTowerIndex =
     (currentIndex - 1 + towerSetupMenu.availableTowerIcons.length) %
     towerSetupMenu.availableTowerIcons.length;

@@ -6,10 +6,18 @@ export class TowerSetupMenu extends SelectionScreen {
 
     this.availableTowerIcons = [];
     this.arrowIcons = [];
+    this.towerCharacteristicsIcons = [];
+    this.equippedTowersIcon = null;
     this.buildSpotMenu = null;
     this.hasChosenTowers = false;
     this.isTowerSetupMenuOpen = false;
     this.isGhostedMod = false;
     this.currentTowerIndex = 0;
+  }
+
+  startTowerStatsAnimation() {
+    this.towerCharacteristicsIcons.forEach((icon) => {
+      icon.animateBars();
+    });
   }
 }

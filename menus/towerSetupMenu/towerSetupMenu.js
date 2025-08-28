@@ -21,6 +21,66 @@ import {
   leftArrow,
   closeArrow,
 } from "../../models/icon/arrowIcon/arrowIcon.instance.js";
+import { equippedTowersIcon } from "../../models/icon/buildSpotMenuIcon/buildSpotMenuIcon.instance.js";
+import {
+  archerCharacteristicsIcon,
+  barrackCharacteristicsIcon,
+  cannonCharacteristicsIcon,
+  fireCharacteristicsIcon,
+  groundCharacteristicsIcon,
+  wizardCharacteristicsIcon,
+} from "../../models/icon/towerSetupMenu/towerCharacteristicsIcon/towerCharacteristicsIcon.instance.js";
+import {
+  archerTower,
+  barrackTower,
+  cannonTower,
+  fireTower,
+  groundTower,
+  wizardTower,
+} from "../../models/building/building.instance.js";
+import { damageStatIcon } from "../../models/icon/towerSetupMenu/statIcons/statIcons.instance.js";
+
+const initCharaIconTowerStat = () => {
+  const towerStats = {
+    archerStat: {
+      damages: archerTower.attack,
+      rate: archerTower.rateOfFire,
+      range: archerTower.range,
+    },
+    wizardStat: {
+      damages: wizardTower.attack,
+      rate: wizardTower.rateOfFire,
+      range: wizardTower.range,
+    },
+    cannonStat: {
+      damages: cannonTower.attack,
+      rate: cannonTower.rateOfFire,
+      range: cannonTower.range,
+    },
+    groundStat: {
+      damages: groundTower.attack,
+      rate: groundTower.rateOfFire,
+      range: groundTower.range,
+    },
+    barrackStat: {
+      damages: barrackTower.attack,
+      rate: barrackTower.rateOfFire,
+      range: barrackTower.range,
+    },
+    fireStat: {
+      damages: fireTower.attack,
+      rate: fireTower.rateOfFire,
+      range: fireTower.range,
+    },
+  };
+
+  archerCharacteristicsIcon.towerStats = towerStats.archerStat;
+  wizardCharacteristicsIcon.towerStats = towerStats.wizardStat;
+  cannonCharacteristicsIcon.towerStats = towerStats.cannonStat;
+  groundCharacteristicsIcon.towerStats = towerStats.groundStat;
+  barrackCharacteristicsIcon.towerStats = towerStats.barrackStat;
+  fireCharacteristicsIcon.towerStats = towerStats.fireStat;
+};
 
 export const openTowerSetupMenu = (openMenuIcon) => {
   openMenuIcon.isActivated = true;
@@ -40,6 +100,23 @@ export const openTowerSetupMenu = (openMenuIcon) => {
         fireTowerAvailableIcon
       );
 
+      initCharaIconTowerStat();
+
+      towerSetupMenu.towerCharacteristicsIcons.push(
+        archerCharacteristicsIcon,
+        wizardCharacteristicsIcon,
+        cannonCharacteristicsIcon,
+        groundCharacteristicsIcon,
+        barrackCharacteristicsIcon,
+        fireCharacteristicsIcon
+      );
+
+      towerSetupMenu.towerCharacteristicsIcons.forEach((charaIcon) => {
+        charaIcon.icons.push(damageStatIcon);
+      });
+
+      towerSetupMenu.equippedTowersIcon = equippedTowersIcon;
+      towerSetupMenu.startTowerStatsAnimation();
       hideOpenMenuIcon();
     } else {
       closeTowerSetupMenu();
@@ -65,6 +142,12 @@ export const closeTowerSetupMenu = (icon) => {
       dashboard.icons.push(openTowerSetupMenuIcon, stepOneIcon);
       towerSetupMenu.arrowIcons = [];
       towerSetupMenu.availableTowerIcons = [];
+      towerSetupMenu.towerCharacteristicsIcons = [];
     }
+    resetAnimations();
   }, 350);
+};
+
+const resetAnimations = () => {
+  buildSpotMenu.scale = 0.3;
 };
