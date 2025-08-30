@@ -1,5 +1,4 @@
 import { context } from "../../../../animate.js";
-import { towerSetupMenu } from "../../../selectionScreen/selectionScreen.instance.js";
 import { Icon } from "../../icon.model.js";
 
 export class TowerCharacteristicsIcon extends Icon {
@@ -25,79 +24,71 @@ export class TowerCharacteristicsIcon extends Icon {
     this.loadingRange = 0;
   }
 
-  draw() {
-    super.drawBlackMask();
+  drawTitle() {
     context.fillStyle = "gold";
     context.font = "bold 16px 'Palatino Linotype', 'Book Antiqua' ";
     context.fillText(this.title, this.position.x + 5, this.position.y + 18);
+  }
 
+  drawResume() {
     context.fillStyle = "whitesmoke";
     context.font = "14px 'cursive', 'Book Antiqua' ";
     context.fillText(this.text, this.position.x + 5, this.position.y + 38);
+  }
+
+  draw() {
+    super.drawBlackMask();
+    this.drawTitle();
+    this.drawResume();
+
+    const offSetY = 20;
 
     this.drawLoadingBar(
-      this.position.x + 35,
-      this.position.y + this.height - 30,
+      this.position.x + 30,
+      this.position.y + this.height - offSetY,
       this.loadingDamage,
-      "#FF00E9"
+      "yellow"
     );
     this.drawLoadingBar(
-      this.position.x + 135,
-      this.position.y + this.height - 30,
+      this.position.x + 125,
+      this.position.y + this.height - offSetY,
       this.loadingRate,
-      "#FF00E9"
+      "yellow"
     );
     this.drawLoadingBar(
-      this.position.x + 235,
-      this.position.y + this.height - 30,
+      this.position.x + 225,
+      this.position.y + this.height - offSetY,
       this.loadingRange,
-      "#FF00E9"
+      "yellow"
     );
   }
 
   drawLoadingBar(positionX, positionY, value, color) {
-    const barWidth = 50;
+    const barWidth = 45;
     const barHeight = 7;
 
-    context.fillStyle = "#4A4A4A";
-    context.fillRect(positionX, positionY, barWidth, barHeight);
+    context.fillStyle = "rgba(74, 74, 74, 0.25)";
+    context.fillRect(positionX, positionY, barWidth - 2, barHeight - 2);
 
-    context.fillStyle = "black";
-    context.fillRect(positionX + 1, positionY + 1, barWidth - 2, barHeight - 2);
-
-    const maxStatValue = 150;
+    const maxStatValue = 45;
     const normalizedValue = Math.min(
-      (value / maxStatValue) * (barWidth - 4),
-      barWidth - 4
+      (value / maxStatValue) * (barWidth - 2),
+      barWidth - 2
     );
 
     context.fillStyle = color;
-    context.fillRect(
-      positionX + 2,
-      positionY + 2,
-      normalizedValue,
-      barHeight - 4
-    );
+    context.fillRect(positionX, positionY, normalizedValue, barHeight - 2);
   }
 
   animateBars() {
-    this.loadingDamage = 0;
-    this.loadingRate = 0;
-    this.loadingRange = 0;
-    this.handleLoadingTime();
+    this.animateStat("loadingDamage", this.towerStats?.damages);
+    this.animateStat("loadingRate", this.towerStats?.rate);
+    this.animateStat("loadingRange", this.towerStats?.range);
   }
 
-  handleLoadingTime() {
-    this.animateStat("loadingDamage", this.towerStats?.damages, 20);
-    this.animateStat("loadingRate", this.towerStats?.rate, 20);
-    this.animateStat("loadingRange", this.towerStats?.range, 20);
-  }
-
-  animateStat(property, statValue, interval) {
+  animateStat(property, statValue) {
     this[property] = 0;
-
-    // tu normalises directement
-    const maxStatValue = 150;
+    const maxStatValue = 45;
     const normalizedMax = Math.min(statValue, maxStatValue);
 
     const timer = setInterval(() => {
@@ -105,6 +96,6 @@ export class TowerCharacteristicsIcon extends Icon {
       if (this[property] >= normalizedMax) {
         clearInterval(timer);
       }
-    }, interval);
+    }, 20);
   }
 }

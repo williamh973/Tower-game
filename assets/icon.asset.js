@@ -31,13 +31,19 @@ export const theRightArrow = createImg("./assets/images/arrow-right.png");
 export const theReturn = createImg("./assets/images/return.png");
 
 export const theStepOneIcon = createImg("./assets/images/step-1-icon.png");
-export const theEquippedTowers = createImg(
-  "./assets/images/equipped-towers.png"
-);
+
 export const theTowerCharacteristicsIcon = createImg(
   "./assets/images/windowStyle3.png"
 );
 
 export const theTowerStatDamageIcon = createImg(
   "./assets/images/statIcon-damage.png"
+);
+
+export const theTowerStatRateIcon = createImg(
+  "./assets/images/statIcon-rate.png"
+);
+
+export const theTowerStatRangeIcon = createImg(
+  "./assets/images/statIcon-range.png"
 );

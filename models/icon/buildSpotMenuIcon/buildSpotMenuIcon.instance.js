@@ -6,7 +6,7 @@ import {
   theImgbuildSpotMenuGroundIcon,
   theImgbuildSpotMenuWizardIcon,
 } from "../../../assets/buildSpotMenuTowerIcon.asset.js";
-import { theEquippedTowers } from "../../../assets/icon.asset.js";
+import { blackMask } from "../../../shared/utils.js";
 import { Icon } from "../icon.model.js";
 
 export let buildSpotMenuArcherTowerIcon;
@@ -86,14 +86,14 @@ export const initBuildspotMenuTowerIcon = async () => {
   );
 
   equippedTowersIcon = new Icon(
-    500,
+    482,
+    155,
+    null,
+    blackMask,
     135,
-    theEquippedTowers,
-    "",
-    103,
-    53,
+    28,
     false,
-    "",
+    "Tours équippées",
     "equippedTowersIcon"
   );
 };

@@ -111,8 +111,18 @@ export class Icon {
 
   drawText() {
     context.fillStyle = "whitesmoke";
-    context.font = "bold 16px 'Palatino Linotype', 'Book Antiqua' ";
-    context.fillText(this.text, this.position.x + 5, this.position.y + 18);
+
+    switch (this.name) {
+      case "equippedTowersIcon":
+        context.font = "bold 14px 'Book Antiqua', 'Book Antiqua' ";
+        context.fillText(this.text, this.position.x + 12, this.position.y + 18);
+        break;
+
+      default:
+        context.font = "bold 16px 'Palatino Linotype', 'Book Antiqua' ";
+        context.fillText(this.text, this.position.x + 5, this.position.y + 18);
+        break;
+    }
   }
 
   setAssociatedBuildSpot(buildSpot) {

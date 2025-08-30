@@ -5,14 +5,14 @@ import { levelDifficultyIcons } from "./levelDifficultyIcons/levelDifficultyIcon
 import { initMapIcons } from "./mapIcons/mapIcons.instance.js";
 import { initDashboardIcons } from "./dashboardIcons/dashboardIcons.instance.js";
 import { initFloatingIcons } from "./floatingIcon/floatingIcon.instance.js";
-import { initTowerCharacteristicsIcons } from "./towerSetupMenu/towerCharacteristicsIcon/towerCharacteristicsIcon.instance.js";
+import { initTowerDetailsIcons } from "./towerSetupMenu/towerDetailsIcon/towerDetailsIcon.instance.js";
 import { initTowerStatIcons } from "./towerSetupMenu/statIcons/statIcons.instance.js";
 
 export const initIcons = async () => {
   await initMapIcons();
   await levelDifficultyIcons();
   await initAvailableTowerIcons();
-  await initTowerCharacteristicsIcons();
+  await initTowerDetailsIcons();
   await initBuildspotMenuTowerIcon();
   await initTowerStatIcons();
   await initArrowIcons();

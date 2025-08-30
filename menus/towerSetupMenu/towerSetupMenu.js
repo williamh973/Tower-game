@@ -23,13 +23,13 @@ import {
 } from "../../models/icon/arrowIcon/arrowIcon.instance.js";
 import { equippedTowersIcon } from "../../models/icon/buildSpotMenuIcon/buildSpotMenuIcon.instance.js";
 import {
-  archerCharacteristicsIcon,
-  barrackCharacteristicsIcon,
-  cannonCharacteristicsIcon,
-  fireCharacteristicsIcon,
-  groundCharacteristicsIcon,
-  wizardCharacteristicsIcon,
-} from "../../models/icon/towerSetupMenu/towerCharacteristicsIcon/towerCharacteristicsIcon.instance.js";
+  archerDetailsIcon,
+  barrackDetailsIcon,
+  cannonDetailsIcon,
+  fireDetailsIcon,
+  groundDetailsIcon,
+  wizardDetailsIcon,
+} from "../../models/icon/towerSetupMenu/towerDetailsIcon/towerDetailsIcon.instance.js";
 import {
   archerTower,
   barrackTower,
@@ -38,9 +38,13 @@ import {
   groundTower,
   wizardTower,
 } from "../../models/building/building.instance.js";
-import { damageStatIcon } from "../../models/icon/towerSetupMenu/statIcons/statIcons.instance.js";
+import {
+  damageStatIcon,
+  rangeStatIcon,
+  rateStatIcon,
+} from "../../models/icon/towerSetupMenu/statIcons/statIcons.instance.js";
 
-const initCharaIconTowerStat = () => {
+const initTowerStatForDetailIcon = () => {
   const towerStats = {
     archerStat: {
       damages: archerTower.attack,
@@ -74,12 +78,12 @@ const initCharaIconTowerStat = () => {
     },
   };
 
-  archerCharacteristicsIcon.towerStats = towerStats.archerStat;
-  wizardCharacteristicsIcon.towerStats = towerStats.wizardStat;
-  cannonCharacteristicsIcon.towerStats = towerStats.cannonStat;
-  groundCharacteristicsIcon.towerStats = towerStats.groundStat;
-  barrackCharacteristicsIcon.towerStats = towerStats.barrackStat;
-  fireCharacteristicsIcon.towerStats = towerStats.fireStat;
+  archerDetailsIcon.towerStats = towerStats.archerStat;
+  wizardDetailsIcon.towerStats = towerStats.wizardStat;
+  cannonDetailsIcon.towerStats = towerStats.cannonStat;
+  groundDetailsIcon.towerStats = towerStats.groundStat;
+  barrackDetailsIcon.towerStats = towerStats.barrackStat;
+  fireDetailsIcon.towerStats = towerStats.fireStat;
 };
 
 export const openTowerSetupMenu = (openMenuIcon) => {
@@ -100,19 +104,19 @@ export const openTowerSetupMenu = (openMenuIcon) => {
         fireTowerAvailableIcon
       );
 
-      initCharaIconTowerStat();
+      initTowerStatForDetailIcon();
 
       towerSetupMenu.towerCharacteristicsIcons.push(
-        archerCharacteristicsIcon,
-        wizardCharacteristicsIcon,
-        cannonCharacteristicsIcon,
-        groundCharacteristicsIcon,
-        barrackCharacteristicsIcon,
-        fireCharacteristicsIcon
+        archerDetailsIcon,
+        wizardDetailsIcon,
+        cannonDetailsIcon,
+        groundDetailsIcon,
+        barrackDetailsIcon,
+        fireDetailsIcon
       );
 
       towerSetupMenu.towerCharacteristicsIcons.forEach((charaIcon) => {
-        charaIcon.icons.push(damageStatIcon);
+        charaIcon.icons.push(damageStatIcon, rateStatIcon, rangeStatIcon);
       });
 
       towerSetupMenu.equippedTowersIcon = equippedTowersIcon;
