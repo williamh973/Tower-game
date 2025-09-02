@@ -9,16 +9,6 @@ import {
 export const draw = () => {
   gameVariable.game.selectionScreenList.forEach((screen) => {
     screen.draw();
-
-    if (screen.name === "buildSpotMenu") {
-      screen.slots.forEach((slot) => {
-        slot.draw();
-
-        if (slot.isGhostTowerPlaced) {
-          slot.content.draw();
-        }
-      });
-    }
   });
 
   dashboard.icons.forEach((icon) => {
@@ -39,6 +29,15 @@ export const draw = () => {
     const index = towerSetupMenu.currentTowerIndex;
     const currentCharaIcon = towerSetupMenu.towerDetailsIcons[index];
     const currentAvailableIcon = towerSetupMenu.availableTowerIcons[index];
+
+    buildSpotMenu.slots.forEach((slot) => {
+      if (buildSpotMenu.scale === 1) {
+        slot.draw();
+      }
+      if (slot.isGhostTowerPlaced) {
+        slot.content.draw();
+      }
+    });
 
     towerSetupMenu.towerDetailsIcons.forEach(() => {
       currentCharaIcon.draw();

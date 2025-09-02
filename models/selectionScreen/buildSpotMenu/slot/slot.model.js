@@ -52,20 +52,20 @@ export class Slot {
 
   animation() {
     this.animationTime += 0.005;
-    const cx = this.position.x + this.width / 2;
-    const cy = this.position.y + this.height / 2;
+    const centerX = this.position.x + this.width / 2;
+    const centerY = this.position.y + this.height / 2;
     const radius =
-      Math.max(this.width, this.height) * 0.7 +
-      Math.sin(this.animationTime) * 5;
+      Math.max(this.width, this.height) * 0.5 +
+      Math.sin(this.animationTime) * 6;
     context.save();
     context.beginPath();
-    context.arc(cx, cy, radius, 0, Math.PI * 2);
+    context.arc(centerX, centerY, radius, 0, Math.PI * 2);
     const gradient = context.createRadialGradient(
-      cx,
-      cy,
+      centerX,
+      centerY,
       this.width / 4,
-      cx,
-      cy,
+      centerX,
+      centerY,
       radius
     );
     gradient.addColorStop(0, "rgba(255, 255, 0, 0.35)");
@@ -73,11 +73,11 @@ export class Slot {
     context.fillStyle = gradient;
     context.fill();
     context.restore();
-    const scale = 1 + Math.sin(this.animationTime * 2) * 0.05;
+    const scale = 1 + Math.sin(this.animationTime * 2) * 0.04;
     context.save();
-    context.translate(cx, cy);
+    context.translate(centerX, centerY);
     context.scale(scale, scale);
-    context.translate(-cx, -cy);
+    context.translate(-centerX, -centerY);
 
     if (this.isOccupied) {
       context.drawImage(
