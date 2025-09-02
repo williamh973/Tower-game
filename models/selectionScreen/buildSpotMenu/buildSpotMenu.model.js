@@ -33,8 +33,8 @@ export class BuildSpotMenu extends SelectionScreen {
       );
   }
 
-  animation = () => {
-    if (towerSetupMenu.isTowerSetupMenuOpen) {
+  openedAnimation = () => {
+    if (towerSetupMenu.isOpen) {
       const speed = 0.08;
       const maxScale = 1.0;
       this.scale += this.scaleDirection * speed;

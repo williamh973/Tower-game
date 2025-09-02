@@ -15,6 +15,7 @@ export const animate = (timestamp) => {
   canvasManager.clear();
   canvasManager.drawImage();
 
+  draw();
   if (dashboard.isStepLoaded) {
     updateWaveHudMask();
     gameOver();
@@ -22,5 +23,4 @@ export const animate = (timestamp) => {
   }
 
   update(timestamp);
-  draw();
 };

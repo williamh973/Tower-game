@@ -28,16 +28,14 @@ export class FloatingIcon extends Icon {
   updateAnimation() {
     const icons = ["goldRewardDisplay", "inventoryDuplicataIcon"];
     if (icons.includes(this.name)) {
-      console.log("ca passe");
-      // this.position.y -= this.riseSpeed;
-
-      // if (this.opacity > 0) {
-      //   this.opacity -= this.fadeSpeed;
-      //   if (this.opacity <= 0) {
-      //     this.opacity = 0;
-      //     this.finished = true;
-      //   }
-      // }
+      this.position.y -= this.riseSpeed;
+      if (this.opacity > 0) {
+        this.opacity -= this.fadeSpeed;
+        if (this.opacity <= 0) {
+          this.opacity = 0;
+          this.finished = true;
+        }
+      }
     }
   }
 

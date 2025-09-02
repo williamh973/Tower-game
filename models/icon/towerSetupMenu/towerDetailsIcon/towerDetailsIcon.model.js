@@ -1,7 +1,7 @@
 import { context } from "../../../../animate.js";
 import { Icon } from "../../icon.model.js";
 
-export class TowerCharacteristicsIcon extends Icon {
+export class TowerDetailsIcon extends Icon {
   constructor(
     x,
     y,

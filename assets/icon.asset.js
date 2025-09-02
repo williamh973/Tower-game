@@ -47,3 +47,5 @@ export const theTowerStatRateIcon = createImg(
 export const theTowerStatRangeIcon = createImg(
   "./assets/images/statIcon-range.png"
 );
+
+export const theEmptySlotIcon = createImg("./assets/images/slot.png");

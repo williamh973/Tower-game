@@ -6,7 +6,7 @@ import {
 } from "../../models/selectionScreen/selectionScreen.instance.js";
 
 export const openBuildSpotMenu = (spot) => {
-  towerSetupMenu.isTowerSetupMenuOpen = !towerSetupMenu.isTowerSetupMenuOpen;
+  towerSetupMenu.isOpen = !towerSetupMenu.isOpen;
 
   const menuWidth = 200;
   const menuHeight = 200;
@@ -23,7 +23,7 @@ export const openBuildSpotMenu = (spot) => {
   buildSpotMenu.height = menuHeight;
   buildSpotMenu.width = menuWidth;
 
-  if (towerSetupMenu.isTowerSetupMenuOpen) {
+  if (towerSetupMenu.isOpen) {
     // console.log(
     //   "vérifier les nouvelles valeurs du buildSpotMenu",
     //   buildSpotMenu

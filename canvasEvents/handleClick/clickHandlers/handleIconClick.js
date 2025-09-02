@@ -1,5 +1,4 @@
 import { isHovering, x, y } from "../../../shared/utils.js";
-import { closeTowerSetupMenu } from "../../../menus/towerSetupMenu/towerSetupMenu.js";
 import {
   availableTowerMenuNextStep,
   availableTowerMenuPrevStep,
@@ -28,7 +27,7 @@ export const towerSetupMenuIcons = () => {
       const currentIndex = towerSetupMenu.currentTowerIndex;
       switch (icon.name) {
         case "closeArrow":
-          closeTowerSetupMenu(icon);
+          towerSetupMenu.close(icon);
           break;
         case "rightArrow":
           availableTowerMenuNextStep(icon, currentIndex);
@@ -47,7 +46,7 @@ export const towerSetupMenuIcons = () => {
     towerSetupMenu.availableTowerIcons[towerSetupMenu.currentTowerIndex];
 
   if (
-    towerSetupMenu.isTowerSetupMenuOpen &&
+    towerSetupMenu.isOpen &&
     isHovering(
       x,
       y,

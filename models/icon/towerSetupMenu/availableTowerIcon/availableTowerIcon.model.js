@@ -1,3 +1,4 @@
+import { context } from "../../../../animate.js";
 import { gameVariable } from "../../../../gameVariable.js";
 import {
   buildSpotMenu,
@@ -30,13 +31,12 @@ export class AvailableTowerIcon extends Icon {
     inventoryDuplicataIcon.position.x = 300;
     inventoryDuplicataIcon.position.y = 300;
     gameVariable.ui.floatingIconList.push(inventoryDuplicataIcon);
-    return gameVariable.ui.floatingIconList;
   }
 
   checkInventoryForDuplicate() {
-    return buildSpotMenu.slots.some((slot) => {
-      return this.ghostIcon?.name === slot.content?.name;
-    });
+    return buildSpotMenu.slots.some(
+      (slot) => this.ghostIcon?.name === slot.content?.name
+    );
   }
 
   activateGhostMod(tower) {
@@ -53,8 +53,8 @@ export class AvailableTowerIcon extends Icon {
     this.isActivated = true;
     towerSetupMenu.isGhostedMod = true;
     this.tower = tower;
-
     this.ghostIcon.isVisible = true;
+
     this.ghostIconInitialPosition();
     this.updateGhostIconPosition();
   }
@@ -71,5 +71,12 @@ export class AvailableTowerIcon extends Icon {
         this.ghostIcon.position.y = e.offsetY - this.ghostIcon.height / 2;
       }
     };
+  }
+
+  drawOverlay() {
+    context.save();
+    context.fillStyle = "rgba(0, 0, 0, 0.15)";
+    context.fillRect(0, 0, context.canvas.width, context.canvas.height);
+    context.restore();
   }
 }

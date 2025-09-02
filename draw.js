@@ -1,5 +1,6 @@
 import { gameVariable } from "./gameVariable.js";
 import {
+  buildSpotMenu,
   dashboard,
   levelDifficultyMenu,
   towerSetupMenu,
@@ -28,32 +29,40 @@ export const draw = () => {
     icon.draw();
   });
 
-  towerSetupMenu.arrowIcons.forEach((icon) => {
-    icon.draw();
-  });
-
-  if (towerSetupMenu.isTowerSetupMenuOpen) {
-    towerSetupMenu.equippedTowersIcon.draw();
-  }
-
   if (dashboard.map) {
     dashboard.map.icons.forEach((icon) => {
       icon.draw();
     });
   }
 
-  if (towerSetupMenu.isTowerSetupMenuOpen) {
+  if (towerSetupMenu.isOpen) {
     const index = towerSetupMenu.currentTowerIndex;
-    const currentCharaIcon = towerSetupMenu.towerCharacteristicsIcons[index];
+    const currentCharaIcon = towerSetupMenu.towerDetailsIcons[index];
+    const currentAvailableIcon = towerSetupMenu.availableTowerIcons[index];
 
-    towerSetupMenu.towerCharacteristicsIcons.forEach(() => {
+    towerSetupMenu.towerDetailsIcons.forEach(() => {
       currentCharaIcon.draw();
     });
 
-    const currentAvailableIcon = towerSetupMenu.availableTowerIcons[index];
+    towerSetupMenu.arrowIcons.forEach((icon) => {
+      icon.draw();
+    });
+
+    towerSetupMenu.towerDetailsIcons.forEach((charaIcon) => {
+      charaIcon.icons.forEach((statIcon) => {
+        statIcon.draw();
+      });
+    });
+
+    towerSetupMenu.equippedTowersIcon.draw();
 
     towerSetupMenu.availableTowerIcons.forEach(() => {
       currentAvailableIcon.draw();
+
+      if (towerSetupMenu.isGhostedMod) {
+        currentAvailableIcon.drawOverlay(buildSpotMenu.slots);
+        buildSpotMenu.slots.forEach((slot) => slot.draw());
+      }
 
       if (currentAvailableIcon.ghostIcon) {
         currentAvailableIcon.ghostIcon.draw();
@@ -63,11 +72,5 @@ export const draw = () => {
 
   gameVariable.battle.buildSpotList.forEach((spot) => {
     spot.draw();
-  });
-
-  towerSetupMenu.towerCharacteristicsIcons.forEach((charaIcon) => {
-    charaIcon.icons.forEach((statIcon) => {
-      statIcon.draw();
-    });
   });
 };

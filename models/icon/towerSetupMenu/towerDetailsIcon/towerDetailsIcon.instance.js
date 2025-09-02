@@ -1,4 +1,4 @@
-import { TowerCharacteristicsIcon } from "./towerDetailsIcon.model.js";
+import { TowerDetailsIcon } from "./towerDetailsIcon.model.js";
 
 export let archerDetailsIcon;
 export let wizardDetailsIcon;
@@ -9,7 +9,7 @@ export let barrackDetailsIcon;
 
 export const initTowerDetailsIcons = async () => {
   const blackMask = "rgba(0, 0, 0, 0.20)";
-  archerDetailsIcon = new TowerCharacteristicsIcon(
+  archerDetailsIcon = new TowerDetailsIcon(
     40,
     260,
     null,
@@ -21,7 +21,7 @@ export const initTowerDetailsIcons = async () => {
     "Description de la tour",
     "archerDetailsIcon"
   );
-  wizardDetailsIcon = new TowerCharacteristicsIcon(
+  wizardDetailsIcon = new TowerDetailsIcon(
     40,
     260,
     null,
@@ -33,7 +33,7 @@ export const initTowerDetailsIcons = async () => {
     "Description de la tour",
     "archerDetailsIcon"
   );
-  cannonDetailsIcon = new TowerCharacteristicsIcon(
+  cannonDetailsIcon = new TowerDetailsIcon(
     40,
     260,
     null,
@@ -45,7 +45,7 @@ export const initTowerDetailsIcons = async () => {
     "Description de la tour",
     "cannonDetailsIcon"
   );
-  groundDetailsIcon = new TowerCharacteristicsIcon(
+  groundDetailsIcon = new TowerDetailsIcon(
     40,
     260,
     null,
@@ -57,7 +57,7 @@ export const initTowerDetailsIcons = async () => {
     "Description de la tour",
     "groundDetailsIcon"
   );
-  fireDetailsIcon = new TowerCharacteristicsIcon(
+  fireDetailsIcon = new TowerDetailsIcon(
     40,
     260,
     null,
@@ -69,7 +69,7 @@ export const initTowerDetailsIcons = async () => {
     "Description de la tour",
     "fireDetailsIcon"
   );
-  barrackDetailsIcon = new TowerCharacteristicsIcon(
+  barrackDetailsIcon = new TowerDetailsIcon(
     40,
     260,
     null,

@@ -93,7 +93,7 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
   }
 
   gameVariable.game.selectionScreenList.find((selectionScreen) => {
-    towerSetupMenu.isTowerSetupMenuOpen = !towerSetupMenu.isTowerSetupMenuOpen;
+    towerSetupMenu.isOpen = !towerSetupMenu.isOpen;
     closeBuildSpotMenu(selectionScreen);
   });
 };

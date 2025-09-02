@@ -13,7 +13,6 @@ export const update = (timestamp) => {
 
   gameVariable.tower.placedTowerList.forEach((tower) => {
     tower.update(timestamp);
-    // tower.drawDebugCollisionSquare();
   });
 
   wave.demonList.forEach((demon) => {
@@ -34,7 +33,7 @@ export const update = (timestamp) => {
     }
   });
 
-  if (towerSetupMenu.isTowerSetupMenuOpen) {
+  if (towerSetupMenu.isOpen) {
     towerSetupMenu.arrowIcons.forEach((icon) => {
       icon.updateAnimation();
     });
@@ -49,8 +48,8 @@ export const update = (timestamp) => {
     (selectionScreen) => selectionScreen.name === "buildSpotMenu"
   );
 
-  if (towerSetupMenu.isTowerSetupMenuOpen && foundBuildSpotMenu) {
-    foundBuildSpotMenu.animation();
+  if (towerSetupMenu.isOpen && foundBuildSpotMenu) {
+    foundBuildSpotMenu.openedAnimation();
   }
 
   for (let i = gameVariable.ui.floatingIconList.length - 1; i >= 0; i--) {

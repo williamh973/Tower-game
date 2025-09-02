@@ -23,7 +23,7 @@ export const initEmptySlots = async (buildSpotMenu) => {
   );
   fourth = new Slot(
     buildSpotMenu.position.x + 25 / 1.5,
-    buildSpotMenu.position.y + buildSpotMenu.height / 2.6,
+    buildSpotMenu.position.y + buildSpotMenu.height / 2.7,
     "fourthSlot"
   );
 };

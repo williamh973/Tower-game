@@ -1,7 +1,8 @@
-import { openTowerSetupMenu } from "../../../menus/towerSetupMenu/towerSetupMenu.js";
-import { dashboard } from "../../../models/selectionScreen/selectionScreen.instance.js";
+import {
+  dashboard,
+  towerSetupMenu,
+} from "../../../models/selectionScreen/selectionScreen.instance.js";
 import { isHovering, x, y } from "../../../shared/utils.js";
-import { loadCampaignStep } from "../../../spawnHandle/campaign/step/checkCampaignStep.js";
 
 export const dashboardIconList = () => {
   for (const icon of dashboard.icons) {
@@ -17,15 +18,16 @@ export const dashboardIconList = () => {
     ) {
       switch (icon.name) {
         case "openTowerSetupMenuIcon":
-          openTowerSetupMenu(icon);
+          towerSetupMenu.open(icon);
           break;
+
         default:
           break;
-      }
-
-      if (icon.name) {
-        loadCampaignStep(icon.name);
       }
     }
   }
 };
+
+// if (icon.name) {
+//   loadCampaignStep(icon.name);
+// }
