@@ -195,7 +195,7 @@ export class Projectile {
       "goldRewardDisplay",
       "+ " + this.target.goldReward
     );
-    gameVariable.ui.floatingIconList.push(goldRewardDisplay);
+    gameVariable.ui.floatingIcons.push(goldRewardDisplay);
   }
 
   applyDamageReduction(damage) {

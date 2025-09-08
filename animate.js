@@ -21,6 +21,5 @@ export const animate = (timestamp) => {
     gameOver();
     handleDeadDemons();
   }
-
   update(timestamp);
 };

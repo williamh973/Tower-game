@@ -1,10 +1,9 @@
 import { context } from "../../../../animate.js";
-import { gameVariable } from "../../../../gameVariable.js";
 import {
   buildSpotMenu,
   towerSetupMenu,
 } from "../../../selectionScreen/selectionScreen.instance.js";
-import { inventoryDuplicataIcon } from "../../floatingIcon/floatingIcon.instance.js";
+import { FloatingIcon } from "../../floatingIcon/floatingIcon.model.js";
 import { Icon } from "../../icon.model.js";
 
 export class AvailableTowerIcon extends Icon {
@@ -26,11 +25,18 @@ export class AvailableTowerIcon extends Icon {
   }
 
   errorMessage() {
-    inventoryDuplicataIcon.text = "Déjà dans l'inventaire";
-    inventoryDuplicataIcon.name = "inventoryDuplicataIcon";
-    inventoryDuplicataIcon.position.x = 300;
-    inventoryDuplicataIcon.position.y = 300;
-    gameVariable.ui.floatingIconList.push(inventoryDuplicataIcon);
+    let toast = new FloatingIcon(
+      300,
+      200,
+      null,
+      "transparent",
+      200,
+      40,
+      false,
+      "Déjà dans l'inventaire !",
+      "toast"
+    );
+    towerSetupMenu.floatingIcon = toast;
   }
 
   checkInventoryForDuplicate() {
@@ -46,7 +52,7 @@ export class AvailableTowerIcon extends Icon {
     if (duplicate) {
       this.ghostIcon = null;
       this.tower = null;
-      const errorMessage = this.errorMessage();
+      this.errorMessage();
       return;
     }
 
@@ -71,12 +77,5 @@ export class AvailableTowerIcon extends Icon {
         this.ghostIcon.position.y = e.offsetY - this.ghostIcon.height / 2;
       }
     };
-  }
-
-  drawOverlay() {
-    context.save();
-    context.fillStyle = "rgba(0, 0, 0, 0.15)";
-    context.fillRect(0, 0, context.canvas.width, context.canvas.height);
-    context.restore();
   }
 }

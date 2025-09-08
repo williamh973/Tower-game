@@ -3,7 +3,7 @@ import { gameVariable } from "../../gameVariable.js";
 import { initTowers } from "../building/building.instance.js";
 import {
   openTowerSetupMenuIcon,
-  stepOneIcon,
+  firstStepIcon,
 } from "../icon/dashboardIcons/dashboardIcons.instance.js";
 import { initIcons } from "../icon/icon.instance.js";
 import {
@@ -66,7 +66,7 @@ export class Game {
     dashboard.isDashboardOpen = true;
 
     if (dashboard.isDashboardOpen) {
-      dashboard.icons.push(openTowerSetupMenuIcon, stepOneIcon);
+      dashboard.icons.push(openTowerSetupMenuIcon, firstStepIcon);
     }
   }
 }

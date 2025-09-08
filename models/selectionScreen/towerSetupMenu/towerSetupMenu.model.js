@@ -1,3 +1,4 @@
+import { context } from "../../../animate.js";
 import { gameVariable } from "../../../gameVariable.js";
 import { initTowerStats } from "../../building/tower/initTowerStats.js";
 import {
@@ -8,7 +9,7 @@ import {
 import { equippedTowersIcon } from "../../icon/buildSpotMenuIcon/buildSpotMenuIcon.instance.js";
 import {
   openTowerSetupMenuIcon,
-  stepOneIcon,
+  firstStepIcon,
 } from "../../icon/dashboardIcons/dashboardIcons.instance.js";
 import {
   archerTowerAvailableIcon,
@@ -42,7 +43,7 @@ export class TowerSetupMenu extends SelectionScreen {
     this.arrowIcons = [];
     this.towerDetailsIcons = [];
     this.equippedTowersIcon = null;
-    this.buildSpotMenu = null;
+    this.floatingIcon = null;
     this.hasChosenTowers = false;
     this.isOpen = false;
     this.isGhostedMod = false;
@@ -71,10 +72,9 @@ export class TowerSetupMenu extends SelectionScreen {
           fireDetailsIcon,
         });
 
-        this.buildSpotMenu = buildSpotMenu;
         this.equippedTowersIcon = equippedTowersIcon;
 
-        gameVariable.game.selectionScreenList.push(this, this.buildSpotMenu);
+        gameVariable.game.selectionScreenList.push(this, buildSpotMenu);
         this.arrowIcons.push(leftArrow, rightArrow, closeArrow);
         this.availableTowerIcons.push(
           archerTowerAvailableIcon,
@@ -117,7 +117,7 @@ export class TowerSetupMenu extends SelectionScreen {
             (screen) => screen.name === "dashboard"
           );
 
-        dashboard.icons.push(openTowerSetupMenuIcon, stepOneIcon);
+        dashboard.icons.push(openTowerSetupMenuIcon, firstStepIcon);
         this.arrowIcons = [];
         this.availableTowerIcons = [];
         this.towerDetailsIcons = [];
@@ -132,5 +132,12 @@ export class TowerSetupMenu extends SelectionScreen {
 
   resetBuildSpotMenuAnimation() {
     buildSpotMenu.scale = 0.3;
+  }
+
+  drawOverlay() {
+    context.save();
+    context.fillStyle = "rgba(0, 0, 0, 0.15)";
+    context.fillRect(0, 0, context.canvas.width, context.canvas.height);
+    context.restore();
   }
 }

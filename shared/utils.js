@@ -16,6 +16,49 @@ export const initAvailableIconNames = () => {
   return availableIconNames;
 };
 
+export const initStepIconNames = () => {
+  const stepIcons = [
+    "firstStepIcon",
+    "secondStepIcon",
+    "thirdStepIcon",
+    "fourthStepIcon",
+    "fifthStepIcon",
+    "sixthStepIcon",
+    "seventhStepIcon",
+    "eighthStepIcon",
+    "ninthStepIcon",
+    "tenthStepIcon",
+  ];
+  return stepIcons;
+};
+
+export const buildSpotPositions = {
+  firstStep: [
+    {
+      x: 110,
+      y: 165,
+    },
+    {
+      x: 119,
+      y: 345,
+    },
+    {
+      x: 190,
+      y: 535,
+    },
+  ],
+  secondStep: [
+    {
+      x: 200,
+      y: 180,
+    },
+    {
+      x: 250,
+      y: 220,
+    },
+  ],
+};
+
 export const initArrowIconNames = () => {
   const arrowIconNames = ["rightArrow", "leftArrow", "closeArrow"];
   return arrowIconNames;

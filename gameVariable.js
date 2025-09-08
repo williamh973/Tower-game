@@ -5,12 +5,8 @@ export const gameVariable = {
   tower: {
     placedTowerList: [],
   },
-  ui: {
-    floatingIconList: [],
-    isHovering: false,
-  },
+  ui: { isHovering: false },
   battle: {
     battleIconList: [],
-    buildSpotList: [],
   },
 };

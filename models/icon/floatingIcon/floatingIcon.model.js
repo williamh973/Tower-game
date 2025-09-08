@@ -17,7 +17,7 @@ export class FloatingIcon extends Icon {
     this.opacity = 1;
     this.riseSpeed = 0.2;
     this.fadeSpeed = 0.01;
-    this.finished = false;
+    this.isFinished = false;
   }
 
   update() {
@@ -26,14 +26,16 @@ export class FloatingIcon extends Icon {
   }
 
   updateAnimation() {
-    const icons = ["goldRewardDisplay", "inventoryDuplicataIcon"];
+    console.time("time start");
+    const icons = ["goldRewardDisplay", "toast"];
     if (icons.includes(this.name)) {
       this.position.y -= this.riseSpeed;
       if (this.opacity > 0) {
         this.opacity -= this.fadeSpeed;
         if (this.opacity <= 0) {
           this.opacity = 0;
-          this.finished = true;
+          this.isFinished = true;
+          console.timeEnd("time up");
         }
       }
     }

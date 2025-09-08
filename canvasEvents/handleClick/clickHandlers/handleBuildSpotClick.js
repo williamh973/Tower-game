@@ -1,9 +1,10 @@
 import { gameVariable } from "../../../gameVariable.js";
 import { isHovering, x, y } from "../../../shared/utils.js";
 import { openBuildSpotMenu } from "../../../../../spawnHandle/buildSpot/buildSpotMenu.js";
+import { dashboard } from "../../../models/selectionScreen/selectionScreen.instance.js";
 
-export const buildSpotList = () => {
-  for (const spot of gameVariable.battle.buildSpotList) {
+export const buildSpots = () => {
+  for (const spot of dashboard.map.buildSpots) {
     if (
       isHovering(
         x,

@@ -5,7 +5,7 @@ import {
 import { Icon } from "../icon.model.js";
 
 export let openTowerSetupMenuIcon;
-export let stepOneIcon;
+export let firstStepIcon;
 
 export const initDashboardIcons = async () => {
   openTowerSetupMenuIcon = new Icon(
@@ -19,7 +19,7 @@ export const initDashboardIcons = async () => {
     "",
     "openTowerSetupMenuIcon"
   );
-  stepOneIcon = new Icon(
+  firstStepIcon = new Icon(
     0,
     0,
     theStepOneIcon,
@@ -28,6 +28,6 @@ export const initDashboardIcons = async () => {
     57,
     true,
     null,
-    "stepOneIcon"
+    "firstStepIcon"
   );
 };

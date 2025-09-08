@@ -7,10 +7,6 @@ import {
 import { wave } from "./spawnHandle/campaign/step/checkCampaignStep.js";
 
 export const update = (timestamp) => {
-  if (dashboard.map) {
-    dashboard.map.update();
-  }
-
   gameVariable.tower.placedTowerList.forEach((tower) => {
     tower.update(timestamp);
   });
@@ -34,13 +30,13 @@ export const update = (timestamp) => {
   });
 
   if (towerSetupMenu.isOpen) {
-    towerSetupMenu.arrowIcons.forEach((icon) => {
-      icon.updateAnimation();
-    });
-
     towerSetupMenu.availableTowerIcons.forEach((icon) => {
       icon.updateAnimation();
       icon.height = 100;
+    });
+
+    towerSetupMenu.arrowIcons.forEach((icon) => {
+      icon.updateAnimation();
     });
   }
 
@@ -52,12 +48,12 @@ export const update = (timestamp) => {
     foundBuildSpotMenu.openedAnimation();
   }
 
-  for (let i = gameVariable.ui.floatingIconList.length - 1; i >= 0; i--) {
-    const icon = gameVariable.ui.floatingIconList[i];
-    icon.update();
+  if (towerSetupMenu.floatingIcon) {
+    towerSetupMenu.floatingIcon;
+    towerSetupMenu.floatingIcon.update();
 
-    if (icon.finished) {
-      gameVariable.ui.floatingIconList.splice(i, 1);
+    if (towerSetupMenu.floatingIcon.isFinished) {
+      towerSetupMenu.floatingIcon = null;
     }
   }
 };

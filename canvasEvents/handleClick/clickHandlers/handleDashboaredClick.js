@@ -2,9 +2,9 @@ import {
   dashboard,
   towerSetupMenu,
 } from "../../../models/selectionScreen/selectionScreen.instance.js";
-import { isHovering, x, y } from "../../../shared/utils.js";
+import { initStepIconNames, isHovering, x, y } from "../../../shared/utils.js";
 
-export const dashboardIconList = () => {
+export const dashboardIcons = () => {
   for (const icon of dashboard.icons) {
     if (
       isHovering(
@@ -20,14 +20,12 @@ export const dashboardIconList = () => {
         case "openTowerSetupMenuIcon":
           towerSetupMenu.open(icon);
           break;
-
-        default:
-          break;
       }
+
+      const stepIcons = initStepIconNames();
+      if (!stepIcons.includes(icon.name)) return;
+
+      dashboard.loadCampaignStep(icon.name);
     }
   }
 };
-
-// if (icon.name) {
-//   loadCampaignStep(icon.name);
-// }
