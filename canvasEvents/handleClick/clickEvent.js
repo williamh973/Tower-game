@@ -1,7 +1,7 @@
 import { canvas } from "../../../../animate.js";
 import { mouseDetect } from "../../../../shared/utils.js";
 import {
-  battleIconList,
+  mapIcons,
   towerSetupMenuIcons,
 } from "./clickHandlers/handleIconClick.js";
 import { dashboardIcons } from "./clickHandlers/handleDashboaredClick.js";
@@ -18,7 +18,7 @@ export const handleClick = async () => {
   levelIconList();
   towerSetupMenuIcons();
   dashboardIcons();
-  battleIconList();
+  mapIcons();
 
   if (dashboard.map) {
     buildSpots();

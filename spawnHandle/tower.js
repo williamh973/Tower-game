@@ -1,6 +1,5 @@
 import { gameVariable } from "../gameVariable.js";
 import { closeBuildSpotMenu } from "../spawnHandle/buildSpot/buildSpotMenu.js";
-import { substractPlayerGold } from "../playerActions.js";
 import {
   archerTower,
   barrackTower,
@@ -33,7 +32,7 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
 
         buildSpotTowerIcon.associatedBuildSpot.build(archerTower);
 
-        substractPlayerGold(archerTower.price);
+        gameVariable.game.player.substractGold(archerTower.price);
       }
       break;
 
@@ -43,7 +42,7 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
         wizardTower.isUnderConstruction();
 
         buildSpotTowerIcon.associatedBuildSpot.build(wizardTower);
-        substractPlayerGold(wizardTower.price);
+        gameVariable.game.player.substractGold(wizardTower.price);
       }
       break;
 
@@ -54,7 +53,7 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
 
         buildSpotTowerIcon.associatedBuildSpot.build(cannonTower);
 
-        substractPlayerGold(cannonTower.price);
+        gameVariable.game.player.substractGold(cannonTower.price);
       }
       break;
 
@@ -65,7 +64,7 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
 
         buildSpotTowerIcon.associatedBuildSpot.build(fireTower);
 
-        substractPlayerGold(fireTower.price);
+        gameVariable.game.player.substractGold(fireTower.price);
       }
       break;
 
@@ -76,7 +75,7 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
 
         buildSpotTowerIcon.associatedBuildSpot.build(barrackTower);
 
-        substractPlayerGold(barrackTower.price);
+        gameVariable.game.player.substractGold(barrackTower.price);
       }
       break;
 
@@ -87,7 +86,7 @@ export const playerBuildTower = (buildSpotTowerIcon) => {
 
         buildSpotTowerIcon.associatedBuildSpot.build(groundTower);
 
-        substractPlayerGold(groundTower.price);
+        gameVariable.game.player.substractGold(groundTower.price);
       }
       break;
   }

@@ -2,7 +2,6 @@ import { context } from "../../animate.js";
 import { Projectile } from "../projectile/projectile.model.js";
 import { theImgTowerUnderBuild } from "../../assets/towerUnderConst.assets.js";
 import { setDistance } from "../../shared/utils.js";
-import { wave } from "../../spawnHandle/campaign/step/checkCampaignStep.js";
 
 export class Building {
   constructor(
@@ -101,13 +100,13 @@ export class Building {
   }
 
   selectedTarget() {
-    for (const demon of wave.demonList) {
-      const distance = setDistance(demon, this);
-      if (distance <= this.range) {
-        this.target = demon;
-        return;
-      }
-    }
+    // for (const demon of wave.demons) {
+    //   const distance = setDistance(demon, this);
+    //   if (distance <= this.range) {
+    //     this.target = demon;
+    //     return;
+    //   }
+    // }
 
     this.target = null;
   }

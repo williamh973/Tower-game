@@ -1,6 +1,6 @@
 import { context } from "../../animate.js";
 import { gameVariable } from "../../gameVariable.js";
-import { checkIfUnitReachedEnd } from "../../playerActions.js";
+import { lifeHudMask } from "../icon/mapIcons/mapIcons.instance.js";
 import { unitRectangleColor } from "./unitRectangleColor.js";
 
 export class Unit {
@@ -66,6 +66,15 @@ export class Unit {
     context.fillRect(this.position.x, this.position.y - 10, hpWidth, hpHeight);
   }
 
+  checkIfUnitReachedEnd = () => {
+    if (this.currentWaypointIndex >= this.waypointList.length - 1) {
+      gameVariable.game.player.life -= 1;
+      lifeHudMask.text = "❤️ " + gameVariable.game.player.life;
+      this.isCanMove = false;
+      gameVariable.game.player.gameOver();
+    }
+  };
+
   move() {
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
@@ -86,12 +95,7 @@ export class Unit {
         if (this.currentWaypointIndex < this.velocityList.length) {
           this.setVelocity();
 
-          checkIfUnitReachedEnd(
-            this.currentWaypointIndex,
-            this.waypointList.length,
-            gameVariable,
-            this.isCanMove
-          );
+          this.checkIfUnitReachedEnd();
         } else {
           this.isCanMove = false;
           this.isDead = true;

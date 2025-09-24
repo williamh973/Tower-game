@@ -150,19 +150,4 @@ export class Icon {
       }
     }
   }
-
-  hidden() {
-    if (this.name === "startWaveIcon") {
-      return (this.isVisible = false);
-    }
-  }
-
-  show() {
-    if (
-      this.name === "startWaveIcon" &&
-      dashboard.map.currentWaveList.length !== dashboard.map.waveList.length
-    ) {
-      return (this.isVisible = true);
-    }
-  }
 }

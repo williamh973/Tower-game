@@ -4,16 +4,16 @@ import {
   dashboard,
   towerSetupMenu,
 } from "./models/selectionScreen/selectionScreen.instance.js";
-import { wave } from "./spawnHandle/campaign/step/checkCampaignStep.js";
 
 export const update = (timestamp) => {
   gameVariable.tower.placedTowerList.forEach((tower) => {
     tower.update(timestamp);
   });
 
-  wave.demonList.forEach((demon) => {
-    demon.update();
-  });
+  // pour l'instant wave n'existe pas, il doit venir du generator
+  // wave.demons.forEach((demon) => {
+  //   demon.update();
+  // });
 
   buildSpotMenu.slots.forEach((slot) => {
     if (slot.tower) {

@@ -1,8 +1,9 @@
 import { canvasManager } from "../../animate.js";
 import { gameVariable } from "../../gameVariable.js";
 import { buildSpotPositions } from "../../shared/utils.js";
-import { wave } from "../../spawnHandle/campaign/step/checkCampaignStep.js";
+import { ckeckIfPlayerVictory } from "../../victory.js";
 import { BuildSpot } from "../buildSpot/buildSpot.model.js";
+import { Generator } from "../generator/generator.model.js";
 import {
   goldCoinIcon,
   goldHudMask,
@@ -22,13 +23,13 @@ export class Map {
     this.width = canvasManager.width;
     this.height = canvasManager.height;
     this.image = image;
-    this.waveList = [];
-    this.maxWaveList = [];
-    this.currentWaveList = [];
+    this.waves = [];
     this.icons = [];
     this.buildSpots = [];
-
-    this.initWave(numberOfWave);
+    this.createWaves(this.waves, numberOfWave);
+    this.currentWave = [this.waves[0]];
+    this.initHUDText();
+    console.log(this.currentWave.length);
   }
 
   draw() {
@@ -41,10 +42,8 @@ export class Map {
     );
   }
 
-  initWave(numberOfWave) {
-    for (let i = 0; i < numberOfWave; i++) {
-      this.waveList.push(wave);
-    }
+  createWaves(mapWaves, numberOfWave) {
+    return new Generator(mapWaves, numberOfWave);
   }
 
   spawnIcons() {
@@ -76,8 +75,35 @@ export class Map {
     lifeHudMask.text = "❤️ " + gameVariable.game.player.life;
     goldHudMask.text = "🪙 " + gameVariable.game.player.gold;
     waveHudMask.text =
-      "🧟 VAGUES " + this.currentWaveList.length + "/" + this.waveList.length;
+      "🧟 VAGUES " + this.currentWave.length + "/" + this.waves.length;
 
     pauseDisplay.text = gameVariable.game.isPaused ? "▶" : "❚❚";
+  }
+
+  handleDeadDemons = () => {
+    if (this.currentWave.demons) {
+      this.currentWave.demons.filter((demon) => {
+        demon.isDead;
+        if (demon.isDead) {
+          this.currentWave.demonDeads.push(demon);
+          gameVariable.game.player.addGold(demon.goldReward);
+          this.currentWave.demons = this.currentWave.demons.filter(
+            (demon) => !demon.isDead
+          );
+          ckeckIfPlayerVictory(
+            this.currentWave.demonDeads,
+            this.currentWave.level.unitMax
+          );
+        }
+      });
+    }
+  };
+
+  updateWaveHudMask() {
+    waveHudMask.text =
+      "🧟 VAGUES " +
+      dashboard.map.currentWave.length +
+      "/" +
+      dashboard.map.waves.length;
   }
 }

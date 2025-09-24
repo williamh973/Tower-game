@@ -1,4 +1,4 @@
-import { Demon } from "../models/units/demon/demon.model.js";
+import { Demon } from "../units/demon/demon.model.js";
 import {
   armorType,
   damageType,
@@ -6,10 +6,10 @@ import {
   unitClass,
   unitName,
   unitType,
-} from "../models/units/unitCharacteristics.js";
-import { wpCoordinates, wpVelocitys } from "../waypoint/waypointHandle.js";
+} from "../units/unitCharacteristics.js";
+import { wpCoordinates, wpVelocitys } from "../../waypoint/waypointHandle.js";
 
-export const demonList = {
+export const demons = {
   gorax: () =>
     new Demon(
       { ...wpCoordinates[0] },

@@ -1,3 +1,5 @@
+import { goldHudMask, lifeHudMask } from "./icon/mapIcons/mapIcons.instance.js";
+
 export class Player {
   constructor() {
     this.life = 20;
@@ -5,5 +7,23 @@ export class Player {
     this.isCanBuildTower = true;
     this.hasWon = false;
     this.hasLost = false;
+  }
+
+  substractGold(towerPrice) {
+    this.gold -= towerPrice;
+    goldHudMask.text = "🪙 " + this.gold;
+  }
+
+  addGold(gold) {
+    this.gold += gold;
+    goldHudMask.text = "🪙 " + this.gold;
+  }
+
+  gameOver() {
+    if (this.life <= 0) {
+      lifeHudMask.text = "❤️ " + this.life;
+      this.hasLost = true;
+      alert("Game over");
+    }
   }
 }

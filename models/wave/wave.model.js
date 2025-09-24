@@ -1,43 +1,35 @@
-import { fetchWaypoints } from "../../waypoint/waypointHandle.js";
-import { gameVariable } from "../../gameVariable.js";
-import { possibleDemonList } from "../../generators/possibleDemonList.js";
-import { wave } from "../../spawnHandle/campaign/step/checkCampaignStep.js";
-import { dashboard } from "../selectionScreen/selectionScreen.instance.js";
+import { possibleDemons } from "../generator/possibleDemons.js";
 
 export class Wave {
   constructor(unitMax) {
     this.isWaveStarted = false;
     this.isWaveEnded = false;
-    this.demonList = [];
-    this.demonDeadList = [];
+    this.demons = [];
+    this.demonDeads = [];
     this.interval = null;
     this.currentUnit = 0;
-    this.unitMax = unitMax;
+    this.level = {
+      unitMax: unitMax,
+    };
   }
 
   getRandomInterval(min = 1000, max = 10000) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  async init() {
-    await fetchWaypoints();
-  }
-
   start(startWaveIcon) {
     this.isWaveStarted = true;
     this.isWaveEnded = false;
-
-    dashboard.map.currentWaveList.push(wave);
 
     this.spawnDemon(startWaveIcon);
   }
 
   spawnDemon(startWaveIcon) {
-    if (this.currentUnit >= this.unitMax) {
+    if (this.currentUnit >= this.level.unitMax) {
       this.end(startWaveIcon);
       return;
     }
-    this.demonList.push(this.randomDemon());
+    this.demons.push(this.randomDemon());
     this.currentUnit++;
     const delay = this.getRandomInterval();
     this.intervalId = setTimeout(() => this.spawnDemon(startWaveIcon), delay);
@@ -52,8 +44,8 @@ export class Wave {
   }
 
   randomDemon() {
-    const availableDemonList = possibleDemonList();
+    const availableDemons = possibleDemons();
     let randomNumber = Math.floor(Math.random() * 7);
-    return availableDemonList[randomNumber];
+    return availableDemons[randomNumber];
   }
 }

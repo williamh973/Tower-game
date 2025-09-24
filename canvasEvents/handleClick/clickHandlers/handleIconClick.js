@@ -3,7 +3,6 @@ import {
   availableTowerMenuNextStep,
   availableTowerMenuPrevStep,
 } from "../../../../../../menus/towerSetupMenu/handleCarouselSteps.js";
-import { initWave } from "../../../spawnHandle/campaign/step/wave/wave.js";
 import { togglePause } from "../../../../../../gamePauseHandle.js";
 import {
   buildSpotMenu,
@@ -11,6 +10,7 @@ import {
   towerSetupMenu,
 } from "../../../models/selectionScreen/selectionScreen.instance.js";
 import { ghostMod } from "./handleGhostModClick.js";
+import { startWaveIcon } from "../../../models/icon/mapIcons/mapIcons.instance.js";
 
 export const towerSetupMenuIcons = () => {
   for (const icon of towerSetupMenu.arrowIcons) {
@@ -82,7 +82,7 @@ export const towerSetupMenuIcons = () => {
   }
 };
 
-export const battleIconList = async () => {
+export const mapIcons = async () => {
   if (dashboard.map) {
     for (const icon of dashboard.map.icons) {
       if (
@@ -97,7 +97,7 @@ export const battleIconList = async () => {
       ) {
         switch (icon.name) {
           case "startWaveIcon":
-            await initWave(icon);
+            await startWaveIcon.init(icon.name);
             break;
           case "pauseIcon":
             togglePause(icon);

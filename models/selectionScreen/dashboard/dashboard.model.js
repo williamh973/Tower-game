@@ -33,7 +33,6 @@ export class Dashboard extends SelectionScreen {
 
     if (this.map) {
       this.closeDashboard();
-      this.map.initHUDText();
       this.map.initBuildSpot();
       this.map.spawnIcons();
       this.isStepLoaded = true;
