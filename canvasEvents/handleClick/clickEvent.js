@@ -5,9 +5,7 @@ import {
   towerSetupMenuIcons,
 } from "./clickHandlers/handleIconClick.js";
 import { dashboardIcons } from "./clickHandlers/handleDashboaredClick.js";
-import { buildSpots } from "./clickHandlers/handleBuildSpotClick.js";
 import { levelIconList } from "./clickHandlers/handleDifficultyScreenClick.js";
-import { dashboard } from "../../models/selectionScreen/selectionScreen.instance.js";
 
 canvas.addEventListener("click", (event) => {
   mouseDetect(event);
@@ -19,8 +17,4 @@ export const handleClick = async () => {
   towerSetupMenuIcons();
   dashboardIcons();
   mapIcons();
-
-  if (dashboard.map) {
-    buildSpots();
-  }
 };

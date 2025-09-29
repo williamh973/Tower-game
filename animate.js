@@ -20,4 +20,7 @@ export const animate = (timestamp) => {
     dashboard.map.handleDeadDemons();
   }
   update(timestamp);
+
+  // const mouse = canvasManager.getMousePosition();
+  // console.log("Mouse on canvas:", mouse.position.x, mouse.position.y);
 };

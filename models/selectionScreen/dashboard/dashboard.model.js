@@ -1,5 +1,6 @@
 import { theMapStepOne } from "../../../assets/backImg.asset.js";
 import { gameVariable } from "../../../gameVariable.js";
+import { startWaveIcon } from "../../icon/mapIcons/mapIcons.instance.js";
 import { Map } from "../../map/map.model.js";
 import { SelectionScreen } from "../selectionScreen.model.js";
 
@@ -17,13 +18,15 @@ export class Dashboard extends SelectionScreen {
 
   closeDashboard() {
     this.isDashboardOpen = false;
-    gameVariable.game.selectionScreenList = [];
+    gameVariable.game.selectionScreens = [];
     this.icons = [];
   }
 
   loadCampaignStep(iconName) {
     switch (iconName) {
       case "firstStepIcon":
+        startWaveIcon.position.x = 312;
+        startWaveIcon.position.y = 5;
         this.map = new Map(theMapStepOne, 5);
         break;
 

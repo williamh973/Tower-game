@@ -28,7 +28,7 @@ export const initMapIcons = async () => {
     "waveIcon"
   );
   pauseDisplay = new Icon(
-    330,
+    685,
     5,
     null,
     blackMask,
@@ -39,8 +39,8 @@ export const initMapIcons = async () => {
     "pauseIcon"
   );
   startWaveIcon = new StartWaveIcon(
-    159,
-    5,
+    0,
+    0,
     theStartWaveIcon,
     "transparent",
     35,

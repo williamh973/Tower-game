@@ -74,7 +74,9 @@ export class TowerSetupMenu extends SelectionScreen {
 
         this.equippedTowersIcon = equippedTowersIcon;
 
-        gameVariable.game.selectionScreenList.push(this, buildSpotMenu);
+        gameVariable.game.selectionScreens.push(this);
+        buildSpotMenu.open(this.isOpen, null);
+
         this.arrowIcons.push(leftArrow, rightArrow, closeArrow);
         this.availableTowerIcons.push(
           archerTowerAvailableIcon,
@@ -112,8 +114,8 @@ export class TowerSetupMenu extends SelectionScreen {
       this.isOpen = !this.isOpen;
 
       if (!this.isOpen) {
-        gameVariable.game.selectionScreenList =
-          gameVariable.game.selectionScreenList.filter(
+        gameVariable.game.selectionScreens =
+          gameVariable.game.selectionScreens.filter(
             (screen) => screen.name === "dashboard"
           );
 

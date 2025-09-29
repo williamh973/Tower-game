@@ -30,6 +30,7 @@ export class Wave {
       return;
     }
     this.demons.push(this.randomDemon());
+
     this.currentUnit++;
     const delay = this.getRandomInterval();
     this.intervalId = setTimeout(() => this.spawnDemon(startWaveIcon), delay);

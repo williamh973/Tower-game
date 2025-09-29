@@ -35,16 +35,12 @@ export const initStepIconNames = () => {
 export const buildSpotPositions = {
   firstStep: [
     {
-      x: 110,
-      y: 165,
+      x: 198,
+      y: 102,
     },
     {
-      x: 119,
-      y: 345,
-    },
-    {
-      x: 190,
-      y: 535,
+      x: 186,
+      y: 383,
     },
   ],
   secondStep: [

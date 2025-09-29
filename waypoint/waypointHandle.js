@@ -1,21 +1,7 @@
-import { dashboard } from "../models/selectionScreen/selectionScreen.instance.js";
-
 export let wpCoordinates = [];
 export let wpVelocitys = [];
 
-export const fetchWaypoints = async () => {
-  switch (dashboard.campaignCurrentStep) {
-    case 1:
-      await fetchWaypointsStepOne();
-      break;
-    case 2:
-      await fetchWaypointsStepTwo();
-      break;
-    default:
-  }
-};
-
-const fetchWaypointsStepOne = async () => {
+export const fetchWaypointStepOne = async () => {
   return Promise.all([
     fetch("waypoint/stepOne/wp-coordinate.json").then((res) => res.json()),
     fetch("waypoint/stepOne/wp-velocity.json").then((res) => res.json()),
@@ -25,7 +11,7 @@ const fetchWaypointsStepOne = async () => {
   });
 };
 
-const fetchWaypointsStepTwo = async () => {
+export const fetchWaypointStepTwo = async () => {
   return Promise.all([
     fetch("waypoint/stepOne/wp-coordinate.json").then((res) => res.json()),
     fetch("waypoint/stepOne/wp-velocity.json").then((res) => res.json()),

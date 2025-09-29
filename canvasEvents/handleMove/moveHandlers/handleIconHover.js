@@ -1,8 +1,8 @@
-import { gameVariable } from "../../../gameVariable.js";
+import { canvasManager } from "../../../animate.js";
 import { isHovering, x, y } from "../../../shared/utils.js";
 
-export const iconHover = (iconList) => {
-  for (const icon of iconList) {
+export const iconHover = (icons) => {
+  for (const icon of icons) {
     if (
       isHovering(
         x,
@@ -13,13 +13,13 @@ export const iconHover = (iconList) => {
         icon.height
       )
     ) {
-      gameVariable.ui.isHovering = true;
+      canvasManager.isHovering = true;
       icon.isHovering = true;
 
       canvas.style.cursor = "pointer";
       break;
     } else {
-      gameVariable.ui.isHovering = false;
+      canvasManager.isHovering = false;
       icon.isHovering = false;
       canvas.style.cursor = "default";
     }

@@ -1,4 +1,3 @@
-import { context } from "./animate.js";
 import { gameVariable } from "./gameVariable.js";
 import {
   buildSpotMenu,
@@ -9,7 +8,7 @@ import {
 import { drawDebugCollisionSquare } from "./shared/utils.js";
 
 export const draw = () => {
-  gameVariable.game.selectionScreenList.forEach((screen) => {
+  gameVariable.game.selectionScreens.forEach((screen) => {
     screen.draw();
   });
 
@@ -23,7 +22,6 @@ export const draw = () => {
 
   if (dashboard.map) {
     dashboard.map.draw();
-
     dashboard.map.icons.forEach((icon) => {
       icon.draw();
     });
@@ -31,6 +29,8 @@ export const draw = () => {
     dashboard.map.buildSpots.forEach((spot) => {
       spot.draw();
     });
+
+    if (buildSpotMenu.isOpen) buildSpotMenu.draw();
   }
 
   if (towerSetupMenu.isOpen) {

@@ -29,7 +29,6 @@ export class Map {
     this.createWaves(this.waves, numberOfWave);
     this.currentWave = [this.waves[0]];
     this.initHUDText();
-    console.log(this.currentWave.length);
   }
 
   draw() {
@@ -65,11 +64,11 @@ export class Map {
     }
   }
 
-  spawnBuildSpot = (positions) => {
+  spawnBuildSpot(positions) {
     positions.forEach((pos) => {
       this.buildSpots.push(new BuildSpot(pos));
     });
-  };
+  }
 
   initHUDText() {
     lifeHudMask.text = "❤️ " + gameVariable.game.player.life;
@@ -80,7 +79,7 @@ export class Map {
     pauseDisplay.text = gameVariable.game.isPaused ? "▶" : "❚❚";
   }
 
-  handleDeadDemons = () => {
+  handleDeadDemons() {
     if (this.currentWave.demons) {
       this.currentWave.demons.filter((demon) => {
         demon.isDead;
@@ -97,7 +96,7 @@ export class Map {
         }
       });
     }
-  };
+  }
 
   updateWaveHudMask() {
     waveHudMask.text =

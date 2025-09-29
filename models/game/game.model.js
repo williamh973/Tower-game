@@ -22,7 +22,7 @@ export class Game {
   constructor() {
     this.player = new Player();
     this.difficulty = null;
-    this.selectionScreenList = [];
+    this.selectionScreens = [];
     this.isPaused = false;
     this.init();
   }
@@ -37,7 +37,7 @@ export class Game {
   }
 
   initDifficultyScreen() {
-    gameVariable.game.selectionScreenList.push(levelDifficultyMenu);
+    gameVariable.game.selectionScreens.push(levelDifficultyMenu);
     levelDifficultyMenu.isLevelDifficultyMenuOpen = true;
 
     if (levelDifficultyMenu.isLevelDifficultyMenuOpen) {
@@ -54,14 +54,14 @@ export class Game {
     if (allowed.includes(level)) {
       this.difficulty = level;
       levelDifficultyMenu.isLevelDifficultyMenuOpen = false;
-      gameVariable.game.selectionScreenList = [];
+      gameVariable.game.selectionScreens = [];
       levelDifficultyMenu.icons = [];
       this.openDashboard();
     }
   }
 
   openDashboard() {
-    gameVariable.game.selectionScreenList.push(dashboard);
+    gameVariable.game.selectionScreens.push(dashboard);
     dashboard.campaignCurrentStep = 1;
     dashboard.isDashboardOpen = true;
 

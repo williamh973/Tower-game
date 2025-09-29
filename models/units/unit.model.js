@@ -66,14 +66,14 @@ export class Unit {
     context.fillRect(this.position.x, this.position.y - 10, hpWidth, hpHeight);
   }
 
-  checkIfUnitReachedEnd = () => {
+  checkIfUnitReachedEnd() {
     if (this.currentWaypointIndex >= this.waypointList.length - 1) {
       gameVariable.game.player.life -= 1;
       lifeHudMask.text = "❤️ " + gameVariable.game.player.life;
       this.isCanMove = false;
       gameVariable.game.player.gameOver();
     }
-  };
+  }
 
   move() {
     this.position.x += this.velocity.x;

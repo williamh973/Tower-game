@@ -11,6 +11,7 @@ import {
 } from "../../../models/selectionScreen/selectionScreen.instance.js";
 import { ghostMod } from "./handleGhostModClick.js";
 import { startWaveIcon } from "../../../models/icon/mapIcons/mapIcons.instance.js";
+import { handleBuildSpotClick } from "./handleBuildSpotClick.js";
 
 export const towerSetupMenuIcons = () => {
   for (const icon of towerSetupMenu.arrowIcons) {
@@ -97,7 +98,7 @@ export const mapIcons = async () => {
       ) {
         switch (icon.name) {
           case "startWaveIcon":
-            await startWaveIcon.init(icon.name);
+            await startWaveIcon.init(icon);
             break;
           case "pauseIcon":
             togglePause(icon);
@@ -107,5 +108,6 @@ export const mapIcons = async () => {
         }
       }
     }
+    handleBuildSpotClick();
   }
 };

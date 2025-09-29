@@ -5,5 +5,4 @@ export const gameVariable = {
   tower: {
     placedTowerList: [],
   },
-  ui: { isHovering: false },
 };

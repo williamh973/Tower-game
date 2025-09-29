@@ -17,15 +17,6 @@ export let buildSpotMenu;
 export let towerSetupMenu;
 
 export const initSelectionScreens = async () => {
-  const menuWidth = 200;
-  const menuHeight = 200;
-  const name = "buildSpotMenu";
-  const menuScale = 0.3;
-  const menuPosition = {
-    x: 450,
-    y: 200,
-  };
-
   levelDifficultyMenu = new LevelDifficultyMenu(
     {
       x: 0,
@@ -50,13 +41,21 @@ export const initSelectionScreens = async () => {
     "dashboard"
   );
 
+  const menuWidth = 200;
+  const menuHeight = 200;
+  const menuScale = 0.3;
+  const menuPosition = {
+    x: 450,
+    y: 200,
+  };
+
   buildSpotMenu = new BuildSpotMenu(
     menuPosition,
     theImgBuildSpotMenu,
     menuWidth,
     menuHeight,
     menuScale,
-    name
+    "buildSpotMenu"
   );
   towerSetupMenu = new TowerSetupMenu(
     {

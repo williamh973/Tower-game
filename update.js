@@ -6,28 +6,33 @@ import {
 } from "./models/selectionScreen/selectionScreen.instance.js";
 
 export const update = (timestamp) => {
-  gameVariable.tower.placedTowerList.forEach((tower) => {
-    tower.update(timestamp);
-  });
+  gameVariable.tower.placedTowerList.forEach((tower) =>
+    tower.update(timestamp)
+  );
 
-  // pour l'instant wave n'existe pas, il doit venir du generator
-  // wave.demons.forEach((demon) => {
-  //   demon.update();
-  // });
+  if (dashboard.map?.currentWave.length > 0) {
+    dashboard.map.currentWave.filter((wave) => {
+      if (!wave.isWaveEnded) {
+        wave.demons?.forEach((demon) => demon.update());
+      }
+    });
+  }
 
   buildSpotMenu.slots.forEach((slot) => {
-    if (slot.tower) {
-      slot.tower.projectiles.forEach((projectile) => {
-        projectile.update();
-      });
-    }
+    if (slot.tower)
+      slot.tower.projectiles.forEach((projectile) => projectile.update());
   });
 
   dashboard.icons.forEach((icon) => {
-    if (icon.isActivated) {
-      icon.updateAnimation();
-    }
+    if (icon.isActivated) icon.updateAnimation();
   });
+
+  if (dashboard.map) {
+    const startWaveIcon = dashboard.map?.icons.find(
+      (icon) => icon.name === "startWaveIcon"
+    );
+    startWaveIcon.updateAnimation();
+  }
 
   if (towerSetupMenu.isOpen) {
     towerSetupMenu.availableTowerIcons.forEach((icon) => {
@@ -40,7 +45,7 @@ export const update = (timestamp) => {
     });
   }
 
-  const foundBuildSpotMenu = gameVariable.game.selectionScreenList.find(
+  const foundBuildSpotMenu = gameVariable.game.selectionScreens.find(
     (selectionScreen) => selectionScreen.name === "buildSpotMenu"
   );
 
