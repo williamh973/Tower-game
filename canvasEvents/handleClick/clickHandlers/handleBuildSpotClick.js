@@ -19,7 +19,7 @@ export const handleBuildSpotClick = () => {
       !spot.isOccupied &&
       gameVariable.game.player.isCanBuildTower
     ) {
-      buildSpotMenu.open(spot);
+      buildSpotMenu.open(false, spot);
     }
   }
 };

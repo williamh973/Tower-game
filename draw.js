@@ -7,6 +7,18 @@ import {
 } from "./models/selectionScreen/selectionScreen.instance.js";
 import { drawDebugCollisionSquare } from "./shared/utils.js";
 
+const drawBuildSpotMenu = () => {
+  buildSpotMenu.draw();
+  buildSpotMenu.slots.forEach((slot) => {
+    if (buildSpotMenu.scale === 1) {
+      slot.draw();
+    }
+    if (slot.isGhostTowerPlaced) {
+      slot.content.draw();
+    }
+  });
+};
+
 export const draw = () => {
   gameVariable.game.selectionScreens.forEach((screen) => {
     screen.draw();
@@ -30,7 +42,7 @@ export const draw = () => {
       spot.draw();
     });
 
-    if (buildSpotMenu.isOpen) buildSpotMenu.draw();
+    if (buildSpotMenu.isOpen && !towerSetupMenu.isOpen) drawBuildSpotMenu();
   }
 
   if (towerSetupMenu.isOpen) {
@@ -38,14 +50,7 @@ export const draw = () => {
     const currentCharaIcon = towerSetupMenu.towerDetailsIcons[index];
     const currentAvailableIcon = towerSetupMenu.availableTowerIcons[index];
 
-    buildSpotMenu.slots.forEach((slot) => {
-      if (buildSpotMenu.scale === 1) {
-        slot.draw();
-      }
-      if (slot.isGhostTowerPlaced) {
-        slot.content.draw();
-      }
-    });
+    drawBuildSpotMenu();
 
     towerSetupMenu.towerDetailsIcons.forEach(() => {
       currentCharaIcon.draw();

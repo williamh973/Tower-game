@@ -36,22 +36,19 @@ export class BuildSpotMenu extends SelectionScreen {
         x: spot.position.x - this.width / 2.4,
         y: spot.position.y - this.height / 2.5,
       };
+      initEmptySlots(this);
+      console.log(this.slots);
     }
-    gameVariable.game.selectionScreens.push(this);
-  }
 
-  async closeBuildSpotMenu() {
-    await this.updateAnimation();
-
-    setTimeout(async () => {
-      await this.close(image);
-    }, 100);
+    this.isOpen
+      ? gameVariable.game.selectionScreens.push(this)
+      : this.close(this);
   }
 
   async close(element) {
     gameVariable.game.selectionScreens =
       gameVariable.game.selectionScreens.filter(
-        (screen) => screen.image !== element
+        (screen) => screen.image !== element.image
       );
   }
 

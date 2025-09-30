@@ -49,7 +49,7 @@ export const update = (timestamp) => {
     (selectionScreen) => selectionScreen.name === "buildSpotMenu"
   );
 
-  if (towerSetupMenu.isOpen && foundBuildSpotMenu) {
+  if (towerSetupMenu.isOpen || (buildSpotMenu.isOpen && foundBuildSpotMenu)) {
     foundBuildSpotMenu.openedAnimation();
   }
 
