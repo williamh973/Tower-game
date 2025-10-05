@@ -7,6 +7,7 @@ export class Player {
     this.isCanBuildTower = true;
     this.hasWon = false;
     this.hasLost = false;
+    this.placedTowers = [];
   }
 
   substractGold(towerPrice) {

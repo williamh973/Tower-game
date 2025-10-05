@@ -59,15 +59,11 @@ export class Map {
   initBuildSpot() {
     const stepKey =
       Object.keys(buildSpotPositions)[dashboard.campaignCurrentStep - 1];
-    if (stepKey) {
-      this.spawnBuildSpot(buildSpotPositions[stepKey]);
-    }
+    if (stepKey) this.spawnBuildSpot(buildSpotPositions[stepKey]);
   }
 
   spawnBuildSpot(positions) {
-    positions.forEach((pos) => {
-      this.buildSpots.push(new BuildSpot(pos));
-    });
+    positions.forEach((pos) => this.buildSpots.push(new BuildSpot(pos)));
   }
 
   initHUDText() {

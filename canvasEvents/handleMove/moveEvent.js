@@ -1,6 +1,7 @@
 import { canvas } from "../../../../animate.js";
 import { canvasManager } from "../../animate.js";
 import {
+  buildSpotMenu,
   dashboard,
   levelDifficultyMenu,
   towerSetupMenu,
@@ -13,13 +14,17 @@ canvas.addEventListener("mousemove", (event) => {
 
   canvasManager.isHovering = false;
 
-  iconHover(towerSetupMenu.arrowIcons);
-  iconHover(levelDifficultyMenu.icons);
+  if (levelDifficultyMenu) iconHover(levelDifficultyMenu.icons);
 
+  if (dashboard) iconHover(dashboard.icons);
   if (dashboard.map) {
     iconHover(dashboard.map.icons);
     iconHover(dashboard.map.buildSpots);
   }
-  iconHover(towerSetupMenu.availableTowerIcons);
-  iconHover(dashboard.icons);
+  if (towerSetupMenu) {
+    iconHover(towerSetupMenu.arrowIcons);
+    iconHover(towerSetupMenu.availableTowerIcons);
+  }
+
+  if (dashboard.map && buildSpotMenu.isOpen) iconHover(buildSpotMenu.slots);
 });

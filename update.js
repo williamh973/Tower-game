@@ -6,7 +6,7 @@ import {
 } from "./models/selectionScreen/selectionScreen.instance.js";
 
 export const update = (timestamp) => {
-  gameVariable.tower.placedTowerList.forEach((tower) =>
+  gameVariable.game.player.placedTowers.forEach((tower) =>
     tower.update(timestamp)
   );
 
@@ -48,17 +48,11 @@ export const update = (timestamp) => {
   const foundBuildSpotMenu = gameVariable.game.selectionScreens.find(
     (selectionScreen) => selectionScreen.name === "buildSpotMenu"
   );
+  if (foundBuildSpotMenu) foundBuildSpotMenu.toggleAnimate();
 
-  if (towerSetupMenu.isOpen || (buildSpotMenu.isOpen && foundBuildSpotMenu)) {
-    foundBuildSpotMenu.openedAnimation();
-  }
+  if (gameVariable.game.toast) {
+    gameVariable.game.toast.update();
 
-  if (towerSetupMenu.floatingIcon) {
-    towerSetupMenu.floatingIcon;
-    towerSetupMenu.floatingIcon.update();
-
-    if (towerSetupMenu.floatingIcon.isFinished) {
-      towerSetupMenu.floatingIcon = null;
-    }
+    if (gameVariable.game.toast.isFinished) gameVariable.game.toast = null;
   }
 };

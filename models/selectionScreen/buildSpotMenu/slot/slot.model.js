@@ -1,6 +1,8 @@
 import { context } from "../../../../animate.js";
 import { theEmptySlotIcon } from "../../../../assets/icon.asset.js";
-import { towerSetupMenu } from "../../selectionScreen.instance.js";
+import { gameVariable } from "../../../../gameVariable.js";
+// import { buildTower } from "../../../../spawnHandle/tower.js";
+import { dashboard, towerSetupMenu } from "../../selectionScreen.instance.js";
 
 export class Slot {
   constructor(x, y, name) {
@@ -41,13 +43,52 @@ export class Slot {
     }
   }
 
-  addTowerIconToSlot(slot, selectedIcon, remainingBuildMenuSlots) {
+  toggle(selectedIcon, buildSpotMenu) {
+    if (towerSetupMenu.isGhostedMod)
+      this.addTowerIconToSlot(this, selectedIcon, buildSpotMenu);
+    else this.buildTower(buildSpotMenu);
+  }
+
+  addTowerIconToSlot(slot, selectedIcon, buildSpotMenu) {
     slot.content = selectedIcon.ghostIcon;
     slot.tower = selectedIcon.tower;
     slot.isOccupied = true;
     towerSetupMenu.isGhostedMod = false;
     selectedIcon.ghostIcon.isVisible = false;
-    remainingBuildMenuSlots--;
+    buildSpotMenu.remainingSlots--;
+  }
+
+  buildTower(buildSpotMenu) {
+    if (!dashboard.map) return;
+    if (!buildSpotMenu.isAnimateFinished) return;
+
+    if (gameVariable.game.player.gold >= this.tower?.price) {
+      gameVariable.game.player.placedTowers.push(this.tower);
+      this.updateTowerProps(buildSpotMenu);
+      this.tower.isUnderConstruction();
+      buildSpotMenu.associatedBuildSpot.build(this.tower);
+      gameVariable.game.player.substractGold(this.tower.price);
+      buildSpotMenu.toggle(false, null);
+    }
+  }
+
+  updateTowerProps(buildSpotMenu) {
+    const towerProps = {
+      position: {
+        x:
+          buildSpotMenu.associatedBuildSpot.position.x -
+          buildSpotMenu.associatedBuildSpot.width / 2,
+        y:
+          buildSpotMenu.associatedBuildSpot.position.y -
+          buildSpotMenu.associatedBuildSpot.height / 1.3,
+      },
+      width: 60,
+      height: 60,
+    };
+
+    this.tower.position = towerProps.position;
+    this.tower.width = towerProps.width;
+    this.tower.height = towerProps.height;
   }
 
   animation() {

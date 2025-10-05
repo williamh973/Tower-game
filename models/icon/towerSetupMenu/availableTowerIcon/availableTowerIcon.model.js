@@ -1,4 +1,5 @@
 import { context } from "../../../../animate.js";
+import { gameVariable } from "../../../../gameVariable.js";
 import {
   buildSpotMenu,
   towerSetupMenu,
@@ -25,18 +26,20 @@ export class AvailableTowerIcon extends Icon {
   }
 
   errorMessage() {
+    const width = 200;
+    const height = 40;
     let toast = new FloatingIcon(
       300,
       200,
       null,
       "transparent",
-      200,
-      40,
+      width,
+      height,
       false,
       "Déjà dans l'inventaire !",
       "toast"
     );
-    towerSetupMenu.floatingIcon = toast;
+    gameVariable.game.toast = toast;
   }
 
   checkInventoryForDuplicate() {

@@ -43,7 +43,6 @@ export class TowerSetupMenu extends SelectionScreen {
     this.arrowIcons = [];
     this.towerDetailsIcons = [];
     this.equippedTowersIcon = null;
-    this.floatingIcon = null;
     this.hasChosenTowers = false;
     this.isOpen = false;
     this.isGhostedMod = false;
@@ -75,7 +74,7 @@ export class TowerSetupMenu extends SelectionScreen {
         this.equippedTowersIcon = equippedTowersIcon;
 
         gameVariable.game.selectionScreens.push(this);
-        buildSpotMenu.open(this.isOpen, null);
+        buildSpotMenu.toggle(this.isOpen, null);
 
         this.arrowIcons.push(leftArrow, rightArrow, closeArrow);
         this.availableTowerIcons.push(
@@ -102,9 +101,7 @@ export class TowerSetupMenu extends SelectionScreen {
 
         this.startTowerStatsAnimation();
         this.hideOpenMenuIcon();
-      } else {
-        this.close(icon);
-      }
+      } else this.close(icon);
     }, 300);
   }
 
@@ -124,16 +121,12 @@ export class TowerSetupMenu extends SelectionScreen {
         this.availableTowerIcons = [];
         this.towerDetailsIcons = [];
       }
-      this.resetBuildSpotMenuAnimation();
+      buildSpotMenu.toggle(this.isOpen, null);
     }, 350);
   }
 
   hideOpenMenuIcon() {
     dashboard.icons = [];
-  }
-
-  resetBuildSpotMenuAnimation() {
-    buildSpotMenu.scale = 0.3;
   }
 
   drawOverlay() {

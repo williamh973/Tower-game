@@ -22,6 +22,7 @@ export class Game {
   constructor() {
     this.player = new Player();
     this.difficulty = null;
+    this.toast = null;
     this.selectionScreens = [];
     this.isPaused = false;
     this.init();

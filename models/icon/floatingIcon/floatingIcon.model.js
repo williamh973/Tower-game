@@ -26,7 +26,6 @@ export class FloatingIcon extends Icon {
   }
 
   updateAnimation() {
-    console.time("time start");
     const icons = ["goldRewardDisplay", "toast"];
     if (icons.includes(this.name)) {
       this.position.y -= this.riseSpeed;
@@ -35,7 +34,6 @@ export class FloatingIcon extends Icon {
         if (this.opacity <= 0) {
           this.opacity = 0;
           this.isFinished = true;
-          console.timeEnd("time up");
         }
       }
     }

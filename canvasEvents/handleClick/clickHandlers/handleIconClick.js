@@ -11,9 +11,9 @@ import {
 } from "../../../models/selectionScreen/selectionScreen.instance.js";
 import { ghostMod } from "./handleGhostModClick.js";
 import { startWaveIcon } from "../../../models/icon/mapIcons/mapIcons.instance.js";
-import { handleBuildSpotClick } from "./handleBuildSpotClick.js";
+import { gameVariable } from "../../../gameVariable.js";
 
-export const towerSetupMenuIcons = () => {
+export const towerSetupMenuIcons = (selectedIcon) => {
   for (const icon of towerSetupMenu.arrowIcons) {
     if (
       isHovering(
@@ -43,9 +43,6 @@ export const towerSetupMenuIcons = () => {
     }
   }
 
-  let selectedIcon =
-    towerSetupMenu.availableTowerIcons[towerSetupMenu.currentTowerIndex];
-
   if (
     towerSetupMenu.isOpen &&
     isHovering(
@@ -57,30 +54,8 @@ export const towerSetupMenuIcons = () => {
       selectedIcon.height
     ) &&
     selectedIcon.isClickable
-  ) {
+  )
     ghostMod(selectedIcon);
-  }
-
-  if (towerSetupMenu.isGhostedMod) {
-    for (const slot of buildSpotMenu.slots) {
-      if (
-        isHovering(
-          x,
-          y,
-          slot.position.x,
-          slot.position.y,
-          slot.width,
-          slot.height
-        )
-      ) {
-        slot.addTowerIconToSlot(
-          slot,
-          selectedIcon,
-          buildSpotMenu.remainingBuildMenuSlots
-        );
-      }
-    }
-  }
 };
 
 export const mapIcons = async () => {
@@ -95,7 +70,7 @@ export const mapIcons = async () => {
           icon.width,
           icon.height
         )
-      ) {
+      )
         switch (icon.name) {
           case "startWaveIcon":
             await startWaveIcon.init(icon);
@@ -106,8 +81,25 @@ export const mapIcons = async () => {
           default:
             break;
         }
+    }
+
+    for (const spot of dashboard.map.buildSpots) {
+      if (
+        isHovering(
+          x,
+          y,
+          spot.position.x,
+          spot.position.y,
+          spot.width,
+          spot.height
+        ) &&
+        !spot.isOccupied &&
+        gameVariable.game.player.isCanBuildTower
+      ) {
+        spot.isClicked = true;
+        const buildSpotMenuOpen = false;
+        buildSpotMenu.toggle(buildSpotMenuOpen, spot);
       }
     }
-    handleBuildSpotClick();
   }
 };

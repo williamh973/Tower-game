@@ -5,7 +5,9 @@ import {
   towerSetupMenuIcons,
 } from "./clickHandlers/handleIconClick.js";
 import { dashboardIcons } from "./clickHandlers/handleDashboaredClick.js";
-import { levelIconList } from "./clickHandlers/handleDifficultyScreenClick.js";
+import { levelIcons } from "./clickHandlers/handleDifficultyScreenClick.js";
+import { buildSpotMenuSlots } from "./clickHandlers/handleBuildSpotMenuSlotsClick.js";
+import { towerSetupMenu } from "../../models/selectionScreen/selectionScreen.instance.js";
 
 canvas.addEventListener("click", (event) => {
   mouseDetect(event);
@@ -13,8 +15,12 @@ canvas.addEventListener("click", (event) => {
 });
 
 export const handleClick = async () => {
-  levelIconList();
-  towerSetupMenuIcons();
+  let selectedIcon =
+    towerSetupMenu.availableTowerIcons[towerSetupMenu.currentTowerIndex];
+
+  levelIcons();
+  towerSetupMenuIcons(selectedIcon);
   dashboardIcons();
   mapIcons();
+  buildSpotMenuSlots(selectedIcon);
 };

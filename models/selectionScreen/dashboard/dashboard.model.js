@@ -1,7 +1,10 @@
+import { canvasManager } from "../../../animate.js";
 import { theMapStepOne } from "../../../assets/backImg.asset.js";
 import { gameVariable } from "../../../gameVariable.js";
+import { FloatingIcon } from "../../icon/floatingIcon/floatingIcon.model.js";
 import { startWaveIcon } from "../../icon/mapIcons/mapIcons.instance.js";
 import { Map } from "../../map/map.model.js";
+import { buildSpotMenu } from "../selectionScreen.instance.js";
 import { SelectionScreen } from "../selectionScreen.model.js";
 
 export class Dashboard extends SelectionScreen {
@@ -23,6 +26,22 @@ export class Dashboard extends SelectionScreen {
   }
 
   loadCampaignStep(iconName) {
+    // if (buildSpotMenu.remainingSlots === 4) {
+    //   const width = 200;
+    //   const height = 40;
+    //   let toast = new FloatingIcon(
+    //     canvasManager.width / 2 - width / 2,
+    //     150,
+    //     null,
+    //     "transparent",
+    //     width,
+    //     height,
+    //     false,
+    //     "Aucune tour dans l'inventaire !",
+    //     "toast"
+    //   );
+    //   return (gameVariable.game.toast = toast);
+    // }
     switch (iconName) {
       case "firstStepIcon":
         startWaveIcon.position.x = 312;

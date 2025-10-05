@@ -3,9 +3,10 @@ import { context } from "../../animate.js";
 export class BuildSpot {
   constructor(position) {
     this.position = position;
-    this.width = 40;
-    this.height = 40;
+    this.width = 35;
+    this.height = 35;
     this.isOccupied = false;
+    this.isClicked = false;
     this.placedTower = null;
   }
 

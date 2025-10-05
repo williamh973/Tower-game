@@ -124,10 +124,6 @@ export class Icon {
     }
   }
 
-  setAssociatedBuildSpot(buildSpot) {
-    this.associatedBuildSpot = buildSpot;
-  }
-
   updateAnimation() {
     switch (this.name) {
       case "startWaveIcon":

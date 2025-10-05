@@ -1,3 +1,4 @@
+import { context } from "./animate.js";
 import { gameVariable } from "./gameVariable.js";
 import {
   buildSpotMenu,
@@ -10,12 +11,8 @@ import { drawDebugCollisionSquare } from "./shared/utils.js";
 const drawBuildSpotMenu = () => {
   buildSpotMenu.draw();
   buildSpotMenu.slots.forEach((slot) => {
-    if (buildSpotMenu.scale === 1) {
-      slot.draw();
-    }
-    if (slot.isGhostTowerPlaced) {
-      slot.content.draw();
-    }
+    if (buildSpotMenu.scale === 1) slot.draw();
+    if (slot.isGhostTowerPlaced) slot.content.draw();
   });
 };
 
@@ -42,7 +39,7 @@ export const draw = () => {
       spot.draw();
     });
 
-    if (buildSpotMenu.isOpen && !towerSetupMenu.isOpen) drawBuildSpotMenu();
+    if (!towerSetupMenu.isOpen && buildSpotMenu.isOpen) drawBuildSpotMenu();
   }
 
   if (towerSetupMenu.isOpen) {
@@ -76,9 +73,7 @@ export const draw = () => {
         buildSpotMenu.slots.forEach((slot) => slot.draw());
       }
 
-      if (currentAvailableIcon.ghostIcon) {
-        currentAvailableIcon.ghostIcon.draw();
-      }
+      if (currentAvailableIcon.ghostIcon) currentAvailableIcon.ghostIcon.draw();
     });
   }
 };

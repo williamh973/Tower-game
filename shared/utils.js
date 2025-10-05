@@ -35,12 +35,12 @@ export const initStepIconNames = () => {
 export const buildSpotPositions = {
   firstStep: [
     {
-      x: 198,
-      y: 102,
+      x: 244,
+      y: 99.4,
     },
     {
-      x: 186,
-      y: 383,
+      x: 368,
+      y: 342,
     },
   ],
   secondStep: [
@@ -99,10 +99,10 @@ export const isHovering = (
   );
 };
 
-export const drawDebugCollisionSquare = (element, context) => {
+export const drawDebugCollisionSquare = (element, context, color) => {
   if (element && context) {
     context.beginPath();
-    context.strokeStyle = "red";
+    context.strokeStyle = color;
     context.lineWidth = 1;
 
     context.rect(
