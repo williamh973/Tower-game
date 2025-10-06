@@ -2,6 +2,7 @@ import { context } from "../../animate.js";
 import { Projectile } from "../projectile/projectile.model.js";
 import { theImgTowerUnderBuild } from "../../assets/towerUnderConst.assets.js";
 import { setDistance } from "../../shared/utils.js";
+import { dashboard } from "../selectionScreen/selectionScreen.instance.js";
 
 export class Building {
   constructor(
@@ -82,9 +83,7 @@ export class Building {
         this.target.position.y - this.position.y
       ) <= this.range;
 
-    if (!isTargetValid) {
-      this.selectedTarget();
-    }
+    if (!isTargetValid) this.selectedTarget();
 
     if (
       this.isCanAttack &&
@@ -94,19 +93,18 @@ export class Building {
     ) {
       this.shoot();
       this.lastShotTime = currentTime;
-    } else {
-      this.selectedTarget();
-    }
+    } else this.selectedTarget();
   }
 
   selectedTarget() {
-    // for (const demon of wave.demons) {
-    //   const distance = setDistance(demon, this);
-    //   if (distance <= this.range) {
-    //     this.target = demon;
-    //     return;
-    //   }
-    // }
+    const [wave] = dashboard.map.currentWave;
+    for (const demon of wave.demons) {
+      const distance = setDistance(demon, this);
+      if (distance <= this.range) {
+        this.target = demon;
+        return;
+      }
+    }
 
     this.target = null;
   }
@@ -119,17 +117,11 @@ export class Building {
       y: this.position.y + this.height / 2,
     };
 
-    const associatedTower = {
-      name: this.name,
-      attack: this.attack,
-      type: this.type,
-    };
-
     const projectile = new Projectile(
       missileInitPosition,
       this.target,
       this.type,
-      associatedTower
+      this
     );
 
     this.projectiles.push(projectile);

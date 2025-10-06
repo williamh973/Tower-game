@@ -10,13 +10,10 @@ export const update = (timestamp) => {
     tower.update(timestamp)
   );
 
-  if (dashboard.map?.currentWave.length > 0) {
+  if (dashboard.map?.currentWave.length > 0)
     dashboard.map.currentWave.filter((wave) => {
-      if (!wave.isWaveEnded) {
-        wave.demons?.forEach((demon) => demon.update());
-      }
+      if (!wave.isWaveEnded) wave.demons.forEach((demon) => demon.update());
     });
-  }
 
   buildSpotMenu.slots.forEach((slot) => {
     if (slot.tower)

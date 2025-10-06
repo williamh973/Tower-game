@@ -21,7 +21,7 @@ export class Slot {
   }
 
   draw() {
-    if (this.isOccupied) {
+    if (this.isOccupied)
       context.drawImage(
         this.content.image,
         this.position.x,
@@ -29,7 +29,7 @@ export class Slot {
         this.width,
         this.height
       );
-    } else {
+    else
       context.drawImage(
         this.image,
         this.position.x,
@@ -37,10 +37,8 @@ export class Slot {
         this.width,
         this.height
       );
-    }
-    if (towerSetupMenu.isGhostedMod) {
-      this.animation();
-    }
+
+    if (towerSetupMenu.isGhostedMod) this.animation();
   }
 
   toggle(selectedIcon, buildSpotMenu) {
@@ -120,7 +118,7 @@ export class Slot {
     context.scale(scale, scale);
     context.translate(-centerX, -centerY);
 
-    if (this.isOccupied) {
+    if (this.isOccupied)
       context.drawImage(
         this.content.image,
         this.position.x,
@@ -128,7 +126,7 @@ export class Slot {
         this.width,
         this.height
       );
-    } else {
+    else
       context.drawImage(
         this.image,
         this.position.x,
@@ -136,7 +134,7 @@ export class Slot {
         this.width,
         this.height
       );
-    }
+
     context.restore();
   }
 }

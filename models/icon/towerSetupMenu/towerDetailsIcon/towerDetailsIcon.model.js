@@ -93,9 +93,7 @@ export class TowerDetailsIcon extends Icon {
 
     const timer = setInterval(() => {
       this[property]++;
-      if (this[property] >= normalizedMax) {
-        clearInterval(timer);
-      }
+      if (this[property] >= normalizedMax) clearInterval(timer);
     }, 20);
   }
 }

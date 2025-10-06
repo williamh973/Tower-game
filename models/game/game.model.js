@@ -1,6 +1,6 @@
 import { animate } from "../../animate.js";
 import { gameVariable } from "../../gameVariable.js";
-import { initTowers } from "../building/building.instance.js";
+import { archerTower, initTowers } from "../building/building.instance.js";
 import {
   openTowerSetupMenuIcon,
   firstStepIcon,
@@ -12,6 +12,7 @@ import {
   mediumDifficultyIcon,
 } from "../icon/levelDifficultyIcons/levelDifficultyIcons.instance.js";
 import {
+  buildSpotMenu,
   dashboard,
   initSelectionScreens,
   levelDifficultyMenu,
@@ -34,20 +35,31 @@ export class Game {
     await initSelectionScreens();
     animate(0);
 
-    this.initDifficultyScreen();
+    // this.initDifficultyScreen();
+    this.bypassForTest();
+  }
+
+  bypassForTest() {
+    this.openDashboard();
+    buildSpotMenu.slots.find((slot) => {
+      if (slot.name === "firstSlot") {
+        slot.tower = archerTower;
+        slot.content = archerTower.buildSpotMenuTowerIcon;
+        return slot;
+      }
+    });
   }
 
   initDifficultyScreen() {
     gameVariable.game.selectionScreens.push(levelDifficultyMenu);
     levelDifficultyMenu.isLevelDifficultyMenuOpen = true;
 
-    if (levelDifficultyMenu.isLevelDifficultyMenuOpen) {
+    if (levelDifficultyMenu.isLevelDifficultyMenuOpen)
       levelDifficultyMenu.icons.push(
         easyDifficultyIcon,
         mediumDifficultyIcon,
         hardDifficultyIcon
       );
-    }
   }
 
   setGameDifficulty(level) {
@@ -66,8 +78,7 @@ export class Game {
     dashboard.campaignCurrentStep = 1;
     dashboard.isDashboardOpen = true;
 
-    if (dashboard.isDashboardOpen) {
+    if (dashboard.isDashboardOpen)
       dashboard.icons.push(openTowerSetupMenuIcon, firstStepIcon);
-    }
   }
 }

@@ -4,9 +4,8 @@ export const pulse = (icon) => {
   const maxScale = 1.05;
   icon.scale += icon.scaleDirection * speed;
 
-  if (icon.scale >= maxScale || icon.scale <= minScale) {
+  if (icon.scale >= maxScale || icon.scale <= minScale)
     icon.scaleDirection *= -1;
-  }
 };
 
 export const reversePulse = (icon) => {
@@ -14,10 +13,10 @@ export const reversePulse = (icon) => {
   const minScale = 0.8;
   const maxScale = 1.0;
   icon.scale -= icon.scaleDirection * speed;
-  if (icon.scale <= minScale) {
-    icon.scaleDirection *= -1;
-  }
+  if (icon.scale <= minScale) icon.scaleDirection *= -1;
+
   if (icon.scale >= maxScale) {
+    // enlever les parenthéses ?
     icon.scale = maxScale;
     icon.scaleDirection = 1;
     icon.isActivated = false;

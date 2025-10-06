@@ -7,7 +7,7 @@ import { isHovering, x, y } from "../../../shared/utils.js";
 
 export const buildSpotMenuSlots = (selectedIcon) => {
   if (buildSpotMenu.isOpen && buildSpotMenu.isAnimateFinished)
-    for (const slot of buildSpotMenu.slots) {
+    for (const slot of buildSpotMenu.slots)
       if (
         isHovering(
           x,
@@ -17,8 +17,6 @@ export const buildSpotMenuSlots = (selectedIcon) => {
           slot.width,
           slot.height
         )
-      ) {
+      )
         slot.toggle(selectedIcon, buildSpotMenu);
-      }
-    }
 };

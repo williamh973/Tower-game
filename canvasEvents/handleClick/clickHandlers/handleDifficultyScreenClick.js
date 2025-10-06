@@ -3,7 +3,7 @@ import { levelDifficultyMenu } from "../../../models/selectionScreen/selectionSc
 import { isHovering, x, y } from "../../../shared/utils.js";
 
 export const levelIcons = () => {
-  for (const icon of levelDifficultyMenu.icons) {
+  for (const icon of levelDifficultyMenu.icons)
     if (
       isHovering(
         x,
@@ -13,7 +13,7 @@ export const levelIcons = () => {
         icon.width,
         icon.height
       )
-    ) {
+    )
       switch (icon.name) {
         case "easyDifficultyIcon":
           gameVariable.game.setGameDifficulty("easy");
@@ -27,6 +27,4 @@ export const levelIcons = () => {
         default:
           break;
       }
-    }
-  }
 };

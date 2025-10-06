@@ -86,12 +86,9 @@ export class Projectile {
   }
 
   setArcShoot() {
-    // pour un tir ballistique en 2 temps
-
     switch (this.associatedTower.name) {
       case "cannon":
         this.handleBallisticPhaseOne();
-
         break;
 
       default:
@@ -106,9 +103,7 @@ export class Projectile {
       x: 0,
       y: (this.velocity.y -= 3),
     };
-    if (this.hasReachedApex) {
-      this.handleBallisticPhaseTwo(distance);
-    }
+    if (this.hasReachedApex) this.handleBallisticPhaseTwo(distance);
   }
 
   handleBallisticPhaseTwo(distance) {
@@ -137,9 +132,8 @@ export class Projectile {
     this.setGravity();
     this.setShootParams(); // pour une meilleure précision des tours sauf pour la tour à canon
 
-    if (this.associatedTower.name === "cannon" && this.velocity.y <= 80) {
+    if (this.associatedTower.name === "cannon" && this.velocity.y <= 80)
       this.hasReachedApex = true;
-    }
 
     this.angle = Math.atan2(this.velocity.y, this.velocity.x);
 
@@ -154,10 +148,9 @@ export class Projectile {
   }
 
   handleHit(target) {
-    if (this.hasReachedApex) {
+    if (this.hasReachedApex)
       if (this.collide(target)) {
         this.hasHit = true;
-        // console.log("touché");
         this.remove();
         let damage = this.getBaseDamages();
         damage = this.applyDamageReduction(damage);
@@ -169,7 +162,6 @@ export class Projectile {
           this.spawnDemonGoldRewardIcon();
         }
       }
-    }
   }
 
   collide(target) {
@@ -182,9 +174,8 @@ export class Projectile {
   }
 
   setGravity() {
-    if (this.hasGravity && this.position.y <= canvasManager.height) {
+    if (this.hasGravity && this.position.y <= canvasManager.height)
       this.velocity.y += this.gravity;
-    }
   }
 
   spawnDemonGoldRewardIcon() {
@@ -195,12 +186,12 @@ export class Projectile {
       "goldRewardDisplay",
       "+ " + this.target.goldReward
     );
-    gameVariable.ui.floatingIcons.push(goldRewardDisplay);
+    gameVariable.game.toast = goldRewardDisplay;
   }
 
   applyDamageReduction(damage) {
     const towerTypeList = ["normal"];
-    if (towerTypeList.includes(this.associatedTower.type)) {
+    if (towerTypeList.includes(this.associatedTower.type))
       switch (this.target.armor) {
         case "light":
           damage = damage / 1.5;
@@ -212,7 +203,6 @@ export class Projectile {
           damage = damage / 2.5;
           break;
       }
-    }
     return damage;
   }
 

@@ -94,7 +94,6 @@ export class Unit {
 
         if (this.currentWaypointIndex < this.velocityList.length) {
           this.setVelocity();
-
           this.checkIfUnitReachedEnd();
         } else {
           this.isCanMove = false;

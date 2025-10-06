@@ -77,10 +77,11 @@ export class Map {
 
   handleDeadDemons() {
     if (this.currentWave.demons) {
+      console.log("demons", this.currentWave.demons);
       this.currentWave.demons.filter((demon) => {
-        demon.isDead;
         if (demon.isDead) {
           this.currentWave.demonDeads.push(demon);
+          console.log("demonDeads", this.currentWave.demonDeads);
           gameVariable.game.player.addGold(demon.goldReward);
           this.currentWave.demons = this.currentWave.demons.filter(
             (demon) => !demon.isDead

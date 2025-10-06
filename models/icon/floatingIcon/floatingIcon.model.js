@@ -43,7 +43,7 @@ export class FloatingIcon extends Icon {
     context.save();
     context.globalAlpha = this.opacity;
 
-    if (this.image) {
+    if (this.image)
       context.drawImage(
         this.image,
         this.position.x,
@@ -51,7 +51,6 @@ export class FloatingIcon extends Icon {
         this.width,
         this.height
       );
-    }
 
     if (this.text) {
       context.fillStyle = "whitesmoke";

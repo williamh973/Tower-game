@@ -14,7 +14,7 @@ import { startWaveIcon } from "../../../models/icon/mapIcons/mapIcons.instance.j
 import { gameVariable } from "../../../gameVariable.js";
 
 export const towerSetupMenuIcons = (selectedIcon) => {
-  for (const icon of towerSetupMenu.arrowIcons) {
+  for (const icon of towerSetupMenu.arrowIcons)
     if (
       isHovering(
         x,
@@ -41,7 +41,6 @@ export const towerSetupMenuIcons = (selectedIcon) => {
       }
       towerSetupMenu.startTowerStatsAnimation();
     }
-  }
 
   if (
     towerSetupMenu.isOpen &&

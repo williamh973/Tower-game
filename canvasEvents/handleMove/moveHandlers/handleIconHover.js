@@ -2,7 +2,7 @@ import { canvasManager } from "../../../animate.js";
 import { isHovering, x, y } from "../../../shared/utils.js";
 
 export const iconHover = (icons) => {
-  for (const icon of icons) {
+  for (const icon of icons)
     if (
       isHovering(
         x,
@@ -23,5 +23,4 @@ export const iconHover = (icons) => {
       icon.isHovering = false;
       canvas.style.cursor = "default";
     }
-  }
 };

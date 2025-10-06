@@ -40,13 +40,10 @@ export class Icon {
   draw() {
     context.save();
 
-    if (this.backgroundColor && this.backgroundColor !== "transparent") {
+    if (this.backgroundColor && this.backgroundColor !== "transparent")
       this.drawBlackMask();
-    }
 
-    if (this.text) {
-      this.drawText();
-    }
+    if (this.text) this.drawText();
 
     if (this.image && this.isVisible) {
       const centerX = this.position.x + this.width / 2;
@@ -140,9 +137,8 @@ export class Icon {
         availableIconNames.includes(this.name) ||
         arrowIcons.includes(this.name) ||
         dashboardIcons.includes(this.name)
-      ) {
+      )
         reversePulse(this);
-      }
     }
   }
 }
