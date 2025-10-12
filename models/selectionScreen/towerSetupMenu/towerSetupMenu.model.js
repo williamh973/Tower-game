@@ -1,5 +1,5 @@
 import { context } from "../../../animate.js";
-import { gameVariable } from "../../../gameVariable.js";
+import { game } from "../../../gameVariable.js";
 import { initTowerStats } from "../../building/tower/initTowerStats.js";
 import {
   closeArrow,
@@ -73,7 +73,7 @@ export class TowerSetupMenu extends SelectionScreen {
 
         this.equippedTowersIcon = equippedTowersIcon;
 
-        gameVariable.game.selectionScreens.push(this);
+        game.selectionScreens.push(this);
         buildSpotMenu.toggle(this.isOpen, null);
 
         this.arrowIcons.push(leftArrow, rightArrow, closeArrow);
@@ -111,10 +111,9 @@ export class TowerSetupMenu extends SelectionScreen {
       this.isOpen = !this.isOpen;
 
       if (!this.isOpen) {
-        gameVariable.game.selectionScreens =
-          gameVariable.game.selectionScreens.filter(
-            (screen) => screen.name === "dashboard"
-          );
+        game.selectionScreens = game.selectionScreens.filter(
+          (screen) => screen.name === "dashboard"
+        );
 
         dashboard.icons.push(openTowerSetupMenuIcon, firstStepIcon);
         this.arrowIcons = [];

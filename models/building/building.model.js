@@ -61,7 +61,7 @@ export class Building {
         underBuildImageHeight * this.scale
       );
       this.loadingBar();
-    } else {
+    } else
       context.drawImage(
         this.towerImage,
         this.position.x,
@@ -69,7 +69,6 @@ export class Building {
         this.width * this.scale,
         this.height * this.scale
       );
-    }
   }
 
   update(currentTime) {
@@ -84,7 +83,6 @@ export class Building {
       ) <= this.range;
 
     if (!isTargetValid) this.selectedTarget();
-
     if (
       this.isCanAttack &&
       this.target &&

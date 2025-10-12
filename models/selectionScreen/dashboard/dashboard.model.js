@@ -1,6 +1,6 @@
 import { canvasManager } from "../../../animate.js";
 import { theMapStepOne } from "../../../assets/backImg.asset.js";
-import { gameVariable } from "../../../gameVariable.js";
+import { game } from "../../../gameVariable.js";
 import { FloatingIcon } from "../../icon/floatingIcon/floatingIcon.model.js";
 import { startWaveIcon } from "../../icon/mapIcons/mapIcons.instance.js";
 import { Map } from "../../map/map.model.js";
@@ -21,7 +21,7 @@ export class Dashboard extends SelectionScreen {
 
   closeDashboard() {
     this.isDashboardOpen = false;
-    gameVariable.game.selectionScreens = [];
+    game.selectionScreens = [];
     this.icons = [];
   }
 
@@ -40,15 +40,20 @@ export class Dashboard extends SelectionScreen {
     //     "Aucune tour dans l'inventaire !",
     //     "toast"
     //   );
-    //   return (gameVariable.game.toast = toast);
+    //   return (game.toast = toast);
     // }
     switch (iconName) {
       case "firstStepIcon":
         startWaveIcon.position.x = 312;
         startWaveIcon.position.y = 5;
-        this.map = new Map(theMapStepOne, 5);
+        this.map = new Map(theMapStepOne, 7);
         break;
 
+      case "secondStepIcon":
+        startWaveIcon.position.x = 312;
+        startWaveIcon.position.y = 5;
+        this.map = new Map(theMapStepOne, 7);
+        break;
       default:
         break;
     }

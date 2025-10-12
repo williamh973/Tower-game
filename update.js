@@ -1,23 +1,19 @@
-import { gameVariable } from "./gameVariable.js";
+import { game } from "./gameVariable.js";
 import {
-  buildSpotMenu,
   dashboard,
   towerSetupMenu,
 } from "./models/selectionScreen/selectionScreen.instance.js";
 
 export const update = (timestamp) => {
-  gameVariable.game.player.placedTowers.forEach((tower) =>
-    tower.update(timestamp)
-  );
+  game.player.placedTowers.forEach((tower) => tower.update(timestamp));
 
-  if (dashboard.map?.currentWave.length > 0)
-    dashboard.map.currentWave.filter((wave) => {
-      if (!wave.isWaveEnded) wave.demons.forEach((demon) => demon.update());
-    });
+  if (dashboard.map)
+    dashboard.map?.currentWave.demons.forEach((demon) => demon.update());
 
-  buildSpotMenu.slots.forEach((slot) => {
-    if (slot.tower)
-      slot.tower.projectiles.forEach((projectile) => projectile.update());
+  game.player.placedTowers.forEach((tower) => {
+    if (tower) {
+      tower.projectiles.forEach((projectile) => projectile.update());
+    }
   });
 
   dashboard.icons.forEach((icon) => {
@@ -42,14 +38,14 @@ export const update = (timestamp) => {
     });
   }
 
-  const foundBuildSpotMenu = gameVariable.game.selectionScreens.find(
+  const foundBuildSpotMenu = game.selectionScreens.find(
     (selectionScreen) => selectionScreen.name === "buildSpotMenu"
   );
   if (foundBuildSpotMenu) foundBuildSpotMenu.toggleAnimate();
 
-  if (gameVariable.game.toast) {
-    gameVariable.game.toast.update();
+  if (game.toast) {
+    game.toast.update();
 
-    if (gameVariable.game.toast.isFinished) gameVariable.game.toast = null;
+    if (game.toast.isFinished) game.toast = null;
   }
 };

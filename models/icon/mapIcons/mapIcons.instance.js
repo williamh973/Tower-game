@@ -5,11 +5,12 @@ import {
 import { blackMask } from "../../../shared/utils.js";
 import { Icon } from "../icon.model.js";
 import { StartWaveIcon } from "../startWaveIcon/startWaveIcon.model.js";
+import { PauseIcon } from "./pauseIcon/pauseIcon.model.js";
 
 export let lifeHudMask;
 export let goldHudMask;
 export let waveHudMask;
-export let pauseDisplay;
+export let pauseIcon;
 export let startWaveIcon;
 export let goldCoinIcon;
 
@@ -27,7 +28,7 @@ export const initMapIcons = async () => {
     "",
     "waveIcon"
   );
-  pauseDisplay = new Icon(
+  pauseIcon = new PauseIcon(
     685,
     5,
     null,

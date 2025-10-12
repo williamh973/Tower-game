@@ -1,5 +1,4 @@
-import { context } from "../../../../animate.js";
-import { gameVariable } from "../../../../gameVariable.js";
+import { game } from "../../../../gameVariable.js";
 import {
   buildSpotMenu,
   towerSetupMenu,
@@ -39,7 +38,7 @@ export class AvailableTowerIcon extends Icon {
       "Déjà dans l'inventaire !",
       "toast"
     );
-    gameVariable.game.toast = toast;
+    game.toast = toast;
   }
 
   checkInventoryForDuplicate() {

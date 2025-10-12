@@ -1,7 +1,8 @@
 import { possibleDemons } from "../generator/possibleDemons.js";
 
 export class Wave {
-  constructor(unitMax) {
+  constructor(unitMax, id) {
+    this.id = id;
     this.isWaveStarted = false;
     this.isWaveEnded = false;
     this.demons = [];

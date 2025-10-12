@@ -20,7 +20,7 @@ export class Player {
     goldHudMask.text = "🪙 " + this.gold;
   }
 
-  gameOver() {
+  checkIfGameOver() {
     if (this.life <= 0) {
       lifeHudMask.text = "❤️ " + this.life;
       this.hasLost = true;

@@ -1,5 +1,4 @@
 import { animate } from "../../animate.js";
-import { gameVariable } from "../../gameVariable.js";
 import { archerTower, initTowers } from "../building/building.instance.js";
 import {
   openTowerSetupMenuIcon,
@@ -18,6 +17,7 @@ import {
   levelDifficultyMenu,
 } from "../selectionScreen/selectionScreen.instance.js";
 import { Player } from "../player.model.js";
+import { game } from "../../gameVariable.js";
 
 export class Game {
   constructor() {
@@ -51,7 +51,7 @@ export class Game {
   }
 
   initDifficultyScreen() {
-    gameVariable.game.selectionScreens.push(levelDifficultyMenu);
+    game.selectionScreens.push(levelDifficultyMenu);
     levelDifficultyMenu.isLevelDifficultyMenuOpen = true;
 
     if (levelDifficultyMenu.isLevelDifficultyMenuOpen)
@@ -67,14 +67,14 @@ export class Game {
     if (allowed.includes(level)) {
       this.difficulty = level;
       levelDifficultyMenu.isLevelDifficultyMenuOpen = false;
-      gameVariable.game.selectionScreens = [];
+      game.selectionScreens = [];
       levelDifficultyMenu.icons = [];
       this.openDashboard();
     }
   }
 
   openDashboard() {
-    gameVariable.game.selectionScreens.push(dashboard);
+    game.selectionScreens.push(dashboard);
     dashboard.campaignCurrentStep = 1;
     dashboard.isDashboardOpen = true;
 

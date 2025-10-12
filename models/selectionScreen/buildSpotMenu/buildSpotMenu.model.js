@@ -1,4 +1,4 @@
-import { gameVariable } from "../../../gameVariable.js";
+import { game } from "../../../gameVariable.js";
 import { SelectionScreen } from "../selectionScreen.model.js";
 import {
   first,
@@ -43,15 +43,14 @@ export class BuildSpotMenu extends SelectionScreen {
       this.updatePositions(spot);
     }
 
-    gameVariable.game.selectionScreens.push(this);
+    game.selectionScreens.push(this);
   }
 
   async close(element) {
     this.isOpen = false;
-    gameVariable.game.selectionScreens =
-      gameVariable.game.selectionScreens.filter(
-        (screen) => screen.image !== element.image
-      );
+    game.selectionScreens = game.selectionScreens.filter(
+      (screen) => screen.image !== element.image
+    );
   }
 
   toggleAnimate() {

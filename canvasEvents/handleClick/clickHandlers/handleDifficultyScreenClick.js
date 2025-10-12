@@ -1,4 +1,4 @@
-import { gameVariable } from "../../../gameVariable.js";
+import { game } from "../../../gameVariable.js";
 import { levelDifficultyMenu } from "../../../models/selectionScreen/selectionScreen.instance.js";
 import { isHovering, x, y } from "../../../shared/utils.js";
 
@@ -16,13 +16,13 @@ export const levelIcons = () => {
     )
       switch (icon.name) {
         case "easyDifficultyIcon":
-          gameVariable.game.setGameDifficulty("easy");
+          game.setGameDifficulty("easy");
           break;
         case "mediumDifficultyIcon":
-          gameVariable.game.setGameDifficulty("medium");
+          game.setGameDifficulty("medium");
           break;
         case "hardDifficultyIcon":
-          gameVariable.game.setGameDifficulty("hard");
+          game.setGameDifficulty("hard");
           break;
         default:
           break;

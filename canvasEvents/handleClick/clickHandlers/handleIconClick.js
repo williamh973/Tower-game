@@ -3,15 +3,17 @@ import {
   availableTowerMenuNextStep,
   availableTowerMenuPrevStep,
 } from "../../../../../../menus/towerSetupMenu/handleCarouselSteps.js";
-import { togglePause } from "../../../../../../gamePauseHandle.js";
 import {
   buildSpotMenu,
   dashboard,
   towerSetupMenu,
 } from "../../../models/selectionScreen/selectionScreen.instance.js";
 import { ghostMod } from "./handleGhostModClick.js";
-import { startWaveIcon } from "../../../models/icon/mapIcons/mapIcons.instance.js";
-import { gameVariable } from "../../../gameVariable.js";
+import {
+  pauseIcon,
+  startWaveIcon,
+} from "../../../models/icon/mapIcons/mapIcons.instance.js";
+import { game } from "../../../gameVariable.js";
 
 export const towerSetupMenuIcons = (selectedIcon) => {
   for (const icon of towerSetupMenu.arrowIcons)
@@ -75,7 +77,7 @@ export const mapIcons = async () => {
             await startWaveIcon.init(icon);
             break;
           case "pauseIcon":
-            togglePause(icon);
+            pauseIcon.toggle();
             break;
           default:
             break;
@@ -93,7 +95,7 @@ export const mapIcons = async () => {
           spot.height
         ) &&
         !spot.isOccupied &&
-        gameVariable.game.player.isCanBuildTower
+        game.player.isCanBuildTower
       ) {
         spot.isClicked = true;
         const buildSpotMenuOpen = false;

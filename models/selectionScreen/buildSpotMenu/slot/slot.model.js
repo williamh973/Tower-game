@@ -1,7 +1,8 @@
 import { context } from "../../../../animate.js";
 import { theEmptySlotIcon } from "../../../../assets/icon.asset.js";
-import { gameVariable } from "../../../../gameVariable.js";
-// import { buildTower } from "../../../../spawnHandle/tower.js";
+import { game } from "../../../../gameVariable.js";
+import { Building } from "../../../building/building.model.js";
+import { Tower } from "../../../building/tower/tower.model.js";
 import { dashboard, towerSetupMenu } from "../../selectionScreen.instance.js";
 
 export class Slot {
@@ -43,14 +44,33 @@ export class Slot {
 
   toggle(selectedIcon, buildSpotMenu) {
     if (towerSetupMenu.isGhostedMod)
-      this.addTowerIconToSlot(this, selectedIcon, buildSpotMenu);
+      this.addTowerIconToSlot(selectedIcon, buildSpotMenu);
     else this.buildTower(buildSpotMenu);
   }
 
-  addTowerIconToSlot(slot, selectedIcon, buildSpotMenu) {
-    slot.content = selectedIcon.ghostIcon;
-    slot.tower = selectedIcon.tower;
-    slot.isOccupied = true;
+  clone() {
+    return new Tower(
+      { ...this.position },
+      this.tower.width,
+      this.tower.height,
+      this.tower.towerImage,
+      this.tower.type,
+      this.tower.name,
+      this.tower.range,
+      this.tower.price,
+      this.tower.attack,
+      this.tower.rateOfFire,
+      this.tower.isDamageZone,
+      this.tower.towerAvailableIcon,
+      this.tower.buildSpotMenuTowerIcon,
+      this.tower.canThrowProjectiles
+    );
+  }
+
+  addTowerIconToSlot(selectedIcon, buildSpotMenu) {
+    this.content = selectedIcon.ghostIcon;
+    this.tower = selectedIcon.tower;
+    this.isOccupied = true;
     towerSetupMenu.isGhostedMod = false;
     selectedIcon.ghostIcon.isVisible = false;
     buildSpotMenu.remainingSlots--;
@@ -60,18 +80,19 @@ export class Slot {
     if (!dashboard.map) return;
     if (!buildSpotMenu.isAnimateFinished) return;
 
-    if (gameVariable.game.player.gold >= this.tower?.price) {
-      gameVariable.game.player.placedTowers.push(this.tower);
-      this.updateTowerProps(buildSpotMenu);
-      this.tower.isUnderConstruction();
-      buildSpotMenu.associatedBuildSpot.build(this.tower);
-      gameVariable.game.player.substractGold(this.tower.price);
+    if (game.player.gold >= this.tower?.price) {
+      const towerCreated = this.clone();
+      buildSpotMenu.associatedBuildSpot.build(towerCreated);
+      game.player.placedTowers.push(towerCreated);
+      this.updateNewTowerProps(buildSpotMenu, towerCreated);
+      towerCreated.isUnderConstruction();
+      game.player.substractGold(this.tower.price);
       buildSpotMenu.toggle(false, null);
     }
   }
 
-  updateTowerProps(buildSpotMenu) {
-    const towerProps = {
+  updateNewTowerProps(buildSpotMenu, towerCreated) {
+    const newTowerProps = {
       position: {
         x:
           buildSpotMenu.associatedBuildSpot.position.x -
@@ -84,9 +105,9 @@ export class Slot {
       height: 60,
     };
 
-    this.tower.position = towerProps.position;
-    this.tower.width = towerProps.width;
-    this.tower.height = towerProps.height;
+    towerCreated.position = newTowerProps.position;
+    towerCreated.width = newTowerProps.width;
+    towerCreated.height = newTowerProps.height;
   }
 
   animation() {

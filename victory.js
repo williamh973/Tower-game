@@ -1,8 +1,8 @@
-import { gameVariable } from "./gameVariable.js";
+import { game } from "./gameVariable.js";
 
-export const ckeckIfPlayerVictory = (waveDemonDeadList, unitMax) => {
-  if (gameVariable.game.player.life >= 0 && waveDemonDeadList >= unitMax) {
-    gameVariable.game.player.hasWon = true;
+export const ckeckIfPlayerVictory = (waveDemonDeads, unitMax) => {
+  if (game.player.life >= 0 && waveDemonDeads >= unitMax) {
+    game.player.hasWon = true;
     alert("Victory !");
   }
 };

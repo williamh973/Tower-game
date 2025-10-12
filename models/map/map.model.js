@@ -1,5 +1,5 @@
 import { canvasManager } from "../../animate.js";
-import { gameVariable } from "../../gameVariable.js";
+import { game } from "../../gameVariable.js";
 import { buildSpotPositions } from "../../shared/utils.js";
 import { ckeckIfPlayerVictory } from "../../victory.js";
 import { BuildSpot } from "../buildSpot/buildSpot.model.js";
@@ -8,7 +8,7 @@ import {
   goldCoinIcon,
   goldHudMask,
   lifeHudMask,
-  pauseDisplay,
+  pauseIcon,
   startWaveIcon,
   waveHudMask,
 } from "../icon/mapIcons/mapIcons.instance.js";
@@ -26,8 +26,9 @@ export class Map {
     this.waves = [];
     this.icons = [];
     this.buildSpots = [];
+    this.hoverables = [startWaveIcon, pauseIcon];
     this.createWaves(this.waves, numberOfWave);
-    this.currentWave = [this.waves[0]];
+    this.currentWave = this.waves[0];
     this.initHUDText();
   }
 
@@ -51,7 +52,7 @@ export class Map {
       lifeHudMask,
       goldHudMask,
       waveHudMask,
-      pauseDisplay,
+      pauseIcon,
       goldCoinIcon
     );
   }
@@ -64,25 +65,36 @@ export class Map {
 
   spawnBuildSpot(positions) {
     positions.forEach((pos) => this.buildSpots.push(new BuildSpot(pos)));
+    this.buildSpots.forEach((spot) => this.addHoverable(spot));
+  }
+
+  addHoverable(element) {
+    this.hoverables.push(element);
+  }
+
+  displayWaves() {
+    return (
+      "🧟 VAGUES " +
+      (this.waves.indexOf(this.currentWave) + 1) +
+      "/" +
+      this.waves.length
+    );
   }
 
   initHUDText() {
-    lifeHudMask.text = "❤️ " + gameVariable.game.player.life;
-    goldHudMask.text = "🪙 " + gameVariable.game.player.gold;
-    waveHudMask.text =
-      "🧟 VAGUES " + this.currentWave.length + "/" + this.waves.length;
-
-    pauseDisplay.text = gameVariable.game.isPaused ? "▶" : "❚❚";
+    lifeHudMask.text = "❤️ " + game.player.life;
+    goldHudMask.text = "🪙 " + game.player.gold;
+    waveHudMask.text = this.displayWaves();
+    pauseIcon.text = game.isPaused ? "▶" : "❚❚";
   }
 
-  handleDeadDemons() {
-    if (this.currentWave.demons) {
-      console.log("demons", this.currentWave.demons);
+  deadDemons() {
+    if (this.currentWave) {
       this.currentWave.demons.filter((demon) => {
         if (demon.isDead) {
+          console.log("ca passe");
           this.currentWave.demonDeads.push(demon);
-          console.log("demonDeads", this.currentWave.demonDeads);
-          gameVariable.game.player.addGold(demon.goldReward);
+          game.player.addGold(demon.goldReward);
           this.currentWave.demons = this.currentWave.demons.filter(
             (demon) => !demon.isDead
           );
@@ -96,10 +108,6 @@ export class Map {
   }
 
   updateWaveHudMask() {
-    waveHudMask.text =
-      "🧟 VAGUES " +
-      dashboard.map.currentWave.length +
-      "/" +
-      dashboard.map.waves.length;
+    waveHudMask.text = this.displayWaves();
   }
 }

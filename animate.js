@@ -2,7 +2,7 @@ import { update } from "./update.js";
 import { draw } from "./draw.js";
 import { Canvas } from "./models/canvas/canvas.model.js";
 import { dashboard } from "./models/selectionScreen/selectionScreen.instance.js";
-import { gameVariable } from "./gameVariable.js";
+import { game } from "./gameVariable.js";
 
 export const canvas = document.getElementById("canvas");
 export const canvasManager = new Canvas(canvas);
@@ -12,12 +12,12 @@ export const animate = (timestamp) => {
   requestAnimationFrame(animate);
   canvasManager.clear();
   canvasManager.drawImage();
-
   draw();
+
   if (dashboard.isStepLoaded) {
     dashboard.map.updateWaveHudMask();
-    gameVariable.game.player.gameOver();
-    dashboard.map.handleDeadDemons();
+    game.player.gameOver();
+    dashboard.map.deadDemons();
   }
   update(timestamp);
 

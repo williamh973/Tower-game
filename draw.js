@@ -1,5 +1,4 @@
-import { context } from "./animate.js";
-import { gameVariable } from "./gameVariable.js";
+import { game } from "./gameVariable.js";
 import {
   buildSpotMenu,
   dashboard,
@@ -17,7 +16,7 @@ const drawBuildSpotMenu = () => {
 };
 
 export const draw = () => {
-  gameVariable.game.selectionScreens.forEach((screen) => {
+  game.selectionScreens.forEach((screen) => {
     screen.draw();
   });
 

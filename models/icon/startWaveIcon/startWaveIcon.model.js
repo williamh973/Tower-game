@@ -22,7 +22,7 @@ export class StartWaveIcon extends Icon {
 
   async init(startWaveIcon) {
     await this.fetchDemonWaypoints();
-    dashboard.map.currentWave.find((wave) => wave.start(startWaveIcon));
+    dashboard.map.currentWave.start(startWaveIcon);
     this.hidden();
   }
 
