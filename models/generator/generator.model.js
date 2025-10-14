@@ -7,8 +7,8 @@ export class Generator {
 
   generateWave(mapWaves, numberOfWave) {
     for (let i = 0; i < numberOfWave; i++) {
-      let unitMax = this.determineUnitMax(i);
-      const createdWave = new Wave(unitMax, i + 1);
+      let demonMax = this.determineUnitMax(i);
+      const createdWave = new Wave(demonMax, i + 1);
       mapWaves.push(createdWave);
     }
   }
@@ -20,7 +20,7 @@ export class Generator {
       hard: 1.7,
     };
 
-    const base = 1;
+    const base = 2;
     const baseMultiplier = 1;
     const growthFactor = difficultyValues["easy"];
     const exponentialPower = 1.1;

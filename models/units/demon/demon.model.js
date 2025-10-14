@@ -1,5 +1,5 @@
 import { game } from "../../../gameVariable.js";
-import { lifeHudMask } from "../../icon/mapIcons/mapIcons.instance.js";
+import { dashboard } from "../../selectionScreen/selectionScreen.instance.js";
 import { Unit } from "../unit.model.js";
 
 export class Demon extends Unit {
@@ -47,9 +47,8 @@ export class Demon extends Unit {
     if (this.currentWaypointIndex >= this.waypoints.length - 1) {
       this.isReachedEnd = true;
       this.isCanMove = false;
-      game.player.life -= 1;
-      lifeHudMask.text = "❤️ " + game.player.life;
-      game.player.checkIfGameOver();
+      game.player.substractLife();
+      dashboard.map.currentWave.escapedDemons.push(this);
     }
   }
 

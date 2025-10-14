@@ -95,7 +95,7 @@ export class Building {
   }
 
   selectedTarget() {
-    const [wave] = dashboard.map.currentWave;
+    const wave = dashboard.map.currentWave;
     for (const demon of wave.demons) {
       const distance = setDistance(demon, this);
       if (distance <= this.range) {

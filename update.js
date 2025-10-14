@@ -7,8 +7,9 @@ import {
 export const update = (timestamp) => {
   game.player.placedTowers.forEach((tower) => tower.update(timestamp));
 
-  if (dashboard.map)
-    dashboard.map?.currentWave.demons.forEach((demon) => demon.update());
+  dashboard.map?.currentWave.demons.forEach((demon) => demon.update());
+
+  // dashboard.map?.activeDemons.forEach((demon) => demon.update());
 
   game.player.placedTowers.forEach((tower) => {
     if (tower) {

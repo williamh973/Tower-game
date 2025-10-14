@@ -36,7 +36,7 @@ export class Canvas {
     );
   }
 
-  drawImage() {
+  draw() {
     this.context.fillStyle = "transparent";
     this.context.fillRect(
       this.position.x,

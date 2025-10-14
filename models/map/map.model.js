@@ -1,7 +1,6 @@
 import { canvasManager } from "../../animate.js";
 import { game } from "../../gameVariable.js";
 import { buildSpotPositions } from "../../shared/utils.js";
-import { ckeckIfPlayerVictory } from "../../victory.js";
 import { BuildSpot } from "../buildSpot/buildSpot.model.js";
 import { Generator } from "../generator/generator.model.js";
 import {
@@ -26,6 +25,7 @@ export class Map {
     this.waves = [];
     this.icons = [];
     this.buildSpots = [];
+    this.activeDemons = [];
     this.hoverables = [startWaveIcon, pauseIcon];
     this.createWaves(this.waves, numberOfWave);
     this.currentWave = this.waves[0];
@@ -57,19 +57,44 @@ export class Map {
     );
   }
 
+  spawnBuildSpot(positions) {
+    positions.forEach((pos) => this.buildSpots.push(new BuildSpot(pos)));
+    this.buildSpots.forEach((spot) => this.addHoverable(spot));
+  }
+
   initBuildSpot() {
     const stepKey =
       Object.keys(buildSpotPositions)[dashboard.campaignCurrentStep - 1];
     if (stepKey) this.spawnBuildSpot(buildSpotPositions[stepKey]);
   }
 
-  spawnBuildSpot(positions) {
-    positions.forEach((pos) => this.buildSpots.push(new BuildSpot(pos)));
-    this.buildSpots.forEach((spot) => this.addHoverable(spot));
+  initHUDText() {
+    lifeHudMask.text = "❤️ " + game.player.life;
+    goldHudMask.text = "🪙 " + game.player.gold;
+    waveHudMask.text = this.displayWaves();
+    pauseIcon.text = game.isPaused ? "▶" : "❚❚";
   }
 
   addHoverable(element) {
     this.hoverables.push(element);
+  }
+
+  addActiveDemon(demon) {
+    this.activeDemons.push(demon);
+  }
+
+  addDeadDemon(demon) {
+    return this.currentWave.deadDemons.push(demon);
+  }
+
+  removeActiveDemon(demon) {
+    const index = this.activeDemons.indexOf(demon);
+    if (index !== -1) this.activeDemons.splice(index, 1);
+  }
+
+  removeCurrentWaveDemon(demon) {
+    const index = this.currentWave.demons.indexOf(demon);
+    if (index !== -1) this.currentWave.demons.splice(index, 1);
   }
 
   displayWaves() {
@@ -81,33 +106,35 @@ export class Map {
     );
   }
 
-  initHUDText() {
-    lifeHudMask.text = "❤️ " + game.player.life;
-    goldHudMask.text = "🪙 " + game.player.gold;
-    waveHudMask.text = this.displayWaves();
-    pauseIcon.text = game.isPaused ? "▶" : "❚❚";
-  }
-
-  deadDemons() {
-    if (this.currentWave) {
-      this.currentWave.demons.filter((demon) => {
-        if (demon.isDead) {
-          console.log("ca passe");
-          this.currentWave.demonDeads.push(demon);
-          game.player.addGold(demon.goldReward);
-          this.currentWave.demons = this.currentWave.demons.filter(
-            (demon) => !demon.isDead
-          );
-          ckeckIfPlayerVictory(
-            this.currentWave.demonDeads,
-            this.currentWave.level.unitMax
-          );
-        }
-      });
-    }
-  }
-
   updateWaveHudMask() {
     waveHudMask.text = this.displayWaves();
+  }
+
+  updateWave(demon) {
+    this.addDeadDemon(demon);
+    this.removeCurrentWaveDemon(demon);
+    this.removeActiveDemon(demon);
+    console.log(
+      "activeDemons",
+      this.activeDemons,
+      "wave",
+      this.currentWave.demons
+    );
+  }
+
+  handleDemonDead(demon) {
+    if (!demon.isDead) return;
+    this.updateWave(demon);
+    game.player.addGold(demon.goldReward);
+  }
+
+  goNextWave() {
+    const currentIndex = this.waves.indexOf(this.currentWave);
+
+    if (currentIndex < this.waves.length - 1) {
+      this.currentWave = this.waves[currentIndex + 1];
+      this.currentWave.isStarted = false;
+      this.updateWaveHudMask();
+    }
   }
 }

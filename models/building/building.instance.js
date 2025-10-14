@@ -40,7 +40,7 @@ export const initTowers = async () => {
     "archer",
     120,
     70,
-    Math.random() * (6 - 4 + 1) + 4,
+    Math.random() * (6 - 4 + 1) + 16, // remettre à 4
     1500,
     false,
     archerTowerAvailableIcon,

@@ -15,9 +15,32 @@ export class Player {
     goldHudMask.text = "🪙 " + this.gold;
   }
 
+  substractLife() {
+    this.life -= 1;
+    lifeHudMask.text = "❤️ " + this.life;
+  }
+
   addGold(gold) {
     this.gold += gold;
     goldHudMask.text = "🪙 " + this.gold;
+  }
+
+  checkStatus(currentWave) {
+    if (currentWave.deadDemons >= currentWave.level.demonMax) {
+    }
+    currentWave
+      ? this.ckeckIfPlayerVictory(currentWave)
+      : this.checkIfGameOver();
+  }
+
+  ckeckIfPlayerVictory(currentWave) {
+    if (
+      this.life >= 0 &&
+      currentWave.deadDemons >= currentWave.level.demonMax
+    ) {
+      this.hasWon = true;
+      alert("Victory !");
+    }
   }
 
   checkIfGameOver() {

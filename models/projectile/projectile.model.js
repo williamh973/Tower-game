@@ -7,6 +7,7 @@ import {
 } from "../../assets/projectile.asset.js";
 import { distanceX, distanceY, setDistance } from "../../shared/utils.js";
 import { game } from "../../gameVariable.js";
+import { dashboard } from "../selectionScreen/selectionScreen.instance.js";
 
 export class Projectile {
   constructor(missilePosition, target, type, associatedTower) {
@@ -159,6 +160,7 @@ export class Projectile {
 
         if (this.target.stats.health <= 0) {
           this.target.isDead = true;
+          dashboard.map.handleDemonDead(this.target);
           this.spawnDemonGoldRewardIcon();
         }
       }
@@ -179,14 +181,18 @@ export class Projectile {
   }
 
   spawnDemonGoldRewardIcon() {
-    let goldRewardDisplay = new FloatingIcon(
-      this.target.position.x,
-      this.target.position.y,
+    let toast = new FloatingIcon(
+      this.target.position.x + this.target.width / 2,
+      this.target.position.y + this.target.height / 2,
       null,
-      "goldRewardDisplay",
-      "+ " + this.target.goldReward
+      "transparent",
+      50,
+      50,
+      false,
+      "+ " + this.target.goldReward,
+      "toast"
     );
-    game.toast = goldRewardDisplay;
+    game.toast = toast;
   }
 
   applyDamageReduction(damage) {

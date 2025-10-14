@@ -20,9 +20,19 @@ export class StartWaveIcon extends Icon {
     super(x, y, image, backgroundColor, width, height, isClickable, text, name);
   }
 
+  checkWaveState(startWaveIcon) {
+    const currentWave = dashboard.map.currentWave;
+    if (!currentWave.isStarted) dashboard.map.currentWave.start(startWaveIcon);
+
+    if (currentWave.isDemonFullyDeployed) {
+      dashboard.map.goNextWave();
+      dashboard.map.currentWave.start(startWaveIcon);
+    }
+  }
+
   async init(startWaveIcon) {
     await this.fetchDemonWaypoints();
-    dashboard.map.currentWave.start(startWaveIcon);
+    this.checkWaveState(startWaveIcon);
     this.hidden();
   }
 

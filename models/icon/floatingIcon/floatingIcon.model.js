@@ -26,15 +26,12 @@ export class FloatingIcon extends Icon {
   }
 
   updateAnimation() {
-    const icons = ["goldRewardDisplay", "toast"];
-    if (icons.includes(this.name)) {
-      this.position.y -= this.riseSpeed;
-      if (this.opacity > 0) {
-        this.opacity -= this.fadeSpeed;
-        if (this.opacity <= 0) {
-          this.opacity = 0;
-          this.isFinished = true;
-        }
+    this.position.y -= this.riseSpeed;
+    if (this.opacity > 0) {
+      this.opacity -= this.fadeSpeed;
+      if (this.opacity <= 0) {
+        this.opacity = 0;
+        this.isFinished = true;
       }
     }
   }

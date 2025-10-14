@@ -1,17 +1,18 @@
 import { possibleDemons } from "../generator/possibleDemons.js";
+import { dashboard } from "../selectionScreen/selectionScreen.instance.js";
 
 export class Wave {
-  constructor(unitMax, id) {
+  constructor(demonMax, id) {
     this.id = id;
-    this.isWaveStarted = false;
-    this.isWaveEnded = false;
+    this.isStarted = false;
+    this.isEnded = false;
+    this.isDemonFullyDeployed = false;
     this.demons = [];
-    this.demonDeads = [];
+    this.deadDemons = [];
+    this.escapedDemons = [];
     this.interval = null;
     this.currentUnit = 0;
-    this.level = {
-      unitMax: unitMax,
-    };
+    this.demonMax = demonMax;
   }
 
   getRandomInterval(min = 1000, max = 10000) {
@@ -19,27 +20,25 @@ export class Wave {
   }
 
   start(startWaveIcon) {
-    this.isWaveStarted = true;
-    this.isWaveEnded = false;
-
+    this.isStarted = true;
     this.spawnDemon(startWaveIcon);
   }
 
   spawnDemon(startWaveIcon) {
-    if (this.currentUnit >= this.level.unitMax) {
-      this.end(startWaveIcon);
+    if (this.currentUnit >= this.demonMax) {
+      this.allDemonsDeployed(startWaveIcon);
       return;
     }
-    this.demons.push(this.randomDemon());
-
+    const demon = this.randomDemon();
+    this.demons.push(demon);
+    dashboard.map.addActiveDemon(demon);
     this.currentUnit++;
     const delay = this.getRandomInterval();
     this.intervalId = setTimeout(() => this.spawnDemon(startWaveIcon), delay);
   }
 
-  end(startWaveIcon) {
-    this.isWaveStarted = false;
-    this.isWaveEnded = true;
+  allDemonsDeployed(startWaveIcon) {
+    this.isDemonFullyDeployed = true;
     clearTimeout(this.intervalId);
     startWaveIcon.show();
     return;
